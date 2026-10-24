@@ -1,0 +1,37 @@
+{
+  "id": "b1-02-verb-to-be",
+  "title": "Verb To Be",
+  "subtitle": { "pt": "Ser e estar no presente", "en": "Present of \"to be\"", "es": "Ser y estar en presente" },
+  "theory": [
+    {
+      "heading": { "pt": "Formas do verbo", "en": "Verb forms", "es": "Formas del verbo" },
+      "body": {
+        "pt": "I am · You are · He/She/It is · We are · They are. Em inglês, \"to be\" significa tanto \"ser\" quanto \"estar\".",
+        "en": "I am · You are · He/She/It is · We are · They are.",
+        "es": "I am · You are · He/She/It is · We are · They are. En inglés, \"to be\" significa tanto \"ser\" como \"estar\"."
+      },
+      "examples": [
+        { "en": "I am a student.", "translation": { "pt": "Eu sou estudante.", "es": "Soy estudiante." } },
+        { "en": "She is happy.", "translation": { "pt": "Ela está feliz.", "es": "Ella está feliz." } }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "b1-02-ex1",
+      "type": "fill_blank",
+      "prompt": { "pt": "Complete com a forma correta do verbo.", "en": "Fill in the correct form of the verb.", "es": "Completa con la forma correcta del verbo." },
+      "sentence": "They ___ my friends.",
+      "answers": [["are", "'re"]],
+      "explanation": { "pt": "Com \"they\" usamos \"are\".", "en": "With \"they\" we use \"are\".", "es": "Con \"they\" usamos \"are\"." }
+    },
+    {
+      "id": "b1-02-ex2",
+      "type": "multiple_choice",
+      "prompt": { "pt": "Escolha a frase correta.", "en": "Choose the correct sentence.", "es": "Elige la frase correcta." },
+      "options": ["He are a doctor.", "He is a doctor.", "He am a doctor."],
+      "correctIndex": 1,
+      "explanation": { "pt": "He/She/It usam \"is\".", "en": "He/She/It take \"is\".", "es": "He/She/It usan \"is\"." }
+    }
+  ]
+}

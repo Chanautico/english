@@ -1,0 +1,46 @@
+{
+  "tabs": { "home": "Learn", "review": "Review", "settings": "Settings" },
+  "common": { "locked": "Locked", "start": "Start", "continue": "Continue", "back": "Back" },
+  "levels": {
+    "basic": { "title": "Basic", "description": "From absolute zero to your first conversations" },
+    "intermediate": { "title": "Intermediate", "description": "Verb tenses and everyday conversations" },
+    "advanced": { "title": "Advanced", "description": "Fluency, nuance and complex structures" }
+  },
+  "home": {
+    "greeting": "Hi! Ready to practice?",
+    "overallProgress": "Course progress",
+    "lessonsProgress": "{{completed}}/{{total}} lessons",
+    "xp": "{{count}} XP",
+    "streak_one": "{{count}}-day streak",
+    "streak_other": "{{count}}-day streak",
+    "levelLocked": "Finish the previous level to unlock",
+    "continueLesson": "Continue: {{title}}",
+    "courseCompleted": "Congratulations! You finished every available lesson."
+  },
+  "lesson": {
+    "notFound": "Lesson not found.",
+    "theory": "Theory",
+    "vocabulary": "Vocabulary",
+    "exercises_one": "{{count}} exercise",
+    "exercises_other": "{{count}} exercises",
+    "listen": "Listen",
+    "markComplete": "Complete lesson",
+    "playerComingSoon": "The exercise player comes in the next step."
+  },
+  "review": {
+    "title": "Spaced review",
+    "due_one": "{{count}} item to review today",
+    "due_other": "{{count}} items to review today",
+    "empty": "Nothing to review right now. Finish lessons to fill your review queue!"
+  },
+  "settings": {
+    "title": "Settings",
+    "interfaceLanguage": "Interface language",
+    "interfaceLanguageHint": "Changes menus, tips and explanations. English content stays the same.",
+    "resetProgress": "Reset progress",
+    "resetConfirmTitle": "Reset progress?",
+    "resetConfirmMessage": "All completed lessons and reviews will be erased.",
+    "cancel": "Cancel",
+    "confirm": "Reset"
+  }
+}

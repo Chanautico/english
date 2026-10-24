@@ -1,0 +1,27 @@
+{
+  "id": "a1-01-mixed-conditionals",
+  "title": "Mixed Conditionals",
+  "subtitle": { "pt": "Condicionais mistas", "en": "Mixed conditionals", "es": "Condicionales mixtas" },
+  "theory": [
+    {
+      "heading": { "pt": "Passado → presente", "en": "Past → present", "es": "Pasado → presente" },
+      "body": {
+        "pt": "If + past perfect, would + verbo: uma condição passada com resultado no presente.",
+        "en": "If + past perfect, would + verb: a past condition with a present result.",
+        "es": "If + past perfect, would + verbo: una condición pasada con resultado en el presente."
+      },
+      "examples": [{ "en": "If I had studied medicine, I would be a doctor now.", "translation": { "pt": "Se eu tivesse estudado medicina, seria médico agora.", "es": "Si hubiera estudiado medicina, ahora sería médico." } }]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "a1-01-ex1",
+      "type": "multiple_choice",
+      "prompt": { "pt": "Escolha a opção que completa a frase.", "en": "Choose the option that completes the sentence.", "es": "Elige la opción que completa la frase." },
+      "question": "If she had taken the job, she ___ in Paris now.",
+      "options": ["would live", "would have lived", "will live"],
+      "correctIndex": 0,
+      "explanation": { "pt": "Resultado no presente (\"now\") pede \"would + verbo\".", "en": "A present result (\"now\") needs \"would + verb\".", "es": "Un resultado presente (\"now\") pide \"would + verbo\"." }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "tabs": { "home": "Aprender", "review": "Revisar", "settings": "Ajustes" },
+  "common": { "locked": "Bloqueado", "start": "Começar", "continue": "Continuar", "back": "Voltar" },
+  "levels": {
+    "basic": { "title": "Básico", "description": "Do zero absoluto às primeiras conversas" },
+    "intermediate": { "title": "Intermediário", "description": "Tempos verbais e conversas do dia a dia" },
+    "advanced": { "title": "Avançado", "description": "Fluência, nuances e estruturas complexas" }
+  },
+  "home": {
+    "greeting": "Olá! Pronto para praticar?",
+    "overallProgress": "Progresso do curso",
+    "lessonsProgress": "{{completed}}/{{total}} lições",
+    "xp": "{{count}} XP",
+    "streak_one": "{{count}} dia seguido",
+    "streak_other": "{{count}} dias seguidos",
+    "levelLocked": "Conclua o nível anterior para desbloquear",
+    "continueLesson": "Continuar: {{title}}",
+    "courseCompleted": "Parabéns! Você concluiu todas as lições disponíveis."
+  },
+  "lesson": {
+    "notFound": "Lição não encontrada.",
+    "theory": "Teoria",
+    "vocabulary": "Vocabulário",
+    "exercises_one": "{{count}} exercício",
+    "exercises_other": "{{count}} exercícios",
+    "listen": "Ouvir",
+    "markComplete": "Concluir lição",
+    "playerComingSoon": "O player de exercícios será implementado na próxima etapa."
+  },
+  "review": {
+    "title": "Revisão espaçada",
+    "due_one": "{{count}} item para revisar hoje",
+    "due_other": "{{count}} itens para revisar hoje",
+    "empty": "Nada para revisar agora. Conclua lições para alimentar sua revisão!"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "interfaceLanguage": "Idioma da interface",
+    "interfaceLanguageHint": "Muda menus, dicas e explicações. O conteúdo em inglês não muda.",
+    "resetProgress": "Apagar progresso",
+    "resetConfirmTitle": "Apagar progresso?",
+    "resetConfirmMessage": "Todas as lições concluídas e revisões serão apagadas.",
+    "cancel": "Cancelar",
+    "confirm": "Apagar"
+  }
+}

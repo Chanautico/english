@@ -1,0 +1,46 @@
+{
+  "tabs": { "home": "Aprender", "review": "Repasar", "settings": "Ajustes" },
+  "common": { "locked": "Bloqueado", "start": "Empezar", "continue": "Continuar", "back": "Volver" },
+  "levels": {
+    "basic": { "title": "Básico", "description": "Del cero absoluto a las primeras conversaciones" },
+    "intermediate": { "title": "Intermedio", "description": "Tiempos verbales y conversaciones cotidianas" },
+    "advanced": { "title": "Avanzado", "description": "Fluidez, matices y estructuras complejas" }
+  },
+  "home": {
+    "greeting": "¡Hola! ¿Listo para practicar?",
+    "overallProgress": "Progreso del curso",
+    "lessonsProgress": "{{completed}}/{{total}} lecciones",
+    "xp": "{{count}} XP",
+    "streak_one": "{{count}} día seguido",
+    "streak_other": "{{count}} días seguidos",
+    "levelLocked": "Completa el nivel anterior para desbloquear",
+    "continueLesson": "Continuar: {{title}}",
+    "courseCompleted": "¡Felicidades! Completaste todas las lecciones disponibles."
+  },
+  "lesson": {
+    "notFound": "Lección no encontrada.",
+    "theory": "Teoría",
+    "vocabulary": "Vocabulario",
+    "exercises_one": "{{count}} ejercicio",
+    "exercises_other": "{{count}} ejercicios",
+    "listen": "Escuchar",
+    "markComplete": "Completar lección",
+    "playerComingSoon": "El reproductor de ejercicios llegará en la próxima etapa."
+  },
+  "review": {
+    "title": "Repaso espaciado",
+    "due_one": "{{count}} elemento para repasar hoy",
+    "due_other": "{{count}} elementos para repasar hoy",
+    "empty": "Nada que repasar ahora. ¡Completa lecciones para alimentar tu repaso!"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "interfaceLanguage": "Idioma de la interfaz",
+    "interfaceLanguageHint": "Cambia menús, consejos y explicaciones. El contenido en inglés no cambia.",
+    "resetProgress": "Borrar progreso",
+    "resetConfirmTitle": "¿Borrar progreso?",
+    "resetConfirmMessage": "Se borrarán todas las lecciones completadas y los repasos.",
+    "cancel": "Cancelar",
+    "confirm": "Borrar"
+  }
+}

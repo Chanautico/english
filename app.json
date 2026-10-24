@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "English Journey",
+    "slug": "english-journey",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#3B6EF5"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.englishjourney.app"
+    },
+    "android": {
+      "package": "com.englishjourney.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": ["expo-localization"]
+  }
+}

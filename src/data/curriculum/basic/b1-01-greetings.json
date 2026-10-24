@@ -1,0 +1,52 @@
+{
+  "id": "b1-01-greetings",
+  "title": "Greetings",
+  "subtitle": { "pt": "Cumprimentos e apresentações", "en": "Greetings and introductions", "es": "Saludos y presentaciones" },
+  "source": { "book": "Exemplo (substituir pela apostila)", "page": 1 },
+  "theory": [
+    {
+      "heading": { "pt": "Como cumprimentar", "en": "How to greet", "es": "Cómo saludar" },
+      "body": {
+        "pt": "Use \"Hello\" ou \"Hi\" em qualquer momento. \"Good morning\" vale até o meio-dia, \"Good afternoon\" até o fim da tarde e \"Good evening\" à noite.",
+        "en": "Use \"Hello\" or \"Hi\" at any time. \"Good morning\" is used until noon, \"Good afternoon\" until late afternoon and \"Good evening\" at night.",
+        "es": "Usa \"Hello\" o \"Hi\" en cualquier momento. \"Good morning\" se usa hasta el mediodía, \"Good afternoon\" hasta el final de la tarde y \"Good evening\" por la noche."
+      },
+      "examples": [
+        { "en": "Hello! My name is Anna.", "translation": { "pt": "Olá! Meu nome é Anna.", "es": "¡Hola! Me llamo Anna." } },
+        { "en": "Good morning, Mr. Brown.", "translation": { "pt": "Bom dia, Sr. Brown.", "es": "Buenos días, Sr. Brown." } }
+      ]
+    }
+  ],
+  "vocabulary": [
+    { "term": "Hello", "translation": { "pt": "Olá", "es": "Hola" } },
+    { "term": "Goodbye", "translation": { "pt": "Tchau / Adeus", "es": "Adiós" } },
+    { "term": "Nice to meet you", "translation": { "pt": "Prazer em conhecer você", "es": "Mucho gusto" } }
+  ],
+  "exercises": [
+    {
+      "id": "b1-01-ex1",
+      "type": "multiple_choice",
+      "prompt": { "pt": "Qual cumprimento usar às 9h da manhã?", "en": "Which greeting do you use at 9 a.m.?", "es": "¿Qué saludo usas a las 9 de la mañana?" },
+      "options": ["Good evening", "Good morning", "Good night"],
+      "correctIndex": 1,
+      "explanation": { "pt": "\"Good morning\" é usado até o meio-dia.", "en": "\"Good morning\" is used until noon.", "es": "\"Good morning\" se usa hasta el mediodía." }
+    },
+    {
+      "id": "b1-01-ex2",
+      "type": "fill_blank",
+      "prompt": { "pt": "Complete a apresentação.", "en": "Complete the introduction.", "es": "Completa la presentación." },
+      "sentence": "Nice to ___ you!",
+      "answers": [["meet"]],
+      "explanation": { "pt": "A expressão fixa é \"Nice to meet you\".", "en": "The set phrase is \"Nice to meet you\".", "es": "La expresión fija es \"Nice to meet you\"." }
+    },
+    {
+      "id": "b1-01-ex3",
+      "type": "listening",
+      "prompt": { "pt": "Ouça e escolha o que foi dito.", "en": "Listen and choose what was said.", "es": "Escucha y elige lo que se dijo." },
+      "audioText": "Good afternoon!",
+      "options": ["Good afternoon!", "Good evening!", "Good morning!"],
+      "correctIndex": 0,
+      "explanation": { "pt": "Você ouviu \"Good afternoon\" (boa tarde).", "en": "You heard \"Good afternoon\".", "es": "Escuchaste \"Good afternoon\" (buenas tardes)." }
+    }
+  ]
+}

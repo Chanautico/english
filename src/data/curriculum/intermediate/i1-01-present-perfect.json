@@ -1,0 +1,26 @@
+{
+  "id": "i1-01-present-perfect",
+  "title": "Present Perfect",
+  "subtitle": { "pt": "Experiências e ações até agora", "en": "Experiences and actions up to now", "es": "Experiencias y acciones hasta ahora" },
+  "theory": [
+    {
+      "heading": { "pt": "Estrutura", "en": "Structure", "es": "Estructura" },
+      "body": {
+        "pt": "have/has + particípio passado. Usado para experiências de vida e ações que começaram no passado e continuam até agora.",
+        "en": "have/has + past participle. Used for life experiences and actions that started in the past and continue now.",
+        "es": "have/has + participio pasado. Se usa para experiencias de vida y acciones que empezaron en el pasado y siguen ahora."
+      },
+      "examples": [{ "en": "I have lived here since 2015.", "translation": { "pt": "Eu moro aqui desde 2015.", "es": "Vivo aquí desde 2015." } }]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "i1-01-ex1",
+      "type": "fill_blank",
+      "prompt": { "pt": "Complete com o present perfect.", "en": "Complete with the present perfect.", "es": "Completa con el present perfect." },
+      "sentence": "She ___ ___ to London twice.",
+      "answers": [["has"], ["been"]],
+      "explanation": { "pt": "Terceira pessoa usa \"has\" + particípio (\"been\").", "en": "Third person takes \"has\" + participle (\"been\").", "es": "La tercera persona usa \"has\" + participio (\"been\")." }
+    }
+  ]
+}

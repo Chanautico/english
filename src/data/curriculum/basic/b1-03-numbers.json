@@ -1,0 +1,27 @@
+{
+  "id": "b1-03-numbers",
+  "title": "Numbers 1–20",
+  "subtitle": { "pt": "Números de 1 a 20", "en": "Numbers from 1 to 20", "es": "Números del 1 al 20" },
+  "theory": [
+    {
+      "heading": { "pt": "Contando", "en": "Counting", "es": "Contando" },
+      "body": {
+        "pt": "one, two, three, four, five, six, seven, eight, nine, ten… De 13 a 19 os números terminam em \"-teen\".",
+        "en": "one, two, three, four, five, six, seven, eight, nine, ten… From 13 to 19 numbers end in \"-teen\".",
+        "es": "one, two, three, four, five, six, seven, eight, nine, ten… Del 13 al 19 los números terminan en \"-teen\"."
+      },
+      "examples": [{ "en": "I am fifteen years old.", "translation": { "pt": "Eu tenho quinze anos.", "es": "Tengo quince años." } }]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "b1-03-ex1",
+      "type": "listening",
+      "prompt": { "pt": "Qual número você ouviu?", "en": "Which number did you hear?", "es": "¿Qué número escuchaste?" },
+      "audioText": "thirteen",
+      "options": ["13", "30", "3"],
+      "correctIndex": 0,
+      "explanation": { "pt": "\"Thirteen\" (13) tem a tônica no final; \"thirty\" (30) no início.", "en": "\"Thirteen\" (13) is stressed at the end; \"thirty\" (30) at the start.", "es": "\"Thirteen\" (13) lleva el acento al final; \"thirty\" (30) al principio." }
+    }
+  ]
+}
