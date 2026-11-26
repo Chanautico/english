@@ -1,0 +1,106 @@
+{
+ "id": 31,
+ "arco": 3,
+ "titulo": {
+  "pt": "A Fuga de Vex",
+  "en": "Vex's Escape"
+ },
+ "cenario": "bg_porto_nevoa",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "JOIN",
+  "GROUP BY",
+  "COUNT"
+ ],
+ "missao": {
+  "pt": "Contar só os ataques reais de Vex.",
+  "en": "Count only Vex's real attacks."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "O farol. Vex está encurralado no topo.",
+   "en": "The lighthouse. Vex is cornered at the top.",
+   "efeito": "relampago"
+  },
+  {
+   "sprite": "vex_sombrio",
+   "pt": "Vocês nem sabem o que eu fiz! Metade desses registros é falsa!",
+   "en": "You don't even know what I did! Half of these records are fake!",
+   "efeito": "glitch"
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "Falsos apontam para alvos que não existem. Um INNER JOIN descarta os falsos sozinho!",
+   "en": "Fakes point at targets that don't exist. An INNER JOIN drops the fakes by itself!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "JOIN com GROUP BY: junta primeiro, depois agrupa e conta.",
+   "en": "JOIN with GROUP BY: join first, then group and count.",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT a.nome, COUNT(*)\nFROM ataques_vex v\nJOIN alvos a ON v.alvo_id = a.id\nGROUP BY a.nome;",
+     "en": "SELECT t.name, COUNT(*)\nFROM vex_attacks v\nJOIN targets t ON v.target_id = t.id\nGROUP BY t.name;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Para cada **alvo real**, retorne o nome do alvo e **quantos ataques** de Vex ele sofreu.",
+    "en": "For each **real target**, return the target name and **how many attacks** from Vex it suffered."
+   },
+   "gabarito": {
+    "pt": "SELECT a.nome, COUNT(*) FROM ataques_vex v JOIN alvos a ON v.alvo_id = a.id GROUP BY a.nome",
+    "en": "SELECT t.name, COUNT(*) FROM vex_attacks v JOIN targets t ON v.target_id = t.id GROUP BY t.name"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "INNER JOIN elimina os alvos falsos.",
+     "en": "INNER JOIN removes the fake targets."
+    },
+    {
+     "pt": "GROUP BY o nome do alvo.",
+     "en": "GROUP BY the target name."
+    },
+    {
+     "pt": "SELECT a.nome, COUNT(*) FROM ataques_vex v JOIN alvos a ON v.alvo_id = a.id GROUP BY a.nome",
+     "en": "SELECT t.name, COUNT(*) FROM vex_attacks v JOIN targets t ON v.target_id = t.id GROUP BY t.name"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Seis ataques reais. O farol foi o mais atingido. Acabou, Vex!",
+   "en": "Six real attacks. The lighthouse was hit most. It's over, Vex!"
+  },
+  {
+   "sprite": "vex_furioso",
+   "pt": "Acabou? Eu ainda tenho a minha besta!",
+   "en": "Over? I still have my beast!",
+   "efeito": [
+    "tremor",
+    "escuridao"
+   ]
+  },
+  {
+   "sprite": null,
+   "pt": "O mar ferve. Algo enorme sobe das ondas.",
+   "en": "The sea boils. Something huge rises from the waves.",
+   "efeito": [
+    "relampago",
+    "impacto"
+   ],
+   "entra": [
+    "hydra_furiosa"
+   ]
+  }
+ ]
+}

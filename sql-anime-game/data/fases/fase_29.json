@@ -1,0 +1,92 @@
+{
+ "id": 29,
+ "arco": 3,
+ "titulo": {
+  "pt": "Resgate dos Reféns",
+  "en": "Rescuing the Hostages"
+ },
+ "cenario": "bg_subterraneo_porto",
+ "dificuldade": "medio",
+ "conceitos": [
+  "JOIN",
+  "ORDER BY"
+ ],
+ "missao": {
+  "pt": "Abrir todas as celas antes que a maré suba.",
+  "en": "Open every cell before the tide comes in."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "A água começa a entrar no subsolo. Gritos atrás das grades.",
+   "en": "Water starts flooding the basement. Shouts behind the bars.",
+   "efeito": [
+    "tremor",
+    "veneno"
+   ]
+  },
+  {
+   "sprite": "dante_serio",
+   "pt": "Cada cela abre com uma chave, e cada chave está com um guarda. Precisamos do mapa completo!",
+   "en": "Each cell opens with a key, and each key is held by a guard. We need the full map!"
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "Cela → chave → guarda. Em ordem de número, pra não perder nenhuma!",
+   "en": "Cell → key → guard. In number order, so we don't miss one!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Três tabelas encadeadas e um ORDER BY no fim. Você já sabe tudo isso!",
+   "en": "Three chained tables and an ORDER BY at the end. You already know all of it!",
+   "quadro": {
+    "codigo": {
+     "pt": "FROM celas ce\nJOIN chaves ch ON ce.chave_id = ch.id\nJOIN guardas g ON ch.guarda_id = g.id\nORDER BY ce.numero",
+     "en": "FROM cells ce\nJOIN keys k ON ce.key_id = k.id\nJOIN guards g ON k.guard_id = g.id\nORDER BY ce.number"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne o **número da cela**, o **código da chave** e o **nome do guarda** que a carrega, em ordem de número da cela.",
+    "en": "Return the **cell number**, the **key code** and the **name of the guard** carrying it, ordered by cell number."
+   },
+   "gabarito": {
+    "pt": "SELECT ce.numero, ch.codigo, g.nome FROM celas ce JOIN chaves ch ON ce.chave_id = ch.id JOIN guardas g ON ch.guarda_id = g.id ORDER BY ce.numero",
+    "en": "SELECT ce.number, k.code, g.name FROM cells ce JOIN keys k ON ce.key_id = k.id JOIN guards g ON k.guard_id = g.id ORDER BY ce.number"
+   },
+   "ordenado": true,
+   "dicas": [
+    {
+     "pt": "celas → chaves → guardas.",
+     "en": "cells → keys → guards."
+    },
+    {
+     "pt": "ORDER BY ce.numero no final.",
+     "en": "ORDER BY ce.number at the end."
+    },
+    {
+     "pt": "SELECT ce.numero, ch.codigo, g.nome FROM celas ce JOIN chaves ch ON ce.chave_id = ch.id JOIN guardas g ON ch.guarda_id = g.id ORDER BY ce.numero",
+     "en": "SELECT ce.number, k.code, g.name FROM cells ce JOIN keys k ON ce.key_id = k.id JOIN guards g ON k.guard_id = g.id ORDER BY ce.number"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "lyra_sorrindo",
+   "pt": "Todas abertas! Os marinheiros estão livres.",
+   "en": "All open! The sailors are free.",
+   "efeito": "luz"
+  },
+  {
+   "sprite": "dante_relaxado",
+   "pt": "Grosk carrega duas chaves e dorme no turno da noite. Clássico.",
+   "en": "Grosk carries two keys and sleeps on the night shift. Classic."
+  }
+ ]
+}

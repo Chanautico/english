@@ -5,11 +5,1868 @@
   "en": "The Port City of Broken Links"
  },
  "descricao": {
-  "pt": "Porto Névoa. Chaves primárias e estrangeiras, INNER, LEFT e RIGHT JOIN, e a Hydra Cartesiana.",
-  "en": "Mist Harbor. Primary and foreign keys, INNER, LEFT and RIGHT JOIN, and the Cartesian Hydra."
+  "pt": "Porto Névoa, onde a Null-Void quebrou as ligações entre os bancos. Chaves primárias e estrangeiras, INNER, LEFT e RIGHT JOIN, JOIN com várias tabelas e a Hydra Cartesiana.",
+  "en": "Mist Harbor, where the Null-Void broke the links between databases. Primary and foreign keys, INNER, LEFT and RIGHT JOIN, multi-table JOINs and the Cartesian Hydra."
  },
  "capa": "bg_porto_nevoa",
  "cor": "#3a7ca5",
- "em_breve": true,
- "tabelas": []
+ "tabelas": [
+  {
+   "nome": {
+    "pt": "capitaes",
+    "en": "captains"
+   },
+   "descricao": {
+    "pt": "Capitães registrados no porto.",
+    "en": "Captains registered at the harbor."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER",
+     "nota": {
+      "pt": "chave primária",
+      "en": "primary key"
+     }
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "reputacao",
+      "en": "reputation"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Barba Cinza",
+      "en": "Greybeard"
+     },
+     80
+    ],
+    [
+     2,
+     {
+      "pt": "Marla Sal",
+      "en": "Marla Salt"
+     },
+     65
+    ],
+    [
+     3,
+     {
+      "pt": "Olho de Vidro",
+      "en": "Glass Eye"
+     },
+     40
+    ],
+    [
+     4,
+     "Tiko",
+     90
+    ],
+    [
+     5,
+     "Ruda",
+     55
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "navios",
+    "en": "ships"
+   },
+   "descricao": {
+    "pt": "Navios ancorados. capitao_id aponta para capitaes.id.",
+    "en": "Docked ships. captain_id points to captains.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER",
+     "nota": {
+      "pt": "chave primária",
+      "en": "primary key"
+     }
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "capitao_id",
+      "en": "captain_id"
+     },
+     "tipo": "INTEGER",
+     "nota": {
+      "pt": "→ capitaes.id (pode ser NULL)",
+      "en": "→ captains.id (may be NULL)"
+     }
+    },
+    {
+     "nome": {
+      "pt": "bandeira",
+      "en": "flag"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Gaivota",
+      "en": "Seagull"
+     },
+     1,
+     "Dataia"
+    ],
+    [
+     2,
+     {
+      "pt": "Tormenta",
+      "en": "Tempest"
+     },
+     2,
+     "Dataia"
+    ],
+    [
+     3,
+     {
+      "pt": "Sereia Negra",
+      "en": "Black Mermaid"
+     },
+     3,
+     {
+      "pt": "Livre",
+      "en": "Free"
+     }
+    ],
+    [
+     4,
+     "Aurora",
+     4,
+     "Dataia"
+    ],
+    [
+     5,
+     {
+      "pt": "Fantasma",
+      "en": "Phantom"
+     },
+     null,
+     "Null-Void"
+    ],
+    [
+     6,
+     {
+      "pt": "Corvo do Mar",
+      "en": "Sea Crow"
+     },
+     1,
+     {
+      "pt": "Livre",
+      "en": "Free"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "cargas",
+    "en": "cargo"
+   },
+   "descricao": {
+    "pt": "Cargas declaradas. navio_id → navios.id.",
+    "en": "Declared cargo. ship_id → ships.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "navio_id",
+      "en": "ship_id"
+     },
+     "tipo": "INTEGER",
+     "nota": {
+      "pt": "→ navios.id",
+      "en": "→ ships.id"
+     }
+    },
+    {
+     "nome": {
+      "pt": "item",
+      "en": "item"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "peso",
+      "en": "weight"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     1,
+     {
+      "pt": "Sal",
+      "en": "Salt"
+     },
+     300
+    ],
+    [
+     2,
+     1,
+     {
+      "pt": "Peixe Seco",
+      "en": "Dried Fish"
+     },
+     200
+    ],
+    [
+     3,
+     2,
+     {
+      "pt": "Cristais",
+      "en": "Crystals"
+     },
+     120
+    ],
+    [
+     4,
+     4,
+     {
+      "pt": "Tecidos",
+      "en": "Cloth"
+     },
+     180
+    ],
+    [
+     5,
+     6,
+     {
+      "pt": "Especiarias",
+      "en": "Spices"
+     },
+     90
+    ],
+    [
+     6,
+     99,
+     {
+      "pt": "Armas Runicas",
+      "en": "Runic Weapons"
+     },
+     400
+    ],
+    [
+     7,
+     98,
+     {
+      "pt": "Po de Vazio",
+      "en": "Void Dust"
+     },
+     60
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "cidadaos",
+    "en": "citizens"
+   },
+   "descricao": {
+    "pt": "Moradores do porto.",
+    "en": "Harbor residents."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Ulric"
+    ],
+    [
+     2,
+     "Vesna"
+    ],
+    [
+     3,
+     "Wim"
+    ],
+    [
+     4,
+     "Xara"
+    ],
+    [
+     5,
+     "Yuri"
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "contas_bancarias",
+    "en": "bank_accounts"
+   },
+   "descricao": {
+    "pt": "Contas. cidadao_id → cidadaos.id.",
+    "en": "Accounts. citizen_id → citizens.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "cidadao_id",
+      "en": "citizen_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "banco",
+      "en": "bank"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     10,
+     1,
+     {
+      "pt": "Banco do Porto",
+      "en": "Harbor Bank"
+     }
+    ],
+    [
+     11,
+     2,
+     {
+      "pt": "Banco do Porto",
+      "en": "Harbor Bank"
+     }
+    ],
+    [
+     12,
+     2,
+     {
+      "pt": "Cofre Real",
+      "en": "Royal Vault"
+     }
+    ],
+    [
+     13,
+     4,
+     {
+      "pt": "Cofre Real",
+      "en": "Royal Vault"
+     }
+    ],
+    [
+     14,
+     5,
+     {
+      "pt": "Banco do Porto",
+      "en": "Harbor Bank"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "transacoes_ilegais",
+    "en": "illegal_transactions"
+   },
+   "descricao": {
+    "pt": "Transferências suspeitas. conta_id → contas_bancarias.id.",
+    "en": "Suspicious transfers. account_id → bank_accounts.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "conta_id",
+      "en": "account_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "valor",
+      "en": "amount"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     10,
+     500
+    ],
+    [
+     2,
+     12,
+     2000
+    ],
+    [
+     3,
+     12,
+     1500
+    ],
+    [
+     4,
+     13,
+     700
+    ],
+    [
+     5,
+     14,
+     300
+    ],
+    [
+     6,
+     12,
+     900
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "bebidas",
+    "en": "drinks"
+   },
+   "descricao": {
+    "pt": "Cardápio da taverna.",
+    "en": "Tavern menu."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Rum de Coco",
+      "en": "Coconut Rum"
+     }
+    ],
+    [
+     2,
+     {
+      "pt": "Vinho Negro",
+      "en": "Black Wine"
+     }
+    ],
+    [
+     3,
+     {
+      "pt": "Cha de Algas",
+      "en": "Seaweed Tea"
+     }
+    ],
+    [
+     4,
+     {
+      "pt": "Cerveja de Mel",
+      "en": "Honey Beer"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "clientes",
+    "en": "customers"
+   },
+   "descricao": {
+    "pt": "Clientes da taverna.",
+    "en": "Tavern customers."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "apelido",
+      "en": "nickname"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Dante",
+     {
+      "pt": "O Apostador",
+      "en": "The Gambler"
+     }
+    ],
+    [
+     2,
+     "Morg",
+     {
+      "pt": "Dente Torto",
+      "en": "Crooked Tooth"
+     }
+    ],
+    [
+     3,
+     "Sela",
+     {
+      "pt": "A Muda",
+      "en": "The Silent"
+     }
+    ],
+    [
+     4,
+     "Pike",
+     {
+      "pt": "Olho Cinza",
+      "en": "Grey Eye"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "pedidos",
+    "en": "orders"
+   },
+   "descricao": {
+    "pt": "Pedidos da noite.",
+    "en": "Tonight's orders."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "cliente_id",
+      "en": "customer_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "bebida_id",
+      "en": "drink_id"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     2,
+     3
+    ],
+    [
+     3,
+     3,
+     2
+    ],
+    [
+     4,
+     4,
+     4
+    ],
+    [
+     5,
+     1,
+     4
+    ],
+    [
+     6,
+     3,
+     1
+    ],
+    [
+     7,
+     2,
+     1
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "artefatos",
+    "en": "artifacts"
+   },
+   "descricao": {
+    "pt": "Itens do leilão clandestino.",
+    "en": "Items in the secret auction."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Mapa dos Selos",
+      "en": "Seal Map"
+     }
+    ],
+    [
+     2,
+     {
+      "pt": "Coroa de Cristal",
+      "en": "Crystal Crown"
+     }
+    ],
+    [
+     3,
+     {
+      "pt": "Livro Nulo",
+      "en": "Null Book"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "compradores",
+    "en": "buyers"
+   },
+   "descricao": {
+    "pt": "Compradores mascarados.",
+    "en": "Masked buyers."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Mascarado",
+      "en": "Masked One"
+     }
+    ],
+    [
+     2,
+     "Lady Orla"
+    ],
+    [
+     3,
+     {
+      "pt": "Barao Kurt",
+      "en": "Baron Kurt"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "lances",
+    "en": "bids"
+   },
+   "descricao": {
+    "pt": "Lances do leilão.",
+    "en": "Auction bids."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "artefato_id",
+      "en": "artifact_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "comprador_id",
+      "en": "buyer_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "valor",
+      "en": "amount"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     1,
+     1,
+     80000
+    ],
+    [
+     2,
+     1,
+     2,
+     45000
+    ],
+    [
+     3,
+     2,
+     3,
+     52000
+    ],
+    [
+     4,
+     3,
+     1,
+     30000
+    ],
+    [
+     5,
+     2,
+     2,
+     48000
+    ],
+    [
+     6,
+     3,
+     3,
+     61000
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "rotas",
+    "en": "routes"
+   },
+   "descricao": {
+    "pt": "Rotas de navegação.",
+    "en": "Sailing routes."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "destino",
+      "en": "destination"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "distancia",
+      "en": "distance"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Ilha Sombria",
+      "en": "Shadow Isle"
+     },
+     40
+    ],
+    [
+     2,
+     "Neo-Schema",
+     120
+    ],
+    [
+     3,
+     {
+      "pt": "Vila Oculta",
+      "en": "Hidden Village"
+     },
+     200
+    ],
+    [
+     4,
+     {
+      "pt": "Ilha Sombria",
+      "en": "Shadow Isle"
+     },
+     55
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "barcos",
+    "en": "boats"
+   },
+   "descricao": {
+    "pt": "Barcos de fuga. rota_id → rotas.id.",
+    "en": "Escape boats. route_id → routes.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "rota_id",
+      "en": "route_id"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Vulto",
+      "en": "Shade"
+     },
+     1
+    ],
+    [
+     2,
+     {
+      "pt": "Brisa",
+      "en": "Breeze"
+     },
+     2
+    ],
+    [
+     3,
+     {
+      "pt": "Lamina",
+      "en": "Blade"
+     },
+     4
+    ],
+    [
+     4,
+     {
+      "pt": "Cinza",
+      "en": "Ash"
+     },
+     3
+    ],
+    [
+     5,
+     {
+      "pt": "Eco",
+      "en": "Echo"
+     },
+     1
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "fundadores",
+    "en": "founders"
+   },
+   "descricao": {
+    "pt": "Os fundadores da Grande Arquitetura.",
+    "en": "The founders of the Great Architecture."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Kael"
+    ],
+    [
+     2,
+     "Aren"
+    ],
+    [
+     3,
+     "Malform"
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "registros_secretos",
+    "en": "secret_records"
+   },
+   "descricao": {
+    "pt": "Arquivo secreto do porto. fundador_id → fundadores.id.",
+    "en": "The harbor's secret archive. founder_id → founders.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "fundador_id",
+      "en": "founder_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "ano",
+      "en": "year"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nota",
+      "en": "note"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     1,
+     1090,
+     {
+      "pt": "Projetou os indices",
+      "en": "Designed the indexes"
+     }
+    ],
+    [
+     2,
+     2,
+     1090,
+     {
+      "pt": "Criou o Terminal Ancestral",
+      "en": "Built the Ancestral Terminal"
+     }
+    ],
+    [
+     3,
+     2,
+     1101,
+     {
+      "pt": "Selou o Nucleo",
+      "en": "Sealed the Core"
+     }
+    ],
+    [
+     4,
+     1,
+     1101,
+     {
+      "pt": "Deixou a Capital",
+      "en": "Left the Capital"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "guardas",
+    "en": "guards"
+   },
+   "descricao": {
+    "pt": "Guardas da Null-Void.",
+    "en": "Null-Void guards."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "turno",
+      "en": "shift"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Grosk",
+     {
+      "pt": "noite",
+      "en": "night"
+     }
+    ],
+    [
+     2,
+     "Halv",
+     {
+      "pt": "dia",
+      "en": "day"
+     }
+    ],
+    [
+     3,
+     "Inge",
+     {
+      "pt": "noite",
+      "en": "night"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "chaves",
+    "en": "keys"
+   },
+   "descricao": {
+    "pt": "Chaves das celas. guarda_id → guardas.id.",
+    "en": "Cell keys. guard_id → guards.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "codigo",
+      "en": "code"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "guarda_id",
+      "en": "guard_id"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "K-77",
+     1
+    ],
+    [
+     2,
+     "K-12",
+     2
+    ],
+    [
+     3,
+     "K-40",
+     3
+    ],
+    [
+     4,
+     "K-03",
+     1
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "celas",
+    "en": "cells"
+   },
+   "descricao": {
+    "pt": "Celas com marinheiros presos. chave_id → chaves.id.",
+    "en": "Cells with captured sailors. key_id → keys.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "numero",
+      "en": "number"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "chave_id",
+      "en": "key_id"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     101,
+     2
+    ],
+    [
+     2,
+     102,
+     4
+    ],
+    [
+     3,
+     103,
+     1
+    ],
+    [
+     4,
+     104,
+     3
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "fornecedores",
+    "en": "suppliers"
+   },
+   "descricao": {
+    "pt": "Fornecedores de material.",
+    "en": "Material suppliers."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Forja do Norte",
+      "en": "North Forge"
+     }
+    ],
+    [
+     2,
+     {
+      "pt": "Serraria Leste",
+      "en": "East Sawmill"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "materiais",
+    "en": "materials"
+   },
+   "descricao": {
+    "pt": "Materiais. fornecedor_id → fornecedores.id.",
+    "en": "Materials. supplier_id → suppliers.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "fornecedor_id",
+      "en": "supplier_id"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Aco",
+      "en": "Steel"
+     },
+     1
+    ],
+    [
+     2,
+     {
+      "pt": "Carvalho",
+      "en": "Oak"
+     },
+     2
+    ],
+    [
+     3,
+     {
+      "pt": "Ferro",
+      "en": "Iron"
+     },
+     1
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "vigas",
+    "en": "beams"
+   },
+   "descricao": {
+    "pt": "Vigas da ponte. material_id → materiais.id.",
+    "en": "Bridge beams. material_id → materials.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "material_id",
+      "en": "material_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "carga",
+      "en": "load"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     1,
+     900
+    ],
+    [
+     2,
+     2,
+     400
+    ],
+    [
+     3,
+     3,
+     700
+    ],
+    [
+     4,
+     1,
+     850
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "secoes",
+    "en": "sections"
+   },
+   "descricao": {
+    "pt": "Seções da ponte. viga_id → vigas.id.",
+    "en": "Bridge sections. beam_id → beams.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "viga_id",
+      "en": "beam_id"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Entrada",
+      "en": "Entrance"
+     },
+     2
+    ],
+    [
+     2,
+     {
+      "pt": "Meio",
+      "en": "Middle"
+     },
+     1
+    ],
+    [
+     3,
+     {
+      "pt": "Arco Central",
+      "en": "Central Arch"
+     },
+     4
+    ],
+    [
+     4,
+     {
+      "pt": "Saida",
+      "en": "Exit"
+     },
+     3
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "alvos",
+    "en": "targets"
+   },
+   "descricao": {
+    "pt": "Alvos oficiais do porto.",
+    "en": "The harbor's official targets."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Farol",
+      "en": "Lighthouse"
+     }
+    ],
+    [
+     2,
+     {
+      "pt": "Cais",
+      "en": "Pier"
+     }
+    ],
+    [
+     3,
+     {
+      "pt": "Mercado",
+      "en": "Market"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "ataques_vex",
+    "en": "vex_attacks"
+   },
+   "descricao": {
+    "pt": "Ataques atribuídos a Vex. Alguns alvos são falsos!",
+    "en": "Attacks blamed on Vex. Some targets are fake!"
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "alvo_id",
+      "en": "target_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "tipo",
+      "en": "type"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     1,
+     {
+      "pt": "fogo",
+      "en": "fire"
+     }
+    ],
+    [
+     2,
+     2,
+     {
+      "pt": "nevoa",
+      "en": "mist"
+     }
+    ],
+    [
+     3,
+     1,
+     {
+      "pt": "nevoa",
+      "en": "mist"
+     }
+    ],
+    [
+     4,
+     99,
+     {
+      "pt": "fogo",
+      "en": "fire"
+     }
+    ],
+    [
+     5,
+     3,
+     {
+      "pt": "fogo",
+      "en": "fire"
+     }
+    ],
+    [
+     6,
+     1,
+     {
+      "pt": "raio",
+      "en": "lightning"
+     }
+    ],
+    [
+     7,
+     98,
+     {
+      "pt": "nevoa",
+      "en": "mist"
+     }
+    ],
+    [
+     8,
+     2,
+     {
+      "pt": "fogo",
+      "en": "fire"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "cabecas",
+    "en": "heads"
+   },
+   "descricao": {
+    "pt": "Cabeças da Hydra.",
+    "en": "The Hydra's heads."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "elemento",
+      "en": "element"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Cabeca de Fogo",
+      "en": "Fire Head"
+     },
+     {
+      "pt": "fogo",
+      "en": "fire"
+     }
+    ],
+    [
+     2,
+     {
+      "pt": "Cabeca de Gelo",
+      "en": "Ice Head"
+     },
+     {
+      "pt": "gelo",
+      "en": "ice"
+     }
+    ],
+    [
+     3,
+     {
+      "pt": "Cabeca de Raio",
+      "en": "Lightning Head"
+     },
+     {
+      "pt": "raio",
+      "en": "lightning"
+     }
+    ],
+    [
+     4,
+     {
+      "pt": "Cabeca Sombria",
+      "en": "Shadow Head"
+     },
+     {
+      "pt": "sombra",
+      "en": "shadow"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "golpes",
+    "en": "strikes"
+   },
+   "descricao": {
+    "pt": "Golpes do Terminal. cabeca_id → cabecas.id; fraqueza = elemento que o golpe vence.",
+    "en": "Terminal strikes. head_id → heads.id; weakness = element the strike beats."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "cabeca_id",
+      "en": "head_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "fraqueza",
+      "en": "weakness"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "golpe",
+      "en": "strike"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     1,
+     {
+      "pt": "fogo",
+      "en": "fire"
+     },
+     {
+      "pt": "Onda de Agua",
+      "en": "Water Wave"
+     }
+    ],
+    [
+     2,
+     1,
+     {
+      "pt": "gelo",
+      "en": "ice"
+     },
+     {
+      "pt": "Lamina de Vento",
+      "en": "Wind Blade"
+     }
+    ],
+    [
+     3,
+     2,
+     {
+      "pt": "gelo",
+      "en": "ice"
+     },
+     {
+      "pt": "Chama Rubra",
+      "en": "Crimson Flame"
+     }
+    ],
+    [
+     4,
+     2,
+     {
+      "pt": "raio",
+      "en": "lightning"
+     },
+     {
+      "pt": "Rocha Viva",
+      "en": "Living Rock"
+     }
+    ],
+    [
+     5,
+     3,
+     {
+      "pt": "raio",
+      "en": "lightning"
+     },
+     {
+      "pt": "Raiz Terrestre",
+      "en": "Earth Root"
+     }
+    ],
+    [
+     6,
+     3,
+     {
+      "pt": "fogo",
+      "en": "fire"
+     },
+     {
+      "pt": "Neblina",
+      "en": "Mist"
+     }
+    ],
+    [
+     7,
+     4,
+     {
+      "pt": "sombra",
+      "en": "shadow"
+     },
+     {
+      "pt": "Luz do Terminal",
+      "en": "Terminal Light"
+     }
+    ],
+    [
+     8,
+     4,
+     {
+      "pt": "gelo",
+      "en": "ice"
+     },
+     {
+      "pt": "Eco Vazio",
+      "en": "Hollow Echo"
+     }
+    ]
+   ]
+  }
+ ]
 }

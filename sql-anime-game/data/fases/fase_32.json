@@ -1,0 +1,212 @@
+{
+ "id": 32,
+ "arco": 3,
+ "titulo": {
+  "pt": "CHEFE: A Hydra Cartesiana",
+  "en": "BOSS: The Cartesian Hydra"
+ },
+ "cenario": "bg_porto_nevoa",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "JOIN",
+  "ON",
+  "COUNT"
+ ],
+ "missao": {
+  "pt": "Vex invocou uma Hydra nascida de um JOIN sem ON.",
+  "en": "Vex summoned a Hydra born from a JOIN without ON."
+ },
+ "historia_antes": [
+  {
+   "sprite": "vex_sombrio",
+   "pt": "Contemplem: um JOIN sem condição! Cada cabeça combina com TODOS os golpes!",
+   "en": "Behold: a JOIN with no condition! Every head pairs with EVERY strike!",
+   "efeito": [
+    "glitch",
+    "relampago"
+   ],
+   "entra": [
+    "hydra_furiosa"
+   ]
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "É o produto cartesiano! 4 cabeças × 8 golpes = 32 combinações!",
+   "en": "It's the cartesian product! 4 heads × 8 strikes = 32 combinations!",
+   "efeito": "tremor"
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Ren, a gente corta as cabeças com JOINs exatos: chave E elemento!",
+   "en": "Ren, we cut the heads with exact JOINs: key AND element!"
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Vamos lá!",
+   "en": "Let's go!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Sem ON, cada linha de uma tabela casa com TODAS da outra. É o produto cartesiano.",
+   "en": "Without ON, each row of one table matches EVERY row of the other. That's the cartesian product.",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT COUNT(*)\nFROM cabecas, golpes;   -- 4 × 8",
+     "en": "SELECT COUNT(*)\nFROM heads, strikes;   -- 4 × 8"
+    }
+   }
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "O ON pode ter mais de uma condição, unidas com AND!",
+   "en": "ON can hold more than one condition, joined with AND!",
+   "quadro": {
+    "codigo": {
+     "pt": "ON g.cabeca_id = c.id\nAND g.fraqueza = c.elemento",
+     "en": "ON s.head_id = h.id\nAND s.weakness = h.element"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "**Turno 1 — Meça a Hydra!** Conte quantas linhas o produto cartesiano de `cabecas` com `golpes` gera (sem ON).",
+    "en": "**Turn 1 — Measure the Hydra!** Count how many rows the cartesian product of `heads` and `strikes` produces (no ON)."
+   },
+   "gabarito": {
+    "pt": "SELECT COUNT(*) FROM cabecas, golpes",
+    "en": "SELECT COUNT(*) FROM heads, strikes"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Liste as duas tabelas separadas por vírgula.",
+     "en": "List both tables separated by a comma."
+    },
+    {
+     "pt": "SELECT COUNT(*) FROM cabecas, golpes",
+     "en": "SELECT COUNT(*) FROM heads, strikes"
+    },
+    {
+     "pt": "SELECT COUNT(*) FROM cabecas, golpes",
+     "en": "SELECT COUNT(*) FROM heads, strikes"
+    }
+   ],
+   "conceitos": [
+    "JOIN",
+    "COUNT"
+   ]
+  },
+  {
+   "enunciado": {
+    "pt": "**Turno 2 — Corte pela raiz!** Conte as combinações quando cada golpe só casa com **a sua** cabeça (`cabeca_id = id`).",
+    "en": "**Turn 2 — Cut at the root!** Count the combinations when each strike only matches **its own** head (`head_id = id`)."
+   },
+   "gabarito": {
+    "pt": "SELECT COUNT(*) FROM cabecas c JOIN golpes g ON g.cabeca_id = c.id",
+    "en": "SELECT COUNT(*) FROM heads h JOIN strikes s ON s.head_id = h.id"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Agora com JOIN ... ON.",
+     "en": "Now with JOIN ... ON."
+    },
+    {
+     "pt": "ON g.cabeca_id = c.id",
+     "en": "ON s.head_id = h.id"
+    },
+    {
+     "pt": "SELECT COUNT(*) FROM cabecas c JOIN golpes g ON g.cabeca_id = c.id",
+     "en": "SELECT COUNT(*) FROM heads h JOIN strikes s ON s.head_id = h.id"
+    }
+   ],
+   "conceitos": [
+    "JOIN",
+    "ON"
+   ]
+  },
+  {
+   "enunciado": {
+    "pt": "**Turno 3 — Golpe certeiro!** Retorne o **nome da cabeça** e o **golpe** quando o golpe é da cabeça **E** a `fraqueza` é igual ao `elemento` dela.",
+    "en": "**Turn 3 — Precise strike!** Return the **head name** and the **strike** when the strike belongs to the head **AND** its `weakness` equals the head's `element`."
+   },
+   "gabarito": {
+    "pt": "SELECT c.nome, g.golpe FROM cabecas c JOIN golpes g ON g.cabeca_id = c.id AND g.fraqueza = c.elemento",
+    "en": "SELECT h.name, s.strike FROM heads h JOIN strikes s ON s.head_id = h.id AND s.weakness = h.element"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Duas condições no ON.",
+     "en": "Two conditions in ON."
+    },
+    {
+     "pt": "ON g.cabeca_id = c.id AND g.fraqueza = c.elemento",
+     "en": "ON s.head_id = h.id AND s.weakness = h.element"
+    },
+    {
+     "pt": "SELECT c.nome, g.golpe FROM cabecas c JOIN golpes g ON g.cabeca_id = c.id AND g.fraqueza = c.elemento",
+     "en": "SELECT h.name, s.strike FROM heads h JOIN strikes s ON s.head_id = h.id AND s.weakness = h.element"
+    }
+   ],
+   "conceitos": [
+    "JOIN",
+    "ON",
+    "AND"
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": null,
+   "pt": "Quatro golpes certeiros. As cabeças da Hydra se desfazem em névoa.",
+   "en": "Four precise strikes. The Hydra's heads dissolve into mist.",
+   "efeito": [
+    "impacto",
+    "dados"
+   ],
+   "entra": [
+    "hydra_furiosa"
+   ]
+  },
+  {
+   "sprite": "vex_furioso",
+   "pt": "Impossível... um aprendiz?!",
+   "en": "Impossible... an apprentice?!",
+   "efeito": "glitch",
+   "sai": [
+    "hydra"
+   ]
+  },
+  {
+   "sprite": "vex_sombrio",
+   "pt": "Não importa. O Lord Malform já marcha contra a Capital. Vocês chegaram tarde demais.",
+   "en": "It doesn't matter. Lord Malform is already marching on the Capital. You're too late.",
+   "efeito": "escuridao"
+  },
+  {
+   "sprite": "dante_serio",
+   "pt": "Então a gente vai até ele primeiro. Norte. Fortaleza de Obsidiana.",
+   "en": "Then we go to him first. North. The Obsidian Fortress.",
+   "efeito": "luz"
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "FIM DO ARCO 3! Vocês viraram Arquitetos de Prata! Próximo: As Sombras da Null-Void!",
+   "en": "END OF ARC 3! You're Silver Architects now! Next: The Shadows of the Null-Void!",
+   "efeito": "cristais"
+  }
+ ],
+ "chefe": {
+  "nome": {
+   "pt": "Hydra Cartesiana",
+   "en": "Cartesian Hydra"
+  },
+  "sprite": "hydra_furiosa",
+  "hp": 3
+ }
+}

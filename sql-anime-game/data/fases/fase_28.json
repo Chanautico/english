@@ -1,0 +1,99 @@
+{
+ "id": 28,
+ "arco": 3,
+ "titulo": {
+  "pt": "O Passado de Kael",
+  "en": "Kael's Past"
+ },
+ "cenario": "bg_subterraneo_porto",
+ "dificuldade": "medio",
+ "conceitos": [
+  "RIGHT JOIN"
+ ],
+ "missao": {
+  "pt": "Os arquivos secretos do porto guardam um segredo dos fundadores.",
+  "en": "The harbor's secret archives hold a secret about the founders."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "No fundo do arquivo, uma tabela empoeirada: 'fundadores'.",
+   "en": "At the back of the archive, a dusty table: 'founders'.",
+   "efeito": "flash"
+  },
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Kael... Aren... Aren é o nome do meu PAI! E o terceiro é... Malform?!",
+   "en": "Kael... Aren... Aren is my FATHER's name! And the third is... Malform?!",
+   "efeito": "tremor"
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Os três fundaram a Grande Arquitetura juntos! Mas os registros do Malform... sumiram?",
+   "en": "The three founded the Great Architecture together! But Malform's records... are gone?"
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Liste TODOS os fundadores, mesmo quem não tem registro. Quem sumiu também é uma pista.",
+   "en": "List ALL founders, even those without records. Who's missing is a clue too."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "RIGHT JOIN é o espelho do LEFT JOIN: mantém tudo da tabela da DIREITA.",
+   "en": "RIGHT JOIN mirrors LEFT JOIN: it keeps everything from the RIGHT table.",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT f.nome, r.ano, r.nota\nFROM registros_secretos r\nRIGHT JOIN fundadores f\n  ON r.fundador_id = f.id;",
+     "en": "SELECT f.name, r.year, r.note\nFROM secret_records r\nRIGHT JOIN founders f\n  ON r.founder_id = f.id;"
+    }
+   }
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "Também dá pra fazer com LEFT JOIN trocando a ordem. O Terminal aceita os dois!",
+   "en": "You can also do it with LEFT JOIN by swapping the order. The Terminal accepts both!"
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Liste **todos os fundadores** com o `ano` e a `nota` de cada registro secreto (NULL para quem não tem registro). Use **RIGHT JOIN** partindo de `registros_secretos`.",
+    "en": "List **all founders** with the `year` and `note` of each secret record (NULL for those with none). Use **RIGHT JOIN** starting from `secret_records`."
+   },
+   "gabarito": {
+    "pt": "SELECT f.nome, r.ano, r.nota FROM registros_secretos r RIGHT JOIN fundadores f ON r.fundador_id = f.id",
+    "en": "SELECT f.name, r.year, r.note FROM secret_records r RIGHT JOIN founders f ON r.founder_id = f.id"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "registros_secretos à esquerda, fundadores à direita.",
+     "en": "secret_records on the left, founders on the right."
+    },
+    {
+     "pt": "RIGHT JOIN fundadores f ON r.fundador_id = f.id",
+     "en": "RIGHT JOIN founders f ON r.founder_id = f.id"
+    },
+    {
+     "pt": "SELECT f.nome, r.ano, r.nota FROM registros_secretos r RIGHT JOIN fundadores f ON r.fundador_id = f.id",
+     "en": "SELECT f.name, r.year, r.note FROM secret_records r RIGHT JOIN founders f ON r.founder_id = f.id"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_derrotado",
+   "pt": "Meu pai criou o Terminal... e selou o Núcleo. E o Kael nunca me contou.",
+   "en": "My father built the Terminal... and sealed the Core. And Kael never told me.",
+   "efeito": "escuridao"
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "O Malform apagou o próprio passado. Isso não é coisa de quem tem boas intenções.",
+   "en": "Malform erased his own past. That's not what someone with good intentions does."
+  }
+ ]
+}

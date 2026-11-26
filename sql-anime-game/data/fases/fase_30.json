@@ -1,0 +1,108 @@
+{
+ "id": 30,
+ "arco": 3,
+ "titulo": {
+  "pt": "O Sacrifício de Dante",
+  "en": "Dante's Sacrifice"
+ },
+ "cenario": "bg_porto_nevoa",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "JOIN"
+ ],
+ "missao": {
+  "pt": "Reconstruir a estrutura lógica da ponte unindo quatro tabelas.",
+  "en": "Rebuild the bridge's logical structure by joining four tables."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "A ponte do porto se fragmenta em pedaços de dados.",
+   "en": "The harbor bridge fragments into pieces of data.",
+   "efeito": [
+    "glitch",
+    "tremor"
+   ]
+  },
+  {
+   "sprite": "vex_sombrio",
+   "pt": "Maldição da Fragmentação! Ninguém atravessa!",
+   "en": "Curse of Fragmentation! No one crosses!",
+   "efeito": "relampago"
+  },
+  {
+   "sprite": "dante_serio",
+   "pt": "Eu seguro os monstros. Garoto, reconstrói essa ponte. AGORA!",
+   "en": "I'll hold off the monsters. Kid, rebuild that bridge. NOW!",
+   "efeito": "impacto"
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Seção → viga → material → fornecedor. QUATRO tabelas!",
+   "en": "Section → beam → material → supplier. FOUR tables!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Três JOINs em sequência. Cada ON liga a tabela nova à anterior.",
+   "en": "Three JOINs in a row. Each ON links the new table to the previous one.",
+   "quadro": {
+    "codigo": {
+     "pt": "FROM secoes s\nJOIN vigas v ON s.viga_id = v.id\nJOIN materiais m ON v.material_id = m.id\nJOIN fornecedores f ON m.fornecedor_id = f.id",
+     "en": "FROM sections s\nJOIN beams b ON s.beam_id = b.id\nJOIN materials m ON b.material_id = m.id\nJOIN suppliers su ON m.supplier_id = su.id"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne o **nome da seção**, o **material** da viga e o **fornecedor** do material, de todas as seções da ponte.",
+    "en": "Return the **section name**, the beam's **material** and the material's **supplier**, for every bridge section."
+   },
+   "gabarito": {
+    "pt": "SELECT s.nome, m.nome, f.nome FROM secoes s JOIN vigas v ON s.viga_id = v.id JOIN materiais m ON v.material_id = m.id JOIN fornecedores f ON m.fornecedor_id = f.id",
+    "en": "SELECT s.name, m.name, su.name FROM sections s JOIN beams b ON s.beam_id = b.id JOIN materials m ON b.material_id = m.id JOIN suppliers su ON m.supplier_id = su.id"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Quatro tabelas, três JOINs.",
+     "en": "Four tables, three JOINs."
+    },
+    {
+     "pt": "secoes→vigas→materiais→fornecedores",
+     "en": "sections→beams→materials→suppliers"
+    },
+    {
+     "pt": "SELECT s.nome, m.nome, f.nome FROM secoes s JOIN vigas v ON s.viga_id = v.id JOIN materiais m ON v.material_id = m.id JOIN fornecedores f ON m.fornecedor_id = f.id",
+     "en": "SELECT s.name, m.name, su.name FROM sections s JOIN beams b ON s.beam_id = b.id JOIN materials m ON b.material_id = m.id JOIN suppliers su ON m.supplier_id = su.id"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": null,
+   "pt": "A ponte se recompõe peça por peça.",
+   "en": "The bridge rebuilds itself piece by piece.",
+   "efeito": "cristais"
+  },
+  {
+   "sprite": "dante_serio",
+   "pt": "Ufa... ainda inteiro. Mais ou menos.",
+   "en": "Phew... still in one piece. More or less."
+  },
+  {
+   "sprite": "lyra_surpresa",
+   "pt": "Dante, você está sangrando!",
+   "en": "Dante, you're bleeding!"
+  },
+  {
+   "sprite": "dante_relaxado",
+   "pt": "Arranhão. Vão atrás do Vex. Ele correu pro farol.",
+   "en": "Just a scratch. Go after Vex. He ran to the lighthouse."
+  }
+ ]
+}

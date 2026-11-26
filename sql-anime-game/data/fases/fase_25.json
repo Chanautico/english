@@ -1,0 +1,99 @@
+{
+ "id": 25,
+ "arco": 3,
+ "titulo": {
+  "pt": "O Informante da Taverna",
+  "en": "The Tavern Informant"
+ },
+ "cenario": "bg_taverna_pirata",
+ "dificuldade": "medio",
+ "conceitos": [
+  "apelidos",
+  "JOIN"
+ ],
+ "missao": {
+  "pt": "Achar o contato da Null-Void na taverna.",
+  "en": "Find the Null-Void contact in the tavern."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Taverna do Anzol Torto. Música alta, mesas grudentas.",
+   "en": "The Crooked Hook tavern. Loud music, sticky tables.",
+   "efeito": "impacto"
+  },
+  {
+   "sprite": "dante_relaxado",
+   "pt": "Ora, ora. Dois Arquitetos de Bronze no meu bar favorito. Apostam uma rodada?",
+   "en": "Well, well. Two Bronze Architects in my favorite bar. Bet on a round?"
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Quem é você?",
+   "en": "Who are you?"
+  },
+  {
+   "sprite": "dante_relaxado",
+   "pt": "Dante, Guilda de Prata. Dica grátis: o contato da Null-Void sempre pede Vinho Negro. Ache quem pediu.",
+   "en": "Dante, Silver Guild. Free tip: the Null-Void contact always orders Black Wine. Find who ordered it."
+  },
+  {
+   "sprite": "dante_serio",
+   "pt": "Mas use apelidos curtos. Ninguém tem tempo pra escrever 'pedidos.cliente_id' dez vezes.",
+   "en": "But use short aliases. Nobody has time to write 'orders.customer_id' ten times."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Apelido de tabela: escreva a letra logo depois do nome (com ou sem AS) e use-a em todo lugar.",
+   "en": "Table alias: write a letter right after the name (with or without AS) and use it everywhere.",
+   "quadro": {
+    "codigo": {
+     "pt": "FROM pedidos AS p\nJOIN clientes AS c ON p.cliente_id = c.id\nJOIN bebidas AS b ON p.bebida_id = b.id",
+     "en": "FROM orders AS o\nJOIN customers AS c ON o.customer_id = c.id\nJOIN drinks AS d ON o.drink_id = d.id"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne `nome` e `apelido` do(s) cliente(s) que pediram **Vinho Negro**.",
+    "en": "Return `name` and `nickname` of the customer(s) who ordered **Black Wine**."
+   },
+   "gabarito": {
+    "pt": "SELECT c.nome, c.apelido FROM pedidos p JOIN clientes c ON p.cliente_id = c.id JOIN bebidas b ON p.bebida_id = b.id WHERE b.nome = 'Vinho Negro'",
+    "en": "SELECT c.name, c.nickname FROM orders o JOIN customers c ON o.customer_id = c.id JOIN drinks d ON o.drink_id = d.id WHERE d.name = 'Black Wine'"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "pedidos liga clientes e bebidas.",
+     "en": "orders links customers and drinks."
+    },
+    {
+     "pt": "Filtre WHERE b.nome = 'Vinho Negro'.",
+     "en": "Filter WHERE d.name = 'Black Wine'."
+    },
+    {
+     "pt": "SELECT c.nome, c.apelido FROM pedidos p JOIN clientes c ON p.cliente_id = c.id JOIN bebidas b ON p.bebida_id = b.id WHERE b.nome = 'Vinho Negro'",
+     "en": "SELECT c.name, c.nickname FROM orders o JOIN customers c ON o.customer_id = c.id JOIN drinks d ON o.drink_id = d.id WHERE d.name = 'Black Wine'"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Sela, 'A Muda'! Ela está saindo pelos fundos!",
+   "en": "Sela, 'The Silent'! She's slipping out the back!",
+   "efeito": "tremor"
+  },
+  {
+   "sprite": "dante_relaxado",
+   "pt": "Hah! Vocês são bons. Vou junto: tô entediado mesmo.",
+   "en": "Hah! You two are good. I'm coming along: I'm bored anyway."
+  }
+ ]
+}

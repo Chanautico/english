@@ -1,0 +1,90 @@
+{
+ "id": 23,
+ "arco": 3,
+ "titulo": {
+  "pt": "O Contrabandista Invisível",
+  "en": "The Invisible Smuggler"
+ },
+ "cenario": "bg_subterraneo_porto",
+ "dificuldade": "medio",
+ "conceitos": [
+  "LEFT JOIN",
+  "IS NULL"
+ ],
+ "missao": {
+  "pt": "Achar cargas que não pertencem a nenhum navio oficial.",
+  "en": "Find cargo that belongs to no official ship."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Armazém subterrâneo do porto. Caixas sem etiqueta.",
+   "en": "The harbor's underground warehouse. Unlabeled crates.",
+   "efeito": "escuridao"
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Tem carga registrada apontando para navios que NÃO EXISTEM! Contrabando!",
+   "en": "There's cargo pointing at ships that DON'T EXIST! Smuggling!",
+   "efeito": "glitch"
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "LEFT JOIN a partir das cargas... e fico só com quem não achou navio.",
+   "en": "LEFT JOIN starting from the cargo... and keep only the ones with no ship."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "O truque do anti-join: LEFT JOIN + WHERE lado_direito.id IS NULL = \"quem não tem par\".",
+   "en": "The anti-join trick: LEFT JOIN + WHERE right_side.id IS NULL = \"who has no match\".",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT c.item\nFROM cargas c\nLEFT JOIN navios n ON c.navio_id = n.id\nWHERE n.id IS NULL;",
+     "en": "SELECT c.item\nFROM cargo c\nLEFT JOIN ships s ON c.ship_id = s.id\nWHERE s.id IS NULL;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne `item` e `peso` das cargas cujo `navio_id` **não corresponde a nenhum navio**.",
+    "en": "Return `item` and `weight` of cargo whose `ship_id` **matches no ship**."
+   },
+   "gabarito": {
+    "pt": "SELECT c.item, c.peso FROM cargas c LEFT JOIN navios n ON c.navio_id = n.id WHERE n.id IS NULL",
+    "en": "SELECT c.item, c.weight FROM cargo c LEFT JOIN ships s ON c.ship_id = s.id WHERE s.id IS NULL"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Comece pelas cargas e faça LEFT JOIN em navios.",
+     "en": "Start from cargo and LEFT JOIN ships."
+    },
+    {
+     "pt": "WHERE n.id IS NULL",
+     "en": "WHERE s.id IS NULL"
+    },
+    {
+     "pt": "SELECT c.item, c.peso FROM cargas c LEFT JOIN navios n ON c.navio_id = n.id WHERE n.id IS NULL",
+     "en": "SELECT c.item, c.weight FROM cargo c LEFT JOIN ships s ON c.ship_id = s.id WHERE s.id IS NULL"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Armas rúnicas e pó de vazio! Isso é da Null-Void!",
+   "en": "Runic weapons and void dust! That's Null-Void stuff!",
+   "efeito": "luz"
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Precisamos provar quem pagou por isso.",
+   "en": "We need to prove who paid for it."
+  }
+ ]
+}

@@ -1,0 +1,129 @@
+{
+ "id": 21,
+ "arco": 3,
+ "titulo": {
+  "pt": "A Missão de Campo",
+  "en": "The Field Mission"
+ },
+ "cenario": "bg_porto_nevoa",
+ "dificuldade": "medio",
+ "conceitos": [
+  "PRIMARY KEY",
+  "FOREIGN KEY",
+  "INNER JOIN"
+ ],
+ "missao": {
+  "pt": "A Null-Void quebrou a ligação entre navios e capitães.",
+  "en": "The Null-Void broke the link between ships and captains."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Porto Névoa. Gaivotas, névoa e cheiro de sal.",
+   "en": "Mist Harbor. Gulls, fog and the smell of salt.",
+   "efeito": "flash"
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "A tabela navios só tem o número do capitão. Não dá para saber QUEM comanda cada navio.",
+   "en": "The ships table only has the captain's number. We can't tell WHO commands each ship."
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "Os nomes estão em outra tabela... Pip, dá pra juntar as duas?",
+   "en": "The names are in another table... Pip, can we join the two?"
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "DÁ! É a magia de fusão: JOIN! Mas primeiro, as chaves!",
+   "en": "WE CAN! It's fusion magic: JOIN! But first, the keys!",
+   "efeito": "cristais"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Cada capitão tem um id único: a CHAVE PRIMÁRIA. Em navios, capitao_id guarda esse número: é a CHAVE ESTRANGEIRA.",
+   "en": "Each captain has a unique id: the PRIMARY KEY. In ships, captain_id stores that number: the FOREIGN KEY.",
+   "quadro": {
+    "codigo": {
+     "pt": "navios.capitao_id  →  capitaes.id",
+     "en": "ships.captain_id  →  captains.id"
+    }
+   }
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "INNER JOIN junta as linhas cujas chaves batem. Apelidos curtos (n, c) ajudam!",
+   "en": "INNER JOIN joins the rows whose keys match. Short aliases (s, c) help!",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT n.nome, c.nome\nFROM navios n\nINNER JOIN capitaes c\n  ON n.capitao_id = c.id;",
+     "en": "SELECT s.name, c.name\nFROM ships s\nINNER JOIN captains c\n  ON s.captain_id = c.id;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne o **nome do navio** e o **nome do capitão** de cada navio que tem capitão.",
+    "en": "Return the **ship name** and the **captain name** for every ship that has a captain."
+   },
+   "gabarito": {
+    "pt": "SELECT n.nome, c.nome FROM navios n INNER JOIN capitaes c ON n.capitao_id = c.id",
+    "en": "SELECT s.name, c.name FROM ships s INNER JOIN captains c ON s.captain_id = c.id"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "A ligação é capitao_id = id.",
+     "en": "The link is captain_id = id."
+    },
+    {
+     "pt": "navios n INNER JOIN capitaes c ON n.capitao_id = c.id",
+     "en": "ships s INNER JOIN captains c ON s.captain_id = c.id"
+    },
+    {
+     "pt": "SELECT n.nome, c.nome FROM navios n INNER JOIN capitaes c ON n.capitao_id = c.id",
+     "en": "SELECT s.name, c.name FROM ships s INNER JOIN captains c ON s.captain_id = c.id"
+    }
+   ],
+   "guiado": {
+    "pt": {
+     "modelo": "SELECT n.nome, c.nome\nFROM navios n\nINNER JOIN [] c ON [] = []",
+     "pecas": [
+      "capitaes",
+      "n.capitao_id",
+      "c.id",
+      "cargas",
+      "n.id"
+     ]
+    },
+    "en": {
+     "modelo": "SELECT s.name, c.name\nFROM ships s\nINNER JOIN [] c ON [] = []",
+     "pecas": [
+      "captains",
+      "s.captain_id",
+      "c.id",
+      "cargo",
+      "s.id"
+     ]
+    }
+   }
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Cinco navios com capitão! O Fantasma não tem ninguém no comando...",
+   "en": "Five ships with captains! The Phantom has nobody in command..."
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "E a bandeira dele é Null-Void. Fique de olho.",
+   "en": "And its flag is Null-Void. Keep an eye on it.",
+   "efeito": "escuridao"
+  }
+ ]
+}

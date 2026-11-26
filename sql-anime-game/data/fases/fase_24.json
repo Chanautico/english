@@ -1,0 +1,82 @@
+{
+ "id": 24,
+ "arco": 3,
+ "titulo": {
+  "pt": "A Teia de Três Pontas",
+  "en": "The Three-Pointed Web"
+ },
+ "cenario": "bg_porto_nevoa",
+ "dificuldade": "medio",
+ "conceitos": [
+  "JOIN"
+ ],
+ "missao": {
+  "pt": "Provar o contrabando ao governador ligando três tabelas.",
+  "en": "Prove the smuggling to the governor by linking three tables."
+ },
+ "historia_antes": [
+  {
+   "sprite": "lyra_seria",
+   "pt": "O governador só acredita com provas: quem é dono de cada conta que recebeu dinheiro ilegal.",
+   "en": "The governor only believes evidence: who owns each account that received illegal money."
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Cidadão → conta → transação. Três tabelas, dois JOINs encadeados!",
+   "en": "Citizen → account → transaction. Three tables, two chained JOINs!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "É só encaixar um JOIN depois do outro, cada um com o seu ON.",
+   "en": "Just fit one JOIN after another, each with its own ON.",
+   "quadro": {
+    "codigo": {
+     "pt": "FROM cidadaos ci\nJOIN contas_bancarias cb ON cb.cidadao_id = ci.id\nJOIN transacoes_ilegais t ON t.conta_id = cb.id",
+     "en": "FROM citizens ci\nJOIN bank_accounts ba ON ba.citizen_id = ci.id\nJOIN illegal_transactions t ON t.account_id = ba.id"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne o **nome do cidadão**, o **banco** e o **valor** de cada transação ilegal.",
+    "en": "Return the **citizen name**, the **bank** and the **amount** of each illegal transaction."
+   },
+   "gabarito": {
+    "pt": "SELECT ci.nome, cb.banco, t.valor FROM cidadaos ci JOIN contas_bancarias cb ON cb.cidadao_id = ci.id JOIN transacoes_ilegais t ON t.conta_id = cb.id",
+    "en": "SELECT ci.name, ba.bank, t.amount FROM citizens ci JOIN bank_accounts ba ON ba.citizen_id = ci.id JOIN illegal_transactions t ON t.account_id = ba.id"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Dois JOINs: cidadaos→contas e contas→transacoes.",
+     "en": "Two JOINs: citizens→accounts and accounts→transactions."
+    },
+    {
+     "pt": "ON cb.cidadao_id = ci.id ... ON t.conta_id = cb.id",
+     "en": "ON ba.citizen_id = ci.id ... ON t.account_id = ba.id"
+    },
+    {
+     "pt": "SELECT ci.nome, cb.banco, t.valor FROM cidadaos ci JOIN contas_bancarias cb ON cb.cidadao_id = ci.id JOIN transacoes_ilegais t ON t.conta_id = cb.id",
+     "en": "SELECT ci.name, ba.bank, t.amount FROM citizens ci JOIN bank_accounts ba ON ba.citizen_id = ci.id JOIN illegal_transactions t ON t.account_id = ba.id"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "A Vesna recebeu 4400 no Cofre Real! Prova entregue!",
+   "en": "Vesna got 4400 in the Royal Vault! Evidence delivered!",
+   "efeito": "cristais"
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Ela é só uma laranja. Alguém na taverna está passando ordens.",
+   "en": "She's just a front. Someone at the tavern is giving the orders."
+  }
+ ]
+}

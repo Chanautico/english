@@ -1,0 +1,92 @@
+{
+ "id": 26,
+ "arco": 3,
+ "titulo": {
+  "pt": "O Código do Leilão",
+  "en": "The Auction Code"
+ },
+ "cenario": "bg_subterraneo_porto",
+ "dificuldade": "medio",
+ "conceitos": [
+  "JOIN",
+  "WHERE"
+ ],
+ "missao": {
+  "pt": "Infiltrados num leilão clandestino, achar os lances altos.",
+  "en": "Undercover at a secret auction, find the big bids."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Subsolo do porto. Máscaras, velas e um leiloeiro sussurrando.",
+   "en": "Beneath the harbor. Masks, candles and a whispering auctioneer.",
+   "efeito": "escuridao"
+  },
+  {
+   "sprite": "dante_serio",
+   "pt": "Só quem dá mais de 50 mil é da Null-Void. Gente normal não tem esse ouro.",
+   "en": "Only Null-Void people bid over 50 thousand. Normal folks don't have that gold."
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Lances, artefatos e compradores. Três tabelas de novo.",
+   "en": "Bids, artifacts and buyers. Three tables again."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "JOIN + WHERE: primeiro junta, depois filtra. Igual antes, só que com mais tabelas!",
+   "en": "JOIN + WHERE: first join, then filter. Same as before, just with more tables!",
+   "quadro": {
+    "codigo": {
+     "pt": "... JOIN ... JOIN ...\nWHERE l.valor > 50000",
+     "en": "... JOIN ... JOIN ...\nWHERE b.amount > 50000"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne o **artefato**, o **comprador** e o **valor** dos lances **acima de 50000**.",
+    "en": "Return the **artifact**, the **buyer** and the **amount** of bids **above 50000**."
+   },
+   "gabarito": {
+    "pt": "SELECT a.nome, co.nome, l.valor FROM lances l JOIN artefatos a ON l.artefato_id = a.id JOIN compradores co ON l.comprador_id = co.id WHERE l.valor > 50000",
+    "en": "SELECT a.name, bu.name, b.amount FROM bids b JOIN artifacts a ON b.artifact_id = a.id JOIN buyers bu ON b.buyer_id = bu.id WHERE b.amount > 50000"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Comece por lances e junte as outras duas.",
+     "en": "Start from bids and join the other two."
+    },
+    {
+     "pt": "WHERE l.valor > 50000",
+     "en": "WHERE b.amount > 50000"
+    },
+    {
+     "pt": "SELECT a.nome, co.nome, l.valor FROM lances l JOIN artefatos a ON l.artefato_id = a.id JOIN compradores co ON l.comprador_id = co.id WHERE l.valor > 50000",
+     "en": "SELECT a.name, bu.name, b.amount FROM bids b JOIN artifacts a ON b.artifact_id = a.id JOIN buyers bu ON b.buyer_id = bu.id WHERE b.amount > 50000"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_focado",
+   "pt": "O Mascarado comprou o Mapa dos Selos por 80 mil...",
+   "en": "The Masked One bought the Seal Map for 80 thousand..."
+  },
+  {
+   "sprite": "vex_sombrio",
+   "pt": "Bom olho, arquivista. Pena que chegou tarde.",
+   "en": "Good eye, archivist. Too bad you're late.",
+   "efeito": [
+    "relampago",
+    "glitch"
+   ]
+  }
+ ]
+}

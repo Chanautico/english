@@ -1,0 +1,81 @@
+{
+ "id": 22,
+ "arco": 3,
+ "titulo": {
+  "pt": "Carga Fantasma",
+  "en": "Phantom Cargo"
+ },
+ "cenario": "bg_porto_nevoa",
+ "dificuldade": "medio",
+ "conceitos": [
+  "LEFT JOIN"
+ ],
+ "missao": {
+  "pt": "Listar todos os navios, com a carga quando existir.",
+  "en": "List every ship, with its cargo when there is one."
+ },
+ "historia_antes": [
+  {
+   "sprite": "pip_alerta",
+   "pt": "O capitão do porto quer TODOS os navios na lista. Mas o INNER JOIN some com quem não tem carga!",
+   "en": "The harbormaster wants EVERY ship on the list. But INNER JOIN drops ships without cargo!"
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "Então preciso de um JOIN que não deixe ninguém para trás.",
+   "en": "So I need a JOIN that leaves nobody behind."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "LEFT JOIN mantém todas as linhas da tabela da esquerda. Sem par? A coluna da direita vira NULL.",
+   "en": "LEFT JOIN keeps every row of the left table. No match? The right column becomes NULL.",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT n.nome, c.item\nFROM navios n\nLEFT JOIN cargas c\n  ON c.navio_id = n.id;",
+     "en": "SELECT s.name, c.item\nFROM ships s\nLEFT JOIN cargo c\n  ON c.ship_id = s.id;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Liste o **nome de todos os navios** e o **item** de cada carga (NULL quando o navio não tem carga).",
+    "en": "List the **name of every ship** and each cargo **item** (NULL when the ship has no cargo)."
+   },
+   "gabarito": {
+    "pt": "SELECT n.nome, c.item FROM navios n LEFT JOIN cargas c ON c.navio_id = n.id",
+    "en": "SELECT s.name, c.item FROM ships s LEFT JOIN cargo c ON c.ship_id = s.id"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "navios fica à esquerda.",
+     "en": "ships goes on the left."
+    },
+    {
+     "pt": "LEFT JOIN cargas c ON c.navio_id = n.id",
+     "en": "LEFT JOIN cargo c ON c.ship_id = s.id"
+    },
+    {
+     "pt": "SELECT n.nome, c.item FROM navios n LEFT JOIN cargas c ON c.navio_id = n.id",
+     "en": "SELECT s.name, c.item FROM ships s LEFT JOIN cargo c ON c.ship_id = s.id"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "lyra_surpresa",
+   "pt": "Sereia Negra e Fantasma sem carga declarada... vazios ou escondendo algo?",
+   "en": "Black Mermaid and Phantom with no declared cargo... empty, or hiding something?"
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "E se tiver carga sem navio? Vamos inverter a pergunta.",
+   "en": "And what if there's cargo without a ship? Let's flip the question."
+  }
+ ]
+}

@@ -1,0 +1,96 @@
+{
+ "id": 27,
+ "arco": 3,
+ "titulo": {
+  "pt": "A Emboscada no Cais",
+  "en": "Ambush at the Pier"
+ },
+ "cenario": "bg_porto_nevoa",
+ "dificuldade": "medio",
+ "conceitos": [
+  "JOIN",
+  "WHERE"
+ ],
+ "missao": {
+  "pt": "Vex embaralhou os IDs dos barcos de fuga.",
+  "en": "Vex scrambled the escape boats' IDs."
+ },
+ "historia_antes": [
+  {
+   "sprite": "vex_furioso",
+   "pt": "Peguem eles! Eu vou para a Ilha Sombria!",
+   "en": "Get them! I'm off to Shadow Isle!",
+   "efeito": [
+    "tremor",
+    "escuridao"
+   ]
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Ele embaralhou os barcos! Qual deles vai para a Ilha Sombria?",
+   "en": "He scrambled the boats! Which ones go to Shadow Isle?"
+  },
+  {
+   "sprite": "dante_serio",
+   "pt": "Cruza barcos com rotas. Rápido, garoto!",
+   "en": "Cross boats with routes. Quick, kid!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "barcos.rota_id aponta para rotas.id. JOIN e filtra pelo destino!",
+   "en": "boats.route_id points to routes.id. JOIN and filter by destination!",
+   "quadro": {
+    "codigo": {
+     "pt": "FROM barcos b\nJOIN rotas r ON b.rota_id = r.id\nWHERE r.destino = 'Ilha Sombria'",
+     "en": "FROM boats b\nJOIN routes r ON b.route_id = r.id\nWHERE r.destination = 'Shadow Isle'"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne o **nome do barco** e a **distância** de todos os barcos cuja rota vai para a **Ilha Sombria**.",
+    "en": "Return the **boat name** and the **distance** of every boat whose route goes to **Shadow Isle**."
+   },
+   "gabarito": {
+    "pt": "SELECT b.nome, r.distancia FROM barcos b JOIN rotas r ON b.rota_id = r.id WHERE r.destino = 'Ilha Sombria'",
+    "en": "SELECT b.name, r.distance FROM boats b JOIN routes r ON b.route_id = r.id WHERE r.destination = 'Shadow Isle'"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "JOIN barcos com rotas.",
+     "en": "JOIN boats with routes."
+    },
+    {
+     "pt": "WHERE r.destino = 'Ilha Sombria'",
+     "en": "WHERE r.destination = 'Shadow Isle'"
+    },
+    {
+     "pt": "SELECT b.nome, r.distancia FROM barcos b JOIN rotas r ON b.rota_id = r.id WHERE r.destino = 'Ilha Sombria'",
+     "en": "SELECT b.name, r.distance FROM boats b JOIN routes r ON b.route_id = r.id WHERE r.destination = 'Shadow Isle'"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Vulto, Lâmina e Eco! Bloqueamos os três!",
+   "en": "Shade, Blade and Echo! We blocked all three!",
+   "efeito": "impacto"
+  },
+  {
+   "sprite": "vex_sombrio",
+   "pt": "Tsc. Vocês ganharam tempo. Só isso.",
+   "en": "Tch. You bought time. That's all.",
+   "efeito": "glitch",
+   "sai": [
+    "vex"
+   ]
+  }
+ ]
+}
