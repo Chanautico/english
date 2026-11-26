@@ -1,0 +1,82 @@
+{
+ "id": 15,
+ "arco": 2,
+ "titulo": {
+  "pt": "Os Extremos da Arena",
+  "en": "The Arena Extremes"
+ },
+ "cenario": "bg_arena_exame",
+ "dificuldade": "medio",
+ "conceitos": [
+  "MIN",
+  "MAX"
+ ],
+ "missao": {
+  "pt": "Descobrir o golpe mais forte e o mais fraco de cada classe.",
+  "en": "Find the strongest and weakest strike of each class."
+ },
+ "historia_antes": [
+  {
+   "sprite": "pip_alerta",
+   "pt": "Ren, os guerreiros da arena estão registrados! Qual o golpe mais forte e o mais fraco de cada classe?",
+   "en": "Ren, the arena warriors are on record! What is the strongest and weakest strike of each class?"
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "Se eu souber os extremos, sei quando atacar e quando defender.",
+   "en": "If I know the extremes, I know when to attack and when to defend."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "MIN acha o menor valor, MAX o maior. Dá pra usar os dois no mesmo SELECT!",
+   "en": "MIN finds the smallest value, MAX the largest. You can use both in the same SELECT!",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT classe, MAX(dano), MIN(dano)\nFROM guerreiros\nGROUP BY classe;",
+     "en": "SELECT class, MAX(damage), MIN(damage)\nFROM warriors\nGROUP BY class;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Para cada **classe**, retorne a classe, o **maior** dano e o **menor** dano, nessa ordem.",
+    "en": "For each **class**, return the class, the **highest** damage and the **lowest** damage, in that order."
+   },
+   "gabarito": {
+    "pt": "SELECT classe, MAX(dano), MIN(dano) FROM guerreiros GROUP BY classe",
+    "en": "SELECT class, MAX(damage), MIN(damage) FROM warriors GROUP BY class"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Duas agregações no mesmo SELECT.",
+     "en": "Two aggregates in the same SELECT."
+    },
+    {
+     "pt": "MAX(dano), MIN(dano) ... GROUP BY classe",
+     "en": "MAX(damage), MIN(damage) ... GROUP BY class"
+    },
+    {
+     "pt": "SELECT classe, MAX(dano), MIN(dano) FROM guerreiros GROUP BY classe",
+     "en": "SELECT class, MAX(damage), MIN(damage) FROM warriors GROUP BY class"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Mago: de 25 a 95! Imprevisível...",
+   "en": "Mage: from 25 to 95! Unpredictable..."
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "Imprevisível igual você, Ren.",
+   "en": "Unpredictable, just like you, Ren."
+  }
+ ]
+}

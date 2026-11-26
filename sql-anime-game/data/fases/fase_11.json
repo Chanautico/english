@@ -1,0 +1,123 @@
+{
+ "id": 11,
+ "arco": 2,
+ "titulo": {
+  "pt": "Portões da Capital",
+  "en": "The Capital Gates"
+ },
+ "cenario": "bg_portao_capital",
+ "dificuldade": "facil",
+ "conceitos": [
+  "DISTINCT"
+ ],
+ "missao": {
+  "pt": "A fila de inscrição do exame está cheia de clãs repetidos.",
+  "en": "The exam registration queue is full of repeated clans."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Neo-Schema, a Capital de Dataia. Torres, estandartes e milhares de Arquitetos.",
+   "en": "Neo-Schema, the Capital of Dataia. Towers, banners and thousands of Architects.",
+   "efeito": "flash"
+  },
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Uau... é ENORME! Pip, olha aquilo!",
+   "en": "Whoa... it's HUGE! Pip, look at that!"
+  },
+  {
+   "sprite": "lyra_arrogante",
+   "pt": "Saia da frente, caipira. E esconda esse terminal velho, é constrangedor.",
+   "en": "Out of the way, country boy. And hide that old terminal, it's embarrassing.",
+   "efeito": "glitch"
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "Velho é o seu jeito de falar! Esse terminal era do meu pai.",
+   "en": "The only old thing here is your attitude! This terminal was my father's."
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Lyra Vance. Lembre o nome: vou ser a primeira colocada do exame.",
+   "en": "Lyra Vance. Remember the name: I'll finish first in the exam."
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Ren, o examinador quer a lista de clãs inscritos. Mas a fila repete o mesmo clã um monte de vezes!",
+   "en": "Ren, the examiner wants the list of registered clans. But the queue repeats the same clan over and over!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Quando você quer cada valor UMA vez só, use DISTINCT logo depois do SELECT.",
+   "en": "When you want each value ONLY once, use DISTINCT right after SELECT.",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT DISTINCT cla\nFROM inscritos;",
+     "en": "SELECT DISTINCT clan\nFROM candidates;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Liste cada **clã** (`cla`) inscrito, **sem repetir**.",
+    "en": "List each registered **clan** (`clan`), **without repeats**."
+   },
+   "gabarito": {
+    "pt": "SELECT DISTINCT cla FROM inscritos",
+    "en": "SELECT DISTINCT clan FROM candidates"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Existe uma palavra que remove repetidos.",
+     "en": "There's a word that removes repeats."
+    },
+    {
+     "pt": "Ela vem logo depois do SELECT.",
+     "en": "It goes right after SELECT."
+    },
+    {
+     "pt": "SELECT DISTINCT cla FROM inscritos",
+     "en": "SELECT DISTINCT clan FROM candidates"
+    }
+   ],
+   "guiado": {
+    "pt": {
+     "modelo": "SELECT [] []\nFROM inscritos",
+     "pecas": [
+      "cla",
+      "DISTINCT",
+      "nome",
+      "*"
+     ]
+    },
+    "en": {
+     "modelo": "SELECT [] []\nFROM candidates",
+     "pecas": [
+      "clan",
+      "DISTINCT",
+      "name",
+      "*"
+     ]
+    }
+   }
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Cinco clãs! E o meu, Arquivistas, está na lista!",
+   "en": "Five clans! And mine, the Archivists, is on the list!"
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Hm. Pelo menos você sabe ler uma tabela.",
+   "en": "Hm. At least you can read a table."
+  }
+ ]
+}

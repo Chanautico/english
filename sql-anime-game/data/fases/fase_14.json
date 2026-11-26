@@ -1,0 +1,86 @@
+{
+ "id": 14,
+ "arco": 2,
+ "titulo": {
+  "pt": "Média de Poder",
+  "en": "Average Power"
+ },
+ "cenario": "bg_biblioteca_grande",
+ "dificuldade": "medio",
+ "conceitos": [
+  "AVG"
+ ],
+ "missao": {
+  "pt": "Escolher a arma certa para a arena.",
+  "en": "Choose the right weapon for the arena."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Grande Biblioteca da Capital. Lyra já terminou e lê, entediada.",
+   "en": "The Capital's Great Library. Lyra has already finished and reads, bored."
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Eu decorei o bestiário inteiro. Você vai escolher a arma no chute?",
+   "en": "I memorized the whole bestiary. Are you going to pick your weapon by guessing?"
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "Não. Vou perguntar para os dados: qual tipo de monstro bate mais forte, em média?",
+   "en": "No. I'll ask the data: which monster type hits hardest, on average?"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "AVG tira a média. Junto com GROUP BY, você tem a média de cada tipo!",
+   "en": "AVG takes the average. Together with GROUP BY, you get each type's average!",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT tipo, AVG(ataque)\nFROM bestiario\nGROUP BY tipo;",
+     "en": "SELECT type, AVG(attack)\nFROM bestiary\nGROUP BY type;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne cada **tipo** de monstro e a **média de ataque** do tipo.",
+    "en": "Return each monster **type** and the type's **average attack**."
+   },
+   "gabarito": {
+    "pt": "SELECT tipo, AVG(ataque) FROM bestiario GROUP BY tipo",
+    "en": "SELECT type, AVG(attack) FROM bestiary GROUP BY type"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Agrupe por tipo.",
+     "en": "Group by type."
+    },
+    {
+     "pt": "AVG(ataque)",
+     "en": "AVG(attack)"
+    },
+    {
+     "pt": "SELECT tipo, AVG(ataque) FROM bestiario GROUP BY tipo",
+     "en": "SELECT type, AVG(attack) FROM bestiary GROUP BY type"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Golems: média 90! Vou levar uma marreta, não uma espada.",
+   "en": "Golems: average 90! I'm taking a hammer, not a sword."
+  },
+  {
+   "sprite": "lyra_surpresa",
+   "pt": "...Isso é... surpreendentemente inteligente.",
+   "en": "...That's... surprisingly smart."
+  }
+ ]
+}

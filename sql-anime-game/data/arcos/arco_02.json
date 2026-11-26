@@ -5,11 +5,1550 @@
   "en": "The Bronze Guild Exam"
  },
  "descricao": {
-  "pt": "Neo-Schema, a Capital. Lyra, o exame e as agregações: DISTINCT, COUNT, SUM, AVG, MIN, MAX, GROUP BY, HAVING.",
-  "en": "Neo-Schema, the Capital. Lyra, the exam and aggregation: DISTINCT, COUNT, SUM, AVG, MIN, MAX, GROUP BY, HAVING."
+  "pt": "Neo-Schema, a Capital. Ren conhece Lyra e enfrenta o exame de Arquiteto: DISTINCT, COUNT, SUM, AVG, MIN, MAX, GROUP BY, HAVING e apelidos.",
+  "en": "Neo-Schema, the Capital. Ren meets Lyra and takes the Architect exam: DISTINCT, COUNT, SUM, AVG, MIN, MAX, GROUP BY, HAVING and aliases."
  },
  "capa": "bg_portao_capital",
  "cor": "#b0802a",
- "em_breve": true,
- "tabelas": []
+ "tabelas": [
+  {
+   "nome": {
+    "pt": "inscritos",
+    "en": "candidates"
+   },
+   "descricao": {
+    "pt": "Candidatos inscritos no exame.",
+    "en": "Candidates registered for the exam."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "cla",
+      "en": "clan"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "regiao",
+      "en": "region"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "idade",
+      "en": "age"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Ren",
+     {
+      "pt": "Arquivistas",
+      "en": "Archivists"
+     },
+     {
+      "pt": "Norte",
+      "en": "North"
+     },
+     17
+    ],
+    [
+     2,
+     "Lyra",
+     "Vance",
+     "Capital",
+     17
+    ],
+    [
+     3,
+     "Tomas",
+     "Aldren",
+     {
+      "pt": "Sul",
+      "en": "South"
+     },
+     19
+    ],
+    [
+     4,
+     "Ilsa",
+     "Mora",
+     {
+      "pt": "Leste",
+      "en": "East"
+     },
+     18
+    ],
+    [
+     5,
+     "Bruno",
+     "Kessler",
+     {
+      "pt": "Oeste",
+      "en": "West"
+     },
+     20
+    ],
+    [
+     6,
+     "Cira",
+     "Vance",
+     "Capital",
+     18
+    ],
+    [
+     7,
+     "Dario",
+     "Aldren",
+     {
+      "pt": "Sul",
+      "en": "South"
+     },
+     21
+    ],
+    [
+     8,
+     "Elin",
+     "Mora",
+     {
+      "pt": "Leste",
+      "en": "East"
+     },
+     17
+    ],
+    [
+     9,
+     "Faro",
+     "Kessler",
+     {
+      "pt": "Norte",
+      "en": "North"
+     },
+     22
+    ],
+    [
+     10,
+     "Gema",
+     "Aldren",
+     "Capital",
+     19
+    ],
+    [
+     11,
+     "Hugo",
+     "Mora",
+     {
+      "pt": "Sul",
+      "en": "South"
+     },
+     18
+    ],
+    [
+     12,
+     "Iris",
+     "Vance",
+     "Capital",
+     20
+    ],
+    [
+     13,
+     "Joran",
+     "Kessler",
+     {
+      "pt": "Oeste",
+      "en": "West"
+     },
+     19
+    ],
+    [
+     14,
+     "Kira",
+     "Aldren",
+     {
+      "pt": "Norte",
+      "en": "North"
+     },
+     17
+    ],
+    [
+     15,
+     "Lio",
+     "Mora",
+     {
+      "pt": "Leste",
+      "en": "East"
+     },
+     21
+    ],
+    [
+     16,
+     "Maya",
+     "Kessler",
+     "Capital",
+     18
+    ],
+    [
+     17,
+     "Nilo",
+     "Aldren",
+     {
+      "pt": "Sul",
+      "en": "South"
+     },
+     20
+    ],
+    [
+     18,
+     "Olga",
+     "Mora",
+     {
+      "pt": "Oeste",
+      "en": "West"
+     },
+     19
+    ],
+    [
+     19,
+     "Pavel",
+     "Vance",
+     "Capital",
+     22
+    ],
+    [
+     20,
+     "Quinn",
+     "Kessler",
+     {
+      "pt": "Leste",
+      "en": "East"
+     },
+     18
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "patrocinios",
+    "en": "sponsorships"
+   },
+   "descricao": {
+    "pt": "Ouro doado pelas guildas patrocinadoras.",
+    "en": "Gold donated by sponsor guilds."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "guilda",
+      "en": "guild"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "ouro",
+      "en": "gold"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Guilda de Bronze",
+      "en": "Bronze Guild"
+     },
+     300
+    ],
+    [
+     2,
+     {
+      "pt": "Guilda de Prata",
+      "en": "Silver Guild"
+     },
+     500
+    ],
+    [
+     3,
+     {
+      "pt": "Casa Vance",
+      "en": "House Vance"
+     },
+     1200
+    ],
+    [
+     4,
+     {
+      "pt": "Mercadores do Porto",
+      "en": "Harbor Merchants"
+     },
+     450
+    ],
+    [
+     5,
+     {
+      "pt": "Guilda de Bronze",
+      "en": "Bronze Guild"
+     },
+     200
+    ],
+    [
+     6,
+     {
+      "pt": "Guilda de Prata",
+      "en": "Silver Guild"
+     },
+     350
+    ],
+    [
+     7,
+     {
+      "pt": "Casa Vance",
+      "en": "House Vance"
+     },
+     800
+    ],
+    [
+     8,
+     {
+      "pt": "Mercadores do Porto",
+      "en": "Harbor Merchants"
+     },
+     150
+    ],
+    [
+     9,
+     {
+      "pt": "Guilda de Bronze",
+      "en": "Bronze Guild"
+     },
+     100
+    ],
+    [
+     10,
+     {
+      "pt": "Guilda de Prata",
+      "en": "Silver Guild"
+     },
+     250
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "bestiario",
+    "en": "bestiary"
+   },
+   "descricao": {
+    "pt": "Monstros da arena.",
+    "en": "Arena monsters."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "monstro",
+      "en": "monster"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "tipo",
+      "en": "type"
+     },
+     "tipo": "VARCHAR",
+     "nota": {
+      "pt": "'fera', 'espirito', 'golem'",
+      "en": "'beast', 'spirit', 'golem'"
+     }
+    },
+    {
+     "nome": {
+      "pt": "ataque",
+      "en": "attack"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Lobo Sombrio",
+      "en": "Shadow Wolf"
+     },
+     {
+      "pt": "fera",
+      "en": "beast"
+     },
+     40
+    ],
+    [
+     2,
+     {
+      "pt": "Javali de Ferro",
+      "en": "Iron Boar"
+     },
+     {
+      "pt": "fera",
+      "en": "beast"
+     },
+     60
+    ],
+    [
+     3,
+     {
+      "pt": "Grifo",
+      "en": "Griffin"
+     },
+     {
+      "pt": "fera",
+      "en": "beast"
+     },
+     80
+    ],
+    [
+     4,
+     {
+      "pt": "Fantasma da Biblioteca",
+      "en": "Library Ghost"
+     },
+     {
+      "pt": "espirito",
+      "en": "spirit"
+     },
+     30
+    ],
+    [
+     5,
+     {
+      "pt": "Eco Perdido",
+      "en": "Lost Echo"
+     },
+     {
+      "pt": "espirito",
+      "en": "spirit"
+     },
+     50
+    ],
+    [
+     6,
+     {
+      "pt": "Golem de Pedra",
+      "en": "Stone Golem"
+     },
+     "golem",
+     90
+    ],
+    [
+     7,
+     {
+      "pt": "Golem de Barro",
+      "en": "Clay Golem"
+     },
+     "golem",
+     70
+    ],
+    [
+     8,
+     {
+      "pt": "Golem Runico",
+      "en": "Runic Golem"
+     },
+     "golem",
+     110
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "guerreiros",
+    "en": "warriors"
+   },
+   "descricao": {
+    "pt": "Golpes registrados de cada guerreiro.",
+    "en": "Recorded strikes of each warrior."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "classe",
+      "en": "class"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "dano",
+      "en": "damage"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Aldo",
+     {
+      "pt": "Espadachim",
+      "en": "Swordsman"
+     },
+     45
+    ],
+    [
+     2,
+     "Brisa",
+     {
+      "pt": "Espadachim",
+      "en": "Swordsman"
+     },
+     80
+    ],
+    [
+     3,
+     "Caio",
+     {
+      "pt": "Espadachim",
+      "en": "Swordsman"
+     },
+     62
+    ],
+    [
+     4,
+     "Dana",
+     {
+      "pt": "Arqueiro",
+      "en": "Archer"
+     },
+     30
+    ],
+    [
+     5,
+     "Eros",
+     {
+      "pt": "Arqueiro",
+      "en": "Archer"
+     },
+     55
+    ],
+    [
+     6,
+     "Fia",
+     {
+      "pt": "Arqueiro",
+      "en": "Archer"
+     },
+     70
+    ],
+    [
+     7,
+     "Gil",
+     {
+      "pt": "Mago",
+      "en": "Mage"
+     },
+     25
+    ],
+    [
+     8,
+     "Ivo",
+     {
+      "pt": "Mago",
+      "en": "Mage"
+     },
+     95
+    ],
+    [
+     9,
+     "Jade",
+     {
+      "pt": "Mago",
+      "en": "Mage"
+     },
+     60
+    ],
+    [
+     10,
+     "Kai",
+     {
+      "pt": "Mago",
+      "en": "Mage"
+     },
+     40
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "pontuacao",
+    "en": "scores"
+   },
+   "descricao": {
+    "pt": "Pontos de cada clã em cada prova.",
+    "en": "Each clan's points in each trial."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "cla",
+      "en": "clan"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "prova",
+      "en": "trial"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "pontos",
+      "en": "points"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Vance",
+     {
+      "pt": "Prova 1",
+      "en": "Trial 1"
+     },
+     220
+    ],
+    [
+     2,
+     "Vance",
+     {
+      "pt": "Prova 2",
+      "en": "Trial 2"
+     },
+     180
+    ],
+    [
+     3,
+     "Vance",
+     {
+      "pt": "Prova 3",
+      "en": "Trial 3"
+     },
+     160
+    ],
+    [
+     4,
+     "Aldren",
+     {
+      "pt": "Prova 1",
+      "en": "Trial 1"
+     },
+     150
+    ],
+    [
+     5,
+     "Aldren",
+     {
+      "pt": "Prova 2",
+      "en": "Trial 2"
+     },
+     140
+    ],
+    [
+     6,
+     "Aldren",
+     {
+      "pt": "Prova 3",
+      "en": "Trial 3"
+     },
+     120
+    ],
+    [
+     7,
+     "Mora",
+     {
+      "pt": "Prova 1",
+      "en": "Trial 1"
+     },
+     200
+    ],
+    [
+     8,
+     "Mora",
+     {
+      "pt": "Prova 2",
+      "en": "Trial 2"
+     },
+     210
+    ],
+    [
+     9,
+     "Mora",
+     {
+      "pt": "Prova 3",
+      "en": "Trial 3"
+     },
+     130
+    ],
+    [
+     10,
+     "Kessler",
+     {
+      "pt": "Prova 1",
+      "en": "Trial 1"
+     },
+     90
+    ],
+    [
+     11,
+     "Kessler",
+     {
+      "pt": "Prova 2",
+      "en": "Trial 2"
+     },
+     160
+    ],
+    [
+     12,
+     "Kessler",
+     {
+      "pt": "Prova 3",
+      "en": "Trial 3"
+     },
+     110
+    ],
+    [
+     13,
+     {
+      "pt": "Arquivistas",
+      "en": "Archivists"
+     },
+     {
+      "pt": "Prova 1",
+      "en": "Trial 1"
+     },
+     100
+    ],
+    [
+     14,
+     {
+      "pt": "Arquivistas",
+      "en": "Archivists"
+     },
+     {
+      "pt": "Prova 2",
+      "en": "Trial 2"
+     },
+     150
+    ],
+    [
+     15,
+     {
+      "pt": "Arquivistas",
+      "en": "Archivists"
+     },
+     {
+      "pt": "Prova 3",
+      "en": "Trial 3"
+     },
+     90
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "ocorrencias",
+    "en": "incidents"
+   },
+   "descricao": {
+    "pt": "Ocorrências registradas nas enfermarias.",
+    "en": "Incidents logged in the infirmaries."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "enfermaria",
+      "en": "infirmary"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "tipo",
+      "en": "type"
+     },
+     "tipo": "VARCHAR",
+     "nota": {
+      "pt": "'suspeita' ou 'normal'",
+      "en": "'suspicious' or 'normal'"
+     }
+    },
+    {
+     "nome": {
+      "pt": "hora",
+      "en": "hour"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Ala A",
+      "en": "Ward A"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     1
+    ],
+    [
+     2,
+     {
+      "pt": "Ala A",
+      "en": "Ward A"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     3
+    ],
+    [
+     3,
+     {
+      "pt": "Ala A",
+      "en": "Ward A"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     5
+    ],
+    [
+     4,
+     {
+      "pt": "Ala A",
+      "en": "Ward A"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     7
+    ],
+    [
+     5,
+     {
+      "pt": "Ala A",
+      "en": "Ward A"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     9
+    ],
+    [
+     6,
+     {
+      "pt": "Ala A",
+      "en": "Ward A"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     11
+    ],
+    [
+     7,
+     {
+      "pt": "Ala A",
+      "en": "Ward A"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     13
+    ],
+    [
+     8,
+     {
+      "pt": "Ala A",
+      "en": "Ward A"
+     },
+     "normal",
+     15
+    ],
+    [
+     9,
+     {
+      "pt": "Ala A",
+      "en": "Ward A"
+     },
+     "normal",
+     17
+    ],
+    [
+     10,
+     {
+      "pt": "Ala B",
+      "en": "Ward B"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     19
+    ],
+    [
+     11,
+     {
+      "pt": "Ala B",
+      "en": "Ward B"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     21
+    ],
+    [
+     12,
+     {
+      "pt": "Ala B",
+      "en": "Ward B"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     23
+    ],
+    [
+     13,
+     {
+      "pt": "Ala B",
+      "en": "Ward B"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     2
+    ],
+    [
+     14,
+     {
+      "pt": "Ala B",
+      "en": "Ward B"
+     },
+     "normal",
+     4
+    ],
+    [
+     15,
+     {
+      "pt": "Ala B",
+      "en": "Ward B"
+     },
+     "normal",
+     6
+    ],
+    [
+     16,
+     {
+      "pt": "Ala B",
+      "en": "Ward B"
+     },
+     "normal",
+     8
+    ],
+    [
+     17,
+     {
+      "pt": "Ala C",
+      "en": "Ward C"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     10
+    ],
+    [
+     18,
+     {
+      "pt": "Ala C",
+      "en": "Ward C"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     12
+    ],
+    [
+     19,
+     {
+      "pt": "Ala C",
+      "en": "Ward C"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     14
+    ],
+    [
+     20,
+     {
+      "pt": "Ala C",
+      "en": "Ward C"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     16
+    ],
+    [
+     21,
+     {
+      "pt": "Ala C",
+      "en": "Ward C"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     18
+    ],
+    [
+     22,
+     {
+      "pt": "Ala C",
+      "en": "Ward C"
+     },
+     {
+      "pt": "suspeita",
+      "en": "suspicious"
+     },
+     20
+    ],
+    [
+     23,
+     {
+      "pt": "Ala C",
+      "en": "Ward C"
+     },
+     "normal",
+     22
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "batalhas",
+    "en": "battles"
+   },
+   "descricao": {
+    "pt": "Batalhas históricas de Dataia.",
+    "en": "Historic battles of Dataia."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "regiao",
+      "en": "region"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "vencedor",
+      "en": "winner"
+     },
+     "tipo": "VARCHAR",
+     "nota": {
+      "pt": "clã vencedor",
+      "en": "winning clan"
+     }
+    },
+    {
+     "nome": {
+      "pt": "ano",
+      "en": "year"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "baixas",
+      "en": "casualties"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Norte",
+      "en": "North"
+     },
+     "Vance",
+     1102,
+     120
+    ],
+    [
+     2,
+     {
+      "pt": "Norte",
+      "en": "North"
+     },
+     "Aldren",
+     1110,
+     80
+    ],
+    [
+     3,
+     {
+      "pt": "Norte",
+      "en": "North"
+     },
+     "Mora",
+     1121,
+     200
+    ],
+    [
+     4,
+     {
+      "pt": "Norte",
+      "en": "North"
+     },
+     "Vance",
+     1135,
+     60
+    ],
+    [
+     5,
+     {
+      "pt": "Norte",
+      "en": "North"
+     },
+     "Kessler",
+     1140,
+     150
+    ],
+    [
+     6,
+     {
+      "pt": "Sul",
+      "en": "South"
+     },
+     "Aldren",
+     1105,
+     90
+    ],
+    [
+     7,
+     {
+      "pt": "Sul",
+      "en": "South"
+     },
+     "Mora",
+     1118,
+     110
+    ],
+    [
+     8,
+     {
+      "pt": "Sul",
+      "en": "South"
+     },
+     "Vance",
+     1126,
+     140
+    ],
+    [
+     9,
+     {
+      "pt": "Sul",
+      "en": "South"
+     },
+     "Aldren",
+     1150,
+     70
+    ],
+    [
+     10,
+     {
+      "pt": "Leste",
+      "en": "East"
+     },
+     "Kessler",
+     1112,
+     130
+    ],
+    [
+     11,
+     {
+      "pt": "Leste",
+      "en": "East"
+     },
+     "Mora",
+     1131,
+     160
+    ],
+    [
+     12,
+     {
+      "pt": "Leste",
+      "en": "East"
+     },
+     "Vance",
+     1144,
+     50
+    ],
+    [
+     13,
+     {
+      "pt": "Oeste",
+      "en": "West"
+     },
+     "Aldren",
+     1108,
+     100
+    ],
+    [
+     14,
+     {
+      "pt": "Oeste",
+      "en": "West"
+     },
+     "Kessler",
+     1129,
+     40
+    ],
+    [
+     15,
+     "Capital",
+     "Mora",
+     1152,
+     30
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "acessos",
+    "en": "access_log"
+   },
+   "descricao": {
+    "pt": "Quem entrou em cada sala do salão de festas, e a que horas.",
+    "en": "Who entered each room of the ballroom, and at what hour."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "suspeito",
+      "en": "suspect"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "sala",
+      "en": "room"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "hora_acesso",
+      "en": "access_hour"
+     },
+     "tipo": "INTEGER",
+     "nota": {
+      "pt": "0 a 23",
+      "en": "0 to 23"
+     }
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Bram",
+     {
+      "pt": "Arquivo",
+      "en": "Archive"
+     },
+     9
+    ],
+    [
+     2,
+     "Bram",
+     {
+      "pt": "Salao",
+      "en": "Hall"
+     },
+     14
+    ],
+    [
+     3,
+     "Bram",
+     {
+      "pt": "Cofre",
+      "en": "Vault"
+     },
+     23
+    ],
+    [
+     4,
+     "Ilsa",
+     {
+      "pt": "Arquivo",
+      "en": "Archive"
+     },
+     10
+    ],
+    [
+     5,
+     "Ilsa",
+     {
+      "pt": "Cofre",
+      "en": "Vault"
+     },
+     21
+    ],
+    [
+     6,
+     "Oren",
+     {
+      "pt": "Salao",
+      "en": "Hall"
+     },
+     8
+    ],
+    [
+     7,
+     "Oren",
+     {
+      "pt": "Cofre",
+      "en": "Vault"
+     },
+     22
+    ],
+    [
+     8,
+     "Tavi",
+     {
+      "pt": "Arquivo",
+      "en": "Archive"
+     },
+     13
+    ],
+    [
+     9,
+     "Tavi",
+     {
+      "pt": "Cofre",
+      "en": "Vault"
+     },
+     23
+    ],
+    [
+     10,
+     "Tavi",
+     {
+      "pt": "Salao",
+      "en": "Hall"
+     },
+     20
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "pilares",
+    "en": "pillars"
+   },
+   "descricao": {
+    "pt": "Pilares que alimentam a armadura do Juiz.",
+    "en": "Pillars feeding the Judge's armor."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "cor",
+      "en": "color"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "energia",
+      "en": "energy"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "vermelho",
+      "en": "red"
+     },
+     400
+    ],
+    [
+     2,
+     {
+      "pt": "azul",
+      "en": "blue"
+     },
+     300
+    ],
+    [
+     3,
+     {
+      "pt": "verde",
+      "en": "green"
+     },
+     500
+    ],
+    [
+     4,
+     {
+      "pt": "vermelho",
+      "en": "red"
+     },
+     350
+    ],
+    [
+     5,
+     {
+      "pt": "azul",
+      "en": "blue"
+     },
+     250
+    ],
+    [
+     6,
+     {
+      "pt": "verde",
+      "en": "green"
+     },
+     400
+    ],
+    [
+     7,
+     {
+      "pt": "vermelho",
+      "en": "red"
+     },
+     300
+    ],
+    [
+     8,
+     {
+      "pt": "azul",
+      "en": "blue"
+     },
+     200
+    ]
+   ]
+  }
+ ]
 }

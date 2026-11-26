@@ -56,6 +56,22 @@
   }
   function makeDb(setupSql) { const db = new SQL.Database(); db.exec(setupSql); const b = db.export(); db.close(); return b; }
 
+  // Roda: preparo (opcional) → SQL do jogador → consultas de verificação, tudo no mesmo banco novo.
+  // Serve para comandos que mudam o banco (INSERT/UPDATE/DELETE/CREATE...): o que se compara é o estado final.
+  function runCheck(bytes, preparo, query, verifs) {
+    const db = new SQL.Database(bytes);
+    const lastOf = (res) => (res.length ? res[res.length - 1] : { columns: [], values: [] });
+    try {
+      if (preparo) db.exec(preparo);
+      let last;
+      try { last = lastOf(db.exec(query)); } catch (e) { return { ok: false, error: String(e.message || e) }; }
+      const checks = (verifs || []).map((v) => {
+        try { const x = lastOf(db.exec(v)); return { ok: true, columns: x.columns, values: x.values }; } catch (e) { return { ok: false, error: String(e.message || e) }; }
+      });
+      return { ok: true, columns: last.columns, values: last.values, checks };
+    } finally { db.close(); }
+  }
+
   // Compara dois resultados (jogador x gabarito). ordered = a ordem das linhas importa.
   function compare(got, exp, ordered) {
     if (got.columns.length !== exp.columns.length) return { ok: false, msg: t('wrongCols', { e: exp.columns.length, g: got.columns.length }), exp };
@@ -821,7 +837,7 @@
   // Peças compartilhadas com o modo história (dataia.js).
   window.Core = {
     t, L, esc, md, $, $$, highlight, leaves, toast, unlock, header, bindHeader, modal, showTitle, showAchievements,
-    showSettings, editorHtml, bindEditor, resultTable, confetti, runOn, makeDb, compare,
+    showSettings, editorHtml, bindEditor, resultTable, confetti, runOn, makeDb, compare, runCheck,
     get save() { return save; }, persist, setCurrent(fn) { current = fn; },
   };
 })();

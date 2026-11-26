@@ -1,0 +1,97 @@
+{
+ "id": 19,
+ "arco": 2,
+ "titulo": {
+  "pt": "O Pergaminho Roubado",
+  "en": "The Stolen Scroll"
+ },
+ "cenario": "bg_biblioteca_grande",
+ "dificuldade": "medio",
+ "conceitos": [
+  "GROUP BY",
+  "HAVING",
+  "MAX"
+ ],
+ "missao": {
+  "pt": "Um espião roubou o mapa dos selos antigos durante a festa.",
+  "en": "A spy stole the map of the ancient seals during the party."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Festa de premiação. As luzes se apagam de repente.",
+   "en": "The award party. The lights suddenly go out.",
+   "efeito": [
+    "escuridao",
+    "tremor"
+   ]
+  },
+  {
+   "sprite": "lyra_surpresa",
+   "pt": "O mapa dos selos antigos sumiu do cofre!",
+   "en": "The map of the ancient seals is gone from the vault!"
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "O cofre fecha às 22h. Quem continuou circulando depois disso?",
+   "en": "The vault closes at 22:00. Who was still moving around after that?"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "MAX também funciona no HAVING: grupos cujo maior valor passa do limite.",
+   "en": "MAX works in HAVING too: groups whose largest value goes past the limit.",
+   "quadro": {
+    "codigo": {
+     "pt": "GROUP BY suspeito\nHAVING MAX(hora_acesso) > 22",
+     "en": "GROUP BY suspect\nHAVING MAX(access_hour) > 22"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne cada **suspeito** e o seu **último horário de acesso**, só de quem teve acesso **depois das 22** (`> 22`).",
+    "en": "Return each **suspect** and their **latest access hour**, only for those with access **after 22** (`> 22`)."
+   },
+   "gabarito": {
+    "pt": "SELECT suspeito, MAX(hora_acesso) FROM acessos GROUP BY suspeito HAVING MAX(hora_acesso) > 22",
+    "en": "SELECT suspect, MAX(access_hour) FROM access_log GROUP BY suspect HAVING MAX(access_hour) > 22"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Agrupe por suspeito.",
+     "en": "Group by suspect."
+    },
+    {
+     "pt": "HAVING MAX(hora_acesso) > 22",
+     "en": "HAVING MAX(access_hour) > 22"
+    },
+    {
+     "pt": "SELECT suspeito, MAX(hora_acesso) FROM acessos GROUP BY suspeito HAVING MAX(hora_acesso) > 22",
+     "en": "SELECT suspect, MAX(access_hour) FROM access_log GROUP BY suspect HAVING MAX(access_hour) > 22"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_focado",
+   "pt": "Bram e Tavi... os dois estiveram no cofre às 23h.",
+   "en": "Bram and Tavi... both were at the vault at 23:00.",
+   "efeito": "luz"
+  },
+  {
+   "sprite": null,
+   "pt": "Um estrondo metálico vem da arena. A armadura gigante do Juiz se move sozinha.",
+   "en": "A metallic crash comes from the arena. The Judge's giant armor moves on its own.",
+   "efeito": [
+    "tremor",
+    "relampago"
+   ]
+  }
+ ]
+}

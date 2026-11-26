@@ -1,0 +1,98 @@
+{
+ "id": 17,
+ "arco": 2,
+ "titulo": {
+  "pt": "Sabotagem nos Bastidores",
+  "en": "Backstage Sabotage"
+ },
+ "cenario": "bg_biblioteca_grande",
+ "dificuldade": "medio",
+ "conceitos": [
+  "WHERE",
+  "GROUP BY",
+  "HAVING"
+ ],
+ "missao": {
+  "pt": "Alguém alterou os registros médicos dos lutadores.",
+  "en": "Someone tampered with the fighters' medical records."
+ },
+ "historia_antes": [
+  {
+   "sprite": "lyra_seria",
+   "pt": "Ren. Alguém mexeu nos registros das enfermarias. Não consigo sozinha.",
+   "en": "Ren. Someone tampered with the infirmary records. I can't do it alone."
+  },
+  {
+   "sprite": "ren_surpreso",
+   "pt": "A Lyra pedindo ajuda? O mundo vai acabar!",
+   "en": "Lyra asking for help? The world is ending!"
+  },
+  {
+   "sprite": "lyra_arrogante",
+   "pt": "Não se acostume.",
+   "en": "Don't get used to it."
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Precisamos achar as enfermarias com MAIS DE 5 ocorrências SUSPEITAS. Filtro antes E depois do agrupamento!",
+   "en": "We need the infirmaries with MORE THAN 5 SUSPICIOUS incidents. A filter before AND after grouping!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Ordem certa: FROM → WHERE (linhas) → GROUP BY → HAVING (grupos).",
+   "en": "Right order: FROM → WHERE (rows) → GROUP BY → HAVING (groups).",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT enfermaria, COUNT(*)\nFROM ocorrencias\nWHERE tipo = 'suspeita'\nGROUP BY enfermaria\nHAVING COUNT(*) > 5;",
+     "en": "SELECT infirmary, COUNT(*)\nFROM incidents\nWHERE type = 'suspicious'\nGROUP BY infirmary\nHAVING COUNT(*) > 5;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Considerando só ocorrências do tipo `suspeita`, retorne cada **enfermaria** e quantas ela teve, apenas as com **mais de 5**.",
+    "en": "Considering only `suspicious` incidents, return each **infirmary** and how many it had, only those with **more than 5**."
+   },
+   "gabarito": {
+    "pt": "SELECT enfermaria, COUNT(*) FROM ocorrencias WHERE tipo = 'suspeita' GROUP BY enfermaria HAVING COUNT(*) > 5",
+    "en": "SELECT infirmary, COUNT(*) FROM incidents WHERE type = 'suspicious' GROUP BY infirmary HAVING COUNT(*) > 5"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "WHERE para o tipo, HAVING para a contagem.",
+     "en": "WHERE for the type, HAVING for the count."
+    },
+    {
+     "pt": "WHERE tipo = 'suspeita' ... HAVING COUNT(*) > 5",
+     "en": "WHERE type = 'suspicious' ... HAVING COUNT(*) > 5"
+    },
+    {
+     "pt": "SELECT enfermaria, COUNT(*) FROM ocorrencias WHERE tipo = 'suspeita' GROUP BY enfermaria HAVING COUNT(*) > 5",
+     "en": "SELECT infirmary, COUNT(*) FROM incidents WHERE type = 'suspicious' GROUP BY infirmary HAVING COUNT(*) > 5"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "lyra_sorrindo",
+   "pt": "Alas A e C. ...Formamos uma boa dupla, até.",
+   "en": "Wards A and C. ...We make a decent team, actually."
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Isso foi um elogio?!",
+   "en": "Was that a compliment?!"
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Não.",
+   "en": "No."
+  }
+ ]
+}

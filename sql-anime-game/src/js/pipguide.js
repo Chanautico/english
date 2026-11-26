@@ -26,15 +26,38 @@
 
   // ─────────────────────────── Mini-tabela animada ───────────────────────────
   const ROW_H = 38;
+  const cellV = (v) => (v === null ? null : typeof v === 'object' ? L(v) : v);
+  const cellHtml = (v, ci) => `<span class="pg-cell ${v === null ? 'null' : typeof v === 'number' ? 'num' : ''}" data-col="${ci}">${v === null ? 'NULL' : esc(v)}</span>`;
   function demoTable(cmd) {
-    const tb = DATA().tabela_demo;
+    const tb = cmd.demo.antes || DATA().tabela_demo;
+    const after = cmd.demo.depois;
     const cols = tb.colunas.map(L);
-    const rows = tb.linhas.map((r) => r.map((v) => (v === null ? null : typeof v === 'object' ? L(v) : v)));
-    return `<div class="pg-table" style="height:${(rows.length + 1) * ROW_H + 8}px">
+    const rows = tb.linhas.map((r) => r.map(cellV));
+    const maxRows = Math.max(rows.length, after ? after.linhas.length : 0);
+    return `<div class="pg-table" style="height:${(maxRows + 1) * ROW_H + 8}px">
       <div class="pg-row pg-head">${cols.map((c, ci) => `<span class="pg-cell" data-col="${ci}">${esc(c)}</span>`).join('')}</div>
-      ${rows.map((r, ri) => `<div class="pg-row" data-row="${ri}" style="top:${(ri + 1) * ROW_H}px">${r.map((v, ci) => `<span class="pg-cell ${v === null ? 'null' : typeof v === 'number' ? 'num' : ''}" data-col="${ci}">${v === null ? 'NULL' : esc(v)}</span>`).join('')}</div>`).join('')}
+      ${rows.map((r, ri) => `<div class="pg-row" data-row="${ri}" style="top:${(ri + 1) * ROW_H}px">${r.map(cellHtml).join('')}</div>`).join('')}
       <div class="pg-scissor" hidden>✂</div>
     </div>`;
+  }
+  // "antes → depois": a tabela some e o resultado do comando aparece no lugar.
+  function morphTo(box, d) {
+    const table = box.querySelector('.pg-table');
+    const head = table.querySelector('.pg-head');
+    table.querySelectorAll('.pg-row[data-row]').forEach((r) => r.classList.add('out'));
+    head.classList.add('swap');
+    setTimeout(() => {
+      head.innerHTML = d.depois.colunas.map((c, ci) => `<span class="pg-cell${(d.colnova || []).includes(ci) ? ' newcol' : ''}" data-col="${ci}">${esc(L(c))}</span>`).join('');
+      head.classList.remove('swap');
+      d.depois.linhas.forEach((r, ri) => {
+        const el = document.createElement('div');
+        el.className = 'pg-row pre res' + ((d.marcar || []).includes(ri) ? ' ' + (d.classe || 'nova') : '');
+        el.style.top = (ri + 1) * ROW_H + 'px';
+        el.innerHTML = r.map(cellV).map((v, ci) => cellHtml(v, ci).replace('pg-cell', 'pg-cell' + ((d.colnova || []).includes(ci) ? ' newcol' : ''))).join('');
+        table.appendChild(el);
+        setTimeout(() => el.classList.remove('pre'), 100 + ri * 140);
+      });
+    }, 500);
   }
 
   function runDemo(root, cmd) {
@@ -59,6 +82,9 @@
       } else if (d.op === 'cut') {
         const sc = box.querySelector('.pg-scissor'); sc.hidden = false; sc.style.top = (d.n + 1) * ROW_H - 2 + 'px';
         setTimeout(() => rows.forEach((r, i) => { if (i >= d.n) r.classList.add('out'); }), 700);
+      } else if (d.op === 'result') {
+        if (d.destacar) rows.forEach((r, i) => r.classList.add(d.destacar.includes(i) ? 'yes' : 'dimrow'));
+        setTimeout(() => morphTo(box, d), d.destacar ? 900 : 0);
       } else {
         rows.forEach((r) => r.classList.add('yes'));
       }
@@ -127,6 +153,14 @@
     select: /\bSELECT\b/i, from: /\bFROM\b/i, star: /\bSELECT\s+(DISTINCT\s+)?\*/i, colunas: /\bSELECT\s+(DISTINCT\s+)?(?!\*)[A-Za-z_]/i,
     where: /\bWHERE\b/i, comparadores: /(<=|>=|!=|<>|<|>)/, like: /\bLIKE\b/i, and: /\bAND\b/i, or: /\bOR\b/i,
     parenteses: /\bWHERE\b[^;]*\(/i, orderby: /\bORDER\s+BY\b/i, limit: /\bLIMIT\b/i, isnull: /\bIS\s+(NOT\s+)?NULL\b/i,
+    distinct: /\bDISTINCT\b/i, count: /\bCOUNT\s*\(/i, sum: /\bSUM\s*\(/i, avg: /\bAVG\s*\(/i, minmax: /\b(MIN|MAX)\s*\(/i,
+    groupby: /\bGROUP\s+BY\b/i, having: /\bHAVING\b/i, alias: /\bAS\s+[A-Za-z_]/i,
+    join: /\b(INNER\s+)?JOIN\b/i, leftjoin: /\bLEFT\s+(OUTER\s+)?JOIN\b/i, rightjoin: /\bRIGHT\s+(OUTER\s+)?JOIN\b/i,
+    subquery: /\(\s*SELECT\b/i, in: /\bIN\s*\(/i, notin: /\bNOT\s+IN\s*\(/i, exists: /\bEXISTS\s*\(/i, case: /\bCASE\b/i,
+    union: /\bUNION\b(?!\s+ALL)/i, unionall: /\bUNION\s+ALL\b/i,
+    insert: /\bINSERT\s+INTO\b/i, update: /\bUPDATE\b/i, delete: /\bDELETE\s+FROM\b/i, transacao: /\bBEGIN\b/i, rollback: /\bROLLBACK\b/i, commit: /\bCOMMIT\b/i,
+    insertselect: /\bINSERT\s+INTO\b[^;]*\bSELECT\b/i, createtable: /\bCREATE\s+TABLE\b/i, altertable: /\bALTER\s+TABLE\b/i,
+    createindex: /\bCREATE\s+(UNIQUE\s+)?INDEX\b/i, createview: /\bCREATE\s+VIEW\b/i, droptable: /\bDROP\s+TABLE\b/i, fk: /\b(REFERENCES|FOREIGN\s+KEY)\b/i,
   };
   // Tira textos entre aspas e comentários antes de procurar comandos.
   const clean = (q) => q.replace(/'(?:[^']|'')*'/g, "''").replace(/--[^\n]*/g, '');
@@ -138,7 +172,7 @@
     if (!fresh.length) return;
     fresh.forEach((c) => { st.used[c.id] = Date.now(); });
     C().persist();
-    const tm = q.match(/\bFROM\s+([A-Za-z_]\w*)/i), tabela = tm ? tm[1] : '?';
+    const tm = q.match(/\b(?:FROM|INTO|UPDATE|TABLE|VIEW|ON)\s+([A-Za-z_]\w*)/i), tabela = tm ? tm[1] : '?';
     let total = '?';
     if (tm && ctx && ctx.count) { const r = ctx.count(`SELECT COUNT(*) FROM ${tabela}`); if (r && r.ok && r.values[0]) total = r.values[0][0]; }
     const lm = q.match(/\bLIMIT\s+(\d+)/i), om = q.match(/\bORDER\s+BY\s+([A-Za-z_][\w.]*)/i);

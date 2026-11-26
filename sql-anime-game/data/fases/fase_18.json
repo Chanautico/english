@@ -1,0 +1,179 @@
+{
+ "id": 18,
+ "arco": 2,
+ "titulo": {
+  "pt": "O Duelo: Ren vs Lyra",
+  "en": "The Duel: Ren vs Lyra"
+ },
+ "cenario": "bg_arena_exame",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "COUNT",
+  "SUM",
+  "MIN",
+  "MAX",
+  "GROUP BY",
+  "HAVING",
+  "AS"
+ ],
+ "missao": {
+  "pt": "Final do exame: quem extrai as estatísticas mais rápido?",
+  "en": "Exam final: who extracts the statistics faster?"
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "A final do exame. A arena inteira em silêncio.",
+   "en": "The exam final. The whole arena falls silent.",
+   "efeito": [
+    "escuridao",
+    "flash"
+   ]
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Ren. Sem favores. Eu vou com tudo.",
+   "en": "Ren. No favors. I'm going all out."
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Nem eu quero favor! Pip, cronômetro!",
+   "en": "I don't want any either! Pip, timer!"
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Três rodadas com cronômetro! Se a Lyra terminar primeiro a rodada, você ainda pode empatar terminando a sua!",
+   "en": "Three timed rounds! If Lyra finishes a round first, you can still tie by finishing yours!",
+   "efeito": "luz"
+  }
+ ],
+ "aula": [],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "**Rodada 1!** Retorne cada **região** e o número de batalhas com o apelido `batalhas`, da **maior para a menor**.",
+    "en": "**Round 1!** Return each **region** and its number of battles aliased `battles`, from **most to fewest**."
+   },
+   "gabarito": {
+    "pt": "SELECT regiao, COUNT(*) AS batalhas FROM batalhas GROUP BY regiao ORDER BY batalhas DESC",
+    "en": "SELECT region, COUNT(*) AS battles FROM battles GROUP BY region ORDER BY battles DESC"
+   },
+   "ordenado": true,
+   "dicas": [
+    {
+     "pt": "GROUP BY regiao e ORDER BY no apelido.",
+     "en": "GROUP BY region and ORDER BY the alias."
+    },
+    {
+     "pt": "ORDER BY batalhas DESC",
+     "en": "ORDER BY battles DESC"
+    },
+    {
+     "pt": "SELECT regiao, COUNT(*) AS batalhas FROM batalhas GROUP BY regiao ORDER BY batalhas DESC",
+     "en": "SELECT region, COUNT(*) AS battles FROM battles GROUP BY region ORDER BY battles DESC"
+    }
+   ],
+   "conceitos": [
+    "COUNT",
+    "GROUP BY",
+    "ORDER BY"
+   ],
+   "tempo": 120
+  },
+  {
+   "enunciado": {
+    "pt": "**Rodada 2!** Retorne cada **vencedor** e a soma das baixas com apelido `total`, só dos vencedores com **mais de 330** baixas, do maior para o menor total.",
+    "en": "**Round 2!** Return each **winner** and their summed casualties aliased `total`, only winners with **more than 330** casualties, highest total first."
+   },
+   "gabarito": {
+    "pt": "SELECT vencedor, SUM(baixas) AS total FROM batalhas GROUP BY vencedor HAVING SUM(baixas) > 330 ORDER BY total DESC",
+    "en": "SELECT winner, SUM(casualties) AS total FROM battles GROUP BY winner HAVING SUM(casualties) > 330 ORDER BY total DESC"
+   },
+   "ordenado": true,
+   "dicas": [
+    {
+     "pt": "GROUP BY vencedor + HAVING.",
+     "en": "GROUP BY winner + HAVING."
+    },
+    {
+     "pt": "HAVING SUM(baixas) > 330 ORDER BY total DESC",
+     "en": "HAVING SUM(casualties) > 330 ORDER BY total DESC"
+    },
+    {
+     "pt": "SELECT vencedor, SUM(baixas) AS total FROM batalhas GROUP BY vencedor HAVING SUM(baixas) > 330 ORDER BY total DESC",
+     "en": "SELECT winner, SUM(casualties) AS total FROM battles GROUP BY winner HAVING SUM(casualties) > 330 ORDER BY total DESC"
+    }
+   ],
+   "conceitos": [
+    "SUM",
+    "HAVING",
+    "AS"
+   ],
+   "tempo": 120
+  },
+  {
+   "enunciado": {
+    "pt": "**Rodada final!** Para cada **vencedor**, retorne o vencedor, o **primeiro** ano e o **último** ano em que venceu, em ordem alfabética de vencedor.",
+    "en": "**Final round!** For each **winner**, return the winner, the **first** year and the **last** year they won, sorted alphabetically by winner."
+   },
+   "gabarito": {
+    "pt": "SELECT vencedor, MIN(ano), MAX(ano) FROM batalhas GROUP BY vencedor ORDER BY vencedor",
+    "en": "SELECT winner, MIN(year), MAX(year) FROM battles GROUP BY winner ORDER BY winner"
+   },
+   "ordenado": true,
+   "dicas": [
+    {
+     "pt": "Primeiro ano = MIN, último = MAX.",
+     "en": "First year = MIN, last = MAX."
+    },
+    {
+     "pt": "MIN(ano), MAX(ano) ... ORDER BY vencedor",
+     "en": "MIN(year), MAX(year) ... ORDER BY winner"
+    },
+    {
+     "pt": "SELECT vencedor, MIN(ano), MAX(ano) FROM batalhas GROUP BY vencedor ORDER BY vencedor",
+     "en": "SELECT winner, MIN(year), MAX(year) FROM battles GROUP BY winner ORDER BY winner"
+    }
+   ],
+   "conceitos": [
+    "MIN",
+    "MAX",
+    "GROUP BY"
+   ],
+   "tempo": 120
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": null,
+   "pt": "As duas consultas chegam ao juiz no mesmo instante.",
+   "en": "Both queries reach the judge at the very same moment.",
+   "efeito": "flash"
+  },
+  {
+   "sprite": "lyra_surpresa",
+   "pt": "...Empate?!",
+   "en": "...A tie?!"
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Empate! Os dois viramos Arquitetos de Bronze!",
+   "en": "A tie! We both become Bronze Architects!",
+   "efeito": "cristais"
+  },
+  {
+   "sprite": "lyra_sorrindo",
+   "pt": "Hmpf. Na próxima eu ganho. ...Parabéns, Ren.",
+   "en": "Hmph. Next time I'll win. ...Congratulations, Ren."
+  }
+ ],
+ "chefe": {
+  "nome": {
+   "pt": "Lyra Vance",
+   "en": "Lyra Vance"
+  },
+  "sprite": "lyra_seria",
+  "hp": 3,
+  "rival": true
+ }
+}

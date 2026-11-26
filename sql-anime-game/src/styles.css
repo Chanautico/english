@@ -697,3 +697,54 @@ code, pre, textarea, kbd { font-variant-ligatures: none; font-feature-settings: 
 .arc-next { margin: 4px 0 8px; opacity: .9; }
 @media (max-width: 600px) { .arc-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .btn .count { display: inline-grid; place-items: center; min-width: 22px; height: 22px; margin-left: 6px; border-radius: 50%; background: rgba(255,255,255,.3); font-size: 12px; font-variant-numeric: tabular-nums; }
+
+/* ═════════════ Arcos 2–6: cenários, chefes, cronômetro, estado ═════════════ */
+.banner { animation: banner 3s ease-in-out infinite; transform-box: fill-box; transform-origin: top; }
+@keyframes banner { 50% { transform: skewX(6deg); } }
+.crowd { animation: crowd .8s ease-in-out infinite alternate; }
+@keyframes crowd { to { transform: translateY(-6px); } }
+.bob { animation: bobs 4s ease-in-out infinite; }
+@keyframes bobs { 50% { transform: translateY(8px) rotate(.6deg); } }
+.wave { animation: wave 3s ease-in-out infinite alternate; }
+@keyframes wave { to { transform: translateX(-60px); } }
+.drip { animation: drip 2.4s linear infinite; }
+@keyframes drip { from { transform: translateY(0); opacity: 1; } to { transform: translateY(500px); opacity: 0; } }
+.shine { animation: shine 3s ease-in-out infinite; }
+@keyframes shine { 50% { opacity: .5; transform: translateX(60px); } }
+.fire { animation: fire .9s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: bottom; }
+@keyframes fire { to { transform: scaleY(1.15) skewX(4deg); fill: #ffb347; } }
+.spin { animation: spin 12s linear infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.elevator { animation: elev 5s ease-in-out infinite alternate; }
+@keyframes elev { to { transform: translateY(-260px); } }
+.ring { animation: ring 3s ease-in-out infinite; }
+@keyframes ring { 50% { stroke-opacity: .7; } }
+.bird { animation: bird 6s linear infinite; }
+@keyframes bird { to { transform: translate(220px, -40px); } }
+.pfx-void i { width: 7px; height: 7px; border-radius: 2px; background: #b14cff; box-shadow: 0 0 10px 2px rgba(177, 76, 255, .6); }
+.boss-svg { width: 100%; height: 100%; overflow: visible; }
+.boss-svg .g-body { animation: golemIdle 3s ease-in-out infinite; transform-origin: 50% 100%; transform-box: fill-box; }
+.hydra-svg .neck { animation: neck 2.2s ease-in-out infinite alternate; transform-origin: 200px 400px; }
+@keyframes neck { to { transform: rotate(4deg); } }
+.leviata-svg .g-body { animation: lev 4s ease-in-out infinite; }
+@keyframes lev { 50% { transform: translateY(-14px) rotate(-2deg); } }
+.clone-wrap { width: 100%; height: 100%; animation: glitch 2.6s steps(2) infinite; }
+.clone-wrap .sil { filter: drop-shadow(0 0 3px #b14cff) drop-shadow(0 0 18px #6a1aff) hue-rotate(0deg) saturate(1.4); }
+.actor.fade-boss .actor-art { animation: bossDown 1.4s ease-in forwards; }
+@keyframes bossDown { 20% { filter: brightness(3); } 100% { transform: translateY(40px) scale(.7); opacity: 0; filter: blur(6px) brightness(2); } }
+.timer { position: relative; margin-top: 8px; height: 18px; border-radius: 9px; background: rgba(0,0,0,.18); overflow: hidden; }
+.timer i { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg, #6ee7a5, #ffd166); transition: width 1s linear; }
+.timer span { position: relative; display: block; text-align: center; font-size: 11.5px; font-weight: 900; line-height: 18px; color: #1a1424; font-variant-numeric: tabular-nums; }
+.timer.low i { background: linear-gradient(90deg, #ff6b6b, #ffb347); animation: eyeglow .5s infinite; }
+.timer.over i { width: 0 !important; }
+.state-ok { margin: 4px 0 10px; color: var(--green); font-weight: 800; }
+.state-after { margin-top: 10px; }
+.state-after > b { display: block; font-size: 12px; letter-spacing: .5px; color: var(--ink2); margin-bottom: 6px; }
+.pg-row.dimrow { opacity: .35; }
+.pg-row.res .pg-cell { background: rgba(127, 240, 255, .12); }
+.pg-row.nova .pg-cell { background: rgba(110, 231, 165, .28); box-shadow: inset 0 0 0 1.5px rgba(110, 231, 165, .7); }
+.pg-row.mudou .pg-cell { background: rgba(255, 209, 102, .3); box-shadow: inset 0 0 0 1.5px rgba(255, 209, 102, .8); }
+.pg-row.some .pg-cell { background: rgba(255, 107, 107, .25); text-decoration: line-through; }
+.pg-cell.newcol { background: rgba(199, 125, 255, .3) !important; box-shadow: inset 0 0 0 1.5px rgba(199, 125, 255, .8); }
+.pg-head.swap { opacity: 0; transition: opacity .3s; }
+.pg-head { transition: opacity .3s; }

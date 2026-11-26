@@ -1,0 +1,197 @@
+{
+ "id": 20,
+ "arco": 2,
+ "titulo": {
+  "pt": "CHEFE: O Juiz Marionete",
+  "en": "BOSS: The Puppet Judge"
+ },
+ "cenario": "bg_arena_exame",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "GROUP BY",
+  "SUM",
+  "HAVING",
+  "ORDER BY",
+  "LIMIT"
+ ],
+ "missao": {
+  "pt": "O espião possuiu a armadura do Juiz da Arena.",
+  "en": "The spy has possessed the Arena Judge's armor."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "A armadura do Juiz, presa por fios de energia, se ergue no meio da arena.",
+   "en": "The Judge's armor, held up by threads of energy, rises in the middle of the arena.",
+   "efeito": [
+    "escuridao",
+    "tremor"
+   ],
+   "entra": [
+    "juiz_ativo"
+   ]
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Ele está puxando energia dos pilares coloridos!",
+   "en": "He's drawing energy from the colored pillars!"
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Somem a energia por cor, achem a cor que passa de 1000 e destruam o pilar mais forte dela!",
+   "en": "Add up the energy per color, find the color above 1000 and destroy its strongest pillar!"
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Lyra, cobre minha retaguarda!",
+   "en": "Lyra, cover my back!"
+  }
+ ],
+ "aula": [],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "**Turno 1 — Leia os pilares!** Retorne cada **cor** e a **soma da energia** dos pilares dela.",
+    "en": "**Turn 1 — Read the pillars!** Return each **color** and the **total energy** of its pillars."
+   },
+   "gabarito": {
+    "pt": "SELECT cor, SUM(energia) FROM pilares GROUP BY cor",
+    "en": "SELECT color, SUM(energy) FROM pillars GROUP BY color"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "GROUP BY cor.",
+     "en": "GROUP BY color."
+    },
+    {
+     "pt": "SUM(energia)",
+     "en": "SUM(energy)"
+    },
+    {
+     "pt": "SELECT cor, SUM(energia) FROM pilares GROUP BY cor",
+     "en": "SELECT color, SUM(energy) FROM pillars GROUP BY color"
+    }
+   ],
+   "conceitos": [
+    "GROUP BY",
+    "SUM"
+   ]
+  },
+  {
+   "enunciado": {
+    "pt": "**Turno 2 — Ache a fonte!** Retorne só a **cor** cuja energia somada passa de **1000**.",
+    "en": "**Turn 2 — Find the source!** Return only the **color** whose summed energy goes past **1000**."
+   },
+   "gabarito": {
+    "pt": "SELECT cor FROM pilares GROUP BY cor HAVING SUM(energia) > 1000",
+    "en": "SELECT color FROM pillars GROUP BY color HAVING SUM(energy) > 1000"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Filtrar grupo = HAVING.",
+     "en": "Filtering groups = HAVING."
+    },
+    {
+     "pt": "HAVING SUM(energia) > 1000",
+     "en": "HAVING SUM(energy) > 1000"
+    },
+    {
+     "pt": "SELECT cor FROM pilares GROUP BY cor HAVING SUM(energia) > 1000",
+     "en": "SELECT color FROM pillars GROUP BY color HAVING SUM(energy) > 1000"
+    }
+   ],
+   "conceitos": [
+    "HAVING"
+   ]
+  },
+  {
+   "enunciado": {
+    "pt": "**Turno 3 — Golpe final!** Retorne `id` e `energia` do pilar **vermelho** mais forte (só ele).",
+    "en": "**Turn 3 — Final blow!** Return `id` and `energy` of the strongest **red** pillar (only that one)."
+   },
+   "gabarito": {
+    "pt": "SELECT id, energia FROM pilares WHERE cor = 'vermelho' ORDER BY energia DESC LIMIT 1",
+    "en": "SELECT id, energy FROM pillars WHERE color = 'red' ORDER BY energy DESC LIMIT 1"
+   },
+   "ordenado": true,
+   "dicas": [
+    {
+     "pt": "Filtre a cor, ordene, pegue 1.",
+     "en": "Filter the color, sort, take 1."
+    },
+    {
+     "pt": "ORDER BY energia DESC LIMIT 1",
+     "en": "ORDER BY energy DESC LIMIT 1"
+    },
+    {
+     "pt": "SELECT id, energia FROM pilares WHERE cor = 'vermelho' ORDER BY energia DESC LIMIT 1",
+     "en": "SELECT id, energy FROM pillars WHERE color = 'red' ORDER BY energy DESC LIMIT 1"
+    }
+   ],
+   "conceitos": [
+    "WHERE",
+    "ORDER BY",
+    "LIMIT"
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": null,
+   "pt": "O pilar vermelho explode. Os fios se rompem e a armadura desaba.",
+   "en": "The red pillar explodes. The threads snap and the armor collapses.",
+   "efeito": [
+    "impacto",
+    "dados"
+   ],
+   "entra": [
+    "juiz_ativo"
+   ]
+  },
+  {
+   "sprite": "vex_sombrio",
+   "pt": "Patético. Mas útil: o mapa dos selos já está comigo.",
+   "en": "Pathetic. But useful: the map of the seals is already mine.",
+   "efeito": [
+    "escuridao",
+    "glitch"
+   ]
+  },
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Vex!",
+   "en": "Vex!"
+  },
+  {
+   "sprite": "vex_sombrio",
+   "pt": "Encontre-me em Porto Névoa, arquivista. Se tiver coragem.",
+   "en": "Find me in Mist Harbor, archivist. If you dare.",
+   "efeito": "relampago",
+   "sai": [
+    "juiz"
+   ]
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Eu vou junto. Não discuta.",
+   "en": "I'm coming with you. Don't argue.",
+   "efeito": "luz"
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "FIM DO ARCO 2! Próxima parada: Porto Névoa!",
+   "en": "END OF ARC 2! Next stop: Mist Harbor!",
+   "efeito": "cristais"
+  }
+ ],
+ "chefe": {
+  "nome": {
+   "pt": "Juiz Marionete",
+   "en": "Puppet Judge"
+  },
+  "sprite": "juiz_ativo",
+  "hp": 3
+ }
+}

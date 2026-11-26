@@ -34,13 +34,36 @@ initSqlJs().then((SQL) => {
       if (d.dicas.length !== 3) err(tag, 'precisa de 3 dicas');
       const shape = {};
       for (const l of ['pt', 'en']) {
-        const db = dbs[f.arco + l];
+        const arco = arcos.find((a) => a.id === f.arco);
+        // Roda num banco novo: preparo → SQL → verificações (igual ao jogo).
+        const run = (sql) => {
+          const db = new SQL.Database(); db.exec(arco.setup[l]);
+          try {
+            if (d.preparo) db.exec(d.preparo[l]);
+            const r = db.exec(sql);
+            const checks = [].concat(d.verificar || []).map((v) => { const x = db.exec(v[l]); return x.length ? x[x.length - 1] : { columns: [], values: [] }; });
+            return { r, checks };
+          } finally { db.close(); }
+        };
         try {
-          const r = db.exec(d.gabarito[l]);
-          if (!r.length || !r[0].values.length) err(tag, l, 'gabarito sem linhas');
-          else shape[l] = [r[0].columns.length, r[0].values.length];
-          if (process.argv.includes('-v')) console.log(tag.padEnd(10), l, JSON.stringify(r[0] && r[0].values.slice(0, 4)));
+          const { r, checks } = run(d.gabarito[l]);
+          if (d.verificar) {
+            if (!checks.length) err(tag, l, 'verificar vazio');
+            shape[l] = checks.map((c) => [c.columns.length, c.values.length].join('x')).join('|');
+            // Não fazer nada não pode passar como resposta (a não ser que a missão exija um comando específico).
+            const idle = run('SELECT 1');
+            const same = JSON.stringify(idle.checks.map((c) => c.values)) === JSON.stringify(checks.map((c) => c.values));
+            if (same && !(d.exige && d.exige.length)) err(tag, l, 'não fazer nada passaria como resposta');
+            if (process.argv.includes('-v')) console.log(tag.padEnd(10), l, 'estado', JSON.stringify(checks[0].values.slice(0, 4)));
+          } else {
+            const last = r[r.length - 1];
+            if (!last || !last.values.length) err(tag, l, 'gabarito sem linhas');
+            else shape[l] = [last.columns.length, last.values.length].join('x');
+            if (process.argv.includes('-v')) console.log(tag.padEnd(10), l, JSON.stringify(last && last.values.slice(0, 4)));
+          }
+          for (const kw of d.exige || []) if (!new RegExp('\\b' + kw.replace(/\s+/g, '\\s+') + '\\b', 'i').test(d.gabarito[l])) err(tag, l, 'gabarito não usa o comando exigido', kw);
         } catch (e) { err(tag, l, e.message); }
+        if (f.chefe && f.chefe.hp !== f.desafios.length) err(tag, 'hp do chefe diferente do número de turnos');
         if (d.guiado) {
           const g = d.guiado[l];
           if (!g) err(tag, 'guiado sem', l);
@@ -48,7 +71,7 @@ initSqlJs().then((SQL) => {
         }
         if (!d.enunciado[l]) err(tag, 'enunciado sem', l);
       }
-      if (shape.pt && shape.en && String(shape.pt) !== String(shape.en)) err(tag, 'PT e EN diferentes', shape.pt, shape.en);
+      if (shape.pt && shape.en && shape.pt !== shape.en) err(tag, 'PT e EN diferentes', shape.pt, shape.en);
     });
   }
   // Dicionário de comandos do Pip: cada etiqueta das fases tem explicação, e as demonstrações são válidas.

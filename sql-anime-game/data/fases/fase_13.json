@@ -1,0 +1,81 @@
+{
+ "id": 13,
+ "arco": 2,
+ "titulo": {
+  "pt": "O Tesouro do Clã",
+  "en": "The Clan Treasure"
+ },
+ "cenario": "bg_arena_exame",
+ "dificuldade": "facil",
+ "conceitos": [
+  "SUM"
+ ],
+ "missao": {
+  "pt": "Segunda prova: somar o ouro de cada guilda patrocinadora.",
+  "en": "Second trial: add up each sponsor guild's gold."
+ },
+ "historia_antes": [
+  {
+   "sprite": "pip_alerta",
+   "pt": "Segunda prova! Quanto ouro CADA guilda doou para o exame?",
+   "en": "Second trial! How much gold did EACH guild donate to the exam?"
+  },
+  {
+   "sprite": "lyra_arrogante",
+   "pt": "A Casa Vance doou mais que todo mundo junto. Óbvio.",
+   "en": "House Vance donated more than everyone else combined. Obviously."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "SUM soma uma coluna. Com GROUP BY, soma separado por grupo!",
+   "en": "SUM adds up a column. With GROUP BY, it adds up per group!",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT guilda, SUM(ouro)\nFROM patrocinios\nGROUP BY guilda;",
+     "en": "SELECT guild, SUM(gold)\nFROM sponsorships\nGROUP BY guild;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne cada **guilda** e a **soma do ouro** que ela doou.",
+    "en": "Return each **guild** and the **sum of gold** it donated."
+   },
+   "gabarito": {
+    "pt": "SELECT guilda, SUM(ouro) FROM patrocinios GROUP BY guilda",
+    "en": "SELECT guild, SUM(gold) FROM sponsorships GROUP BY guild"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Agrupe por guilda.",
+     "en": "Group by guild."
+    },
+    {
+     "pt": "SUM(ouro)",
+     "en": "SUM(gold)"
+    },
+    {
+     "pt": "SELECT guilda, SUM(ouro) FROM patrocinios GROUP BY guilda",
+     "en": "SELECT guild, SUM(gold) FROM sponsorships GROUP BY guild"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_focado",
+   "pt": "Casa Vance: 2000. Mais que todo mundo junto mesmo...",
+   "en": "House Vance: 2000. More than everyone combined indeed..."
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Eu disse.",
+   "en": "I told you."
+  }
+ ]
+}

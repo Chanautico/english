@@ -552,6 +552,2319 @@
     "pt": "O IS NULL caçou os fantasmas: {linhas} linha(s) encontradas.",
     "en": "IS NULL hunted the ghosts: {linhas} row(s) found."
    }
+  },
+  {
+   "id": "distinct",
+   "tags": [
+    "DISTINCT"
+   ],
+   "titulo": {
+    "pt": "DISTINCT",
+    "en": "DISTINCT"
+   },
+   "resumo": {
+    "pt": "Remove as linhas repetidas do resultado.",
+    "en": "Removes repeated rows from the result."
+   },
+   "sintaxe": {
+    "pt": "SELECT DISTINCT cla\nFROM inscritos;",
+    "en": "SELECT DISTINCT clan\nFROM candidates;"
+   },
+   "dica": {
+    "pt": "Ele olha a linha inteira: só some o que é igual em todas as colunas escolhidas.",
+    "en": "It looks at the whole row: only rows equal in every chosen column disappear."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "SELECT DISTINCT tipo FROM itens",
+     "en": "SELECT DISTINCT type FROM items"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "tipo",
+       "en": "type"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "arma",
+        "en": "weapon"
+       }
+      ],
+      [
+       {
+        "pt": "pocao",
+        "en": "potion"
+       }
+      ],
+      [
+       null
+      ]
+     ]
+    }
+   },
+   "apos": {
+    "pt": "O DISTINCT espremeu tudo e sobraram {linhas} valor(es) diferentes.",
+    "en": "DISTINCT squeezed everything into {linhas} different value(s)."
+   }
+  },
+  {
+   "id": "count",
+   "tags": [
+    "COUNT"
+   ],
+   "titulo": {
+    "pt": "COUNT()",
+    "en": "COUNT()"
+   },
+   "resumo": {
+    "pt": "Conta linhas. COUNT(*) conta todas; COUNT(coluna) ignora os NULL.",
+    "en": "Counts rows. COUNT(*) counts all; COUNT(column) skips NULLs."
+   },
+   "sintaxe": {
+    "pt": "SELECT COUNT(*)\nFROM inscritos;",
+    "en": "SELECT COUNT(*)\nFROM candidates;"
+   },
+   "dica": {
+    "pt": "É uma função de agregação: várias linhas viram um número só.",
+    "en": "It is an aggregate function: many rows become a single number."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "SELECT COUNT(*) FROM itens",
+     "en": "SELECT COUNT(*) FROM items"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "COUNT(*)",
+       "en": "COUNT(*)"
+      }
+     ],
+     "linhas": [
+      [
+       5
+      ]
+     ]
+    },
+    "destacar": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "apos": {
+    "pt": "O COUNT contou e devolveu {linhas} linha(s) de resultado.",
+    "en": "COUNT counted and returned {linhas} result row(s)."
+   }
+  },
+  {
+   "id": "alias",
+   "tags": [
+    "AS",
+    "apelidos"
+   ],
+   "titulo": {
+    "pt": "AS",
+    "en": "AS"
+   },
+   "resumo": {
+    "pt": "Dá um apelido para uma coluna ou tabela. Deixa o resultado (e a consulta) mais legível.",
+    "en": "Gives a nickname to a column or table. Makes the result (and the query) easier to read."
+   },
+   "sintaxe": {
+    "pt": "SELECT COUNT(*) AS total\nFROM inscritos AS i;",
+    "en": "SELECT COUNT(*) AS total\nFROM candidates AS c;"
+   },
+   "dica": {
+    "pt": "Apelido de tabela curtinho (i, c, n) salva muita digitação nos JOINs.",
+    "en": "Short table aliases (c, s, b) save a lot of typing in JOINs."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "SELECT nome AS item, qtd AS estoque FROM itens",
+     "en": "SELECT name AS item, qty AS stock FROM items"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "item",
+       "en": "item"
+      },
+      {
+       "pt": "estoque",
+       "en": "stock"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       },
+       2
+      ],
+      [
+       {
+        "pt": "Pocao",
+        "en": "Potion"
+       },
+       9
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       },
+       5
+      ],
+      [
+       {
+        "pt": "Mapa",
+        "en": "Map"
+       },
+       1
+      ],
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       },
+       7
+      ]
+     ]
+    },
+    "colnova": [
+     0,
+     1
+    ]
+   },
+   "apos": {
+    "pt": "O AS renomeou as colunas do resultado. Olha os cabeçalhos!",
+    "en": "AS renamed the result columns. Look at the headers!"
+   }
+  },
+  {
+   "id": "sum",
+   "tags": [
+    "SUM"
+   ],
+   "titulo": {
+    "pt": "SUM()",
+    "en": "SUM()"
+   },
+   "resumo": {
+    "pt": "Soma todos os valores de uma coluna.",
+    "en": "Adds up every value in a column."
+   },
+   "sintaxe": {
+    "pt": "SELECT SUM(ouro)\nFROM patrocinios;",
+    "en": "SELECT SUM(gold)\nFROM sponsorships;"
+   },
+   "dica": {
+    "pt": "Só funciona com números. NULL é ignorado.",
+    "en": "Works only with numbers. NULL is skipped."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "SELECT SUM(qtd) FROM itens",
+     "en": "SELECT SUM(qty) FROM items"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "SUM(qtd)",
+       "en": "SUM(qty)"
+      }
+     ],
+     "linhas": [
+      [
+       24
+      ]
+     ]
+    },
+    "destacar": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "apos": {
+    "pt": "O SUM juntou tudo numa conta só.",
+    "en": "SUM rolled everything into one total."
+   }
+  },
+  {
+   "id": "avg",
+   "tags": [
+    "AVG"
+   ],
+   "titulo": {
+    "pt": "AVG()",
+    "en": "AVG()"
+   },
+   "resumo": {
+    "pt": "Calcula a média de uma coluna.",
+    "en": "Calculates the average of a column."
+   },
+   "sintaxe": {
+    "pt": "SELECT AVG(ataque)\nFROM bestiario;",
+    "en": "SELECT AVG(attack)\nFROM bestiary;"
+   },
+   "dica": {
+    "pt": "Médias saem quebradas. ROUND(AVG(x), 1) arredonda.",
+    "en": "Averages come out messy. ROUND(AVG(x), 1) rounds them."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "SELECT AVG(qtd) FROM itens",
+     "en": "SELECT AVG(qty) FROM items"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "AVG(qtd)",
+       "en": "AVG(qty)"
+      }
+     ],
+     "linhas": [
+      [
+       4.8
+      ]
+     ]
+    },
+    "destacar": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "apos": {
+    "pt": "O AVG calculou a média para você.",
+    "en": "AVG calculated the average for you."
+   }
+  },
+  {
+   "id": "minmax",
+   "tags": [
+    "MIN",
+    "MAX"
+   ],
+   "titulo": {
+    "pt": "MIN() / MAX()",
+    "en": "MIN() / MAX()"
+   },
+   "resumo": {
+    "pt": "Acham o menor e o maior valor de uma coluna.",
+    "en": "Find the smallest and largest value in a column."
+   },
+   "sintaxe": {
+    "pt": "SELECT MIN(dano), MAX(dano)\nFROM guerreiros;",
+    "en": "SELECT MIN(damage), MAX(damage)\nFROM warriors;"
+   },
+   "dica": {
+    "pt": "Funcionam com texto também (ordem alfabética) e com datas.",
+    "en": "They work on text too (alphabetical) and on dates."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "SELECT MIN(qtd), MAX(qtd) FROM itens",
+     "en": "SELECT MIN(qty), MAX(qty) FROM items"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "MIN(qtd)",
+       "en": "MIN(qty)"
+      },
+      {
+       "pt": "MAX(qtd)",
+       "en": "MAX(qty)"
+      }
+     ],
+     "linhas": [
+      [
+       1,
+       9
+      ]
+     ]
+    },
+    "destacar": [
+     1,
+     3
+    ]
+   },
+   "apos": {
+    "pt": "Achei os extremos: veja o menor e o maior valor!",
+    "en": "Found the extremes: see the smallest and largest value!"
+   }
+  },
+  {
+   "id": "groupby",
+   "tags": [
+    "GROUP BY"
+   ],
+   "titulo": {
+    "pt": "GROUP BY",
+    "en": "GROUP BY"
+   },
+   "resumo": {
+    "pt": "Separa as linhas em grupos e calcula a agregação para CADA grupo.",
+    "en": "Splits rows into groups and computes the aggregate for EACH group."
+   },
+   "sintaxe": {
+    "pt": "SELECT regiao, COUNT(*)\nFROM inscritos\nGROUP BY regiao;",
+    "en": "SELECT region, COUNT(*)\nFROM candidates\nGROUP BY region;"
+   },
+   "dica": {
+    "pt": "Regra de ouro: toda coluna do SELECT que não é agregação tem que estar no GROUP BY.",
+    "en": "Golden rule: every SELECT column that is not an aggregate must be in GROUP BY."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "SELECT tipo, COUNT(*) FROM itens GROUP BY tipo",
+     "en": "SELECT type, COUNT(*) FROM items GROUP BY type"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "tipo",
+       "en": "type"
+      },
+      {
+       "pt": "COUNT(*)",
+       "en": "COUNT(*)"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       3
+      ],
+      [
+       {
+        "pt": "pocao",
+        "en": "potion"
+       },
+       1
+      ],
+      [
+       null,
+       1
+      ]
+     ]
+    },
+    "destacar": [
+     0,
+     2,
+     4
+    ]
+   },
+   "apos": {
+    "pt": "O GROUP BY formou {linhas} grupo(s), um por linha do resultado.",
+    "en": "GROUP BY formed {linhas} group(s), one per result row."
+   }
+  },
+  {
+   "id": "having",
+   "tags": [
+    "HAVING"
+   ],
+   "titulo": {
+    "pt": "HAVING",
+    "en": "HAVING"
+   },
+   "resumo": {
+    "pt": "Filtra GRUPOS depois do GROUP BY. O WHERE filtra linhas antes.",
+    "en": "Filters GROUPS after GROUP BY. WHERE filters rows before."
+   },
+   "sintaxe": {
+    "pt": "GROUP BY cla\nHAVING SUM(pontos) > 500;",
+    "en": "GROUP BY clan\nHAVING SUM(points) > 500;"
+   },
+   "dica": {
+    "pt": "Agregação no filtro? É HAVING. WHERE COUNT(*) dá erro!",
+    "en": "Aggregate in the filter? Use HAVING. WHERE COUNT(*) is an error!"
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "GROUP BY tipo HAVING COUNT(*) > 1",
+     "en": "GROUP BY type HAVING COUNT(*) > 1"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "tipo",
+       "en": "type"
+      },
+      {
+       "pt": "COUNT(*)",
+       "en": "COUNT(*)"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       3
+      ]
+     ]
+    },
+    "destacar": [
+     0,
+     2,
+     4
+    ]
+   },
+   "apos": {
+    "pt": "O HAVING deixou passar só {linhas} grupo(s).",
+    "en": "HAVING let only {linhas} group(s) through."
+   }
+  },
+  {
+   "id": "fk",
+   "tags": [
+    "PRIMARY KEY",
+    "FOREIGN KEY",
+    "PK",
+    "FK",
+    "REFERENCES"
+   ],
+   "titulo": {
+    "pt": "Chaves: PK e FK",
+    "en": "Keys: PK and FK"
+   },
+   "resumo": {
+    "pt": "PRIMARY KEY identifica cada linha de forma única. FOREIGN KEY é uma coluna que aponta para a PK de outra tabela.",
+    "en": "PRIMARY KEY uniquely identifies each row. FOREIGN KEY is a column pointing to another table's PK."
+   },
+   "sintaxe": {
+    "pt": "navios.capitao_id  →  capitaes.id\n(FK)                  (PK)",
+    "en": "ships.captain_id  →  captains.id\n(FK)                 (PK)"
+   },
+   "dica": {
+    "pt": "É pelas chaves que as tabelas se ligam no JOIN.",
+    "en": "Keys are how tables link together in a JOIN."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "itens.dono_id → donos.id",
+     "en": "items.owner_id → owners.id"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "id (PK)",
+       "en": "id (PK)"
+      },
+      {
+       "pt": "nome",
+       "en": "name"
+      },
+      {
+       "pt": "dono_id (FK)",
+       "en": "owner_id (FK)"
+      }
+     ],
+     "linhas": [
+      [
+       1,
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       },
+       10
+      ],
+      [
+       2,
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       },
+       11
+      ],
+      [
+       3,
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       },
+       12
+      ]
+     ]
+    },
+    "colnova": [
+     0,
+     2
+    ]
+   },
+   "apos": {
+    "pt": "Você ligou tabelas pelas chaves! A ponte entre elas é a FK.",
+    "en": "You linked tables by their keys! The FK is the bridge between them."
+   }
+  },
+  {
+   "id": "join",
+   "tags": [
+    "JOIN",
+    "INNER JOIN",
+    "ON"
+   ],
+   "titulo": {
+    "pt": "INNER JOIN",
+    "en": "INNER JOIN"
+   },
+   "resumo": {
+    "pt": "Junta duas tabelas, combinando as linhas que batem na condição do ON. Quem não tem par fica de fora.",
+    "en": "Joins two tables, matching rows that satisfy the ON condition. Rows without a match are left out."
+   },
+   "sintaxe": {
+    "pt": "SELECT n.nome, c.nome\nFROM navios n\nINNER JOIN capitaes c\n  ON n.capitao_id = c.id;",
+    "en": "SELECT s.name, c.name\nFROM ships s\nINNER JOIN captains c\n  ON s.captain_id = c.id;"
+   },
+   "dica": {
+    "pt": "JOIN sozinho é o mesmo que INNER JOIN.",
+    "en": "JOIN on its own is the same as INNER JOIN."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "itens JOIN donos ON itens.dono_id = donos.id",
+     "en": "items JOIN owners ON items.owner_id = owners.id"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "nome",
+       "en": "name"
+      },
+      {
+       "pt": "tipo",
+       "en": "type"
+      },
+      {
+       "pt": "dono",
+       "en": "owner"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       "Ren"
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       "Kael"
+      ],
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       "Lyra"
+      ]
+     ]
+    },
+    "colnova": [
+     2
+    ],
+    "destacar": [
+     0,
+     2,
+     4
+    ]
+   },
+   "apos": {
+    "pt": "Fusão completa! O JOIN combinou as tabelas e gerou {linhas} linha(s).",
+    "en": "Fusion complete! The JOIN combined the tables into {linhas} row(s)."
+   }
+  },
+  {
+   "id": "leftjoin",
+   "tags": [
+    "LEFT JOIN"
+   ],
+   "titulo": {
+    "pt": "LEFT JOIN",
+    "en": "LEFT JOIN"
+   },
+   "resumo": {
+    "pt": "Mantém TODAS as linhas da tabela da esquerda. Se não houver par, as colunas da direita viram NULL.",
+    "en": "Keeps ALL rows of the left table. Without a match, the right-side columns become NULL."
+   },
+   "sintaxe": {
+    "pt": "SELECT n.nome, c.item\nFROM navios n\nLEFT JOIN cargas c\n  ON c.navio_id = n.id;",
+    "en": "SELECT s.name, c.item\nFROM ships s\nLEFT JOIN cargo c\n  ON c.ship_id = s.id;"
+   },
+   "dica": {
+    "pt": "LEFT JOIN + WHERE direita.id IS NULL acha quem NÃO tem par.",
+    "en": "LEFT JOIN + WHERE right.id IS NULL finds rows WITHOUT a match."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "itens LEFT JOIN donos ...",
+     "en": "items LEFT JOIN owners ..."
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "nome",
+       "en": "name"
+      },
+      {
+       "pt": "dono",
+       "en": "owner"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       },
+       "Ren"
+      ],
+      [
+       {
+        "pt": "Pocao",
+        "en": "Potion"
+       },
+       null
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       },
+       "Kael"
+      ],
+      [
+       {
+        "pt": "Mapa",
+        "en": "Map"
+       },
+       null
+      ],
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       },
+       "Lyra"
+      ]
+     ]
+    },
+    "colnova": [
+     1
+    ]
+   },
+   "apos": {
+    "pt": "O LEFT JOIN guardou todas as linhas da esquerda: {linhas} no total.",
+    "en": "LEFT JOIN kept every left-side row: {linhas} in total."
+   }
+  },
+  {
+   "id": "rightjoin",
+   "tags": [
+    "RIGHT JOIN"
+   ],
+   "titulo": {
+    "pt": "RIGHT JOIN",
+    "en": "RIGHT JOIN"
+   },
+   "resumo": {
+    "pt": "O espelho do LEFT JOIN: mantém TODAS as linhas da tabela da direita.",
+    "en": "The mirror of LEFT JOIN: keeps ALL rows of the right table."
+   },
+   "sintaxe": {
+    "pt": "SELECT r.ano, f.nome\nFROM registros r\nRIGHT JOIN fundadores f\n  ON r.fundador_id = f.id;",
+    "en": "SELECT r.year, f.name\nFROM records r\nRIGHT JOIN founders f\n  ON r.founder_id = f.id;"
+   },
+   "dica": {
+    "pt": "Todo RIGHT JOIN pode virar LEFT JOIN trocando as tabelas de lado.",
+    "en": "Any RIGHT JOIN can become a LEFT JOIN by swapping the tables."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "itens RIGHT JOIN donos ...",
+     "en": "items RIGHT JOIN owners ..."
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "nome",
+       "en": "name"
+      },
+      {
+       "pt": "dono",
+       "en": "owner"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       },
+       "Ren"
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       },
+       "Kael"
+      ],
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       },
+       "Lyra"
+      ],
+      [
+       null,
+       "Dante"
+      ]
+     ]
+    },
+    "colnova": [
+     1
+    ],
+    "marcar": [
+     3
+    ],
+    "classe": "mudou"
+   },
+   "apos": {
+    "pt": "O RIGHT JOIN manteve todo mundo da tabela da direita.",
+    "en": "RIGHT JOIN kept everyone from the right table."
+   }
+  },
+  {
+   "id": "subquery",
+   "tags": [
+    "SUBQUERY",
+    "(SELECT)"
+   ],
+   "titulo": {
+    "pt": "Subconsulta",
+    "en": "Subquery"
+   },
+   "resumo": {
+    "pt": "Uma consulta dentro da outra. A de dentro roda primeiro e vira um valor ou uma lista.",
+    "en": "A query inside another. The inner one runs first and becomes a value or a list."
+   },
+   "sintaxe": {
+    "pt": "WHERE perigo < (\n  SELECT AVG(perigo) FROM trilhas\n)",
+    "en": "WHERE danger < (\n  SELECT AVG(danger) FROM trails\n)"
+   },
+   "dica": {
+    "pt": "Sempre entre parênteses!",
+    "en": "Always inside parentheses!"
+   },
+   "demo": {
+    "op": "keep",
+    "rows": [
+     1,
+     2,
+     4
+    ],
+    "codigo": {
+     "pt": "WHERE qtd > (SELECT AVG(qtd) FROM itens)  -- média 4.8",
+     "en": "WHERE qty > (SELECT AVG(qty) FROM items)  -- avg 4.8"
+    }
+   },
+   "apos": {
+    "pt": "A subconsulta rodou primeiro e a consulta de fora usou o resultado: {linhas} linha(s).",
+    "en": "The subquery ran first and the outer query used its result: {linhas} row(s)."
+   }
+  },
+  {
+   "id": "in",
+   "tags": [
+    "IN"
+   ],
+   "titulo": {
+    "pt": "IN",
+    "en": "IN"
+   },
+   "resumo": {
+    "pt": "Testa se o valor está numa lista. A lista pode vir de uma subconsulta!",
+    "en": "Tests whether a value is in a list. The list can come from a subquery!"
+   },
+   "sintaxe": {
+    "pt": "WHERE id IN (\n  SELECT oficial_id FROM encontros_secretos\n)",
+    "en": "WHERE id IN (\n  SELECT officer_id FROM secret_meetings\n)"
+   },
+   "dica": {
+    "pt": "IN ('a', 'b') é um atalho para vários OR.",
+    "en": "IN ('a', 'b') is a shortcut for several ORs."
+   },
+   "demo": {
+    "op": "keep",
+    "rows": [
+     0,
+     4
+    ],
+    "codigo": {
+     "pt": "WHERE nome IN ('Espada', 'Arco')",
+     "en": "WHERE name IN ('Sword', 'Bow')"
+    }
+   },
+   "apos": {
+    "pt": "O IN conferiu a lista e achou {linhas} linha(s).",
+    "en": "IN checked the list and found {linhas} row(s)."
+   }
+  },
+  {
+   "id": "notin",
+   "tags": [
+    "NOT IN"
+   ],
+   "titulo": {
+    "pt": "NOT IN",
+    "en": "NOT IN"
+   },
+   "resumo": {
+    "pt": "O contrário do IN: fica quem NÃO está na lista.",
+    "en": "The opposite of IN: keeps rows NOT in the list."
+   },
+   "sintaxe": {
+    "pt": "WHERE id NOT IN (\n  SELECT guarda_id FROM contatos\n  WHERE guarda_id IS NOT NULL\n)",
+    "en": "WHERE id NOT IN (\n  SELECT guard_id FROM contacts\n  WHERE guard_id IS NOT NULL\n)"
+   },
+   "dica": {
+    "pt": "PERIGO: se a lista tiver um NULL, o NOT IN não devolve NADA. Filtre os NULL!",
+    "en": "DANGER: if the list has a NULL, NOT IN returns NOTHING. Filter the NULLs out!"
+   },
+   "demo": {
+    "op": "keep",
+    "rows": [
+     1,
+     2,
+     3
+    ],
+    "codigo": {
+     "pt": "WHERE nome NOT IN ('Espada', 'Arco')",
+     "en": "WHERE name NOT IN ('Sword', 'Bow')"
+    }
+   },
+   "apos": {
+    "pt": "O NOT IN deixou de fora quem estava na lista: sobraram {linhas}.",
+    "en": "NOT IN left out whoever was on the list: {linhas} remain."
+   }
+  },
+  {
+   "id": "exists",
+   "tags": [
+    "EXISTS"
+   ],
+   "titulo": {
+    "pt": "EXISTS",
+    "en": "EXISTS"
+   },
+   "resumo": {
+    "pt": "Pergunta: \"existe pelo menos uma linha na subconsulta?\". Se sim, a linha de fora fica.",
+    "en": "Asks: \"is there at least one row in the subquery?\". If yes, the outer row stays."
+   },
+   "sintaxe": {
+    "pt": "WHERE EXISTS (\n  SELECT 1 FROM saidas s\n  WHERE s.porta_id = p.id\n)",
+    "en": "WHERE EXISTS (\n  SELECT 1 FROM exits e\n  WHERE e.door_id = d.id\n)"
+   },
+   "dica": {
+    "pt": "A subconsulta usa a linha de fora (p.id): é uma subconsulta correlacionada.",
+    "en": "The subquery uses the outer row (d.id): it is a correlated subquery."
+   },
+   "demo": {
+    "op": "keep",
+    "rows": [
+     0,
+     2,
+     4
+    ],
+    "codigo": {
+     "pt": "WHERE EXISTS (SELECT 1 FROM donos d WHERE d.item_id = itens.id)",
+     "en": "WHERE EXISTS (SELECT 1 FROM owners o WHERE o.item_id = items.id)"
+    }
+   },
+   "apos": {
+    "pt": "O EXISTS conferiu cada linha: {linhas} tinham par na subconsulta.",
+    "en": "EXISTS checked each row: {linhas} had a match in the subquery."
+   }
+  },
+  {
+   "id": "case",
+   "tags": [
+    "CASE",
+    "CASE WHEN",
+    "WHEN"
+   ],
+   "titulo": {
+    "pt": "CASE WHEN",
+    "en": "CASE WHEN"
+   },
+   "resumo": {
+    "pt": "Um \"se... então...\" dentro do SELECT. Cria uma coluna nova com rótulos.",
+    "en": "An \"if... then...\" inside SELECT. Creates a new column of labels."
+   },
+   "sintaxe": {
+    "pt": "CASE\n  WHEN poder > 80 THEN 'Alta'\n  WHEN poder > 40 THEN 'Media'\n  ELSE 'Baixa'\nEND AS nivel_ameaca",
+    "en": "CASE\n  WHEN power > 80 THEN 'High'\n  WHEN power > 40 THEN 'Medium'\n  ELSE 'Low'\nEND AS threat_level"
+   },
+   "dica": {
+    "pt": "Os WHEN são testados em ordem: o primeiro verdadeiro vence.",
+    "en": "WHENs are checked in order: the first true one wins."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "CASE WHEN qtd > 6 THEN 'alto' WHEN qtd > 3 THEN 'medio' ELSE 'baixo' END",
+     "en": "CASE WHEN qty > 6 THEN 'high' WHEN qty > 3 THEN 'medium' ELSE 'low' END"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "nome",
+       "en": "name"
+      },
+      {
+       "pt": "qtd",
+       "en": "qty"
+      },
+      {
+       "pt": "nivel",
+       "en": "level"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       },
+       2,
+       {
+        "pt": "baixo",
+        "en": "low"
+       }
+      ],
+      [
+       {
+        "pt": "Pocao",
+        "en": "Potion"
+       },
+       9,
+       {
+        "pt": "alto",
+        "en": "high"
+       }
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       },
+       5,
+       {
+        "pt": "medio",
+        "en": "medium"
+       }
+      ],
+      [
+       {
+        "pt": "Mapa",
+        "en": "Map"
+       },
+       1,
+       {
+        "pt": "baixo",
+        "en": "low"
+       }
+      ],
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       },
+       7,
+       {
+        "pt": "alto",
+        "en": "high"
+       }
+      ]
+     ]
+    },
+    "colnova": [
+     2
+    ]
+   },
+   "apos": {
+    "pt": "O CASE criou rótulos para as {linhas} linhas!",
+    "en": "CASE created labels for the {linhas} rows!"
+   }
+  },
+  {
+   "id": "union",
+   "tags": [
+    "UNION"
+   ],
+   "titulo": {
+    "pt": "UNION",
+    "en": "UNION"
+   },
+   "resumo": {
+    "pt": "Empilha o resultado de duas consultas e remove repetidos. As duas precisam ter as mesmas colunas.",
+    "en": "Stacks the results of two queries and removes duplicates. Both need the same columns."
+   },
+   "sintaxe": {
+    "pt": "SELECT nome FROM guarda_norte\nUNION\nSELECT nome FROM guarda_sul;",
+    "en": "SELECT name FROM north_guard\nUNION\nSELECT name FROM south_guard;"
+   },
+   "dica": {
+    "pt": "Quer manter os repetidos? Use UNION ALL.",
+    "en": "Want to keep duplicates? Use UNION ALL."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "SELECT nome FROM itens UNION SELECT nome FROM loja",
+     "en": "SELECT name FROM items UNION SELECT name FROM shop"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "nome",
+       "en": "name"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       }
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       }
+      ],
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       }
+      ],
+      [
+       {
+        "pt": "Lanca",
+        "en": "Spear"
+       }
+      ],
+      [
+       {
+        "pt": "Mapa",
+        "en": "Map"
+       }
+      ],
+      [
+       {
+        "pt": "Pocao",
+        "en": "Potion"
+       }
+      ]
+     ]
+    },
+    "marcar": [
+     3
+    ],
+    "classe": "nova"
+   },
+   "apos": {
+    "pt": "O UNION empilhou as listas sem repetir ninguém: {linhas} linha(s).",
+    "en": "UNION stacked the lists without repeats: {linhas} row(s)."
+   }
+  },
+  {
+   "id": "unionall",
+   "tags": [
+    "UNION ALL"
+   ],
+   "titulo": {
+    "pt": "UNION ALL",
+    "en": "UNION ALL"
+   },
+   "resumo": {
+    "pt": "Igual ao UNION, mas mantém as linhas repetidas. É mais rápido.",
+    "en": "Like UNION, but keeps repeated rows. It is faster."
+   },
+   "sintaxe": {
+    "pt": "SELECT poder FROM recursos_ren\nUNION ALL\nSELECT poder FROM recursos_lyra;",
+    "en": "SELECT power FROM ren_resources\nUNION ALL\nSELECT power FROM lyra_resources;"
+   },
+   "dica": {
+    "pt": "Para SOMAR recursos, use UNION ALL: o UNION jogaria fora valores iguais!",
+    "en": "To ADD UP resources, use UNION ALL: UNION would throw equal values away!"
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "... UNION ALL ...",
+     "en": "... UNION ALL ..."
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "nome",
+       "en": "name"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       }
+      ],
+      [
+       {
+        "pt": "Pocao",
+        "en": "Potion"
+       }
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       }
+      ],
+      [
+       {
+        "pt": "Mapa",
+        "en": "Map"
+       }
+      ],
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       }
+      ],
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       }
+      ],
+      [
+       {
+        "pt": "Lanca",
+        "en": "Spear"
+       }
+      ]
+     ]
+    },
+    "marcar": [
+     5,
+     6
+    ],
+    "classe": "nova"
+   },
+   "apos": {
+    "pt": "O UNION ALL empilhou tudo, repetidos inclusive: {linhas} linha(s).",
+    "en": "UNION ALL stacked everything, duplicates included: {linhas} row(s)."
+   }
+  },
+  {
+   "id": "insert",
+   "tags": [
+    "INSERT INTO",
+    "INSERT",
+    "VALUES"
+   ],
+   "titulo": {
+    "pt": "INSERT INTO",
+    "en": "INSERT INTO"
+   },
+   "resumo": {
+    "pt": "Cria uma linha nova numa tabela.",
+    "en": "Creates a new row in a table."
+   },
+   "sintaxe": {
+    "pt": "INSERT INTO suprimentos (item, quantidade)\nVALUES ('Bandagem', 50);",
+    "en": "INSERT INTO supplies (item, quantity)\nVALUES ('Bandage', 50);"
+   },
+   "dica": {
+    "pt": "Listar as colunas antes do VALUES evita erros de ordem.",
+    "en": "Listing the columns before VALUES avoids ordering mistakes."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "INSERT INTO itens VALUES ('Corda', 'viagem', 4)",
+     "en": "INSERT INTO items VALUES ('Rope', 'travel', 4)"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "nome",
+       "en": "name"
+      },
+      {
+       "pt": "tipo",
+       "en": "type"
+      },
+      {
+       "pt": "qtd",
+       "en": "qty"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       2
+      ],
+      [
+       {
+        "pt": "Pocao",
+        "en": "Potion"
+       },
+       {
+        "pt": "pocao",
+        "en": "potion"
+       },
+       9
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       5
+      ],
+      [
+       {
+        "pt": "Mapa",
+        "en": "Map"
+       },
+       null,
+       1
+      ],
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       7
+      ],
+      [
+       {
+        "pt": "Corda",
+        "en": "Rope"
+       },
+       {
+        "pt": "viagem",
+        "en": "travel"
+       },
+       4
+      ]
+     ]
+    },
+    "marcar": [
+     5
+    ],
+    "classe": "nova"
+   },
+   "apos": {
+    "pt": "Você ESCREVEU no banco pela primeira vez! A tabela {tabela} ganhou dados novos.",
+    "en": "You WROTE to the database for the first time! The {tabela} table got new data."
+   }
+  },
+  {
+   "id": "update",
+   "tags": [
+    "UPDATE",
+    "SET"
+   ],
+   "titulo": {
+    "pt": "UPDATE ... SET",
+    "en": "UPDATE ... SET"
+   },
+   "resumo": {
+    "pt": "Altera valores de linhas que já existem.",
+    "en": "Changes values in existing rows."
+   },
+   "sintaxe": {
+    "pt": "UPDATE muralhas\nSET energia = 100\nWHERE setor = 'Norte';",
+    "en": "UPDATE walls\nSET energy = 100\nWHERE sector = 'North';"
+   },
+   "dica": {
+    "pt": "SEM WHERE, o UPDATE muda TODAS as linhas. Respire antes de apertar Enter.",
+    "en": "WITHOUT WHERE, UPDATE changes EVERY row. Breathe before pressing Enter."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "UPDATE itens SET qtd = 10 WHERE tipo = 'arma'",
+     "en": "UPDATE items SET qty = 10 WHERE type = 'weapon'"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "nome",
+       "en": "name"
+      },
+      {
+       "pt": "tipo",
+       "en": "type"
+      },
+      {
+       "pt": "qtd",
+       "en": "qty"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       10
+      ],
+      [
+       {
+        "pt": "Pocao",
+        "en": "Potion"
+       },
+       {
+        "pt": "pocao",
+        "en": "potion"
+       },
+       9
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       10
+      ],
+      [
+       {
+        "pt": "Mapa",
+        "en": "Map"
+       },
+       null,
+       1
+      ],
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       10
+      ]
+     ]
+    },
+    "marcar": [
+     0,
+     2,
+     4
+    ],
+    "classe": "mudou",
+    "destacar": [
+     0,
+     2,
+     4
+    ]
+   },
+   "apos": {
+    "pt": "O UPDATE mudou a tabela {tabela}. Confira o antes e depois na aba Resultados!",
+    "en": "UPDATE changed the {tabela} table. Check the before and after in Results!"
+   }
+  },
+  {
+   "id": "delete",
+   "tags": [
+    "DELETE",
+    "DELETE FROM"
+   ],
+   "titulo": {
+    "pt": "DELETE FROM",
+    "en": "DELETE FROM"
+   },
+   "resumo": {
+    "pt": "Apaga linhas de uma tabela.",
+    "en": "Deletes rows from a table."
+   },
+   "sintaxe": {
+    "pt": "DELETE FROM guardas_reais\nWHERE status = 'Infectado';",
+    "en": "DELETE FROM royal_guards\nWHERE status = 'Infected';"
+   },
+   "dica": {
+    "pt": "Sem WHERE, apaga TUDO. Teste antes com um SELECT usando o mesmo WHERE!",
+    "en": "Without WHERE, it deletes EVERYTHING. Test first with a SELECT using the same WHERE!"
+   },
+   "demo": {
+    "op": "keep",
+    "rows": [
+     1,
+     3
+    ],
+    "codigo": {
+     "pt": "DELETE FROM itens WHERE tipo = 'arma'",
+     "en": "DELETE FROM items WHERE type = 'weapon'"
+    }
+   },
+   "apos": {
+    "pt": "O DELETE apagou linhas de {tabela}. Não tem volta... a não ser com transação!",
+    "en": "DELETE removed rows from {tabela}. No way back... unless you use a transaction!"
+   }
+  },
+  {
+   "id": "transacao",
+   "tags": [
+    "BEGIN",
+    "BEGIN TRANSACTION",
+    "TRANSACTION"
+   ],
+   "titulo": {
+    "pt": "BEGIN TRANSACTION",
+    "en": "BEGIN TRANSACTION"
+   },
+   "resumo": {
+    "pt": "Abre uma transação: as mudanças ficam provisórias até você confirmar (COMMIT) ou desfazer (ROLLBACK).",
+    "en": "Opens a transaction: changes stay provisional until you confirm (COMMIT) or undo (ROLLBACK)."
+   },
+   "sintaxe": {
+    "pt": "BEGIN TRANSACTION;\n  UPDATE ...;\n  DELETE ...;\nCOMMIT;   -- ou ROLLBACK;",
+    "en": "BEGIN TRANSACTION;\n  UPDATE ...;\n  DELETE ...;\nCOMMIT;   -- or ROLLBACK;"
+   },
+   "dica": {
+    "pt": "Transação é tudo ou nada: ou todas as mudanças valem, ou nenhuma.",
+    "en": "A transaction is all or nothing: either every change counts, or none does."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "BEGIN; UPDATE itens SET qtd = 0;",
+     "en": "BEGIN; UPDATE items SET qty = 0;"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "nome",
+       "en": "name"
+      },
+      {
+       "pt": "tipo",
+       "en": "type"
+      },
+      {
+       "pt": "qtd",
+       "en": "qty"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       0
+      ],
+      [
+       {
+        "pt": "Pocao",
+        "en": "Potion"
+       },
+       {
+        "pt": "pocao",
+        "en": "potion"
+       },
+       0
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       0
+      ],
+      [
+       {
+        "pt": "Mapa",
+        "en": "Map"
+       },
+       null,
+       0
+      ],
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       0
+      ]
+     ]
+    },
+    "marcar": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "classe": "mudou"
+   },
+   "apos": {
+    "pt": "Transação aberta! Agora as mudanças são provisórias.",
+    "en": "Transaction open! Changes are now provisional."
+   }
+  },
+  {
+   "id": "rollback",
+   "tags": [
+    "ROLLBACK"
+   ],
+   "titulo": {
+    "pt": "ROLLBACK",
+    "en": "ROLLBACK"
+   },
+   "resumo": {
+    "pt": "Desfaz tudo o que aconteceu desde o BEGIN. Volta no tempo!",
+    "en": "Undoes everything since BEGIN. Back in time!"
+   },
+   "sintaxe": {
+    "pt": "BEGIN;\nUPDATE muralhas SET energia = 0;\nROLLBACK;  -- nada aconteceu!",
+    "en": "BEGIN;\nUPDATE walls SET energy = 0;\nROLLBACK;  -- nothing happened!"
+   },
+   "dica": {
+    "pt": "Use para testar mudanças perigosas com segurança.",
+    "en": "Use it to test dangerous changes safely."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "ROLLBACK;",
+     "en": "ROLLBACK;"
+    },
+    "antes": {
+     "colunas": [
+      {
+       "pt": "nome",
+       "en": "name"
+      },
+      {
+       "pt": "tipo",
+       "en": "type"
+      },
+      {
+       "pt": "qtd",
+       "en": "qty"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       0
+      ],
+      [
+       {
+        "pt": "Pocao",
+        "en": "Potion"
+       },
+       {
+        "pt": "pocao",
+        "en": "potion"
+       },
+       0
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       0
+      ],
+      [
+       {
+        "pt": "Mapa",
+        "en": "Map"
+       },
+       null,
+       0
+      ],
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       0
+      ]
+     ]
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "nome",
+       "en": "name"
+      },
+      {
+       "pt": "tipo",
+       "en": "type"
+      },
+      {
+       "pt": "qtd",
+       "en": "qty"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       2
+      ],
+      [
+       {
+        "pt": "Pocao",
+        "en": "Potion"
+       },
+       {
+        "pt": "pocao",
+        "en": "potion"
+       },
+       9
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       5
+      ],
+      [
+       {
+        "pt": "Mapa",
+        "en": "Map"
+       },
+       null,
+       1
+      ],
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       7
+      ]
+     ]
+    },
+    "marcar": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "classe": "nova"
+   },
+   "apos": {
+    "pt": "ROLLBACK! A trava temporal desfez tudo. O banco voltou ao normal.",
+    "en": "ROLLBACK! The time lock undid everything. The database is back to normal."
+   }
+  },
+  {
+   "id": "commit",
+   "tags": [
+    "COMMIT"
+   ],
+   "titulo": {
+    "pt": "COMMIT",
+    "en": "COMMIT"
+   },
+   "resumo": {
+    "pt": "Confirma a transação: as mudanças ficam gravadas de vez.",
+    "en": "Confirms the transaction: the changes are saved for good."
+   },
+   "sintaxe": {
+    "pt": "BEGIN;\nDELETE FROM guardas_reais WHERE status = 'Infectado';\nCOMMIT;",
+    "en": "BEGIN;\nDELETE FROM royal_guards WHERE status = 'Infected';\nCOMMIT;"
+   },
+   "dica": {
+    "pt": "Depois do COMMIT não tem ROLLBACK.",
+    "en": "After COMMIT there is no ROLLBACK."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "COMMIT;",
+     "en": "COMMIT;"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "nome",
+       "en": "name"
+      },
+      {
+       "pt": "tipo",
+       "en": "type"
+      },
+      {
+       "pt": "qtd",
+       "en": "qty"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Pocao",
+        "en": "Potion"
+       },
+       {
+        "pt": "pocao",
+        "en": "potion"
+       },
+       9
+      ],
+      [
+       {
+        "pt": "Mapa",
+        "en": "Map"
+       },
+       null,
+       1
+      ]
+     ]
+    },
+    "marcar": [
+     0,
+     1
+    ],
+    "classe": "nova"
+   },
+   "apos": {
+    "pt": "COMMIT! As mudanças foram seladas no banco.",
+    "en": "COMMIT! The changes are sealed in the database."
+   }
+  },
+  {
+   "id": "insertselect",
+   "tags": [
+    "INSERT SELECT",
+    "INSERT INTO ... SELECT"
+   ],
+   "titulo": {
+    "pt": "INSERT INTO ... SELECT",
+    "en": "INSERT INTO ... SELECT"
+   },
+   "resumo": {
+    "pt": "Insere várias linhas de uma vez, vindas de uma consulta.",
+    "en": "Inserts many rows at once, coming from a query."
+   },
+   "sintaxe": {
+    "pt": "INSERT INTO tropas (nome, origem)\nSELECT nome, vila FROM reforcos_vilas\nWHERE classe = 'Arqueiro';",
+    "en": "INSERT INTO troops (name, origin)\nSELECT name, village FROM village_reinforcements\nWHERE class = 'Archer';"
+   },
+   "dica": {
+    "pt": "As colunas do SELECT precisam combinar com as do INSERT, na mesma ordem.",
+    "en": "The SELECT columns must match the INSERT columns, in the same order."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "INSERT INTO mochila SELECT nome FROM itens WHERE tipo = 'arma'",
+     "en": "INSERT INTO backpack SELECT name FROM items WHERE type = 'weapon'"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "mochila.nome",
+       "en": "backpack.name"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       }
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       }
+      ],
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       }
+      ]
+     ]
+    },
+    "marcar": [
+     0,
+     1,
+     2
+    ],
+    "classe": "nova",
+    "destacar": [
+     0,
+     2,
+     4
+    ]
+   },
+   "apos": {
+    "pt": "Inserção em massa! Várias linhas entraram de uma vez.",
+    "en": "Bulk insert! Several rows went in at once."
+   }
+  },
+  {
+   "id": "createtable",
+   "tags": [
+    "CREATE TABLE",
+    "INT",
+    "VARCHAR"
+   ],
+   "titulo": {
+    "pt": "CREATE TABLE",
+    "en": "CREATE TABLE"
+   },
+   "resumo": {
+    "pt": "Cria uma tabela nova do zero: o nome, as colunas e o tipo de cada uma.",
+    "en": "Creates a new table from scratch: its name, columns and each column type."
+   },
+   "sintaxe": {
+    "pt": "CREATE TABLE selo_contencao (\n  id INT PRIMARY KEY,\n  runa VARCHAR(50),\n  poder INT\n);",
+    "en": "CREATE TABLE containment_seal (\n  id INT PRIMARY KEY,\n  rune VARCHAR(50),\n  power INT\n);"
+   },
+   "dica": {
+    "pt": "INT = número inteiro. VARCHAR(50) = texto de até 50 letras.",
+    "en": "INT = whole number. VARCHAR(50) = text up to 50 characters."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "CREATE TABLE selo (id INT PRIMARY KEY, runa VARCHAR(50), poder INT)",
+     "en": "CREATE TABLE seal (id INT PRIMARY KEY, rune VARCHAR(50), power INT)"
+    },
+    "antes": {
+     "colunas": [
+      {
+       "pt": "(vazio)",
+       "en": "(empty)"
+      }
+     ],
+     "linhas": []
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "id",
+       "en": "id"
+      },
+      {
+       "pt": "runa",
+       "en": "rune"
+      },
+      {
+       "pt": "poder",
+       "en": "power"
+      }
+     ],
+     "linhas": []
+    },
+    "colnova": [
+     0,
+     1,
+     2
+    ]
+   },
+   "apos": {
+    "pt": "Você CRIOU uma estrutura nova em Dataia! Coisa de Arquiteto Supremo.",
+    "en": "You CREATED a new structure in Dataia! Supreme Architect stuff."
+   }
+  },
+  {
+   "id": "altertable",
+   "tags": [
+    "ALTER TABLE",
+    "ADD COLUMN"
+   ],
+   "titulo": {
+    "pt": "ALTER TABLE",
+    "en": "ALTER TABLE"
+   },
+   "resumo": {
+    "pt": "Muda a estrutura de uma tabela que já existe, por exemplo adicionando uma coluna.",
+    "en": "Changes an existing table structure, for example adding a column."
+   },
+   "sintaxe": {
+    "pt": "ALTER TABLE selo_contencao\nADD COLUMN resistencia INT;",
+    "en": "ALTER TABLE containment_seal\nADD COLUMN resistance INT;"
+   },
+   "dica": {
+    "pt": "As linhas antigas ganham a coluna nova com NULL.",
+    "en": "Old rows get the new column as NULL."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "ALTER TABLE itens ADD COLUMN peso INT",
+     "en": "ALTER TABLE items ADD COLUMN weight INT"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "nome",
+       "en": "name"
+      },
+      {
+       "pt": "tipo",
+       "en": "type"
+      },
+      {
+       "pt": "qtd",
+       "en": "qty"
+      },
+      {
+       "pt": "peso",
+       "en": "weight"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       2,
+       null
+      ],
+      [
+       {
+        "pt": "Pocao",
+        "en": "Potion"
+       },
+       {
+        "pt": "pocao",
+        "en": "potion"
+       },
+       9,
+       null
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       5,
+       null
+      ],
+      [
+       {
+        "pt": "Mapa",
+        "en": "Map"
+       },
+       null,
+       1,
+       null
+      ],
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       },
+       {
+        "pt": "arma",
+        "en": "weapon"
+       },
+       7,
+       null
+      ]
+     ]
+    },
+    "colnova": [
+     3
+    ]
+   },
+   "apos": {
+    "pt": "A estrutura evoluiu: a tabela ganhou uma coluna nova!",
+    "en": "The structure evolved: the table got a new column!"
+   }
+  },
+  {
+   "id": "createindex",
+   "tags": [
+    "CREATE INDEX",
+    "INDEX"
+   ],
+   "titulo": {
+    "pt": "CREATE INDEX",
+    "en": "CREATE INDEX"
+   },
+   "resumo": {
+    "pt": "Cria um índice: um \"sumário\" que deixa as buscas numa coluna muito mais rápidas.",
+    "en": "Creates an index: a \"table of contents\" that makes searches on a column much faster."
+   },
+   "sintaxe": {
+    "pt": "CREATE INDEX idx_tipo\nON ataques(tipo);",
+    "en": "CREATE INDEX idx_type\nON attacks(type);"
+   },
+   "dica": {
+    "pt": "Índice acelera buscas, mas ocupa espaço e deixa INSERT um pouco mais lento.",
+    "en": "Indexes speed up searches but take space and make INSERT a bit slower."
+   },
+   "demo": {
+    "op": "order",
+    "order": [
+     3,
+     0,
+     2,
+     4,
+     1
+    ],
+    "codigo": {
+     "pt": "CREATE INDEX idx_qtd ON itens(qtd)",
+     "en": "CREATE INDEX idx_qty ON items(qty)"
+    }
+   },
+   "apos": {
+    "pt": "Índice criado! Buscas nessa coluna agora vão direto ao ponto.",
+    "en": "Index created! Searches on that column now go straight to the point."
+   }
+  },
+  {
+   "id": "createview",
+   "tags": [
+    "CREATE VIEW",
+    "VIEW"
+   ],
+   "titulo": {
+    "pt": "CREATE VIEW",
+    "en": "CREATE VIEW"
+   },
+   "resumo": {
+    "pt": "Salva uma consulta com um nome. Depois você consulta a VIEW como se fosse uma tabela.",
+    "en": "Saves a query under a name. Then you query the VIEW as if it were a table."
+   },
+   "sintaxe": {
+    "pt": "CREATE VIEW visao_batalha AS\nSELECT ...\nFROM ... JOIN ...;",
+    "en": "CREATE VIEW battle_view AS\nSELECT ...\nFROM ... JOIN ...;"
+   },
+   "dica": {
+    "pt": "A VIEW não guarda dados: ela roda a consulta toda vez.",
+    "en": "A VIEW stores no data: it runs the query every time."
+   },
+   "demo": {
+    "op": "result",
+    "codigo": {
+     "pt": "CREATE VIEW armas AS SELECT nome, qtd FROM itens WHERE tipo = 'arma'",
+     "en": "CREATE VIEW weapons AS SELECT name, qty FROM items WHERE type = 'weapon'"
+    },
+    "depois": {
+     "colunas": [
+      {
+       "pt": "nome",
+       "en": "name"
+      },
+      {
+       "pt": "qtd",
+       "en": "qty"
+      }
+     ],
+     "linhas": [
+      [
+       {
+        "pt": "Espada",
+        "en": "Sword"
+       },
+       2
+      ],
+      [
+       {
+        "pt": "Escudo",
+        "en": "Shield"
+       },
+       5
+      ],
+      [
+       {
+        "pt": "Arco",
+        "en": "Bow"
+       },
+       7
+      ]
+     ]
+    },
+    "destacar": [
+     0,
+     2,
+     4
+    ]
+   },
+   "apos": {
+    "pt": "A visão suprema está pronta: uma consulta salva com nome!",
+    "en": "The supreme view is ready: a named saved query!"
+   }
+  },
+  {
+   "id": "droptable",
+   "tags": [
+    "DROP TABLE",
+    "DROP"
+   ],
+   "titulo": {
+    "pt": "DROP TABLE",
+    "en": "DROP TABLE"
+   },
+   "resumo": {
+    "pt": "Apaga uma tabela inteira: estrutura e dados. Não tem volta!",
+    "en": "Deletes an entire table: structure and data. No way back!"
+   },
+   "sintaxe": {
+    "pt": "DROP TABLE portal_vazio;",
+    "en": "DROP TABLE void_portal;"
+   },
+   "dica": {
+    "pt": "É o comando favorito do Malform. Use com MUITO cuidado.",
+    "en": "It is Malform's favorite command. Use it VERY carefully."
+   },
+   "demo": {
+    "op": "keep",
+    "rows": [],
+    "codigo": {
+     "pt": "DROP TABLE itens",
+     "en": "DROP TABLE items"
+    }
+   },
+   "apos": {
+    "pt": "A tabela sumiu do mundo. DROP TABLE não perdoa!",
+    "en": "The table vanished from the world. DROP TABLE is unforgiving!"
+   }
   }
  ]
 }

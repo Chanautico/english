@@ -9,6 +9,7 @@ Esta lista é gerada por `npm run build:data` e marca [x] o que já existe.
 - [ ] `src/assets/sprites/dante_relaxado.png`
 - [ ] `src/assets/sprites/dante_serio.png`
 - [ ] `src/assets/sprites/golem_sucata.png`
+- [ ] `src/assets/sprites/juiz_ativo.png`
 - [ ] `src/assets/sprites/kael_bravo.png`
 - [ ] `src/assets/sprites/kael_neutro.png`
 - [ ] `src/assets/sprites/kael_orgulhoso.png`

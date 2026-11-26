@@ -329,10 +329,10 @@
           const out = people.find((c) => c !== 'ren');
           const oel = cast.get(out); oel.classList.add('exit'); setTimeout(() => oel.remove(), 400); cast.delete(out);
         }
-        const d = document.createElement('div'); d.innerHTML = FX.actor(tag, 'enter' + (ch === 'pip' ? ' actor-pip' : '') + (ch === 'golem' ? ' actor-boss' : ''));
+        const d = document.createElement('div'); d.innerHTML = FX.actor(tag, 'enter' + (ch === 'pip' ? ' actor-pip' : '') + (['golem', 'juiz', 'hydra', 'leviata'].includes(ch) ? ' actor-boss' : ''));
         el = d.firstElementChild; castEl.appendChild(el); cast.set(ch, el);
         FX.hydrate(castEl);
-        if (ch === 'golem') FX.play(stage, 'tremor');
+        if (['golem', 'juiz', 'hydra', 'leviata'].includes(ch)) FX.play(stage, 'tremor');
       } else FX.setActorTag(el, tag);
       layoutCast();
       return el;
@@ -403,7 +403,7 @@
     const lg = lang();
     const boss = f.chefe;
     const total = f.desafios.length;
-    let turn = 0, hp = boss ? boss.hp : 0, mode = 'editor', slots = [], editorText = '', hintsShown = 0;
+    let turn = 0, hp = boss ? boss.hp : 0, mode = 'editor', slots = [], editorText = '', hintsShown = 0, won = false;
 
     app.innerHTML = `
       <section class="screen quest paper-bg dataia-quest" style="--arc:${arc.cor}">
@@ -477,8 +477,11 @@
         setTimeout(() => { FX.play(arena, 'tremor'); FX.setActorTag(hero, 'ren_surpreso'); anim(hero, 'hurt', 600); }, 300);
         setTimeout(() => FX.setActorTag(hero, 'ren_focado'), 1400);
       } else if (kind === 'win') {
-        foe.querySelectorAll('.golem-svg').forEach((s) => s.classList.add('crumble'));
-        foe.classList.add('defeated'); FX.play(arena, 'dados');
+        if (boss.rival) { anim(foe, 'cheer', 1200); FX.play(arena, 'flash'); } // duelo amistoso: os dois comemoram
+        else {
+          foe.querySelectorAll('.golem-svg').forEach((s) => s.classList.add('crumble'));
+          foe.classList.add('defeated'); if (!foe.querySelector('.golem-svg')) foe.classList.add('fade-boss'); FX.play(arena, 'dados');
+        }
         FX.setActorTag(hero, 'ren_confiante'); anim(hero, 'cheer', 1200);
         FX.setActorTag(arena.querySelector('.ar-pip'), 'pip_feliz');
       }
@@ -530,6 +533,36 @@
       }
       say(`<div class="brief-tags">${(d.conceitos || f.conceitos).map((k) => `<code class="kw">${esc(k)}</code>`).join('')}</div>${core.md(L(d.enunciado))}`, turn === 0 ? 'pip_explicando' : 'pip_alerta');
       renderQueryBox();
+      startTimer(d);
+    }
+
+    // Cronômetro opcional por turno ("tempo" em segundos). Acabar o tempo não reprova:
+    // no duelo, o rival só termina aquela rodada primeiro.
+    let timerId = null;
+    function startTimer(d) {
+      clearInterval(timerId);
+      const host = q('.bossbar') || q('.mission-strip');
+      const old = q('.timer'); if (old) old.remove();
+      if (!d.tempo || !host) return;
+      const el = document.createElement('div'); el.className = 'timer'; el.innerHTML = '<i></i><span></span>';
+      host.appendChild(el);
+      let left = d.tempo; const myTurn = turn;
+      const draw = () => { el.querySelector('i').style.width = (left / d.tempo) * 100 + '%'; el.querySelector('span').textContent = `⏱ ${left}s`; el.classList.toggle('low', left <= 10); };
+      draw();
+      timerId = setInterval(() => {
+        if (!document.body.contains(el) || turn !== myTurn || won) return clearInterval(timerId);
+        if (document.querySelector('.pg-wrap, .modal-wrap')) return;
+        left--; draw();
+        if (left <= 0) {
+          clearInterval(timerId);
+          el.classList.add('over');
+          const rival = boss && boss.rival;
+          typingThen(() => say(esc(rival
+            ? (lg === 'pt' ? `A ${L(boss.nome)} terminou essa rodada primeiro! Mas não desiste: termina a sua e empata!` : `${L(boss.nome)} finished this round first! Don't give up: finish yours and tie it!`)
+            : (lg === 'pt' ? 'O tempo acabou, mas a luta continua! Termine a consulta!' : "Time's up, but the fight goes on! Finish the query!")), 'pip_alerta'));
+          if (arena) battle('miss');
+        }
+      }, 1000);
     }
 
     function currentQuery() {
@@ -589,10 +622,41 @@
       if (!v.trim()) { feedback.className = 'feedback warn'; feedback.textContent = core.t('emptyQuery'); GameAudio.play('error'); return null; }
       return v;
     }
+    // Roda o SQL do jogador (com preparo do turno e verificações de estado, se houver).
+    const isState = () => !!cur().verificar;
+    const verifs = () => (cur().verificar ? [].concat(cur().verificar).map((x) => x[lg]) : []);
+    const preparo = () => (cur().preparo ? cur().preparo[lg] : '');
+    function exec(sql) { return core.runCheck(dbFor(arc), preparo(), sql, verifs()); }
+    // Para comandos que mudam o banco, mostra também como a tabela ficou depois.
+    function showExec(r) {
+      showResult(r);
+      if (r.ok && isState() && r.checks && r.checks[0]) {
+        const c0 = r.checks[0];
+        const after = c0.ok ? core.resultTable(c0) : `<div class="sql-error"><pre>${esc(c0.error)}</pre></div>`;
+        q('[data-rpane="mine"]').innerHTML = (r.columns.length ? core.resultTable(r) : `<p class="state-ok">✓ ${lg === 'pt' ? 'Comando executado.' : 'Command executed.'}</p>`)
+          + `<div class="state-after"><b>${lg === 'pt' ? 'Como o banco ficou depois:' : 'How the database looks afterwards:'}</b>${after}</div>`;
+      }
+    }
+    // Compara com o gabarito. Para comandos de escrita, compara o estado final das tabelas.
+    function judge(r, v) {
+      const d = cur();
+      const ex = exec(d.gabarito[lg]);
+      for (const kw of d.exige || []) {
+        if (!new RegExp('\\b' + kw.replace(/\s+/g, '\\s+') + '\\b', 'i').test(v)) return { ok: false, msg: (lg === 'pt' ? 'Esta missão pede que você use ' : 'This mission asks you to use ') + kw + '.' };
+      }
+      if (!isState()) return core.compare(r, ex, d.ordenado);
+      for (let i = 0; i < ex.checks.length; i++) {
+        const mine = r.checks[i], want = ex.checks[i];
+        if (!mine.ok) return { ok: false, msg: (lg === 'pt' ? 'A verificação falhou: ' : 'The check failed: ') + mine.error };
+        const c = core.compare(mine, want, true);
+        if (!c.ok) return { ok: false, msg: (lg === 'pt' ? 'O banco não ficou como deveria. ' : 'The database did not end up as expected. ') + c.msg };
+      }
+      return { ok: true };
+    }
     function doRun() {
       const v = getQuery(); if (!v) return;
-      const r = core.runOn(dbFor(arc), v);
-      showResult(r); core.unlock('first_query');
+      const r = exec(v);
+      showExec(r); core.unlock('first_query');
       feedback.textContent = ''; feedback.className = 'feedback';
       if (!r.ok) { core.unlock('sql_error'); GameAudio.play('error'); setPip('pip_erro'); typingThen(() => say(esc(L(PIP.error)), 'pip_erro')); }
       else { GameAudio.play('click'); explainRun(v, r); }
@@ -603,13 +667,12 @@
     }
     function doSubmit() {
       const v = getQuery(); if (!v) return;
-      const r = core.runOn(dbFor(arc), v);
-      showResult(r); core.unlock('first_query');
+      const r = exec(v);
+      showExec(r); core.unlock('first_query');
       say(`<pre class="mini-sql">${core.highlight(v.trim()).replace(/\n$/, '')}</pre>`, null, true);
       if (!r.ok) { core.unlock('sql_error'); GameAudio.play('error'); feedback.className = 'feedback bad'; feedback.textContent = core.t('sqlError'); typingThen(() => say(esc(L(PIP.error)), 'pip_erro')); return; }
       explainRun(v, r);
-      const exp = core.runOn(dbFor(arc), cur().gabarito[lg]);
-      const res = core.compare(r, exp, cur().ordenado);
+      const res = judge(r, v);
       if (!res.ok) {
         GameAudio.play('error');
         feedback.className = 'feedback bad'; feedback.textContent = '✗ ' + res.msg;
@@ -639,6 +702,7 @@
     }
 
     function win(v) {
+      won = true;
       const p = prog(), first = !faseDone(f), hints = p.hints[f.id] || 0;
       if (first) {
         let g = boss ? 30 : 10; if (!hints) g += 5;
@@ -698,7 +762,7 @@
           div.querySelector('[data-answer]').onclick = () => {
             mode = 'editor'; editorText = d.gabarito[lg]; renderQueryBox();
             q('[data-rtab="exp"]').hidden = false;
-            q('[data-rpane="exp"]').innerHTML = core.resultTable(core.runOn(dbFor(arc), d.gabarito[lg]));
+            { const ex = exec(d.gabarito[lg]); const tb = isState() && ex.checks && ex.checks[0] && ex.checks[0].ok ? ex.checks[0] : ex; q('[data-rpane="exp"]').innerHTML = ex.ok ? core.resultTable(tb) : ''; }
             openTab('exp');
           };
         });

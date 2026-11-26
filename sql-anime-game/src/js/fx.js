@@ -214,6 +214,7 @@
     const c = (tag || '').split('_')[0];
     if (c === 'pip') return pip(tag.split('_')[1]);
     if (c === 'golem') return golem();
+    if (ART[c]) return ART[c](tag);
     return silhouette(c, tag);
   }
   function actor(tag, extra) {
@@ -280,5 +281,11 @@
     }
   }
 
-  window.FX = { scenery, actor, setActorTag, hydrate, play, pip, golem, EFFECTS };
+  // Extensões (fx-world.js): cenários, arte de chefes e visual de silhuetas novas.
+  const ART = {};
+  function extend(o) {
+    Object.assign(SCENES, o.scenes || {}); Object.assign(PARTICLES, o.particles || {});
+    Object.assign(ART, o.art || {}); Object.assign(LOOK, o.looks || {}); Object.assign(HAIR, o.hair || {});
+  }
+  window.FX = { scenery, actor, setActorTag, hydrate, play, pip, golem, silhouette, EFFECTS, extend, id, rnd, stars };
 })();

@@ -1,0 +1,100 @@
+{
+ "id": 12,
+ "arco": 2,
+ "titulo": {
+  "pt": "Contagem de Tropas",
+  "en": "Counting the Troops"
+ },
+ "cenario": "bg_arena_exame",
+ "dificuldade": "facil",
+ "conceitos": [
+  "COUNT",
+  "GROUP BY",
+  "AS"
+ ],
+ "missao": {
+  "pt": "Primeira prova: contar candidatos por região.",
+  "en": "First trial: count candidates per region."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Arena do Exame. Arquibancadas lotadas.",
+   "en": "The Exam Arena. Packed stands.",
+   "efeito": "impacto"
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Primeira prova! Quantos candidatos vieram de CADA região?",
+   "en": "First trial! How many candidates came from EACH region?"
+  },
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Contar um por um vai levar o dia inteiro!",
+   "en": "Counting one by one will take all day!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "COUNT(*) conta linhas. GROUP BY separa em grupos, e o COUNT conta dentro de cada grupo!",
+   "en": "COUNT(*) counts rows. GROUP BY splits them into groups, and COUNT counts inside each group!",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT regiao, COUNT(*) AS total\nFROM inscritos\nGROUP BY regiao;",
+     "en": "SELECT region, COUNT(*) AS total\nFROM candidates\nGROUP BY region;"
+    }
+   }
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "E o AS dá um apelido para a coluna. 'total' é bem mais bonito que 'COUNT(*)'!",
+   "en": "And AS gives the column a nickname. 'total' looks much nicer than 'COUNT(*)'!",
+   "quadro": {
+    "nota": {
+     "pt": "Regra de ouro: coluna fora de agregação → vai no GROUP BY",
+     "en": "Golden rule: non-aggregated column → goes in GROUP BY"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Para cada **região**, retorne a região e o **número de candidatos** com o apelido `total`.",
+    "en": "For each **region**, return the region and the **number of candidates** aliased as `total`."
+   },
+   "gabarito": {
+    "pt": "SELECT regiao, COUNT(*) AS total FROM inscritos GROUP BY regiao",
+    "en": "SELECT region, COUNT(*) AS total FROM candidates GROUP BY region"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Agrupe por regiao.",
+     "en": "Group by region."
+    },
+    {
+     "pt": "COUNT(*) AS total",
+     "en": "COUNT(*) AS total"
+    },
+    {
+     "pt": "SELECT regiao, COUNT(*) AS total FROM inscritos GROUP BY regiao",
+     "en": "SELECT region, COUNT(*) AS total FROM candidates GROUP BY region"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Capital: seis! A maioria é da cidade grande.",
+   "en": "Capital: six! Most are from the big city."
+  },
+  {
+   "sprite": "lyra_surpresa",
+   "pt": "...Você terminou rápido. Sorte.",
+   "en": "...You finished fast. Luck."
+  }
+ ]
+}

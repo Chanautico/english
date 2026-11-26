@@ -1,0 +1,94 @@
+{
+ "id": 16,
+ "arco": 2,
+ "titulo": {
+  "pt": "A Regra do HAVING",
+  "en": "The HAVING Rule"
+ },
+ "cenario": "bg_arena_exame",
+ "dificuldade": "medio",
+ "conceitos": [
+  "HAVING"
+ ],
+ "missao": {
+  "pt": "Um examinador corrupto esconde os clãs que fraudaram pontos.",
+  "en": "A corrupt examiner is hiding the clans that faked their points."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Bastidores da arena. Um examinador apaga registros às pressas.",
+   "en": "Behind the arena. An examiner hurriedly erases records.",
+   "efeito": "escuridao"
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "Ele quer reprovar a gente... e esconder quem passou de 500 pontos com trapaça!",
+   "en": "He wants to fail us... and hide who went past 500 points by cheating!"
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Tenta com WHERE SUM(pontos) > 500. ...Ops, não! Isso dá erro! Deixa eu explicar.",
+   "en": "Try WHERE SUM(points) > 500. ...Oops, no! That's an error! Let me explain.",
+   "efeito": "glitch"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "WHERE filtra LINHAS antes de agrupar. HAVING filtra GRUPOS depois de agrupar!",
+   "en": "WHERE filters ROWS before grouping. HAVING filters GROUPS after grouping!",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT cla, SUM(pontos)\nFROM pontuacao\nGROUP BY cla\nHAVING SUM(pontos) > 500;",
+     "en": "SELECT clan, SUM(points)\nFROM scores\nGROUP BY clan\nHAVING SUM(points) > 500;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne cada **clã** e a **soma de pontos**, apenas dos clãs com **mais de 500** pontos no total.",
+    "en": "Return each **clan** and its **total points**, only for clans with **more than 500** points in total."
+   },
+   "gabarito": {
+    "pt": "SELECT cla, SUM(pontos) FROM pontuacao GROUP BY cla HAVING SUM(pontos) > 500",
+    "en": "SELECT clan, SUM(points) FROM scores GROUP BY clan HAVING SUM(points) > 500"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Primeiro agrupe por clã, depois filtre os grupos.",
+     "en": "First group by clan, then filter the groups."
+    },
+    {
+     "pt": "HAVING SUM(pontos) > 500",
+     "en": "HAVING SUM(points) > 500"
+    },
+    {
+     "pt": "SELECT cla, SUM(pontos) FROM pontuacao GROUP BY cla HAVING SUM(pontos) > 500",
+     "en": "SELECT clan, SUM(points) FROM scores GROUP BY clan HAVING SUM(points) > 500"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Vance e Mora! Os dados não mentem.",
+   "en": "Vance and Mora! The data doesn't lie.",
+   "efeito": "luz"
+  },
+  {
+   "sprite": "lyra_surpresa",
+   "pt": "Vance?! A minha família... trapaceou?",
+   "en": "Vance?! My family... cheated?"
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "...Eu não sabia. Obrigada por mostrar, Ren.",
+   "en": "...I didn't know. Thank you for showing me, Ren."
+  }
+ ]
+}
