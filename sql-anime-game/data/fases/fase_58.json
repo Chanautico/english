@@ -1,0 +1,113 @@
+{
+ "id": 58,
+ "arco": 6,
+ "titulo": {
+  "pt": "Velocidade da Luz",
+  "en": "Speed of Light"
+ },
+ "cenario": "bg_vazio_branco",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "CREATE INDEX"
+ ],
+ "missao": {
+  "pt": "O Terminal trava de lentidão com um milhão de ataques.",
+  "en": "The Terminal freezes, too slow for a million attacks."
+ },
+ "historia_antes": [
+  {
+   "sprite": "ren_surpreso",
+   "pt": "O Terminal... está lento demais! Não consigo achar os ataques a tempo!",
+   "en": "The Terminal... is too slow! I can't find the attacks in time!",
+   "efeito": [
+    "glitch",
+    "tremor"
+   ]
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Ele está lendo um milhão de linhas uma por uma! Precisa de um ÍNDICE na coluna tipo!",
+   "en": "It's reading a million rows one by one! It needs an INDEX on the type column!"
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "Ren... eu projetei os índices de Dataia... use-os...",
+   "en": "Ren... I designed Dataia's indexes... use them...",
+   "efeito": "flash"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Um índice é como o sumário de um livro: o banco vai direto à página certa em vez de ler tudo.",
+   "en": "An index is like a book's table of contents: the database goes straight to the right page instead of reading everything.",
+   "quadro": {
+    "codigo": {
+     "pt": "CREATE INDEX idx_fraqueza\nON ataques(tipo);",
+     "en": "CREATE INDEX idx_weakness\nON attacks(type);"
+    }
+   }
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "Quer conferir? EXPLAIN QUERY PLAN mostra 'USING INDEX' quando o índice é usado!",
+   "en": "Want to check? EXPLAIN QUERY PLAN shows 'USING INDEX' when the index is used!",
+   "quadro": {
+    "codigo": {
+     "pt": "EXPLAIN QUERY PLAN\nSELECT * FROM ataques WHERE tipo = 'raio';",
+     "en": "EXPLAIN QUERY PLAN\nSELECT * FROM attacks WHERE type = 'lightning';"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Crie um índice chamado `idx_fraqueza` na coluna `tipo` da tabela `ataques`.",
+    "en": "Create an index named `idx_weakness` on the `type` column of the `attacks` table."
+   },
+   "gabarito": {
+    "pt": "CREATE INDEX idx_fraqueza ON ataques(tipo)",
+    "en": "CREATE INDEX idx_weakness ON attacks(type)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "CREATE INDEX nome ON tabela(coluna)",
+     "en": "CREATE INDEX name ON table(column)"
+    },
+    {
+     "pt": "ON ataques(tipo)",
+     "en": "ON attacks(type)"
+    },
+    {
+     "pt": "CREATE INDEX idx_fraqueza ON ataques(tipo)",
+     "en": "CREATE INDEX idx_weakness ON attacks(type)"
+    }
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT COUNT(*) FROM pragma_index_list('ataques') AS il JOIN pragma_index_info(il.name) AS ii WHERE ii.name = 'tipo'",
+     "en": "SELECT COUNT(*) FROM pragma_index_list('attacks') AS il JOIN pragma_index_info(il.name) AS ii WHERE ii.name = 'type'"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": null,
+   "pt": "O Terminal acelera. Ren desvia de cada ilusão como se o tempo tivesse parado.",
+   "en": "The Terminal speeds up. Ren dodges every illusion as if time had stopped.",
+   "efeito": [
+    "flash",
+    "corte",
+    "cristais"
+   ]
+  },
+  {
+   "sprite": "lyra_sorrindo",
+   "pt": "Isso! Agora coordena todo mundo, Ren!",
+   "en": "Yes! Now coordinate everyone, Ren!"
+  }
+ ]
+}

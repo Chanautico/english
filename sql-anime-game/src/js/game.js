@@ -258,7 +258,7 @@
             ${window.desktop ? `<button class="chip-btn" data-go="quit">⏻ ${t('quit')}</button>` : ''}
           </div>
         </div>
-        <div class="version">v0.3</div>
+        <div class="version">v1.0</div>
       </section>`;
     FX.hydrate(app);
     $$('[data-lang]').forEach((b) => b.onclick = () => { save.lang = b.dataset.lang; I18N.lang = save.lang; persist(); GameAudio.play('click'); showTitle(); });

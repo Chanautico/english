@@ -243,7 +243,7 @@
         <div class="fx-layer"></div>
         <div class="tcard-band">
           <div class="tcard-arc">${S('arc')} ${arc.id}</div>
-          <div class="tcard-num">${lang() === 'pt' ? 'CAPÍTULO COMPLETO!' : 'CHAPTER COMPLETE!'}</div>
+          <div class="tcard-num">${!next ? (lang() === 'pt' ? 'DATAIA ESTÁ SALVA!' : 'DATAIA IS SAVED!') : (lang() === 'pt' ? 'CAPÍTULO COMPLETO!' : 'CHAPTER COMPLETE!')}</div>
           <h1 class="tcard-title">${esc(L(arc.titulo))}</h1>
           <div class="arc-stats">
             <div><b>${fs.length}/${fs.length}</b><small>${lang() === 'pt' ? 'fases' : 'stages'}</small></div>
@@ -361,6 +361,7 @@
       setSprite(st.sprite || null);
       if (st.sprite) { who.textContent = nameOf(st.sprite); who.style.background = Assets.color(st.sprite); who.hidden = false; } else who.hidden = true;
       addNote(st.quadro);
+      if (st.cenario) { const old = stage.querySelector('.scenery'); const d = document.createElement('div'); d.innerHTML = FX.scenery(st.cenario); const nu = d.firstElementChild; nu.classList.add('sc-in'); old.replaceWith(nu); FX.hydrate(stage); }
       [].concat(st.efeito || []).forEach((e, k) => setTimeout(() => FX.play(stage, e), k * 250));
       textEl.classList.toggle('narration', !st.sprite);
       if (!speed) { textEl.textContent = full; return scheduleAuto(); }
@@ -712,7 +713,7 @@
         const gem = app.querySelector('.pill.gem b'); if (gem) gem.textContent = core.save.gems;
         core.unlock('dataia_start');
         if (f.id === 10) core.unlock('golem');
-        if (arcDone(arc) && arc.id === 1) core.unlock('dataia_arc1');
+        if (arcDone(arc)) core.unlock('dataia_arc' + arc.id);
         if (boss && !hints) core.unlock('no_hints');
       }
       core.confetti();

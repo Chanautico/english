@@ -1,0 +1,117 @@
+{
+ "id": 56,
+ "arco": 6,
+ "titulo": {
+  "pt": "A Estrutura da Criação",
+  "en": "The Structure of Creation"
+ },
+ "cenario": "bg_nucleo_dataia",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "CREATE TABLE",
+  "PRIMARY KEY"
+ ],
+ "missao": {
+  "pt": "Malform destruiu a tabela de contenção do Núcleo.",
+  "en": "Malform destroyed the Core's containment table."
+ },
+ "historia_antes": [
+  {
+   "sprite": "malform_calmo",
+   "pt": "A tabela de contenção? Eu a apaguei há horas.",
+   "en": "The containment table? I erased it hours ago.",
+   "efeito": "glitch"
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Ren... chegou a hora do segredo final dos Arquitetos Supremos. Você não só lê e escreve dados. Você CRIA estruturas!",
+   "en": "Ren... it's time for the Supreme Architects' final secret. You don't just read and write data. You CREATE structures!",
+   "efeito": [
+    "flash",
+    "cristais"
+   ]
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Então eu crio um selo novo do zero!",
+   "en": "Then I'll create a new seal from scratch!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "CREATE TABLE: nome da tabela, e cada coluna com seu tipo. PRIMARY KEY marca a chave.",
+   "en": "CREATE TABLE: the table name, and each column with its type. PRIMARY KEY marks the key.",
+   "quadro": {
+    "codigo": {
+     "pt": "CREATE TABLE selo_contencao (\n  id INT PRIMARY KEY,\n  runa VARCHAR(50),\n  poder INT\n);",
+     "en": "CREATE TABLE containment_seal (\n  id INT PRIMARY KEY,\n  rune VARCHAR(50),\n  power INT\n);"
+    }
+   }
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "INT = número inteiro. VARCHAR(50) = texto de até 50 caracteres.",
+   "en": "INT = whole number. VARCHAR(50) = text up to 50 characters.",
+   "quadro": {
+    "nota": {
+     "pt": "Tipos: INT, VARCHAR(n), TEXT, REAL, DATE",
+     "en": "Types: INT, VARCHAR(n), TEXT, REAL, DATE"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Crie a tabela `selo_contencao` com as colunas: `id` (INT, **chave primária**), `runa` (VARCHAR(50)) e `poder` (INT).",
+    "en": "Create the table `containment_seal` with columns: `id` (INT, **primary key**), `rune` (VARCHAR(50)) and `power` (INT)."
+   },
+   "gabarito": {
+    "pt": "CREATE TABLE selo_contencao (id INT PRIMARY KEY, runa VARCHAR(50), poder INT)",
+    "en": "CREATE TABLE containment_seal (id INT PRIMARY KEY, rune VARCHAR(50), power INT)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "CREATE TABLE nome ( coluna tipo, ... )",
+     "en": "CREATE TABLE name ( column type, ... )"
+    },
+    {
+     "pt": "id INT PRIMARY KEY, runa VARCHAR(50), poder INT",
+     "en": "id INT PRIMARY KEY, rune VARCHAR(50), power INT"
+    },
+    {
+     "pt": "CREATE TABLE selo_contencao (id INT PRIMARY KEY, runa VARCHAR(50), poder INT)",
+     "en": "CREATE TABLE containment_seal (id INT PRIMARY KEY, rune VARCHAR(50), power INT)"
+    }
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT name, CASE WHEN upper(type) LIKE '%INT%' THEN 'INT' WHEN upper(type) LIKE '%CHAR%' OR upper(type) LIKE '%TEXT%' THEN 'TEXTO' ELSE upper(type) END AS tipo, pk FROM pragma_table_info('selo_contencao') ORDER BY cid",
+     "en": "SELECT name, CASE WHEN upper(type) LIKE '%INT%' THEN 'INT' WHEN upper(type) LIKE '%CHAR%' OR upper(type) LIKE '%TEXT%' THEN 'TEXT' ELSE upper(type) END AS tipo, pk FROM pragma_table_info('containment_seal') ORDER BY cid"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": null,
+   "pt": "Uma tabela de cristal se forma no ar, coluna por coluna.",
+   "en": "A crystal table forms in midair, column by column.",
+   "efeito": [
+    "cristais",
+    "flash"
+   ]
+  },
+  {
+   "sprite": "malform_calmo",
+   "pt": "Interessante. Mas frágil.",
+   "en": "Interesting. But fragile.",
+   "efeito": [
+    "impacto",
+    "tremor"
+   ]
+  }
+ ]
+}

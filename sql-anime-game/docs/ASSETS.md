@@ -6,19 +6,25 @@ Esta lista é gerada por `npm run build:data` e marca [x] o que já existe.
 
 **Sprites** (personagem de corpo inteiro ou meio corpo, fundo transparente, ~900×1400):
 
+- [ ] `src/assets/sprites/clone_sombrio.png`
 - [ ] `src/assets/sprites/dante_relaxado.png`
 - [ ] `src/assets/sprites/dante_serio.png`
 - [ ] `src/assets/sprites/golem_sucata.png`
+- [ ] `src/assets/sprites/guardiao_bravo.png`
+- [ ] `src/assets/sprites/hydra_furiosa.png`
 - [ ] `src/assets/sprites/juiz_ativo.png`
 - [ ] `src/assets/sprites/kael_bravo.png`
 - [ ] `src/assets/sprites/kael_neutro.png`
 - [ ] `src/assets/sprites/kael_orgulhoso.png`
+- [ ] `src/assets/sprites/leviata_furioso.png`
 - [ ] `src/assets/sprites/lyra_arrogante.png`
 - [ ] `src/assets/sprites/lyra_seria.png`
 - [ ] `src/assets/sprites/lyra_sorrindo.png`
 - [ ] `src/assets/sprites/lyra_surpresa.png`
 - [ ] `src/assets/sprites/malform_calmo.png`
 - [ ] `src/assets/sprites/malform_transcendente.png`
+- [ ] `src/assets/sprites/pai_neutro.png`
+- [ ] `src/assets/sprites/pai_orgulhoso.png`
 - [ ] `src/assets/sprites/pip_alerta.png`
 - [ ] `src/assets/sprites/pip_erro.png`
 - [ ] `src/assets/sprites/pip_explicando.png`

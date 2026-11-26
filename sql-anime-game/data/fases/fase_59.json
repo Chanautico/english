@@ -1,0 +1,106 @@
+{
+ "id": 59,
+ "arco": 6,
+ "titulo": {
+  "pt": "A Visão Suprema",
+  "en": "The Supreme View"
+ },
+ "cenario": "bg_nucleo_dataia",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "CREATE VIEW"
+ ],
+ "missao": {
+  "pt": "Coordenar o ataque final com todos os aliados.",
+  "en": "Coordinate the final attack with every ally."
+ },
+ "historia_antes": [
+  {
+   "sprite": "dante_relaxado",
+   "pt": "Lá embaixo, os aliados estão prontos. Mas cada um olha uma tabela diferente!",
+   "en": "Down below, the allies are ready. But each one is looking at a different table!"
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "Preciso de uma visão única do campo de batalha. Uma consulta salva que todos possam ver.",
+   "en": "I need a single view of the battlefield. A saved query everyone can see."
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "CREATE VIEW! A Visão Suprema!",
+   "en": "CREATE VIEW! The Supreme View!",
+   "efeito": "cristais"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "CREATE VIEW salva uma consulta com nome. Depois é só fazer SELECT nela como se fosse uma tabela.",
+   "en": "CREATE VIEW saves a query under a name. Then you just SELECT from it as if it were a table.",
+   "quadro": {
+    "codigo": {
+     "pt": "CREATE VIEW visao_batalha AS\nSELECT a.nome, a.grupo, p.setor, p.status\nFROM aliados a\nJOIN posicoes p ON p.aliado_id = a.id;",
+     "en": "CREATE VIEW battle_view AS\nSELECT a.name, a.squad, p.sector, p.status\nFROM allies a\nJOIN positions p ON p.ally_id = a.id;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Crie a view `visao_batalha` com `nome` e `grupo` de cada aliado, mais o `setor` e o `status` da posição dele.",
+    "en": "Create the view `battle_view` with each ally's `name` and `squad`, plus the `sector` and `status` of their position."
+   },
+   "gabarito": {
+    "pt": "CREATE VIEW visao_batalha AS SELECT a.nome, a.grupo, p.setor, p.status FROM aliados a JOIN posicoes p ON p.aliado_id = a.id",
+    "en": "CREATE VIEW battle_view AS SELECT a.name, a.squad, p.sector, p.status FROM allies a JOIN positions p ON p.ally_id = a.id"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "CREATE VIEW nome AS SELECT ...",
+     "en": "CREATE VIEW name AS SELECT ..."
+    },
+    {
+     "pt": "O SELECT é um JOIN de aliados com posicoes.",
+     "en": "The SELECT is a JOIN of allies with positions."
+    },
+    {
+     "pt": "CREATE VIEW visao_batalha AS SELECT a.nome, a.grupo, p.setor, p.status FROM aliados a JOIN posicoes p ON p.aliado_id = a.id",
+     "en": "CREATE VIEW battle_view AS SELECT a.name, a.squad, p.sector, p.status FROM allies a JOIN positions p ON p.ally_id = a.id"
+    }
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT type FROM sqlite_master WHERE name = 'visao_batalha'",
+     "en": "SELECT type FROM sqlite_master WHERE name = 'battle_view'"
+    },
+    {
+     "pt": "SELECT * FROM visao_batalha ORDER BY 1, 3",
+     "en": "SELECT * FROM battle_view ORDER BY 1, 3"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "vex_sombrio",
+   "pt": "Visão recebida. A Null-Void... ou o que sobrou dela... está com vocês.",
+   "en": "View received. The Null-Void... or what's left of it... is with you.",
+   "efeito": "luz"
+  },
+  {
+   "sprite": "malform_transcendente",
+   "pt": "CHEGA. Eu mesmo vou apagar vocês.",
+   "en": "ENOUGH. I will erase you myself.",
+   "efeito": [
+    "escuridao",
+    "relampago",
+    "tremor"
+   ],
+   "entra": [
+    "malform_transcendente"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,349 @@
+{
+ "id": 60,
+ "arco": 6,
+ "titulo": {
+  "pt": "CHEFE FINAL: Lord Malform",
+  "en": "FINAL BOSS: Lord Malform"
+ },
+ "cenario": "bg_nucleo_dataia",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "UPDATE",
+  "CREATE INDEX",
+  "DELETE",
+  "DROP TABLE",
+  "FOREIGN KEY",
+  "COMMIT"
+ ],
+ "missao": {
+  "pt": "Selar o Arquiteto do Vazio para sempre.",
+  "en": "Seal the Architect of the Void forever."
+ },
+ "historia_antes": [
+  {
+   "sprite": "malform_transcendente",
+   "pt": "Eu fui o Arquiteto Chefe. Eu vi cada erro, cada NULL, cada duplicata. Eu vou APAGAR a imperfeição!",
+   "en": "I was the Chief Architect. I saw every error, every NULL, every duplicate. I will ERASE imperfection!",
+   "efeito": [
+    "escuridao",
+    "relampago"
+   ],
+   "entra": [
+    "malform_transcendente"
+   ]
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Imperfeição não é erro, Malform! É o que faz o mundo ter dados de verdade!",
+   "en": "Imperfection isn't an error, Malform! It's what makes the world's data real!",
+   "efeito": "flash"
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Ren, juntamos os dois terminais. Cinco golpes. Tudo o que aprendemos.",
+   "en": "Ren, we link both terminals. Five strikes. Everything we've learned.",
+   "efeito": "cristais"
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "UPDATE, ÍNDICE, DROP, CREATE e COMMIT! Bora, Arquiteto Supremo!",
+   "en": "UPDATE, INDEX, DROP, CREATE and COMMIT! Let's go, Supreme Architect!"
+  }
+ ],
+ "aula": [],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "**Turno 1 — Purifique!** Mude para `puro` o `status` de todos os pilares que aparecem na tabela `corrupcao`.",
+    "en": "**Turn 1 — Purify!** Set the `status` to `pure` for every pillar that appears in the `corruption` table."
+   },
+   "gabarito": {
+    "pt": "UPDATE pilares_mundo SET status = 'puro' WHERE id IN (SELECT pilar_id FROM corrupcao)",
+    "en": "UPDATE world_pillars SET status = 'pure' WHERE id IN (SELECT pillar_id FROM corruption)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "UPDATE com IN e subconsulta (ou UPDATE ... FROM).",
+     "en": "UPDATE with IN and a subquery (or UPDATE ... FROM)."
+    },
+    {
+     "pt": "WHERE id IN (SELECT pilar_id FROM corrupcao)",
+     "en": "WHERE id IN (SELECT pillar_id FROM corruption)"
+    },
+    {
+     "pt": "UPDATE pilares_mundo SET status = 'puro' WHERE id IN (SELECT pilar_id FROM corrupcao)",
+     "en": "UPDATE world_pillars SET status = 'pure' WHERE id IN (SELECT pillar_id FROM corruption)"
+    }
+   ],
+   "conceitos": [
+    "UPDATE",
+    "IN"
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT id, nome, status FROM pilares_mundo ORDER BY id",
+     "en": "SELECT id, name, status FROM world_pillars ORDER BY id"
+    }
+   ]
+  },
+  {
+   "enunciado": {
+    "pt": "**Turno 2 — Contra-ataque!** Crie um índice na coluna `tipo` de `clones` **e** apague todos os clones do tipo `ilusao`.",
+    "en": "**Turn 2 — Counterattack!** Create an index on the `type` column of `clones` **and** delete every clone of type `illusion`."
+   },
+   "gabarito": {
+    "pt": "CREATE INDEX idx_clones ON clones(tipo); DELETE FROM clones WHERE tipo = 'ilusao';",
+    "en": "CREATE INDEX idx_clones ON clones(type); DELETE FROM clones WHERE type = 'illusion';"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Dois comandos separados por ponto e vírgula.",
+     "en": "Two commands separated by a semicolon."
+    },
+    {
+     "pt": "CREATE INDEX ... ON clones(tipo); DELETE FROM clones WHERE ...",
+     "en": "CREATE INDEX ... ON clones(type); DELETE FROM clones WHERE ..."
+    },
+    {
+     "pt": "CREATE INDEX idx_clones ON clones(tipo); DELETE FROM clones WHERE tipo = 'ilusao';",
+     "en": "CREATE INDEX idx_clones ON clones(type); DELETE FROM clones WHERE type = 'illusion';"
+    }
+   ],
+   "conceitos": [
+    "CREATE INDEX",
+    "DELETE"
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT COUNT(*) FROM pragma_index_list('clones') AS il JOIN pragma_index_info(il.name) AS ii WHERE ii.name = 'tipo'",
+     "en": "SELECT COUNT(*) FROM pragma_index_list('clones') AS il JOIN pragma_index_info(il.name) AS ii WHERE ii.name = 'type'"
+    },
+    {
+     "pt": "SELECT id, tipo, poder FROM clones ORDER BY id",
+     "en": "SELECT id, type, power FROM clones ORDER BY id"
+    }
+   ],
+   "preparo": {
+    "pt": "UPDATE pilares_mundo SET status = 'puro' WHERE id IN (SELECT pilar_id FROM corrupcao)",
+    "en": "UPDATE world_pillars SET status = 'pure' WHERE id IN (SELECT pillar_id FROM corruption)"
+   }
+  },
+  {
+   "enunciado": {
+    "pt": "**Turno 3 — Feche o portal!** Apague a tabela `portal_vazio` inteira.",
+    "en": "**Turn 3 — Close the portal!** Drop the entire `void_portal` table."
+   },
+   "gabarito": {
+    "pt": "DROP TABLE portal_vazio",
+    "en": "DROP TABLE void_portal"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Apagar a tabela inteira (estrutura e dados).",
+     "en": "Delete the whole table (structure and data)."
+    },
+    {
+     "pt": "DROP TABLE ...",
+     "en": "DROP TABLE ..."
+    },
+    {
+     "pt": "DROP TABLE portal_vazio",
+     "en": "DROP TABLE void_portal"
+    }
+   ],
+   "conceitos": [
+    "DROP TABLE"
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT COUNT(*) FROM sqlite_master WHERE name = 'portal_vazio'",
+     "en": "SELECT COUNT(*) FROM sqlite_master WHERE name = 'void_portal'"
+    }
+   ],
+   "preparo": {
+    "pt": "UPDATE pilares_mundo SET status = 'puro' WHERE id IN (SELECT pilar_id FROM corrupcao);\nCREATE INDEX idx_clones ON clones(tipo); DELETE FROM clones WHERE tipo = 'ilusao';",
+    "en": "UPDATE world_pillars SET status = 'pure' WHERE id IN (SELECT pillar_id FROM corruption);\nCREATE INDEX idx_clones ON clones(type); DELETE FROM clones WHERE type = 'illusion';"
+   }
+  },
+  {
+   "enunciado": {
+    "pt": "**Turno 4 — A prisão!** Crie a tabela `prisao_eterna` com: `id` (INTEGER, chave primária), `nome` (VARCHAR(50)) e `cristal_id` (INTEGER) com **chave estrangeira** para `cristal_central(id)`.",
+    "en": "**Turn 4 — The prison!** Create the table `eternal_prison` with: `id` (INTEGER, primary key), `name` (VARCHAR(50)) and `crystal_id` (INTEGER) with a **foreign key** to `central_crystal(id)`."
+   },
+   "gabarito": {
+    "pt": "CREATE TABLE prisao_eterna (id INTEGER PRIMARY KEY, nome VARCHAR(50), cristal_id INTEGER REFERENCES cristal_central(id))",
+    "en": "CREATE TABLE eternal_prison (id INTEGER PRIMARY KEY, name VARCHAR(50), crystal_id INTEGER REFERENCES central_crystal(id))"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "A FK se escreve com REFERENCES tabela(coluna).",
+     "en": "A FK is written with REFERENCES table(column)."
+    },
+    {
+     "pt": "cristal_id INTEGER REFERENCES cristal_central(id)",
+     "en": "crystal_id INTEGER REFERENCES central_crystal(id)"
+    },
+    {
+     "pt": "CREATE TABLE prisao_eterna (id INTEGER PRIMARY KEY, nome VARCHAR(50), cristal_id INTEGER REFERENCES cristal_central(id))",
+     "en": "CREATE TABLE eternal_prison (id INTEGER PRIMARY KEY, name VARCHAR(50), crystal_id INTEGER REFERENCES central_crystal(id))"
+    }
+   ],
+   "conceitos": [
+    "CREATE TABLE",
+    "FOREIGN KEY"
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT name, CASE WHEN upper(type) LIKE '%INT%' THEN 'INT' WHEN upper(type) LIKE '%CHAR%' OR upper(type) LIKE '%TEXT%' THEN 'TEXTO' ELSE upper(type) END AS tipo, pk FROM pragma_table_info('prisao_eterna') ORDER BY cid",
+     "en": "SELECT name, CASE WHEN upper(type) LIKE '%INT%' THEN 'INT' WHEN upper(type) LIKE '%CHAR%' OR upper(type) LIKE '%TEXT%' THEN 'TEXT' ELSE upper(type) END AS tipo, pk FROM pragma_table_info('eternal_prison') ORDER BY cid"
+    },
+    {
+     "pt": "SELECT \"table\", \"from\", \"to\" FROM pragma_foreign_key_list('prisao_eterna')",
+     "en": "SELECT \"table\", \"from\", \"to\" FROM pragma_foreign_key_list('eternal_prison')"
+    }
+   ],
+   "preparo": {
+    "pt": "UPDATE pilares_mundo SET status = 'puro' WHERE id IN (SELECT pilar_id FROM corrupcao);\nCREATE INDEX idx_clones ON clones(tipo); DELETE FROM clones WHERE tipo = 'ilusao';;\nDROP TABLE portal_vazio",
+    "en": "UPDATE world_pillars SET status = 'pure' WHERE id IN (SELECT pillar_id FROM corruption);\nCREATE INDEX idx_clones ON clones(type); DELETE FROM clones WHERE type = 'illusion';;\nDROP TABLE void_portal"
+   }
+  },
+  {
+   "enunciado": {
+    "pt": "**Golpe final!** Numa transação, insira em `prisao_eterna` o registro id **1**, nome `Lord Malform`, cristal_id **1**, e sele com **COMMIT**.",
+    "en": "**Final blow!** In a transaction, insert into `eternal_prison` the record id **1**, name `Lord Malform`, crystal_id **1**, and seal it with **COMMIT**."
+   },
+   "gabarito": {
+    "pt": "BEGIN TRANSACTION; INSERT INTO prisao_eterna (id, nome, cristal_id) VALUES (1, 'Lord Malform', 1); COMMIT;",
+    "en": "BEGIN TRANSACTION; INSERT INTO eternal_prison (id, name, crystal_id) VALUES (1, 'Lord Malform', 1); COMMIT;"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "BEGIN; INSERT ...; COMMIT;",
+     "en": "BEGIN; INSERT ...; COMMIT;"
+    },
+    {
+     "pt": "VALUES (1, 'Lord Malform', 1)",
+     "en": "VALUES (1, 'Lord Malform', 1)"
+    },
+    {
+     "pt": "BEGIN TRANSACTION; INSERT INTO prisao_eterna (id, nome, cristal_id) VALUES (1, 'Lord Malform', 1); COMMIT;",
+     "en": "BEGIN TRANSACTION; INSERT INTO eternal_prison (id, name, crystal_id) VALUES (1, 'Lord Malform', 1); COMMIT;"
+    }
+   ],
+   "conceitos": [
+    "INSERT INTO",
+    "COMMIT"
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT id, nome, cristal_id FROM prisao_eterna",
+     "en": "SELECT id, name, crystal_id FROM eternal_prison"
+    }
+   ],
+   "exige": [
+    "BEGIN",
+    "COMMIT"
+   ],
+   "preparo": {
+    "pt": "UPDATE pilares_mundo SET status = 'puro' WHERE id IN (SELECT pilar_id FROM corrupcao);\nCREATE INDEX idx_clones ON clones(tipo); DELETE FROM clones WHERE tipo = 'ilusao';;\nDROP TABLE portal_vazio;\nCREATE TABLE prisao_eterna (id INTEGER PRIMARY KEY, nome VARCHAR(50), cristal_id INTEGER REFERENCES cristal_central(id))",
+    "en": "UPDATE world_pillars SET status = 'pure' WHERE id IN (SELECT pillar_id FROM corruption);\nCREATE INDEX idx_clones ON clones(type); DELETE FROM clones WHERE type = 'illusion';;\nDROP TABLE void_portal;\nCREATE TABLE eternal_prison (id INTEGER PRIMARY KEY, name VARCHAR(50), crystal_id INTEGER REFERENCES central_crystal(id))"
+   }
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": null,
+   "pt": "COMMIT. Uma luz branca engole o Núcleo. Malform é puxado para dentro da tabela de cristal.",
+   "en": "COMMIT. A white light swallows the Core. Malform is pulled into the crystal table.",
+   "efeito": [
+    "flash",
+    "impacto",
+    "dados"
+   ],
+   "entra": [
+    "malform_transcendente"
+   ]
+  },
+  {
+   "sprite": "malform_calmo",
+   "pt": "...Kael... Aren... vocês estavam certos...",
+   "en": "...Kael... Aren... you were right...",
+   "efeito": "glitch",
+   "sai": [
+    "malform"
+   ]
+  },
+  {
+   "sprite": null,
+   "pt": "O cristal de estase se rompe.",
+   "en": "The stasis crystal shatters.",
+   "efeito": [
+    "cristais",
+    "tremor"
+   ]
+  },
+  {
+   "sprite": "pai_neutro",
+   "pt": "...Ren? Você... cresceu.",
+   "en": "...Ren? You've... grown up.",
+   "efeito": "luz"
+  },
+  {
+   "sprite": "ren_derrotado",
+   "pt": "PAI!",
+   "en": "DAD!"
+  },
+  {
+   "sprite": "pai_orgulhoso",
+   "pt": "E está usando o meu Terminal. Melhor do que eu jamais usei.",
+   "en": "And you're using my Terminal. Better than I ever did."
+  },
+  {
+   "sprite": null,
+   "pt": "Semanas depois. Neo-Schema, reconstruída.",
+   "en": "Weeks later. Neo-Schema, rebuilt.",
+   "efeito": "flash",
+   "cenario": "bg_capital_renovada"
+  },
+  {
+   "sprite": "kael_orgulhoso",
+   "pt": "Pelos poderes do Conselho, eu nomeio Ren e Lyra Vance... Arquitetos Supremos de Dataia.",
+   "en": "By the Council's powers, I name Ren and Lyra Vance... Supreme Architects of Dataia.",
+   "efeito": "cristais"
+  },
+  {
+   "sprite": "lyra_sorrindo",
+   "pt": "Dupla de batalha. Para sempre, né?",
+   "en": "Battle partners. Forever, right?"
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Para sempre!",
+   "en": "Forever!"
+  },
+  {
+   "sprite": "dante_relaxado",
+   "pt": "Eu apostei que vocês iam conseguir. Ganhei uma fortuna.",
+   "en": "I bet you two would make it. I won a fortune."
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "Ei, você aí atrás da tela! Isso mesmo, VOCÊ! Agora que salvou Dataia, que tal usar SQL no Mundo Real? O Laboratório Livre e a Academia estão abertos. Até a próxima! ;)",
+   "en": "Hey, you behind the screen! Yes, YOU! Now that you've saved Dataia, how about using SQL in the Real World? The Free Lab and the Academy are open. See you next time! ;)",
+   "efeito": "cristais"
+  }
+ ],
+ "chefe": {
+  "nome": {
+   "pt": "Lord Malform",
+   "en": "Lord Malform"
+  },
+  "sprite": "malform_transcendente",
+  "hp": 5
+ }
+}

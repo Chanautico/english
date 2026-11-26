@@ -41,12 +41,13 @@ initSqlJs().then((SQL) => {
           try {
             if (d.preparo) db.exec(d.preparo[l]);
             const r = db.exec(sql);
-            const checks = [].concat(d.verificar || []).map((v) => { const x = db.exec(v[l]); return x.length ? x[x.length - 1] : { columns: [], values: [] }; });
+            const checks = [].concat(d.verificar || []).map((v) => { try { const x = db.exec(v[l]); return x.length ? x[x.length - 1] : { columns: [], values: [] }; } catch (e) { return { columns: [], values: [['ERRO: ' + e.message]] }; } });
             return { r, checks };
           } finally { db.close(); }
         };
         try {
           const { r, checks } = run(d.gabarito[l]);
+          checks.forEach((c) => { if (String((c.values[0] || [])[0]).startsWith('ERRO: ')) err(tag, l, 'verificação falhou no gabarito', c.values[0][0]); });
           if (d.verificar) {
             if (!checks.length) err(tag, l, 'verificar vazio');
             shape[l] = checks.map((c) => [c.columns.length, c.values.length].join('x')).join('|');

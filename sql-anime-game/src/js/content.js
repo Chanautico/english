@@ -503,6 +503,11 @@
     { id: 'dataia_start', icon: ';', name: T('O Terminal desperta', 'The Terminal awakens'), desc: T('Complete a primeira fase de Dataia.', 'Clear the first stage of Dataia.') },
     { id: 'golem', icon: '⚔', name: T('Quebra-golem', 'Golem breaker'), desc: T('Derrote o Golem de Sucata.', 'Defeat the Scrap Golem.') },
     { id: 'dataia_arc1', icon: '❖', name: T('Arquivista', 'Archivist'), desc: T('Complete o Arco 1 de Dataia.', 'Clear Arc 1 of Dataia.') },
+    { id: 'dataia_arc2', icon: '⚖', name: T('Arquiteto de Bronze', 'Bronze Architect'), desc: T('Complete o Arco 2 de Dataia.', 'Clear Arc 2 of Dataia.') },
+    { id: 'dataia_arc3', icon: '⚓', name: T('Mestre das Ligações', 'Master of Links'), desc: T('Complete o Arco 3 de Dataia.', 'Clear Arc 3 of Dataia.') },
+    { id: 'dataia_arc4', icon: '◐', name: T('Caçador de Sombras', 'Shadow Hunter'), desc: T('Complete o Arco 4 de Dataia.', 'Clear Arc 4 of Dataia.') },
+    { id: 'dataia_arc5', icon: '✚', name: T('Restaurador', 'Restorer'), desc: T('Complete o Arco 5 de Dataia.', 'Clear Arc 5 of Dataia.') },
+    { id: 'dataia_arc6', icon: '♛', name: T('Arquiteto Supremo', 'Supreme Architect'), desc: T('Salve Dataia e termine o modo história.', 'Save Dataia and finish the story mode.') },
     { id: 'playground', icon: '⚗', name: T('Cientista de dados', 'Data scientist'), desc: T('Execute uma consulta no Laboratório livre.', 'Run a query in the Free lab.') },
   ];
 

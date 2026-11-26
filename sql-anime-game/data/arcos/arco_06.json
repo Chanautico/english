@@ -5,11 +5,853 @@
   "en": "The Supreme Architect"
  },
  "descricao": {
-  "pt": "O Núcleo de Dataia. CREATE TABLE, chaves, ALTER, INDEX, VIEW e a batalha final.",
-  "en": "The Core of Dataia. CREATE TABLE, keys, ALTER, INDEX, VIEW and the final battle."
+  "pt": "O Núcleo de Dataia. Ren cria estruturas do zero: CREATE TABLE, tipos, chaves, ALTER TABLE, CREATE INDEX, CREATE VIEW, DROP TABLE e a batalha final contra Lord Malform.",
+  "en": "The Core of Dataia. Ren builds structures from scratch: CREATE TABLE, types, keys, ALTER TABLE, CREATE INDEX, CREATE VIEW, DROP TABLE and the final battle against Lord Malform."
  },
  "capa": "bg_nucleo_dataia",
  "cor": "#2b2b3a",
- "em_breve": true,
- "tabelas": []
+ "tabelas": [
+  {
+   "nome": {
+    "pt": "entidades_nucleo",
+    "en": "core_entities"
+   },
+   "descricao": {
+    "pt": "Quem está dentro do Núcleo.",
+    "en": "Who is inside the Core."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "tipo",
+      "en": "type"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Lord Malform",
+     {
+      "pt": "arquiteto",
+      "en": "architect"
+     }
+    ],
+    [
+     2,
+     "Aren",
+     {
+      "pt": "arquiteto",
+      "en": "architect"
+     }
+    ],
+    [
+     3,
+     {
+      "pt": "Cristal Central",
+      "en": "Central Crystal"
+     },
+     {
+      "pt": "cristal",
+      "en": "crystal"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "estados",
+    "en": "states"
+   },
+   "descricao": {
+    "pt": "Estado de cada entidade. entidade_id → entidades_nucleo.id.",
+    "en": "Each entity's state. entity_id → core_entities.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "entidade_id",
+      "en": "entity_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "status",
+      "en": "status"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "flutuando",
+      "en": "floating"
+     }
+    ],
+    [
+     2,
+     {
+      "pt": "estase",
+      "en": "stasis"
+     }
+    ],
+    [
+     3,
+     {
+      "pt": "contagem regressiva",
+      "en": "countdown"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "ataques",
+    "en": "attacks"
+   },
+   "descricao": {
+    "pt": "Um milhão de ilusões de ataque (aqui, uma amostra).",
+    "en": "A million illusion attacks (here, a sample)."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "tipo",
+      "en": "type"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "alvo",
+      "en": "target"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "poder",
+      "en": "power"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "raio",
+      "en": "lightning"
+     },
+     {
+      "pt": "Lyra",
+      "en": "Lyra"
+     },
+     17
+    ],
+    [
+     2,
+     {
+      "pt": "vazio",
+      "en": "void"
+     },
+     {
+      "pt": "Dante",
+      "en": "Dante"
+     },
+     24
+    ],
+    [
+     3,
+     {
+      "pt": "ilusao",
+      "en": "illusion"
+     },
+     {
+      "pt": "Ren",
+      "en": "Ren"
+     },
+     31
+    ],
+    [
+     4,
+     {
+      "pt": "raio",
+      "en": "lightning"
+     },
+     {
+      "pt": "Lyra",
+      "en": "Lyra"
+     },
+     38
+    ],
+    [
+     5,
+     {
+      "pt": "vazio",
+      "en": "void"
+     },
+     {
+      "pt": "Dante",
+      "en": "Dante"
+     },
+     45
+    ],
+    [
+     6,
+     {
+      "pt": "ilusao",
+      "en": "illusion"
+     },
+     {
+      "pt": "Ren",
+      "en": "Ren"
+     },
+     52
+    ],
+    [
+     7,
+     {
+      "pt": "raio",
+      "en": "lightning"
+     },
+     {
+      "pt": "Lyra",
+      "en": "Lyra"
+     },
+     59
+    ],
+    [
+     8,
+     {
+      "pt": "vazio",
+      "en": "void"
+     },
+     {
+      "pt": "Dante",
+      "en": "Dante"
+     },
+     16
+    ],
+    [
+     9,
+     {
+      "pt": "ilusao",
+      "en": "illusion"
+     },
+     {
+      "pt": "Ren",
+      "en": "Ren"
+     },
+     23
+    ],
+    [
+     10,
+     {
+      "pt": "raio",
+      "en": "lightning"
+     },
+     {
+      "pt": "Lyra",
+      "en": "Lyra"
+     },
+     30
+    ],
+    [
+     11,
+     {
+      "pt": "vazio",
+      "en": "void"
+     },
+     {
+      "pt": "Dante",
+      "en": "Dante"
+     },
+     37
+    ],
+    [
+     12,
+     {
+      "pt": "ilusao",
+      "en": "illusion"
+     },
+     {
+      "pt": "Ren",
+      "en": "Ren"
+     },
+     44
+    ],
+    [
+     13,
+     {
+      "pt": "raio",
+      "en": "lightning"
+     },
+     {
+      "pt": "Lyra",
+      "en": "Lyra"
+     },
+     51
+    ],
+    [
+     14,
+     {
+      "pt": "vazio",
+      "en": "void"
+     },
+     {
+      "pt": "Dante",
+      "en": "Dante"
+     },
+     58
+    ],
+    [
+     15,
+     {
+      "pt": "ilusao",
+      "en": "illusion"
+     },
+     {
+      "pt": "Ren",
+      "en": "Ren"
+     },
+     15
+    ],
+    [
+     16,
+     {
+      "pt": "raio",
+      "en": "lightning"
+     },
+     {
+      "pt": "Lyra",
+      "en": "Lyra"
+     },
+     22
+    ],
+    [
+     17,
+     {
+      "pt": "vazio",
+      "en": "void"
+     },
+     {
+      "pt": "Dante",
+      "en": "Dante"
+     },
+     29
+    ],
+    [
+     18,
+     {
+      "pt": "ilusao",
+      "en": "illusion"
+     },
+     {
+      "pt": "Ren",
+      "en": "Ren"
+     },
+     36
+    ],
+    [
+     19,
+     {
+      "pt": "raio",
+      "en": "lightning"
+     },
+     {
+      "pt": "Lyra",
+      "en": "Lyra"
+     },
+     43
+    ],
+    [
+     20,
+     {
+      "pt": "vazio",
+      "en": "void"
+     },
+     {
+      "pt": "Dante",
+      "en": "Dante"
+     },
+     50
+    ],
+    [
+     21,
+     {
+      "pt": "ilusao",
+      "en": "illusion"
+     },
+     {
+      "pt": "Ren",
+      "en": "Ren"
+     },
+     57
+    ],
+    [
+     22,
+     {
+      "pt": "raio",
+      "en": "lightning"
+     },
+     {
+      "pt": "Lyra",
+      "en": "Lyra"
+     },
+     14
+    ],
+    [
+     23,
+     {
+      "pt": "vazio",
+      "en": "void"
+     },
+     {
+      "pt": "Dante",
+      "en": "Dante"
+     },
+     21
+    ],
+    [
+     24,
+     {
+      "pt": "ilusao",
+      "en": "illusion"
+     },
+     {
+      "pt": "Ren",
+      "en": "Ren"
+     },
+     28
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "aliados",
+    "en": "allies"
+   },
+   "descricao": {
+    "pt": "Aliados espalhados pela Capital.",
+    "en": "Allies spread across the Capital."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "grupo",
+      "en": "squad"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Lyra",
+     "Vance"
+    ],
+    [
+     2,
+     "Dante",
+     {
+      "pt": "Guilda de Prata",
+      "en": "Silver Guild"
+     }
+    ],
+    [
+     3,
+     "Vex",
+     "Null-Void"
+    ],
+    [
+     4,
+     "Gael",
+     {
+      "pt": "Vilas",
+      "en": "Villages"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "posicoes",
+    "en": "positions"
+   },
+   "descricao": {
+    "pt": "Posição de cada aliado. aliado_id → aliados.id.",
+    "en": "Each ally's position. ally_id → allies.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "aliado_id",
+      "en": "ally_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "setor",
+      "en": "sector"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "status",
+      "en": "status"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Nucleo",
+      "en": "Core"
+     },
+     {
+      "pt": "pronta",
+      "en": "ready"
+     }
+    ],
+    [
+     2,
+     {
+      "pt": "Portao",
+      "en": "Gate"
+     },
+     {
+      "pt": "ferido",
+      "en": "wounded"
+     }
+    ],
+    [
+     3,
+     {
+      "pt": "Torre",
+      "en": "Tower"
+     },
+     {
+      "pt": "pronto",
+      "en": "ready"
+     }
+    ],
+    [
+     4,
+     {
+      "pt": "Muralha",
+      "en": "Wall"
+     },
+     {
+      "pt": "pronto",
+      "en": "ready"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "pilares_mundo",
+    "en": "world_pillars"
+   },
+   "descricao": {
+    "pt": "Os pilares que sustentam Dataia.",
+    "en": "The pillars that hold up Dataia."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "status",
+      "en": "status"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Pilar da Memoria",
+      "en": "Memory Pillar"
+     },
+     {
+      "pt": "corrompido",
+      "en": "corrupted"
+     }
+    ],
+    [
+     2,
+     {
+      "pt": "Pilar das Leis",
+      "en": "Law Pillar"
+     },
+     {
+      "pt": "puro",
+      "en": "pure"
+     }
+    ],
+    [
+     3,
+     {
+      "pt": "Pilar das Pessoas",
+      "en": "People Pillar"
+     },
+     {
+      "pt": "corrompido",
+      "en": "corrupted"
+     }
+    ],
+    [
+     4,
+     {
+      "pt": "Pilar do Tempo",
+      "en": "Time Pillar"
+     },
+     {
+      "pt": "corrompido",
+      "en": "corrupted"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "corrupcao",
+    "en": "corruption"
+   },
+   "descricao": {
+    "pt": "Onde Malform injetou corrupção. pilar_id → pilares_mundo.id.",
+    "en": "Where Malform injected corruption. pillar_id → world_pillars.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "pilar_id",
+      "en": "pillar_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nivel",
+      "en": "level"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     80
+    ],
+    [
+     3,
+     95
+    ],
+    [
+     4,
+     60
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "clones",
+    "en": "clones"
+   },
+   "descricao": {
+    "pt": "Clones de Malform. Só um é real.",
+    "en": "Malform's clones. Only one is real."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "tipo",
+      "en": "type"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "poder",
+      "en": "power"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "ilusao",
+      "en": "illusion"
+     },
+     40
+    ],
+    [
+     2,
+     {
+      "pt": "ilusao",
+      "en": "illusion"
+     },
+     40
+    ],
+    [
+     3,
+     "real",
+     999
+    ],
+    [
+     4,
+     {
+      "pt": "ilusao",
+      "en": "illusion"
+     },
+     40
+    ],
+    [
+     5,
+     {
+      "pt": "ilusao",
+      "en": "illusion"
+     },
+     40
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "portal_vazio",
+    "en": "void_portal"
+   },
+   "descricao": {
+    "pt": "O portal de Malform para o vazio absoluto.",
+    "en": "Malform's portal to the absolute void."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "destino",
+      "en": "destination"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "vazio",
+      "en": "void"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "cristal_central",
+    "en": "central_crystal"
+   },
+   "descricao": {
+    "pt": "O Cristal Central de Dataia.",
+    "en": "The Central Crystal of Dataia."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Cristal Central",
+      "en": "Central Crystal"
+     }
+    ]
+   ]
+  }
+ ]
 }

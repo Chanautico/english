@@ -8,7 +8,16 @@ Dois modos:
 
 ### ⚔ Crônicas de Dataia (modo história, shonen)
 Ren herda o Terminal Ancestral do pai desaparecido e, com o Pip (um ponto e vírgula falante), enfrenta a Null-Void.
-60 fases em 6 arcos, do `SELECT` até `CREATE TABLE`, `INDEX` e transações. **Pronto: Arco 1 (fases 1 a 10)**.
+**60 fases em 6 arcos, todas prontas**, do `SELECT` até `CREATE TABLE`, `INDEX` e transações:
+
+| Arco | Fases | O que ensina | Chefe |
+|---|---|---|---|
+| 1. O Despertar na Vila dos Arquivos | 1–10 | `SELECT`, `WHERE`, comparadores, `LIKE`, `AND`/`OR`, `ORDER BY`, `LIMIT`, `NULL` | Golem de Sucata |
+| 2. O Exame da Guilda de Bronze | 11–20 | `DISTINCT`, `COUNT`, `SUM`, `AVG`, `MIN`/`MAX`, `GROUP BY`, `HAVING`, `AS` (duelo com cronômetro) | Juiz Marionete |
+| 3. A Cidade Portuária dos Elos Partidos | 21–32 | chaves PK/FK, `INNER`/`LEFT`/`RIGHT JOIN`, anti-join, JOIN com 3 e 4 tabelas | Hydra Cartesiana |
+| 4. As Sombras da Null-Void | 33–44 | subconsultas, `IN`, `NOT IN` (e a armadilha do NULL), `EXISTS`, correlacionadas, `CASE WHEN`, `UNION`/`UNION ALL` | Espelho Sombrio |
+| 5. A Guerra da Restauração | 45–54 | `INSERT`, `UPDATE`, `DELETE`, `INSERT ... SELECT`, `BEGIN`/`COMMIT`/`ROLLBACK` | Leviatã de DROP |
+| 6. O Arquiteto Supremo | 55–60 | `CREATE TABLE`, tipos, `PRIMARY`/`FOREIGN KEY`, `ALTER TABLE`, `CREATE INDEX`, `CREATE VIEW`, `DROP TABLE` | Lord Malform (5 turnos) + epílogo |
 
 - Cada fase: cena de história → aula no caderno → desafio no Terminal (chat com o Pip) → cena final.
 - **Cada capítulo (arco) é uma sessão contínua**: a fase termina e já emenda num cartão animado da próxima,
@@ -120,6 +129,16 @@ desenhado por completo e os outros personagens aparecem como silhuetas com olhos
 Quando a imagem real existir, ela entra por cima e as partículas e efeitos continuam.
 Num chefe, cada item de `desafios` é um turno. `guiado` e `chefe` são opcionais.
 
+Campos extras de um desafio, para comandos que **mudam** o banco (arcos 5 e 6):
+
+- `"verificar"`: lista de consultas (PT/EN) rodadas depois do SQL do jogador e do gabarito; o que se compara é
+  o resultado delas, ou seja, o estado final do banco. Ex.: `SELECT * FROM muralhas ORDER BY id`.
+- `"preparo"`: SQL rodado antes (ex.: o chefe apagou a Lyra; ou os turnos anteriores já aconteceram).
+- `"exige"`: comandos que precisam aparecer na resposta (ex.: `["BEGIN", "ROLLBACK"]`).
+- `"tempo"`: segundos do cronômetro do turno. No chefe, `"rival": true` vira duelo amistoso.
+
+Uma fala também aceita `"cenario"` para trocar o cenário no meio da cena (usado no epílogo).
+
 ## Estrutura
 
 | Arquivo | O que tem |
@@ -132,6 +151,8 @@ Num chefe, cada item de `desafios` é um turno. `guiado` e `chefe` são opcionai
 | `src/assets/chars/` | Ilustrações das personagens (`.webp`) |
 | `src/js/game.js` | Tela título, modo Academia, verificação das respostas, progresso, conquistas |
 | `src/js/dataia.js` | Modo história: mapa, cenas, Terminal do Pip, chefes por turnos, imagens provisórias |
+| `src/js/fx.js`, `src/js/fx-world.js` | Cenários animados, Pip, silhuetas, chefes e efeitos |
+| `src/js/pipguide.js` | Cartões de comando novo, comentários do Pip e Grimório |
 | `data/`, `tools/build-data.js` | Dados do modo história e o script que monta o pacote |
 | `src/js/audio.js` | Efeitos e música gerados pelo código |
 | `src/vendor/sql-asm.js` | SQLite compilado para JavaScript ([sql.js](https://github.com/sql-js/sql.js), MIT) |

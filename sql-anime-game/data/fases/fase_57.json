@@ -1,0 +1,106 @@
+{
+ "id": 57,
+ "arco": 6,
+ "titulo": {
+  "pt": "Evoluindo o Selo",
+  "en": "Evolving the Seal"
+ },
+ "cenario": "bg_vazio_branco",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "ALTER TABLE"
+ ],
+ "missao": {
+  "pt": "Malform quebrou a primeira camada do selo.",
+  "en": "Malform broke the seal's first layer."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "O mundo fica branco. Malform arrastou a luta para o Vazio.",
+   "en": "The world turns white. Malform dragged the fight into the Void.",
+   "efeito": [
+    "flash",
+    "glitch"
+   ]
+  },
+  {
+   "sprite": "lyra_surpresa",
+   "pt": "O selo está rachando! Ele precisa de resistência!",
+   "en": "The seal is cracking! It needs resistance!"
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Não precisa apagar e recriar! Dá pra ALTERAR a estrutura em pleno combate.",
+   "en": "No need to drop and recreate it! You can ALTER the structure mid-battle."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "ALTER TABLE ... ADD COLUMN adiciona uma coluna nova a uma tabela que já existe.",
+   "en": "ALTER TABLE ... ADD COLUMN adds a new column to an existing table.",
+   "quadro": {
+    "codigo": {
+     "pt": "ALTER TABLE selo_contencao\nADD COLUMN resistencia INT;",
+     "en": "ALTER TABLE containment_seal\nADD COLUMN resistance INT;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Adicione à tabela `selo_contencao` a coluna `resistencia` do tipo INT.",
+    "en": "Add the column `resistance` of type INT to the `containment_seal` table."
+   },
+   "gabarito": {
+    "pt": "ALTER TABLE selo_contencao ADD COLUMN resistencia INT",
+    "en": "ALTER TABLE containment_seal ADD COLUMN resistance INT"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "ALTER TABLE tabela ADD COLUMN coluna tipo",
+     "en": "ALTER TABLE table ADD COLUMN column type"
+    },
+    {
+     "pt": "ADD COLUMN resistencia INT",
+     "en": "ADD COLUMN resistance INT"
+    },
+    {
+     "pt": "ALTER TABLE selo_contencao ADD COLUMN resistencia INT",
+     "en": "ALTER TABLE containment_seal ADD COLUMN resistance INT"
+    }
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT name, CASE WHEN upper(type) LIKE '%INT%' THEN 'INT' WHEN upper(type) LIKE '%CHAR%' OR upper(type) LIKE '%TEXT%' THEN 'TEXTO' ELSE upper(type) END AS tipo, pk FROM pragma_table_info('selo_contencao') ORDER BY cid",
+     "en": "SELECT name, CASE WHEN upper(type) LIKE '%INT%' THEN 'INT' WHEN upper(type) LIKE '%CHAR%' OR upper(type) LIKE '%TEXT%' THEN 'TEXT' ELSE upper(type) END AS tipo, pk FROM pragma_table_info('containment_seal') ORDER BY cid"
+    }
+   ],
+   "preparo": {
+    "pt": "CREATE TABLE selo_contencao (id INT PRIMARY KEY, runa VARCHAR(50), poder INT)",
+    "en": "CREATE TABLE containment_seal (id INT PRIMARY KEY, rune VARCHAR(50), power INT)"
+   }
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "O selo evoluiu! Agora ele resiste!",
+   "en": "The seal evolved! Now it resists!",
+   "efeito": "cristais"
+  },
+  {
+   "sprite": "malform_transcendente",
+   "pt": "Então eu ataco com TUDO. Um milhão de ilusões!",
+   "en": "Then I attack with EVERYTHING. A million illusions!",
+   "efeito": [
+    "glitch",
+    "tremor",
+    "escuridao"
+   ]
+  }
+ ]
+}

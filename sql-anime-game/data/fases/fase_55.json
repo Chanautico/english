@@ -1,0 +1,90 @@
+{
+ "id": 55,
+ "arco": 6,
+ "titulo": {
+  "pt": "O Coração de Dataia",
+  "en": "The Heart of Dataia"
+ },
+ "cenario": "bg_nucleo_dataia",
+ "dificuldade": "medio",
+ "conceitos": [
+  "JOIN",
+  "WHERE"
+ ],
+ "missao": {
+  "pt": "Entender o que está acontecendo dentro do Núcleo.",
+  "en": "Understand what is happening inside the Core."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "O Núcleo de Dataia. Um cristal gigante gira no centro de anéis de luz.",
+   "en": "The Core of Dataia. A giant crystal spins inside rings of light.",
+   "efeito": [
+    "flash",
+    "cristais"
+   ]
+  },
+  {
+   "sprite": "malform_calmo",
+   "pt": "Bem-vindos. Vocês chegaram a tempo de assistir ao fim.",
+   "en": "Welcome. You've arrived just in time to watch the end.",
+   "efeito": "escuridao"
+  },
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Aquele dentro do cristal... é o meu PAI!",
+   "en": "The one inside the crystal... that's my FATHER!",
+   "efeito": "tremor"
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Ren, lê o estado de cada entidade do Núcleo! Precisamos saber o que está acontecendo!",
+   "en": "Ren, read the state of every entity in the Core! We need to know what's happening!"
+  }
+ ],
+ "aula": [],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne o `nome` e o `status` de cada entidade do Núcleo (junte `entidades_nucleo` com `estados`).",
+    "en": "Return the `name` and `status` of every entity in the Core (join `core_entities` with `states`)."
+   },
+   "gabarito": {
+    "pt": "SELECT e.nome, s.status FROM entidades_nucleo e JOIN estados s ON s.entidade_id = e.id",
+    "en": "SELECT e.name, s.status FROM core_entities e JOIN states s ON s.entity_id = e.id"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "JOIN pela chave entidade_id.",
+     "en": "JOIN on the entity_id key."
+    },
+    {
+     "pt": "ON s.entidade_id = e.id",
+     "en": "ON s.entity_id = e.id"
+    },
+    {
+     "pt": "SELECT e.nome, s.status FROM entidades_nucleo e JOIN estados s ON s.entidade_id = e.id",
+     "en": "SELECT e.name, s.status FROM core_entities e JOIN states s ON s.entity_id = e.id"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "lyra_seria",
+   "pt": "Seu pai está em estase... e o cristal está em contagem regressiva!",
+   "en": "Your father is in stasis... and the crystal is counting down!"
+  },
+  {
+   "sprite": "malform_transcendente",
+   "pt": "O Reset Total. Um DROP DATABASE no mundo inteiro. Sem erros. Sem imperfeições. Sem nada.",
+   "en": "The Total Reset. A DROP DATABASE on the whole world. No errors. No imperfections. Nothing.",
+   "efeito": [
+    "relampago",
+    "glitch"
+   ]
+  }
+ ]
+}
