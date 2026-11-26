@@ -11,6 +11,8 @@ Ren herda o Terminal Ancestral do pai desaparecido e, com o Pip (um ponto e vír
 60 fases em 6 arcos, do `SELECT` até `CREATE TABLE`, `INDEX` e transações. **Pronto: Arco 1 (fases 1 a 10)**.
 
 - Cada fase: cena de história → aula no caderno → desafio no Terminal (chat com o Pip) → cena final.
+- **Cada capítulo (arco) é uma sessão contínua**: a fase termina e já emenda num cartão animado da próxima,
+  a vitória avança sozinha depois de uma contagem regressiva, e o fim do arco mostra um resumo do capítulo.
 - **O Pip explica cada comando novo**: antes do desafio ele entra voando com um cartão e uma mini-tabela
   animada mostrando o comando em ação; depois da primeira vez que o jogador usa o comando, ele comenta o
   resultado com os números da consulta. O **Grimório** guarda tudo para rever. Textos e animações em

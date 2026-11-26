@@ -187,12 +187,81 @@
   }
 
   // ─────────────────────────── Fluxo de uma fase ───────────────────────────
-  function playFase(f) {
+  // Um capítulo (arco) é uma sessão contínua: cada fase emenda na próxima
+  // com um cartão de título, e o fim do arco mostra o resumo antes do mapa.
+  function playFase(f, opts) {
     const back = () => showMap(f.arco);
-    scene(f, f.historia_antes, false, () =>
+    const start = () => scene(f, f.historia_antes, false, () =>
       scene(f, f.aula, true, () =>
         challenge(f, () =>
-          scene(f, f.historia_depois, false, back)), back), back);
+          scene(f, f.historia_depois, false, () => afterFase(f), back)), back), back);
+    if (opts && opts.card) titleCard(f, start); else start();
+  }
+  function afterFase(f) {
+    const next = D().fases.find((x) => x.id === f.id + 1 && x.arco === f.arco);
+    if (next) return playFase(next, { card: true });
+    arcComplete(arcById(f.arco));
+  }
+
+  // Cartão animado "FASE N" entre uma fase e outra (some sozinho).
+  function titleCard(f, onDone) {
+    const core = C(), app = document.getElementById('app'), arc = arcById(f.arco);
+    core.setCurrent(null);
+    const n = fasesOf(f.arco).findIndex((x) => x.id === f.id) + 1, total = fasesOf(f.arco).length;
+    app.innerHTML = `
+      <section class="screen tcard ${f.chefe ? 'is-boss' : ''}" style="--arc:${arc.cor}">
+        ${FX.scenery(f.cenario, { few: true })}
+        <div class="tcard-band">
+          <div class="tcard-arc">${S('arc')} ${arc.id} · ${esc(L(arc.titulo))}</div>
+          <div class="tcard-num">${f.chefe ? (lang() === 'pt' ? 'CHEFE' : 'BOSS') : `${S('stage').toUpperCase()} ${f.id}`}</div>
+          <h1 class="tcard-title">${esc(L(f.titulo).replace(/^(CHEFE|BOSS):\s*/, ''))}</h1>
+          <div class="tcard-kws">${f.conceitos.map((k) => `<code>${esc(k)}</code>`).join('')}</div>
+          <div class="tcard-prog">${fasesOf(f.arco).map((x, i) => `<i class="${i < n - 1 ? 'done' : i === n - 1 ? 'cur' : ''}"></i>`).join('')}<span>${n}/${total}</span></div>
+        </div>
+      </section>`;
+    FX.hydrate(app);
+    GameAudio.play(f.chefe ? 'error' : 'hint');
+    let done = false;
+    const go = () => { if (done) return; done = true; document.removeEventListener('keydown', key); app.querySelector('.tcard').classList.add('out'); setTimeout(onDone, 380); };
+    const key = (e) => { if (e.key === ' ' || e.key === 'Enter' || e.key === 'Escape') { e.preventDefault(); go(); } };
+    document.addEventListener('keydown', key);
+    app.querySelector('.tcard').onclick = go;
+    setTimeout(go, f.chefe ? 2800 : 2200);
+  }
+
+  // Fim do capítulo: resumo do arco e volta ao mapa.
+  function arcComplete(arc) {
+    const core = C(), app = document.getElementById('app'), p = prog();
+    const fs = fasesOf(arc.id);
+    const hints = fs.reduce((s, f) => s + (p.hints[f.id] || 0), 0);
+    const learned = Object.keys((core.save.pipguide || {}).learned || {}).length;
+    const next = arcById(arc.id + 1);
+    core.setCurrent(null);
+    app.innerHTML = `
+      <section class="screen tcard arc-done" style="--arc:${arc.cor}">
+        ${FX.scenery(arc.capa)}
+        <div class="fx-layer"></div>
+        <div class="tcard-band">
+          <div class="tcard-arc">${S('arc')} ${arc.id}</div>
+          <div class="tcard-num">${lang() === 'pt' ? 'CAPÍTULO COMPLETO!' : 'CHAPTER COMPLETE!'}</div>
+          <h1 class="tcard-title">${esc(L(arc.titulo))}</h1>
+          <div class="arc-stats">
+            <div><b>${fs.length}/${fs.length}</b><small>${lang() === 'pt' ? 'fases' : 'stages'}</small></div>
+            <div><b>${learned}</b><small>${lang() === 'pt' ? 'comandos no Grimório' : 'commands in the Grimoire'}</small></div>
+            <div><b>${hints}</b><small>${lang() === 'pt' ? 'dicas usadas' : 'hints used'}</small></div>
+            <div><b>◆ ${core.save.gems}</b><small>${core.t('gems')}</small></div>
+          </div>
+          ${next ? `<p class="arc-next">${lang() === 'pt' ? 'Próximo capítulo' : 'Next chapter'}: <b>${esc(L(next.titulo))}</b>${next.em_breve ? ` — ${lang() === 'pt' ? 'em breve' : 'coming soon'}` : ''}</p>` : ''}
+          <div class="row gap"><button class="btn primary" data-map>${lang() === 'pt' ? 'Ir para o mapa' : 'Go to map'} →</button>
+          ${next && !next.em_breve ? `<button class="btn soft" data-nextarc>${lang() === 'pt' ? 'Começar próximo capítulo' : 'Start next chapter'} ⚔</button>` : ''}</div>
+        </div>
+      </section>`;
+    FX.hydrate(app);
+    core.confetti(); GameAudio.play('achievement');
+    setTimeout(() => FX.play(app.querySelector('.tcard'), 'cristais'), 300);
+    app.querySelector('[data-map]').onclick = () => { GameAudio.play('click'); showMap(next && !next.em_breve ? next.id : arc.id); };
+    const na = app.querySelector('[data-nextarc]');
+    if (na) na.onclick = () => { GameAudio.play('click'); playFase(fasesOf(next.id)[0], { card: true }); };
   }
 
   // ─────────────────────────── Cena animada (palco + elenco + caderno + diálogo) ───────────────────────────
@@ -587,9 +656,19 @@
       const actions = q('.actions');
       const nb = document.createElement('button');
       nb.className = 'btn next glow'; nb.dataset.next = '1';
-      nb.textContent = S('continueStory') + ' →';
       actions.insertBefore(nb, feedback);
-      nb.onclick = () => { GameAudio.play('click'); onWin(); };
+      // Avança sozinho depois de alguns segundos (ou na hora, com um clique).
+      let left = 5, gone = false;
+      const label = () => { nb.innerHTML = `${S('continueStory')} → <span class="count">${left}</span>`; };
+      const go = () => { if (gone) return; gone = true; clearInterval(timer); GameAudio.play('click'); onWin(); };
+      label();
+      const timer = setInterval(() => {
+        if (!document.body.contains(nb)) { gone = true; return clearInterval(timer); }
+        if (document.querySelector('.pg-wrap, .modal-wrap')) return; // espera o jogador fechar janelas
+        left--; label();
+        if (left <= 0) go();
+      }, 1000);
+      nb.onclick = go;
       q('[data-submit]').disabled = true;
     }
 

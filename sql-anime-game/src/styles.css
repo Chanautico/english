@@ -665,3 +665,35 @@ code, pre, textarea { font-family: var(--mono); }
 .grim-card.locked { opacity: .5; }
 .grim-card.locked code { color: var(--ink2); }
 code, pre, textarea, kbd { font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
+
+/* ═════════════ Fluxo contínuo: cartão de fase e fim de capítulo ═════════════ */
+.tcard { cursor: pointer; background: #120e1c; display: grid; place-items: center; }
+.tcard .scenery { filter: brightness(.6) saturate(1.1); animation: tcZoom 3s ease-out forwards; }
+@keyframes tcZoom { from { transform: scale(1.12); } to { transform: scale(1); } }
+.tcard .scenery > .file-tag { display: none; }
+.tcard-band { position: relative; z-index: 2; width: 100%; padding: 34px max(16px, env(safe-area-inset-right, 0px)) 30px max(16px, env(safe-area-inset-left, 0px)); text-align: center; color: #fff;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--arc) 70%, #120e1c) 20%, color-mix(in srgb, var(--arc) 70%, #120e1c) 80%, transparent);
+  display: flex; flex-direction: column; align-items: center; gap: 8px; animation: bandIn .6s cubic-bezier(.2, 1.2, .4, 1); }
+@keyframes bandIn { from { clip-path: inset(0 50% 0 50%); } to { clip-path: inset(0 0 0 0); } }
+.tcard-arc { font-size: 12px; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; opacity: .85; }
+.tcard-num { font-family: var(--mono); font-size: clamp(42px, 7vw, 76px); font-weight: 900; letter-spacing: 4px; line-height: 1; text-shadow: 0 6px 30px rgba(0,0,0,.4); animation: numIn .7s .15s cubic-bezier(.2, 1.4, .4, 1) both; }
+@keyframes numIn { from { opacity: 0; transform: scale(1.8); letter-spacing: 30px; } }
+.tcard.is-boss .tcard-num { color: #ffb347; animation: numIn .7s .15s cubic-bezier(.2, 1.4, .4, 1) both, eyeglow 1s 1s infinite; }
+.tcard-title { margin: 0; font-size: clamp(22px, 3.4vw, 34px); text-wrap: balance; animation: rise2 .5s .35s both; }
+@keyframes rise2 { from { opacity: 0; transform: translateY(14px); } }
+.tcard-kws { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; animation: rise2 .5s .5s both; }
+.tcard-kws code { font-family: var(--mono); font-weight: 800; font-size: 13px; background: rgba(255,255,255,.15); padding: 3px 10px; border-radius: 999px; }
+.tcard-prog { display: flex; align-items: center; gap: 6px; margin-top: 6px; animation: rise2 .5s .6s both; }
+.tcard-prog i { width: 22px; height: 5px; border-radius: 3px; background: rgba(255,255,255,.25); }
+.tcard-prog i.done { background: #6ee7a5; }
+.tcard-prog i.cur { background: #fff; animation: eyeglow 1s infinite; }
+.tcard-prog span { font-size: 12px; font-weight: 800; margin-left: 6px; opacity: .85; }
+.tcard.out { animation: fade .38s reverse forwards; }
+.arc-done { cursor: default; }
+.arc-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; width: min(640px, 100%); margin: 8px 0; animation: rise2 .5s .6s both; }
+.arc-stats div { background: rgba(255,255,255,.12); border-radius: 14px; padding: 10px 6px; display: flex; flex-direction: column; gap: 2px; }
+.arc-stats b { font-size: 22px; font-variant-numeric: tabular-nums; }
+.arc-stats small { font-size: 11.5px; opacity: .85; }
+.arc-next { margin: 4px 0 8px; opacity: .9; }
+@media (max-width: 600px) { .arc-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.btn .count { display: inline-grid; place-items: center; min-width: 22px; height: 22px; margin-left: 6px; border-radius: 50%; background: rgba(255,255,255,.3); font-size: 12px; font-variant-numeric: tabular-nums; }
