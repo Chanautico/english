@@ -1,0 +1,99 @@
+{
+ "id": 41,
+ "arco": 4,
+ "titulo": {
+  "pt": "O Despertar do Código",
+  "en": "The Code Awakens"
+ },
+ "cenario": "bg_sala_espelhos",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "GROUP BY",
+  "CASE WHEN",
+  "SUBQUERY"
+ ],
+ "missao": {
+  "pt": "Diagnosticar os dois terminais para o reparo.",
+  "en": "Diagnose both terminals for the repair."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Madrugada. Ren trabalha sozinho, à luz do Terminal.",
+   "en": "Before dawn. Ren works alone, by the Terminal's glow.",
+   "efeito": "escuridao"
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Para o transplante, preciso saber: em cada terminal, quantos módulos estão ABAIXO da média geral de integridade?",
+   "en": "For the transplant, I need to know: in each terminal, how many modules are BELOW the overall average integrity?"
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "GROUP BY por terminal... e um CASE que conta só os fracos... comparando com uma subconsulta.",
+   "en": "GROUP BY terminal... and a CASE that counts only the weak ones... compared to a subquery."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Truque ninja: SUM(CASE WHEN condição THEN 1 ELSE 0 END) conta só as linhas que passam na condição!",
+   "en": "Ninja trick: SUM(CASE WHEN condition THEN 1 ELSE 0 END) counts only the rows that meet the condition!",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT terminal,\n  SUM(CASE WHEN integridade < (SELECT AVG(integridade) FROM modulos)\n      THEN 1 ELSE 0 END) AS abaixo_media\nFROM modulos\nGROUP BY terminal;",
+     "en": "SELECT terminal,\n  SUM(CASE WHEN integrity < (SELECT AVG(integrity) FROM modules)\n      THEN 1 ELSE 0 END) AS below_avg\nFROM modules\nGROUP BY terminal;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Para cada `terminal`, retorne o terminal e quantos módulos têm integridade **abaixo da média geral** de integridade (coluna `abaixo_media`).",
+    "en": "For each `terminal`, return the terminal and how many modules have integrity **below the overall average** integrity (column `below_avg`)."
+   },
+   "gabarito": {
+    "pt": "SELECT terminal, SUM(CASE WHEN integridade < (SELECT AVG(integridade) FROM modulos) THEN 1 ELSE 0 END) AS abaixo_media FROM modulos GROUP BY terminal",
+    "en": "SELECT terminal, SUM(CASE WHEN integrity < (SELECT AVG(integrity) FROM modules) THEN 1 ELSE 0 END) AS below_avg FROM modules GROUP BY terminal"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "GROUP BY terminal.",
+     "en": "GROUP BY terminal."
+    },
+    {
+     "pt": "SUM(CASE WHEN ... THEN 1 ELSE 0 END)",
+     "en": "SUM(CASE WHEN ... THEN 1 ELSE 0 END)"
+    },
+    {
+     "pt": "SELECT terminal, SUM(CASE WHEN integridade < (SELECT AVG(integridade) FROM modulos) THEN 1 ELSE 0 END) AS abaixo_media FROM modulos GROUP BY terminal",
+     "en": "SELECT terminal, SUM(CASE WHEN integrity < (SELECT AVG(integrity) FROM modules) THEN 1 ELSE 0 END) AS below_avg FROM modules GROUP BY terminal"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": null,
+   "pt": "O Terminal de Lyra pisca. Uma luz roxa acende.",
+   "en": "Lyra's Terminal flickers. A purple light turns on.",
+   "efeito": [
+    "flash",
+    "cristais"
+   ]
+  },
+  {
+   "sprite": "lyra_sorrindo",
+   "pt": "...Você ficou acordado a noite toda? Idiota. ...Obrigada.",
+   "en": "...You stayed up all night? Idiot. ...Thank you."
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "De nada, parceira!",
+   "en": "You're welcome, partner!",
+   "efeito": "luz"
+  }
+ ]
+}

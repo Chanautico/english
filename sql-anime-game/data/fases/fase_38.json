@@ -1,0 +1,83 @@
+{
+ "id": 38,
+ "arco": 4,
+ "titulo": {
+  "pt": "Unindo os Exércitos",
+  "en": "Uniting the Armies"
+ },
+ "cenario": "bg_fortaleza_obsidian",
+ "dificuldade": "medio",
+ "conceitos": [
+  "UNION"
+ ],
+ "missao": {
+  "pt": "Unificar as guardas Norte e Sul sem duplicar soldados.",
+  "en": "Merge the North and South guards without duplicating soldiers."
+ },
+ "historia_antes": [
+  {
+   "sprite": "dante_serio",
+   "pt": "A Guarda Norte e a Guarda Sul chegaram! Mas os registros estão em tabelas separadas.",
+   "en": "The North Guard and the South Guard have arrived! But the records are in separate tables."
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "E alguns soldados servem nas duas. Não quero contar a mesma pessoa duas vezes.",
+   "en": "And some soldiers serve in both. I don't want to count the same person twice."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "UNION empilha dois SELECTs com as mesmas colunas e remove as linhas repetidas.",
+   "en": "UNION stacks two SELECTs with the same columns and removes repeated rows.",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT nome, posto FROM guarda_norte\nUNION\nSELECT nome, posto FROM guarda_sul;",
+     "en": "SELECT name, post FROM north_guard\nUNION\nSELECT name, post FROM south_guard;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne `nome` e `posto` de todos os soldados das duas guardas, **sem repetir** quem está nas duas.",
+    "en": "Return `name` and `post` of all soldiers from both guards, **without repeating** those in both."
+   },
+   "gabarito": {
+    "pt": "SELECT nome, posto FROM guarda_norte UNION SELECT nome, posto FROM guarda_sul",
+    "en": "SELECT name, post FROM north_guard UNION SELECT name, post FROM south_guard"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Dois SELECTs com as mesmas colunas.",
+     "en": "Two SELECTs with the same columns."
+    },
+    {
+     "pt": "Junte com UNION (não UNION ALL).",
+     "en": "Combine with UNION (not UNION ALL)."
+    },
+    {
+     "pt": "SELECT nome, posto FROM guarda_norte UNION SELECT nome, posto FROM guarda_sul",
+     "en": "SELECT name, post FROM north_guard UNION SELECT name, post FROM south_guard"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Seis soldados! O Bo e o Cael estavam nas duas listas.",
+   "en": "Six soldiers! Bo and Cael were on both lists.",
+   "efeito": "cristais"
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Ren... tem uma cela aqui com o símbolo do Terminal Ancestral na porta.",
+   "en": "Ren... there's a cell here with the Ancestral Terminal's symbol on the door.",
+   "efeito": "flash"
+  }
+ ]
+}

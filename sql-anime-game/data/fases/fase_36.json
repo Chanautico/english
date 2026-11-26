@@ -1,0 +1,94 @@
+{
+ "id": 36,
+ "arco": 4,
+ "titulo": {
+  "pt": "O Labirinto de Espelhos",
+  "en": "The Mirror Maze"
+ },
+ "cenario": "bg_sala_espelhos",
+ "dificuldade": "medio",
+ "conceitos": [
+  "EXISTS"
+ ],
+ "missao": {
+  "pt": "Ilusões copiam os heróis. Só algumas portas têm saída de verdade.",
+  "en": "Illusions copy the heroes. Only some doors truly lead out."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Dentro da Fortaleza. Espelhos por todo lado, e reflexos que se movem sozinhos.",
+   "en": "Inside the Fortress. Mirrors everywhere, and reflections that move on their own.",
+   "efeito": [
+    "glitch",
+    "escuridao"
+   ]
+  },
+  {
+   "sprite": "lyra_surpresa",
+   "pt": "Tem três de mim ali! Qual porta é real?",
+   "en": "There are three of me over there! Which door is real?"
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Porta real é a que EXISTE na tabela de saídas físicas!",
+   "en": "A real door is one that EXISTS in the physical exits table!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "EXISTS pergunta: \"a subconsulta devolve pelo menos uma linha?\". Ela usa a linha de fora (p.id)!",
+   "en": "EXISTS asks: \"does the subquery return at least one row?\". It uses the outer row (d.id)!",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT p.nome\nFROM portas p\nWHERE EXISTS (\n  SELECT 1 FROM saidas s\n  WHERE s.porta_id = p.id\n);",
+     "en": "SELECT d.name\nFROM doors d\nWHERE EXISTS (\n  SELECT 1 FROM exits e\n  WHERE e.door_id = d.id\n);"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne o `nome` das portas que têm **pelo menos uma saída física** em `saidas`.",
+    "en": "Return the `name` of the doors that have **at least one physical exit** in `exits`."
+   },
+   "gabarito": {
+    "pt": "SELECT p.nome FROM portas p WHERE EXISTS (SELECT 1 FROM saidas s WHERE s.porta_id = p.id)",
+    "en": "SELECT d.name FROM doors d WHERE EXISTS (SELECT 1 FROM exits e WHERE e.door_id = d.id)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Use EXISTS com uma subconsulta que olha para a porta de fora.",
+     "en": "Use EXISTS with a subquery that looks at the outer door."
+    },
+    {
+     "pt": "WHERE s.porta_id = p.id dentro da subconsulta",
+     "en": "WHERE e.door_id = d.id inside the subquery"
+    },
+    {
+     "pt": "SELECT p.nome FROM portas p WHERE EXISTS (SELECT 1 FROM saidas s WHERE s.porta_id = p.id)",
+     "en": "SELECT d.name FROM doors d WHERE EXISTS (SELECT 1 FROM exits e WHERE e.door_id = d.id)"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Ferro, Rubra e Trono! As outras são ilusões!",
+   "en": "Iron, Crimson and Throne! The others are illusions!",
+   "efeito": [
+    "cristais",
+    "luz"
+   ]
+  },
+  {
+   "sprite": "dante_relaxado",
+   "pt": "E a Porta Falsa tinha nome bem sugestivo, né.",
+   "en": "And the False Door had a pretty telling name, huh."
+  }
+ ]
+}

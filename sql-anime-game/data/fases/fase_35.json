@@ -1,0 +1,96 @@
+{
+ "id": 35,
+ "arco": 4,
+ "titulo": {
+  "pt": "Os Inocentes",
+  "en": "The Innocent"
+ },
+ "cenario": "bg_floresta_morta",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "NOT IN"
+ ],
+ "missao": {
+  "pt": "Salvar os guardas presos injustamente.",
+  "en": "Save the wrongly jailed guards."
+ },
+ "historia_antes": [
+  {
+   "sprite": "lyra_seria",
+   "pt": "Cinco guardas presos por traição. Mas nem todos falaram com a Null-Void.",
+   "en": "Five guards jailed for treason. But not all of them spoke to the Null-Void."
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Fácil: NOT IN na tabela de contatos!",
+   "en": "Easy: NOT IN on the contacts table!"
+  },
+  {
+   "sprite": "pip_erro",
+   "pt": "ESPERA! Tem um NULL escondido nessa tabela! Se ele entrar na lista, o NOT IN não devolve NADA!",
+   "en": "WAIT! There's a NULL hiding in that table! If it gets into the list, NOT IN returns NOTHING!",
+   "efeito": [
+    "glitch",
+    "tremor"
+   ]
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "x NOT IN (2, 4, NULL) nunca é verdadeiro, porque comparar com NULL dá \"não sei\". Tire os NULL da subconsulta!",
+   "en": "x NOT IN (2, 4, NULL) is never true, because comparing with NULL gives \"unknown\". Remove the NULLs from the subquery!",
+   "quadro": {
+    "codigo": {
+     "pt": "WHERE id NOT IN (\n  SELECT guarda_id FROM contatos_nullvoid\n  WHERE guarda_id IS NOT NULL\n)",
+     "en": "WHERE id NOT IN (\n  SELECT guard_id FROM nullvoid_contacts\n  WHERE guard_id IS NOT NULL\n)"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne o `nome` dos guardas presos que **nunca tiveram contato** com a Null-Void. Cuidado com o NULL!",
+    "en": "Return the `name` of jailed guards who **never had contact** with the Null-Void. Watch out for the NULL!"
+   },
+   "gabarito": {
+    "pt": "SELECT nome FROM guardas_presos WHERE id NOT IN (SELECT guarda_id FROM contatos_nullvoid WHERE guarda_id IS NOT NULL)",
+    "en": "SELECT name FROM jailed_guards WHERE id NOT IN (SELECT guard_id FROM nullvoid_contacts WHERE guard_id IS NOT NULL)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Se der zero linhas, o NULL te pegou.",
+     "en": "If you get zero rows, the NULL got you."
+    },
+    {
+     "pt": "Filtre WHERE guarda_id IS NOT NULL dentro da subconsulta.",
+     "en": "Filter WHERE guard_id IS NOT NULL inside the subquery."
+    },
+    {
+     "pt": "SELECT nome FROM guardas_presos WHERE id NOT IN (SELECT guarda_id FROM contatos_nullvoid WHERE guarda_id IS NOT NULL)",
+     "en": "SELECT name FROM jailed_guards WHERE id NOT IN (SELECT guard_id FROM nullvoid_contacts WHERE guard_id IS NOT NULL)"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Arno, Cid e Edo! Sem o filtro, eu ia achar que todos eram culpados...",
+   "en": "Arno, Cid and Edo! Without the filter, I'd have thought everyone was guilty...",
+   "efeito": "luz"
+  },
+  {
+   "sprite": "lyra_sorrindo",
+   "pt": "Três inocentes livres. Bom trabalho, Pip.",
+   "en": "Three innocents freed. Good job, Pip."
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "Eu SEI.",
+   "en": "I KNOW."
+  }
+ ]
+}

@@ -1,0 +1,101 @@
+{
+ "id": 42,
+ "arco": 4,
+ "titulo": {
+  "pt": "A Muralha de Obsidiana",
+  "en": "The Obsidian Wall"
+ },
+ "cenario": "bg_fortaleza_obsidian",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "UNION ALL"
+ ],
+ "missao": {
+  "pt": "Somar todos os recursos de ataque dos dois terminais.",
+  "en": "Add up every attack resource of both terminals."
+ },
+ "historia_antes": [
+  {
+   "sprite": "lyra_seria",
+   "pt": "A muralha interna precisa de 200 de poder para cair. Quanto temos juntos?",
+   "en": "The inner wall needs 200 power to fall. How much do we have together?"
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Fácil: UNION e SUM!",
+   "en": "Easy: UNION and SUM!"
+  },
+  {
+   "sprite": "pip_erro",
+   "pt": "NÃÃÃO! O UNION apaga valores repetidos! Os dois Escudos de Índice valem 30 cada. Você perderia poder!",
+   "en": "NOOO! UNION deletes repeated values! Both Index Shields are worth 30 each. You'd lose power!",
+   "efeito": "glitch"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Para somar TUDO, use UNION ALL dentro de uma subconsulta no FROM.",
+   "en": "To add up EVERYTHING, use UNION ALL inside a subquery in FROM.",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT SUM(poder)\nFROM (\n  SELECT poder FROM recursos_ren\n  UNION ALL\n  SELECT poder FROM recursos_lyra\n);",
+     "en": "SELECT SUM(power)\nFROM (\n  SELECT power FROM ren_resources\n  UNION ALL\n  SELECT power FROM lyra_resources\n);"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne a **soma** do `poder` de todos os recursos dos dois terminais, **sem perder** valores repetidos.",
+    "en": "Return the **sum** of the `power` of every resource from both terminals, **without losing** repeated values."
+   },
+   "gabarito": {
+    "pt": "SELECT SUM(poder) FROM (SELECT poder FROM recursos_ren UNION ALL SELECT poder FROM recursos_lyra)",
+    "en": "SELECT SUM(power) FROM (SELECT power FROM ren_resources UNION ALL SELECT power FROM lyra_resources)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Empilhe os dois poderes com UNION ALL.",
+     "en": "Stack both powers with UNION ALL."
+    },
+    {
+     "pt": "Coloque a pilha dentro de FROM ( ... ) e some.",
+     "en": "Put the stack inside FROM ( ... ) and sum it."
+    },
+    {
+     "pt": "SELECT SUM(poder) FROM (SELECT poder FROM recursos_ren UNION ALL SELECT poder FROM recursos_lyra)",
+     "en": "SELECT SUM(power) FROM (SELECT power FROM ren_resources UNION ALL SELECT power FROM lyra_resources)"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "220! A muralha vai cair!",
+   "en": "220! The wall is going down!",
+   "efeito": [
+    "impacto",
+    "tremor"
+   ]
+  },
+  {
+   "sprite": null,
+   "pt": "A muralha de obsidiana racha e desaba.",
+   "en": "The obsidian wall cracks and collapses.",
+   "efeito": "dados"
+  },
+  {
+   "sprite": "guardiao_bravo",
+   "pt": "Ninguém passa pelo Guardião do Trono.",
+   "en": "No one gets past the Throne Guardian.",
+   "efeito": [
+    "escuridao",
+    "relampago"
+   ]
+  }
+ ]
+}

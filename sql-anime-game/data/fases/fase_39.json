@@ -1,0 +1,100 @@
+{
+ "id": 39,
+ "arco": 4,
+ "titulo": {
+  "pt": "O Diário do Pai",
+  "en": "Father's Diary"
+ },
+ "cenario": "bg_fortaleza_obsidian",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "SUBQUERY",
+  "AVG"
+ ],
+ "missao": {
+  "pt": "O pai de Ren deixou pistas codificadas nas leituras de energia.",
+  "en": "Ren's father left clues encoded in the energy readings."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Uma cela vazia. Riscos na parede formam tabelas.",
+   "en": "An empty cell. Scratches on the wall form tables.",
+   "efeito": "escuridao"
+  },
+  {
+   "sprite": "ren_derrotado",
+   "pt": "Ele esteve aqui... Pai...",
+   "en": "He was here... Dad...",
+   "efeito": "veneno"
+  },
+  {
+   "sprite": "pai_neutro",
+   "pt": "Ren. Se você está lendo isso, procure os picos: as leituras acima da média de CADA sala.",
+   "en": "Ren. If you're reading this, look for the spikes: the readings above the average of EACH room.",
+   "efeito": "flash"
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Acima da média DA PRÓPRIA sala... é uma subconsulta correlacionada!",
+   "en": "Above the average OF ITS OWN room... that's a correlated subquery!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "A subconsulta usa a linha de fora (l.sala_id), então ela calcula uma média diferente para cada linha!",
+   "en": "The subquery uses the outer row (l.room_id), so it computes a different average for each row!",
+   "quadro": {
+    "codigo": {
+     "pt": "WHERE l.energia > (\n  SELECT AVG(l2.energia)\n  FROM leituras l2\n  WHERE l2.sala_id = l.sala_id\n)",
+     "en": "WHERE r.energy > (\n  SELECT AVG(r2.energy)\n  FROM readings r2\n  WHERE r2.room_id = r.room_id\n)"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne o **nome da sala** e a **energia** das leituras que estão **acima da média da própria sala**.",
+    "en": "Return the **room name** and the **energy** of the readings that are **above their own room's average**."
+   },
+   "gabarito": {
+    "pt": "SELECT s.nome, l.energia FROM leituras l JOIN salas s ON l.sala_id = s.id WHERE l.energia > (SELECT AVG(l2.energia) FROM leituras l2 WHERE l2.sala_id = l.sala_id)",
+    "en": "SELECT ro.name, r.energy FROM readings r JOIN rooms ro ON r.room_id = ro.id WHERE r.energy > (SELECT AVG(r2.energy) FROM readings r2 WHERE r2.room_id = r.room_id)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "JOIN para pegar o nome da sala.",
+     "en": "JOIN to get the room name."
+    },
+    {
+     "pt": "A subconsulta filtra pela sala da linha de fora.",
+     "en": "The subquery filters by the outer row's room."
+    },
+    {
+     "pt": "SELECT s.nome, l.energia FROM leituras l JOIN salas s ON l.sala_id = s.id WHERE l.energia > (SELECT AVG(l2.energia) FROM leituras l2 WHERE l2.sala_id = l.sala_id)",
+     "en": "SELECT ro.name, r.energy FROM readings r JOIN rooms ro ON r.room_id = ro.id WHERE r.energy > (SELECT AVG(r2.energy) FROM readings r2 WHERE r2.room_id = r.room_id)"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_focado",
+   "pt": "40, 90, 60... são coordenadas! O caminho até o Núcleo de Dataia!",
+   "en": "40, 90, 60... they're coordinates! The path to the Core of Dataia!",
+   "efeito": "cristais"
+  },
+  {
+   "sprite": "malform_calmo",
+   "pt": "Que comovente. O filho seguindo as migalhas do pai.",
+   "en": "How touching. The son following his father's crumbs.",
+   "efeito": [
+    "escuridao",
+    "glitch"
+   ]
+  }
+ ]
+}

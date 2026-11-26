@@ -1,0 +1,108 @@
+{
+ "id": 40,
+ "arco": 4,
+ "titulo": {
+  "pt": "A Queda de Lyra",
+  "en": "Lyra's Fall"
+ },
+ "cenario": "bg_fortaleza_obsidian",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "IN",
+  "SUBQUERY"
+ ],
+ "missao": {
+  "pt": "Malform destruiu o terminal de Lyra.",
+  "en": "Malform destroyed Lyra's terminal."
+ },
+ "historia_antes": [
+  {
+   "sprite": "malform_calmo",
+   "pt": "Vocês são dados imperfeitos. E dados imperfeitos devem ser apagados.",
+   "en": "You are imperfect data. And imperfect data must be erased.",
+   "efeito": "escuridao"
+  },
+  {
+   "sprite": null,
+   "pt": "Um raio de vazio atravessa o salão. O terminal de Lyra explode em faíscas.",
+   "en": "A beam of void crosses the hall. Lyra's terminal bursts into sparks.",
+   "efeito": [
+    "relampago",
+    "impacto",
+    "tremor"
+   ]
+  },
+  {
+   "sprite": "lyra_surpresa",
+   "pt": "Meu terminal...!",
+   "en": "My terminal...!",
+   "sai": [
+    "malform"
+   ]
+  },
+  {
+   "sprite": "ren_derrotado",
+   "pt": "LYRA!",
+   "en": "LYRA!",
+   "efeito": "veneno"
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Ren, calma! O Terminal Ancestral tem peças de emergência! Quais módulos da Lyra foram destruídos E existem no seu terminal?",
+   "en": "Ren, stay calm! The Ancestral Terminal has emergency parts! Which of Lyra's modules were destroyed AND exist in yours?"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "IN com subconsulta de novo: os nomes destruídos (integridade 0) no terminal da Lyra viram a lista.",
+   "en": "IN with a subquery again: the destroyed names (integrity 0) in Lyra's terminal become the list.",
+   "quadro": {
+    "codigo": {
+     "pt": "WHERE terminal = 'Ancestral'\n  AND nome IN (\n    SELECT nome FROM modulos\n    WHERE terminal = 'Lyra' AND integridade = 0\n  )",
+     "en": "WHERE terminal = 'Ancestral'\n  AND name IN (\n    SELECT name FROM modules\n    WHERE terminal = 'Lyra' AND integrity = 0\n  )"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne `nome` e `integridade` dos módulos do terminal **Ancestral** cujo nome está entre os módulos **destruídos** (integridade 0) do terminal **Lyra**.",
+    "en": "Return `name` and `integrity` of the **Ancestral** terminal modules whose name is among the **destroyed** modules (integrity 0) of the **Lyra** terminal."
+   },
+   "gabarito": {
+    "pt": "SELECT nome, integridade FROM modulos WHERE terminal = 'Ancestral' AND nome IN (SELECT nome FROM modulos WHERE terminal = 'Lyra' AND integridade = 0)",
+    "en": "SELECT name, integrity FROM modules WHERE terminal = 'Ancestral' AND name IN (SELECT name FROM modules WHERE terminal = 'Lyra' AND integrity = 0)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Filtro de fora: terminal Ancestral.",
+     "en": "Outer filter: Ancestral terminal."
+    },
+    {
+     "pt": "A subconsulta lista os nomes com integridade 0 da Lyra.",
+     "en": "The subquery lists Lyra's names with integrity 0."
+    },
+    {
+     "pt": "SELECT nome, integridade FROM modulos WHERE terminal = 'Ancestral' AND nome IN (SELECT nome FROM modulos WHERE terminal = 'Lyra' AND integridade = 0)",
+     "en": "SELECT name, integrity FROM modules WHERE terminal = 'Ancestral' AND name IN (SELECT name FROM modules WHERE terminal = 'Lyra' AND integrity = 0)"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Núcleo, Antena e Teclado Rúnico. Dá pra transplantar! Mas leva a noite toda.",
+   "en": "Core, Antenna and Rune Keys. We can transplant them! But it'll take all night."
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "Então eu não durmo hoje.",
+   "en": "Then I'm not sleeping tonight.",
+   "efeito": "luz"
+  }
+ ]
+}

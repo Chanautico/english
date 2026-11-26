@@ -1,0 +1,91 @@
+{
+ "id": 37,
+ "arco": 4,
+ "titulo": {
+  "pt": "Julgamento em Combate",
+  "en": "Trial by Combat"
+ },
+ "cenario": "bg_fortaleza_obsidian",
+ "dificuldade": "medio",
+ "conceitos": [
+  "CASE WHEN"
+ ],
+ "missao": {
+  "pt": "Classificar os inimigos em tempo real.",
+  "en": "Classify the enemies in real time."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Uma tropa mista bloqueia o salão.",
+   "en": "A mixed troop blocks the hall.",
+   "efeito": [
+    "tremor",
+    "impacto"
+   ]
+  },
+  {
+   "sprite": "dante_serio",
+   "pt": "Muitos inimigos! Precisamos saber quem é perigoso de verdade!",
+   "en": "Too many enemies! We need to know who's truly dangerous!"
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Cria uma coluna nova com o nível de ameaça de cada um. CASE WHEN!",
+   "en": "Create a new column with each one's threat level. CASE WHEN!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "CASE testa os WHEN em ordem e devolve o THEN do primeiro verdadeiro. ELSE cobre o resto.",
+   "en": "CASE checks each WHEN in order and returns the THEN of the first true one. ELSE covers the rest.",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT nome,\n  CASE\n    WHEN poder > 80 THEN 'Alta'\n    WHEN poder > 40 THEN 'Media'\n    ELSE 'Baixa'\n  END AS nivel_ameaca\nFROM inimigos;",
+     "en": "SELECT name,\n  CASE\n    WHEN power > 80 THEN 'High'\n    WHEN power > 40 THEN 'Medium'\n    ELSE 'Low'\n  END AS threat_level\nFROM enemies;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne o `nome` de cada inimigo e uma coluna `nivel_ameaca`: `'Alta'` se poder > 80, `'Media'` se poder > 40, senão `'Baixa'`.",
+    "en": "Return each enemy `name` and a column `threat_level`: `'High'` if power > 80, `'Medium'` if power > 40, otherwise `'Low'`."
+   },
+   "gabarito": {
+    "pt": "SELECT nome, CASE WHEN poder > 80 THEN 'Alta' WHEN poder > 40 THEN 'Media' ELSE 'Baixa' END AS nivel_ameaca FROM inimigos",
+    "en": "SELECT name, CASE WHEN power > 80 THEN 'High' WHEN power > 40 THEN 'Medium' ELSE 'Low' END AS threat_level FROM enemies"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "CASE WHEN ... THEN ... END AS nivel_ameaca",
+     "en": "CASE WHEN ... THEN ... END AS threat_level"
+    },
+    {
+     "pt": "Teste primeiro > 80, depois > 40.",
+     "en": "Check > 80 first, then > 40."
+    },
+    {
+     "pt": "SELECT nome, CASE WHEN poder > 80 THEN 'Alta' WHEN poder > 40 THEN 'Media' ELSE 'Baixa' END AS nivel_ameaca FROM inimigos",
+     "en": "SELECT name, CASE WHEN power > 80 THEN 'High' WHEN power > 40 THEN 'Medium' ELSE 'Low' END AS threat_level FROM enemies"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "lyra_seria",
+   "pt": "Cavaleiro Nulo e Gigante Rubro: ameaça alta. São meus.",
+   "en": "Null Knight and Crimson Giant: high threat. They're mine.",
+   "efeito": "impacto"
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Então eu fico com o Lobo e o Arqueiro!",
+   "en": "Then I'll take the Wolf and the Archer!"
+  }
+ ]
+}

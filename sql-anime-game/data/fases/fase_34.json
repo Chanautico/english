@@ -1,0 +1,88 @@
+{
+ "id": 34,
+ "arco": 4,
+ "titulo": {
+  "pt": "Os Traidores da Guilda",
+  "en": "The Guild Traitors"
+ },
+ "cenario": "bg_floresta_morta",
+ "dificuldade": "medio",
+ "conceitos": [
+  "IN"
+ ],
+ "missao": {
+  "pt": "Há espiões infiltrados no alto escalão.",
+  "en": "There are spies in the high command."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Um mensageiro ferido alcança o grupo.",
+   "en": "A wounded messenger reaches the group.",
+   "efeito": "veneno"
+  },
+  {
+   "sprite": "lyra_surpresa",
+   "pt": "Espiões no alto escalão? Quem?",
+   "en": "Spies in the high command? Who?"
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Os oficiais que aparecem na tabela de encontros secretos! A lista de ids vem de uma subconsulta!",
+   "en": "The officers who show up in the secret meetings table! The list of ids comes from a subquery!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "IN testa se o valor está numa lista. E a lista pode vir de outro SELECT!",
+   "en": "IN tests whether a value is in a list. And the list can come from another SELECT!",
+   "quadro": {
+    "codigo": {
+     "pt": "WHERE id IN (\n  SELECT oficial_id\n  FROM encontros_secretos\n)",
+     "en": "WHERE id IN (\n  SELECT officer_id\n  FROM secret_meetings\n)"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne `nome` e `patente` dos oficiais cujo `id` aparece em `encontros_secretos`.",
+    "en": "Return `name` and `rank` of the officers whose `id` appears in `secret_meetings`."
+   },
+   "gabarito": {
+    "pt": "SELECT nome, patente FROM oficiais WHERE id IN (SELECT oficial_id FROM encontros_secretos)",
+    "en": "SELECT name, rank FROM officers WHERE id IN (SELECT officer_id FROM secret_meetings)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Use IN com uma subconsulta.",
+     "en": "Use IN with a subquery."
+    },
+    {
+     "pt": "WHERE id IN (SELECT oficial_id FROM encontros_secretos)",
+     "en": "WHERE id IN (SELECT officer_id FROM secret_meetings)"
+    },
+    {
+     "pt": "SELECT nome, patente FROM oficiais WHERE id IN (SELECT oficial_id FROM encontros_secretos)",
+     "en": "SELECT name, rank FROM officers WHERE id IN (SELECT officer_id FROM secret_meetings)"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_focado",
+   "pt": "Brask, Orsk e Vela. Três traidores.",
+   "en": "Brask, Orsk and Vela. Three traitors.",
+   "efeito": "escuridao"
+  },
+  {
+   "sprite": "dante_serio",
+   "pt": "Vou mandar um falcão para a Capital. Eles precisam saber.",
+   "en": "I'll send a falcon to the Capital. They need to know."
+  }
+ ]
+}

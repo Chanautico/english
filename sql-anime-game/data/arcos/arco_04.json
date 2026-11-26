@@ -5,11 +5,1352 @@
   "en": "The Shadows of the Null-Void"
  },
  "descricao": {
-  "pt": "A Fortaleza de Obsidiana. Subqueries, IN, NOT IN, EXISTS, CASE WHEN e UNION.",
-  "en": "The Obsidian Fortress. Subqueries, IN, NOT IN, EXISTS, CASE WHEN and UNION."
+  "pt": "A marcha até a Fortaleza de Obsidiana. Subconsultas, IN, NOT IN, EXISTS, CASE WHEN, UNION e UNION ALL.",
+  "en": "The march to the Obsidian Fortress. Subqueries, IN, NOT IN, EXISTS, CASE WHEN, UNION and UNION ALL."
  },
  "capa": "bg_fortaleza_obsidian",
  "cor": "#6a2c80",
- "em_breve": true,
- "tabelas": []
+ "tabelas": [
+  {
+   "nome": {
+    "pt": "trilhas",
+    "en": "trails"
+   },
+   "descricao": {
+    "pt": "Trilhas até a Fortaleza.",
+    "en": "Trails to the Fortress."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "perigo",
+      "en": "danger"
+     },
+     "tipo": "INTEGER",
+     "nota": {
+      "pt": "0 a 100",
+      "en": "0 to 100"
+     }
+    },
+    {
+     "nome": {
+      "pt": "distancia",
+      "en": "distance"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Passo do Corvo",
+      "en": "Crow Pass"
+     },
+     80,
+     30
+    ],
+    [
+     2,
+     {
+      "pt": "Vale Cinza",
+      "en": "Grey Valley"
+     },
+     35,
+     50
+    ],
+    [
+     3,
+     {
+      "pt": "Rio Seco",
+      "en": "Dry River"
+     },
+     50,
+     40
+    ],
+    [
+     4,
+     {
+      "pt": "Ponte Velha",
+      "en": "Old Bridge"
+     },
+     90,
+     20
+    ],
+    [
+     5,
+     {
+      "pt": "Bosque Mudo",
+      "en": "Silent Grove"
+     },
+     25,
+     70
+    ],
+    [
+     6,
+     {
+      "pt": "Trilha da Lua",
+      "en": "Moon Trail"
+     },
+     40,
+     45
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "oficiais",
+    "en": "officers"
+   },
+   "descricao": {
+    "pt": "Alto escalão da Guilda.",
+    "en": "The Guild's high command."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "patente",
+      "en": "rank"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Holt",
+     {
+      "pt": "general",
+      "en": "general"
+     }
+    ],
+    [
+     2,
+     "Irina",
+     {
+      "pt": "capita",
+      "en": "captain"
+     }
+    ],
+    [
+     3,
+     "Brask",
+     {
+      "pt": "tenente",
+      "en": "lieutenant"
+     }
+    ],
+    [
+     4,
+     "Lune",
+     {
+      "pt": "capita",
+      "en": "captain"
+     }
+    ],
+    [
+     5,
+     "Orsk",
+     {
+      "pt": "major",
+      "en": "major"
+     }
+    ],
+    [
+     6,
+     "Vela",
+     {
+      "pt": "tenente",
+      "en": "lieutenant"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "encontros_secretos",
+    "en": "secret_meetings"
+   },
+   "descricao": {
+    "pt": "Encontros com a Null-Void. oficial_id → oficiais.id.",
+    "en": "Meetings with the Null-Void. officer_id → officers.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "oficial_id",
+      "en": "officer_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "local",
+      "en": "place"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     3,
+     {
+      "pt": "Floresta Morta",
+      "en": "Dead Forest"
+     }
+    ],
+    [
+     2,
+     5,
+     {
+      "pt": "Fortaleza",
+      "en": "Fortress"
+     }
+    ],
+    [
+     3,
+     3,
+     {
+      "pt": "Fortaleza",
+      "en": "Fortress"
+     }
+    ],
+    [
+     4,
+     6,
+     {
+      "pt": "Floresta Morta",
+      "en": "Dead Forest"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "guardas_presos",
+    "en": "jailed_guards"
+   },
+   "descricao": {
+    "pt": "Guardas presos acusados de traição.",
+    "en": "Guards jailed for treason."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Arno"
+    ],
+    [
+     2,
+     "Bela"
+    ],
+    [
+     3,
+     "Cid"
+    ],
+    [
+     4,
+     "Duna"
+    ],
+    [
+     5,
+     "Edo"
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "contatos_nullvoid",
+    "en": "nullvoid_contacts"
+   },
+   "descricao": {
+    "pt": "Contatos com a Null-Void. ATENÇÃO: tem um guarda_id NULL!",
+    "en": "Contacts with the Null-Void. WARNING: one guard_id is NULL!"
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "guarda_id",
+      "en": "guard_id"
+     },
+     "tipo": "INTEGER",
+     "nota": {
+      "pt": "pode ser NULL",
+      "en": "may be NULL"
+     }
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     null
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "portas",
+    "en": "doors"
+   },
+   "descricao": {
+    "pt": "Portas do labirinto de espelhos.",
+    "en": "Doors in the mirror maze."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "andar",
+      "en": "floor"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Porta de Ferro",
+      "en": "Iron Door"
+     },
+     1
+    ],
+    [
+     2,
+     {
+      "pt": "Porta Espelhada",
+      "en": "Mirror Door"
+     },
+     1
+    ],
+    [
+     3,
+     {
+      "pt": "Porta Rubra",
+      "en": "Crimson Door"
+     },
+     2
+    ],
+    [
+     4,
+     {
+      "pt": "Porta Falsa",
+      "en": "False Door"
+     },
+     2
+    ],
+    [
+     5,
+     {
+      "pt": "Porta do Trono",
+      "en": "Throne Door"
+     },
+     3
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "saidas",
+    "en": "exits"
+   },
+   "descricao": {
+    "pt": "Saídas físicas. porta_id → portas.id.",
+    "en": "Physical exits. door_id → doors.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "porta_id",
+      "en": "door_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "destino",
+      "en": "destination"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     1,
+     {
+      "pt": "Patio",
+      "en": "Courtyard"
+     }
+    ],
+    [
+     2,
+     3,
+     {
+      "pt": "Escadaria",
+      "en": "Stairway"
+     }
+    ],
+    [
+     3,
+     5,
+     {
+      "pt": "Salao do Trono",
+      "en": "Throne Hall"
+     }
+    ],
+    [
+     4,
+     1,
+     {
+      "pt": "Masmorra",
+      "en": "Dungeon"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "inimigos",
+    "en": "enemies"
+   },
+   "descricao": {
+    "pt": "Tropa inimiga no salão.",
+    "en": "Enemy troops in the hall."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "poder",
+      "en": "power"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Sombra Menor",
+      "en": "Lesser Shade"
+     },
+     30
+    ],
+    [
+     2,
+     {
+      "pt": "Cavaleiro Nulo",
+      "en": "Null Knight"
+     },
+     85
+    ],
+    [
+     3,
+     {
+      "pt": "Arqueiro Vazio",
+      "en": "Void Archer"
+     },
+     55
+    ],
+    [
+     4,
+     {
+      "pt": "Lobo de Obsidiana",
+      "en": "Obsidian Wolf"
+     },
+     70
+    ],
+    [
+     5,
+     {
+      "pt": "Espectro",
+      "en": "Specter"
+     },
+     20
+    ],
+    [
+     6,
+     {
+      "pt": "Gigante Rubro",
+      "en": "Crimson Giant"
+     },
+     95
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "guarda_norte",
+    "en": "north_guard"
+   },
+   "descricao": {
+    "pt": "Soldados da Guarda Norte.",
+    "en": "North Guard soldiers."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "posto",
+      "en": "post"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Arin",
+     {
+      "pt": "muralha",
+      "en": "wall"
+     }
+    ],
+    [
+     2,
+     "Bo",
+     {
+      "pt": "portao",
+      "en": "gate"
+     }
+    ],
+    [
+     3,
+     "Cael",
+     {
+      "pt": "torre",
+      "en": "tower"
+     }
+    ],
+    [
+     4,
+     "Dru",
+     {
+      "pt": "muralha",
+      "en": "wall"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "guarda_sul",
+    "en": "south_guard"
+   },
+   "descricao": {
+    "pt": "Soldados da Guarda Sul (alguns servem nas duas!).",
+    "en": "South Guard soldiers (some serve in both!)."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "posto",
+      "en": "post"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Bo",
+     {
+      "pt": "portao",
+      "en": "gate"
+     }
+    ],
+    [
+     2,
+     "Eli",
+     {
+      "pt": "torre",
+      "en": "tower"
+     }
+    ],
+    [
+     3,
+     "Fen",
+     {
+      "pt": "muralha",
+      "en": "wall"
+     }
+    ],
+    [
+     4,
+     "Cael",
+     {
+      "pt": "torre",
+      "en": "tower"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "salas",
+    "en": "rooms"
+   },
+   "descricao": {
+    "pt": "Salas onde o pai de Ren esteve preso.",
+    "en": "Rooms where Ren's father was held."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "setor",
+      "en": "sector"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Cela 7",
+      "en": "Cell 7"
+     },
+     "A"
+    ],
+    [
+     2,
+     {
+      "pt": "Laboratorio",
+      "en": "Laboratory"
+     },
+     "B"
+    ],
+    [
+     3,
+     {
+      "pt": "Arquivo Negro",
+      "en": "Black Archive"
+     },
+     "C"
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "leituras",
+    "en": "readings"
+   },
+   "descricao": {
+    "pt": "Leituras de energia de cada sala. sala_id → salas.id.",
+    "en": "Energy readings per room. room_id → rooms.id."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "sala_id",
+      "en": "room_id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "energia",
+      "en": "energy"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     1,
+     10
+    ],
+    [
+     2,
+     1,
+     12
+    ],
+    [
+     3,
+     1,
+     40
+    ],
+    [
+     4,
+     2,
+     50
+    ],
+    [
+     5,
+     2,
+     55
+    ],
+    [
+     6,
+     2,
+     90
+    ],
+    [
+     7,
+     3,
+     20
+    ],
+    [
+     8,
+     3,
+     22
+    ],
+    [
+     9,
+     3,
+     60
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "modulos",
+    "en": "modules"
+   },
+   "descricao": {
+    "pt": "Módulos dos terminais de Lyra e Ren.",
+    "en": "Modules of Lyra's and Ren's terminals."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "terminal",
+      "en": "terminal"
+     },
+     "tipo": "VARCHAR",
+     "nota": {
+      "pt": "'Lyra' ou 'Ancestral'",
+      "en": "'Lyra' or 'Ancestral'"
+     }
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "integridade",
+      "en": "integrity"
+     },
+     "tipo": "INTEGER",
+     "nota": {
+      "pt": "0 a 100",
+      "en": "0 to 100"
+     }
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Lyra",
+     {
+      "pt": "Nucleo",
+      "en": "Core"
+     },
+     0
+    ],
+    [
+     2,
+     "Lyra",
+     {
+      "pt": "Antena",
+      "en": "Antenna"
+     },
+     0
+    ],
+    [
+     3,
+     "Lyra",
+     {
+      "pt": "Visor",
+      "en": "Display"
+     },
+     60
+    ],
+    [
+     4,
+     "Lyra",
+     {
+      "pt": "Teclado Runico",
+      "en": "Rune Keys"
+     },
+     0
+    ],
+    [
+     5,
+     "Ancestral",
+     {
+      "pt": "Nucleo",
+      "en": "Core"
+     },
+     100
+    ],
+    [
+     6,
+     "Ancestral",
+     {
+      "pt": "Antena",
+      "en": "Antenna"
+     },
+     90
+    ],
+    [
+     7,
+     "Ancestral",
+     {
+      "pt": "Visor",
+      "en": "Display"
+     },
+     80
+    ],
+    [
+     8,
+     "Ancestral",
+     {
+      "pt": "Bateria",
+      "en": "Battery"
+     },
+     40
+    ],
+    [
+     9,
+     "Ancestral",
+     {
+      "pt": "Teclado Runico",
+      "en": "Rune Keys"
+     },
+     70
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "recursos_ren",
+    "en": "ren_resources"
+   },
+   "descricao": {
+    "pt": "Recursos de ataque do Terminal Ancestral.",
+    "en": "Attack resources of the Ancestral Terminal."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "item",
+      "en": "item"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "poder",
+      "en": "power"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Lamina de Dados",
+      "en": "Data Blade"
+     },
+     40
+    ],
+    [
+     2,
+     {
+      "pt": "Escudo de Indice",
+      "en": "Index Shield"
+     },
+     30
+    ],
+    [
+     3,
+     {
+      "pt": "Runa Pip",
+      "en": "Pip Rune"
+     },
+     30
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "recursos_lyra",
+    "en": "lyra_resources"
+   },
+   "descricao": {
+    "pt": "Recursos de ataque do terminal de Lyra.",
+    "en": "Attack resources of Lyra's terminal."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "item",
+      "en": "item"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "poder",
+      "en": "power"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Lanca Vance",
+      "en": "Vance Spear"
+     },
+     40
+    ],
+    [
+     2,
+     {
+      "pt": "Escudo de Indice",
+      "en": "Index Shield"
+     },
+     30
+    ],
+    [
+     3,
+     {
+      "pt": "Selo Real",
+      "en": "Royal Seal"
+     },
+     50
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "golpes_ren",
+    "en": "ren_strikes"
+   },
+   "descricao": {
+    "pt": "Golpes disponíveis contra o Guardião.",
+    "en": "Strikes available against the Guardian."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "golpe",
+      "en": "strike"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "elemento",
+      "en": "element"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "dano",
+      "en": "damage"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Corte Indexado",
+      "en": "Indexed Slash"
+     },
+     {
+      "pt": "luz",
+      "en": "light"
+     },
+     70
+    ],
+    [
+     2,
+     {
+      "pt": "Raio Join",
+      "en": "Join Bolt"
+     },
+     {
+      "pt": "raio",
+      "en": "lightning"
+     },
+     45
+    ],
+    [
+     3,
+     {
+      "pt": "Onda Null",
+      "en": "Null Wave"
+     },
+     {
+      "pt": "sombra",
+      "en": "shadow"
+     },
+     30
+    ],
+    [
+     4,
+     {
+      "pt": "Chama Group",
+      "en": "Group Flame"
+     },
+     {
+      "pt": "fogo",
+      "en": "fire"
+     },
+     85
+    ],
+    [
+     5,
+     {
+      "pt": "Eco Union",
+      "en": "Union Echo"
+     },
+     {
+      "pt": "som",
+      "en": "sound"
+     },
+     50
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "tecnicas_ren",
+    "en": "ren_techniques"
+   },
+   "descricao": {
+    "pt": "Técnicas atuais de Ren.",
+    "en": "Ren's current techniques."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "eficiencia",
+      "en": "efficiency"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Select Rapido",
+      "en": "Quick Select"
+     },
+     60
+    ],
+    [
+     2,
+     {
+      "pt": "Filtro Duplo",
+      "en": "Double Filter"
+     },
+     70
+    ],
+    [
+     3,
+     {
+      "pt": "Fusao Join",
+      "en": "Join Fusion"
+     },
+     85
+    ],
+    [
+     4,
+     {
+      "pt": "Agrupamento",
+      "en": "Grouping"
+     },
+     75
+    ],
+    [
+     5,
+     {
+      "pt": "Subconsulta Espelho",
+      "en": "Mirror Subquery"
+     },
+     95
+    ],
+    [
+     6,
+     {
+      "pt": "Case Relampago",
+      "en": "Lightning Case"
+     },
+     92
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "clone",
+    "en": "clone"
+   },
+   "descricao": {
+    "pt": "O que o Espelho Sombrio copiou de Ren (dados do passado).",
+    "en": "What the Shadow Mirror copied from Ren (past data)."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "eficiencia",
+      "en": "efficiency"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Select Rapido",
+      "en": "Quick Select"
+     },
+     60
+    ],
+    [
+     2,
+     {
+      "pt": "Filtro Duplo",
+      "en": "Double Filter"
+     },
+     65
+    ],
+    [
+     3,
+     {
+      "pt": "Fusao Join",
+      "en": "Join Fusion"
+     },
+     85
+    ],
+    [
+     4,
+     {
+      "pt": "Agrupamento",
+      "en": "Grouping"
+     },
+     70
+    ]
+   ]
+  }
+ ]
 }

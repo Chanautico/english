@@ -1,0 +1,93 @@
+{
+ "id": 33,
+ "arco": 4,
+ "titulo": {
+  "pt": "A Marcha para o Norte",
+  "en": "The March North"
+ },
+ "cenario": "bg_floresta_morta",
+ "dificuldade": "medio",
+ "conceitos": [
+  "SUBQUERY"
+ ],
+ "missao": {
+  "pt": "Achar as trilhas mais seguras que a média.",
+  "en": "Find the trails safer than average."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Promovidos a Arquitetos de Prata, Ren, Lyra e Dante partem para o norte.",
+   "en": "Promoted to Silver Architects, Ren, Lyra and Dante head north.",
+   "efeito": "flash"
+  },
+  {
+   "sprite": "dante_relaxado",
+   "pt": "Seis trilhas até a Fortaleza. Aposto que você escolhe a mais perigosa, garoto.",
+   "en": "Six trails to the Fortress. I bet you pick the most dangerous one, kid."
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "Vou escolher as que têm perigo MENOR que a média. Mas eu não sei a média de cabeça...",
+   "en": "I'll pick the ones with danger LOWER than average. But I don't know the average by heart..."
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "Não precisa! Pergunta pro banco DENTRO da sua pergunta!",
+   "en": "You don't need to! Ask the database INSIDE your question!",
+   "efeito": "cristais"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Uma subconsulta é uma consulta entre parênteses dentro de outra. Ela roda primeiro e vira um valor.",
+   "en": "A subquery is a query in parentheses inside another one. It runs first and becomes a value.",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT nome, perigo\nFROM trilhas\nWHERE perigo < (SELECT AVG(perigo) FROM trilhas);",
+     "en": "SELECT name, danger\nFROM trails\nWHERE danger < (SELECT AVG(danger) FROM trails);"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne `nome` e `perigo` das trilhas cujo perigo é **menor que a média** de perigo de todas as trilhas.",
+    "en": "Return `name` and `danger` of the trails whose danger is **below the average** danger of all trails."
+   },
+   "gabarito": {
+    "pt": "SELECT nome, perigo FROM trilhas WHERE perigo < (SELECT AVG(perigo) FROM trilhas)",
+    "en": "SELECT name, danger FROM trails WHERE danger < (SELECT AVG(danger) FROM trails)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "A média vem de uma subconsulta.",
+     "en": "The average comes from a subquery."
+    },
+    {
+     "pt": "WHERE perigo < (SELECT AVG(perigo) FROM trilhas)",
+     "en": "WHERE danger < (SELECT AVG(danger) FROM trails)"
+    },
+    {
+     "pt": "SELECT nome, perigo FROM trilhas WHERE perigo < (SELECT AVG(perigo) FROM trilhas)",
+     "en": "SELECT name, danger FROM trails WHERE danger < (SELECT AVG(danger) FROM trails)"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "lyra_seria",
+   "pt": "Quatro trilhas seguras. Pela Trilha da Lua, então.",
+   "en": "Four safe trails. Through Moon Trail, then."
+  },
+  {
+   "sprite": "dante_relaxado",
+   "pt": "Perdi a aposta. Odeio garotos espertos.",
+   "en": "Lost the bet. I hate clever kids."
+  }
+ ]
+}

@@ -1,0 +1,193 @@
+{
+ "id": 44,
+ "arco": 4,
+ "titulo": {
+  "pt": "CHEFE: O Espelho Sombrio",
+  "en": "BOSS: The Shadow Mirror"
+ },
+ "cenario": "bg_sala_espelhos",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "NOT IN",
+  "EXISTS",
+  "SUBQUERY"
+ ],
+ "missao": {
+  "pt": "O clone sombrio copiou todos os atributos de Ren.",
+  "en": "The shadow clone copied all of Ren's attributes."
+ },
+ "historia_antes": [
+  {
+   "sprite": "clone_sombrio",
+   "pt": "Eu sou você, Ren. Cada consulta que você já escreveu. Você não pode me vencer.",
+   "en": "I am you, Ren. Every query you ever wrote. You can't beat me.",
+   "efeito": [
+    "glitch",
+    "escuridao"
+   ],
+   "entra": [
+    "clone_sombrio"
+   ]
+  },
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Ele tem os meus golpes...!",
+   "en": "He has my moves...!"
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Ele copiou o seu PASSADO! Use o que você aprendeu DEPOIS: o que ele não sabe, onde você evoluiu, e o que vai além do máximo dele!",
+   "en": "He copied your PAST! Use what you learned AFTER: what he doesn't know, where you evolved, and what goes beyond his maximum!"
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Um Arquiteto evolui além dos dados passados!",
+   "en": "An Architect evolves beyond past data!",
+   "efeito": "flash"
+  }
+ ],
+ "aula": [],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "**Turno 1 — O que ele não sabe!** Retorne o `nome` das técnicas de Ren que **não estão** na tabela `clone`.",
+    "en": "**Turn 1 — What he doesn't know!** Return the `name` of Ren's techniques that are **not** in the `clone` table."
+   },
+   "gabarito": {
+    "pt": "SELECT nome FROM tecnicas_ren WHERE nome NOT IN (SELECT nome FROM clone)",
+    "en": "SELECT name FROM ren_techniques WHERE name NOT IN (SELECT name FROM clone)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "NOT IN com subconsulta.",
+     "en": "NOT IN with a subquery."
+    },
+    {
+     "pt": "WHERE nome NOT IN (SELECT nome FROM clone)",
+     "en": "WHERE name NOT IN (SELECT name FROM clone)"
+    },
+    {
+     "pt": "SELECT nome FROM tecnicas_ren WHERE nome NOT IN (SELECT nome FROM clone)",
+     "en": "SELECT name FROM ren_techniques WHERE name NOT IN (SELECT name FROM clone)"
+    }
+   ],
+   "conceitos": [
+    "NOT IN"
+   ]
+  },
+  {
+   "enunciado": {
+    "pt": "**Turno 2 — Onde eu evoluí!** Retorne o `nome` das técnicas de Ren para as quais **existe** uma cópia no clone com eficiência **menor** que a de Ren.",
+    "en": "**Turn 2 — Where I evolved!** Return the `name` of Ren's techniques for which **there is** a clone copy with **lower** efficiency than Ren's."
+   },
+   "gabarito": {
+    "pt": "SELECT t.nome FROM tecnicas_ren t WHERE EXISTS (SELECT 1 FROM clone c WHERE c.nome = t.nome AND c.eficiencia < t.eficiencia)",
+    "en": "SELECT t.name FROM ren_techniques t WHERE EXISTS (SELECT 1 FROM clone c WHERE c.name = t.name AND c.efficiency < t.efficiency)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "EXISTS correlacionado: compare a cópia com a técnica de fora.",
+     "en": "Correlated EXISTS: compare the copy with the outer technique."
+    },
+    {
+     "pt": "WHERE c.nome = t.nome AND c.eficiencia < t.eficiencia",
+     "en": "WHERE c.name = t.name AND c.efficiency < t.efficiency"
+    },
+    {
+     "pt": "SELECT t.nome FROM tecnicas_ren t WHERE EXISTS (SELECT 1 FROM clone c WHERE c.nome = t.nome AND c.eficiencia < t.eficiencia)",
+     "en": "SELECT t.name FROM ren_techniques t WHERE EXISTS (SELECT 1 FROM clone c WHERE c.name = t.name AND c.efficiency < t.efficiency)"
+    }
+   ],
+   "conceitos": [
+    "EXISTS"
+   ]
+  },
+  {
+   "enunciado": {
+    "pt": "**Turno 3 — Além do passado!** Retorne `nome` e `eficiencia` das técnicas de Ren com eficiência **maior que a maior** eficiência do clone.",
+    "en": "**Turn 3 — Beyond the past!** Return `name` and `efficiency` of Ren's techniques with efficiency **greater than the highest** efficiency of the clone."
+   },
+   "gabarito": {
+    "pt": "SELECT nome, eficiencia FROM tecnicas_ren WHERE eficiencia > (SELECT MAX(eficiencia) FROM clone)",
+    "en": "SELECT name, efficiency FROM ren_techniques WHERE efficiency > (SELECT MAX(efficiency) FROM clone)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Subconsulta com MAX.",
+     "en": "Subquery with MAX."
+    },
+    {
+     "pt": "WHERE eficiencia > (SELECT MAX(eficiencia) FROM clone)",
+     "en": "WHERE efficiency > (SELECT MAX(efficiency) FROM clone)"
+    },
+    {
+     "pt": "SELECT nome, eficiencia FROM tecnicas_ren WHERE eficiencia > (SELECT MAX(eficiencia) FROM clone)",
+     "en": "SELECT name, efficiency FROM ren_techniques WHERE efficiency > (SELECT MAX(efficiency) FROM clone)"
+    }
+   ],
+   "conceitos": [
+    "SUBQUERY",
+    "MAX"
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": null,
+   "pt": "O espelho racha. O reflexo se desfaz em cacos de dados.",
+   "en": "The mirror cracks. The reflection shatters into shards of data.",
+   "efeito": [
+    "impacto",
+    "cristais"
+   ],
+   "entra": [
+    "clone_sombrio"
+   ]
+  },
+  {
+   "sprite": "clone_sombrio",
+   "pt": "Então... é isso... evoluir...",
+   "en": "So... this is... evolving...",
+   "efeito": "glitch",
+   "sai": [
+    "clone"
+   ]
+  },
+  {
+   "sprite": "lyra_sorrindo",
+   "pt": "Você conseguiu, Ren!",
+   "en": "You did it, Ren!"
+  },
+  {
+   "sprite": "malform_calmo",
+   "pt": "Admirável. Agora venham à Capital ver o que resta dela.",
+   "en": "Admirable. Now come to the Capital and see what's left of it.",
+   "efeito": [
+    "escuridao",
+    "relampago"
+   ]
+  },
+  {
+   "sprite": "dante_serio",
+   "pt": "A Capital... Vamos! Agora!",
+   "en": "The Capital... Let's go! Now!"
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "FIM DO ARCO 4! Próximo: A Guerra da Restauração!",
+   "en": "END OF ARC 4! Next: The War of Restoration!",
+   "efeito": "cristais"
+  }
+ ],
+ "chefe": {
+  "nome": {
+   "pt": "Ren Sombrio",
+   "en": "Shadow Ren"
+  },
+  "sprite": "clone_sombrio",
+  "hp": 3
+ }
+}

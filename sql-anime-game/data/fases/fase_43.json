@@ -1,0 +1,104 @@
+{
+ "id": 43,
+ "arco": 4,
+ "titulo": {
+  "pt": "O Guardião do Trono",
+  "en": "The Throne Guardian"
+ },
+ "cenario": "bg_fortaleza_obsidian",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "CASE WHEN",
+  "SUBQUERY"
+ ],
+ "missao": {
+  "pt": "A armadura do Guardião muda de fraqueza a cada turno.",
+  "en": "The Guardian's armor changes weakness every turn."
+ },
+ "historia_antes": [
+  {
+   "sprite": "guardiao_bravo",
+   "pt": "Minha armadura se adapta. Seus golpes fracos não me arranham.",
+   "en": "My armor adapts. Your weak strikes won't scratch me."
+  },
+  {
+   "sprite": "dante_serio",
+   "pt": "Então use só os fortes! Classifica seus golpes contra a média, garoto!",
+   "en": "Then use only the strong ones! Rank your strikes against the average, kid!"
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "CASE + subconsulta: 'forte' se o dano passa da média, senão 'fraco'.",
+   "en": "CASE + subquery: 'strong' if the damage beats the average, otherwise 'weak'."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "A subconsulta pode morar dentro do CASE também!",
+   "en": "The subquery can live inside CASE too!",
+   "quadro": {
+    "codigo": {
+     "pt": "CASE WHEN dano > (SELECT AVG(dano) FROM golpes_ren)\n  THEN 'forte' ELSE 'fraco' END AS poder",
+     "en": "CASE WHEN damage > (SELECT AVG(damage) FROM ren_strikes)\n  THEN 'strong' ELSE 'weak' END AS power"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne cada `golpe` e uma coluna `poder`: `'forte'` se o dano for **maior que a média** de dano dos golpes, senão `'fraco'`.",
+    "en": "Return each `strike` and a column `power`: `'strong'` if its damage is **above the average** damage of all strikes, otherwise `'weak'`."
+   },
+   "gabarito": {
+    "pt": "SELECT golpe, CASE WHEN dano > (SELECT AVG(dano) FROM golpes_ren) THEN 'forte' ELSE 'fraco' END AS poder FROM golpes_ren",
+    "en": "SELECT strike, CASE WHEN damage > (SELECT AVG(damage) FROM ren_strikes) THEN 'strong' ELSE 'weak' END AS power FROM ren_strikes"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "A média vem de uma subconsulta dentro do CASE.",
+     "en": "The average comes from a subquery inside CASE."
+    },
+    {
+     "pt": "CASE WHEN dano > (SELECT AVG(dano) FROM golpes_ren) THEN ...",
+     "en": "CASE WHEN damage > (SELECT AVG(damage) FROM ren_strikes) THEN ..."
+    },
+    {
+     "pt": "SELECT golpe, CASE WHEN dano > (SELECT AVG(dano) FROM golpes_ren) THEN 'forte' ELSE 'fraco' END AS poder FROM golpes_ren",
+     "en": "SELECT strike, CASE WHEN damage > (SELECT AVG(damage) FROM ren_strikes) THEN 'strong' ELSE 'weak' END AS power FROM ren_strikes"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Corte Indexado e Chama Group! Os dois de uma vez!",
+   "en": "Indexed Slash and Group Flame! Both at once!",
+   "efeito": [
+    "corte",
+    "impacto"
+   ]
+  },
+  {
+   "sprite": "guardiao_bravo",
+   "pt": "Im...possível...",
+   "en": "Im...possible...",
+   "efeito": "glitch"
+  },
+  {
+   "sprite": null,
+   "pt": "No trono vazio, um espelho negro começa a brilhar. Dentro dele, um reflexo de Ren sorri.",
+   "en": "On the empty throne, a black mirror starts to glow. Inside it, a reflection of Ren smiles.",
+   "efeito": [
+    "escuridao",
+    "flash"
+   ],
+   "sai": [
+    "guardiao"
+   ]
+  }
+ ]
+}
