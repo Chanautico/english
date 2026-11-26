@@ -1,7 +1,8 @@
 # Sakura Query 🌸
 
 Jogo para PC, com tema de anime, que ensina **SQL de verdade**. Você entra no Clube de Dados da
-Academia Hoshizora e, com a Hana e a Rei, organiza o banco de dados do Festival Escolar.
+Academia Hoshizora e, com a **Midori** (cabelo verde, animada) e a **Sakura** (cabelo rosa, exigente),
+organiza o banco de dados do Festival Escolar.
 Cada questão roda uma consulta real num banco SQLite.
 
 - Interface em **Português (BR)** e **Inglês** (troca na tela inicial ou em Configurações). O SQL não é traduzido.
@@ -11,6 +12,9 @@ Cada questão roda uma consulta real num banco SQLite.
   3. Agregação: `COUNT`, `SUM`, `AVG`, `MIN`/`MAX`, `GROUP BY`, `HAVING`, `ROUND`
   4. JOINs: `INNER JOIN`, `LEFT JOIN`, anti-join, JOIN com agregação, vários JOINs
   5. Avançado: subconsultas, CTE (`WITH`), funções de janela (`RANK`, `ROW_NUMBER ... PARTITION BY`)
+- Layout próprio: tela título dividida na diagonal, **mapa de estações** com os módulos, aulas com
+  **foto polaroid + caderno**, e questões em formato de **chat** com a professora (dicas, erros e
+  reações aparecem como mensagens).
 - Modo **guiado** (arrastar ou tocar nas peças) nas primeiras questões e **editor** com destaque de sintaxe.
 - Executar (`Ctrl+Enter`) e Enviar (`Ctrl+Shift+Enter`), 3 dicas por questão, ver resposta, gemas, 10 conquistas.
 - **Laboratório livre** para escrever qualquer consulta no banco do festival.
@@ -18,7 +22,8 @@ Cada questão roda uma consulta real num banco SQLite.
 
 ![Tela inicial](docs/screenshot-title.png)
 ![Questão guiada](docs/screenshot-question.png)
-![Aula na lousa](docs/screenshot-lesson.png)
+![Aula no caderno](docs/screenshot-lesson.png)
+![Mapa de módulos](docs/screenshot-map.png)
 
 ## Rodar
 
@@ -56,7 +61,8 @@ Roda todas as respostas oficiais contra o banco e avisa se alguma quebrou.
 | `src/js/content.js` | **Todo o conteúdo**: módulos, aulas, falas, questões, dicas, respostas, conquistas |
 | `src/js/db.js` | Banco do festival (`students`, `clubs`, `stalls`, `sales`) e descrição do esquema |
 | `src/js/i18n.js` | Textos da interface em PT e EN |
-| `src/js/characters.js` | Hana e Rei desenhadas em SVG, com 7 expressões |
+| `src/js/characters.js` | Midori e Sakura: ilustrações, avatares e "emotes" de reação |
+| `src/assets/chars/` | Ilustrações das personagens (`.webp`) |
 | `src/js/game.js` | Telas, verificação das respostas, progresso, conquistas |
 | `src/js/audio.js` | Efeitos e música gerados pelo código |
 | `src/vendor/sql-asm.js` | SQLite compilado para JavaScript ([sql.js](https://github.com/sql-js/sql.js), MIT) |

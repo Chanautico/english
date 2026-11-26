@@ -11,38 +11,38 @@
   const MODULES = [
     // ───────────────────────────── MÓDULO 1 ─────────────────────────────
     {
-      id: 'm1', char: 'hana',
+      id: 'm1', char: 'midori',
       title: T('Fundamentos: SELECT', 'Foundations: SELECT'),
       desc: T('Escolher colunas, filtrar linhas, ordenar e limitar. A base de tudo.', 'Pick columns, filter rows, sort and limit. The base of everything.'),
       intro: [
         S(null, null, 'Academia Hoshizora. Uma semana antes do Festival Escolar.', 'Hoshizora Academy. One week before the School Festival.'),
-        S('hana', 'excited', 'Ah! Você é o aluno novo que se inscreveu no Clube de Dados?! Finalmente alguém!', "Ah! You're the new student who joined the Data Club?! Finally, someone!"),
-        S('hana', 'neutral', 'Eu sou a Hana, presidente do clube. Somos... bom, éramos só duas pessoas.', "I'm Hana, club president. We're... well, we were just two people."),
-        S('hana', 'sad', 'O diretor jogou TODO o banco de dados do festival no nosso colo. Barracas, vendas, clubes, alunos...', 'The principal dumped the ENTIRE festival database on us. Stalls, sales, clubs, students...'),
-        S('hana', 'happy', 'Mas tudo bem! Com SQL a gente conversa com o banco de dados. Eu te ensino. Vamos!', "But it's fine! With SQL we can talk to the database. I'll teach you. Let's go!"),
+        S('midori', 'excited', 'Ah! Você é o aluno novo que se inscreveu no Clube de Dados?! Finalmente alguém!', "Ah! You're the new student who joined the Data Club?! Finally, someone!"),
+        S('midori', 'neutral', 'Eu sou a Midori, presidente do clube. Somos... bom, éramos só duas pessoas.', "I'm Midori, club president. We're... well, we were just two people."),
+        S('midori', 'sad', 'O diretor jogou TODO o banco de dados do festival no nosso colo. Barracas, vendas, clubes, alunos...', 'The principal dumped the ENTIRE festival database on us. Stalls, sales, clubs, students...'),
+        S('midori', 'happy', 'Mas tudo bem! Com SQL a gente conversa com o banco de dados. Eu te ensino. Vamos!', "But it's fine! With SQL we can talk to the database. I'll teach you. Let's go!"),
       ],
       lesson: [
-        S('hana', 'happy', 'Aula um! Um banco de dados guarda informação em TABELAS. Cada tabela tem colunas e linhas.', 'Lesson one! A database stores information in TABLES. Each table has columns and rows.', title('Tabelas, colunas e linhas', 'Tables, columns and rows')),
-        S('hana', 'neutral', 'Olha a tabela students. Cada linha é um aluno. Cada coluna é uma informação sobre ele.', 'Look at the students table. Each row is a student. Each column is one fact about them.', { table: [['student_id', 'name', 'class'], ['1', 'Aoi Tanaka', '1-A'], ['2', 'Ren Sato', '1-A']] }),
-        S('hana', 'excited', 'Para pedir dados usamos SELECT. Você diz QUAIS colunas quer e DE qual tabela.', 'To ask for data we use SELECT. You say WHICH columns you want and FROM which table.', code('SELECT name, class\nFROM students;')),
-        S('hana', 'neutral', 'O asterisco * significa "todas as colunas". Prático, mas em trabalho de verdade peça só o que precisa.', 'The asterisk * means "all columns". Handy, but in real work ask only for what you need.', code('SELECT * FROM clubs;')),
-        S('hana', 'thinking', 'Agora o WHERE. Ele faz UMA pergunta para cada linha. Se a resposta for verdadeira, a linha fica.', 'Now WHERE. It asks every row ONE question. If the answer is true, the row stays.', code("SELECT name\nFROM students\nWHERE class = '2-A';")),
-        S('hana', 'neutral', 'Texto vai entre aspas simples. Números não. Comparações: =, <>, <, >, <=, >=.', 'Text goes in single quotes. Numbers do not. Comparisons: =, <>, <, >, <=, >=.', note("Texto: 'food'   Número: 6.5   Diferente: <>", "Text: 'food'   Number: 6.5   Not equal: <>")),
-        S('hana', 'happy', 'ORDER BY ordena o resultado. ASC é crescente (padrão), DESC é decrescente. LIMIT corta em N linhas.', 'ORDER BY sorts the result. ASC is ascending (default), DESC is descending. LIMIT cuts it to N rows.', code('SELECT name, price\nFROM stalls\nORDER BY price DESC\nLIMIT 3;')),
-        S('hana', 'neutral', 'E DISTINCT remove repetições. Ordem das partes: SELECT → FROM → WHERE → ORDER BY → LIMIT.', 'And DISTINCT removes duplicates. Order of the parts: SELECT → FROM → WHERE → ORDER BY → LIMIT.', code('SELECT DISTINCT category\nFROM stalls;')),
-        S('hana', 'excited', 'Pronto! Sem pressão: se travar, eu tenho dicas. Bora pra primeira questão!', "Done! No pressure: if you get stuck, I've got hints. On to the first question!"),
+        S('midori', 'happy', 'Aula um! Um banco de dados guarda informação em TABELAS. Cada tabela tem colunas e linhas.', 'Lesson one! A database stores information in TABLES. Each table has columns and rows.', title('Tabelas, colunas e linhas', 'Tables, columns and rows')),
+        S('midori', 'neutral', 'Olha a tabela students. Cada linha é um aluno. Cada coluna é uma informação sobre ele.', 'Look at the students table. Each row is a student. Each column is one fact about them.', { table: [['student_id', 'name', 'class'], ['1', 'Aoi Tanaka', '1-A'], ['2', 'Ren Sato', '1-A']] }),
+        S('midori', 'excited', 'Para pedir dados usamos SELECT. Você diz QUAIS colunas quer e DE qual tabela.', 'To ask for data we use SELECT. You say WHICH columns you want and FROM which table.', code('SELECT name, class\nFROM students;')),
+        S('midori', 'neutral', 'O asterisco * significa "todas as colunas". Prático, mas em trabalho de verdade peça só o que precisa.', 'The asterisk * means "all columns". Handy, but in real work ask only for what you need.', code('SELECT * FROM clubs;')),
+        S('midori', 'thinking', 'Agora o WHERE. Ele faz UMA pergunta para cada linha. Se a resposta for verdadeira, a linha fica.', 'Now WHERE. It asks every row ONE question. If the answer is true, the row stays.', code("SELECT name\nFROM students\nWHERE class = '2-A';")),
+        S('midori', 'neutral', 'Texto vai entre aspas simples. Números não. Comparações: =, <>, <, >, <=, >=.', 'Text goes in single quotes. Numbers do not. Comparisons: =, <>, <, >, <=, >=.', note("Texto: 'food'   Número: 6.5   Diferente: <>", "Text: 'food'   Number: 6.5   Not equal: <>")),
+        S('midori', 'happy', 'ORDER BY ordena o resultado. ASC é crescente (padrão), DESC é decrescente. LIMIT corta em N linhas.', 'ORDER BY sorts the result. ASC is ascending (default), DESC is descending. LIMIT cuts it to N rows.', code('SELECT name, price\nFROM stalls\nORDER BY price DESC\nLIMIT 3;')),
+        S('midori', 'neutral', 'E DISTINCT remove repetições. Ordem das partes: SELECT → FROM → WHERE → ORDER BY → LIMIT.', 'And DISTINCT removes duplicates. Order of the parts: SELECT → FROM → WHERE → ORDER BY → LIMIT.', code('SELECT DISTINCT category\nFROM stalls;')),
+        S('midori', 'excited', 'Pronto! Sem pressão: se travar, eu tenho dicas. Bora pra primeira questão!', "Done! No pressure: if you get stuck, I've got hints. On to the first question!"),
       ],
       outro: [
-        S('hana', 'excited', 'Você passou pelo primeiro chefe! Viu? SQL nem é tão assustador.', 'You beat the first boss! See? SQL is not that scary.'),
-        S('hana', 'neutral', 'Mas os dados do festival estão uma bagunça... tem aluno sem e-mail, barraca sem clube...', "But the festival data is a mess... students without emails, stalls without clubs..."),
-        S('hana', 'happy', 'Próximo módulo: filtros mais espertos. AND, OR, IN, LIKE, NULL e CASE!', 'Next module: smarter filters. AND, OR, IN, LIKE, NULL and CASE!'),
+        S('midori', 'excited', 'Você passou pelo primeiro chefe! Viu? SQL nem é tão assustador.', 'You beat the first boss! See? SQL is not that scary.'),
+        S('midori', 'neutral', 'Mas os dados do festival estão uma bagunça... tem aluno sem e-mail, barraca sem clube...', "But the festival data is a mess... students without emails, stalls without clubs..."),
+        S('midori', 'happy', 'Próximo módulo: filtros mais espertos. AND, OR, IN, LIKE, NULL e CASE!', 'Next module: smarter filters. AND, OR, IN, LIKE, NULL and CASE!'),
       ],
       challenges: [
         {
           id: 'm1q1', diff: 'easy', kw: ['SELECT', 'FROM'],
           title: T('Lista de chamada', 'Roll call'),
           note: T('Todo festival começa sabendo quem está na escola.', 'Every festival starts by knowing who is in the school.'),
-          text: T('A Hana precisa de uma lista de chamada. Retorne **todas as linhas** de `students` com as colunas `name`, `class` e `year`.', 'Hana needs a roll call. Return **all rows** from `students` with the columns `name`, `class` and `year`.'),
+          text: T('A Midori precisa de uma lista de chamada. Retorne **todas as linhas** de `students` com as colunas `name`, `class` e `year`.', 'Midori needs a roll call. Return **all rows** from `students` with the columns `name`, `class` and `year`.'),
           guided: { template: 'SELECT [], [], []\nFROM students', pieces: ['class', 'email', 'name', 'student_id', 'year'] },
           hints: [T('SELECT escolhe as colunas, FROM diz a tabela.', 'SELECT picks the columns, FROM names the table.'), T('Você precisa de exatamente 3 colunas: name, class e year.', 'You need exactly 3 columns: name, class and year.'), T('SELECT name, class, year FROM students', 'SELECT name, class, year FROM students')],
           solution: 'SELECT name, class, year FROM students',
@@ -118,27 +118,27 @@
 
     // ───────────────────────────── MÓDULO 2 ─────────────────────────────
     {
-      id: 'm2', char: 'hana',
+      id: 'm2', char: 'midori',
       title: T('Filtros e lógica', 'Filters and logic'),
       desc: T('AND, OR, IN, BETWEEN, LIKE, NULL, apelidos e CASE.', 'AND, OR, IN, BETWEEN, LIKE, NULL, aliases and CASE.'),
       intro: [
-        S('hana', 'angry', 'Olha isso! Aluno sem e-mail, aluno sem clube... Quem cadastrou esses dados?!', 'Look at this! Students without email, students without a club... Who entered this data?!'),
-        S('hana', 'neutral', 'Dados reais são sempre bagunçados. Por isso precisamos de filtros melhores.', 'Real data is always messy. That is why we need better filters.'),
+        S('midori', 'angry', 'Olha isso! Aluno sem e-mail, aluno sem clube... Quem cadastrou esses dados?!', 'Look at this! Students without email, students without a club... Who entered this data?!'),
+        S('midori', 'neutral', 'Dados reais são sempre bagunçados. Por isso precisamos de filtros melhores.', 'Real data is always messy. That is why we need better filters.'),
       ],
       lesson: [
-        S('hana', 'neutral', 'AND exige que as duas condições sejam verdadeiras. OR aceita qualquer uma.', 'AND needs both conditions to be true. OR accepts either one.', code('WHERE year = 1 AND club_id = 3\nWHERE year = 1 OR  year = 2')),
-        S('hana', 'thinking', 'Cuidado: AND é avaliado antes de OR. Na dúvida, use parênteses!', 'Careful: AND is evaluated before OR. When in doubt, use parentheses!', code("WHERE (category = 'food' OR category = 'show')\n  AND price < 8")),
-        S('hana', 'happy', 'IN é um atalho para vários OR. BETWEEN pega um intervalo, incluindo as pontas.', 'IN is a shortcut for many ORs. BETWEEN takes a range, ends included.', code("WHERE category IN ('show', 'art')\nWHERE total BETWEEN 10 AND 20")),
-        S('hana', 'neutral', "LIKE procura padrões em texto. % = qualquer coisa, _ = um caractere.", 'LIKE matches text patterns. % = anything, _ = one character.', code("WHERE name LIKE 'S%'   -- começa com S / starts with S\nWHERE name LIKE '%a'   -- termina com a / ends with a")),
-        S('hana', 'surprised', 'Agora o mais traiçoeiro: NULL. NULL significa "não sei". E "não sei = não sei" não é verdadeiro!', "Now the trickiest one: NULL. NULL means \"unknown\". And \"unknown = unknown\" is not true!", code('WHERE email = NULL    -- ✗ nunca funciona / never works\nWHERE email IS NULL   -- ✓\nWHERE email IS NOT NULL')),
-        S('hana', 'happy', 'AS dá um apelido para uma coluna. E dá pra fazer contas direto no SELECT!', 'AS gives a column a nickname. And you can do math right in SELECT!', code('SELECT name, price * 0.9 AS discounted\nFROM stalls;')),
-        S('hana', 'excited', 'Por fim, CASE: um "se... então..." dentro da consulta. Ele cria rótulos para cada linha.', 'Finally CASE: an "if... then..." inside the query. It creates labels for each row.', code("SELECT name,\n  CASE\n    WHEN price < 5 THEN 'cheap'\n    ELSE 'normal'\n  END AS level\nFROM stalls;")),
-        S('hana', 'neutral', 'O CASE testa os WHEN em ordem e para no primeiro verdadeiro. Sem ELSE, o resto vira NULL.', 'CASE checks the WHENs in order and stops at the first true one. Without ELSE, the rest become NULL.'),
+        S('midori', 'neutral', 'AND exige que as duas condições sejam verdadeiras. OR aceita qualquer uma.', 'AND needs both conditions to be true. OR accepts either one.', code('WHERE year = 1 AND club_id = 3\nWHERE year = 1 OR  year = 2')),
+        S('midori', 'thinking', 'Cuidado: AND é avaliado antes de OR. Na dúvida, use parênteses!', 'Careful: AND is evaluated before OR. When in doubt, use parentheses!', code("WHERE (category = 'food' OR category = 'show')\n  AND price < 8")),
+        S('midori', 'happy', 'IN é um atalho para vários OR. BETWEEN pega um intervalo, incluindo as pontas.', 'IN is a shortcut for many ORs. BETWEEN takes a range, ends included.', code("WHERE category IN ('show', 'art')\nWHERE total BETWEEN 10 AND 20")),
+        S('midori', 'neutral', "LIKE procura padrões em texto. % = qualquer coisa, _ = um caractere.", 'LIKE matches text patterns. % = anything, _ = one character.', code("WHERE name LIKE 'S%'   -- começa com S / starts with S\nWHERE name LIKE '%a'   -- termina com a / ends with a")),
+        S('midori', 'surprised', 'Agora o mais traiçoeiro: NULL. NULL significa "não sei". E "não sei = não sei" não é verdadeiro!', "Now the trickiest one: NULL. NULL means \"unknown\". And \"unknown = unknown\" is not true!", code('WHERE email = NULL    -- ✗ nunca funciona / never works\nWHERE email IS NULL   -- ✓\nWHERE email IS NOT NULL')),
+        S('midori', 'happy', 'AS dá um apelido para uma coluna. E dá pra fazer contas direto no SELECT!', 'AS gives a column a nickname. And you can do math right in SELECT!', code('SELECT name, price * 0.9 AS discounted\nFROM stalls;')),
+        S('midori', 'excited', 'Por fim, CASE: um "se... então..." dentro da consulta. Ele cria rótulos para cada linha.', 'Finally CASE: an "if... then..." inside the query. It creates labels for each row.', code("SELECT name,\n  CASE\n    WHEN price < 5 THEN 'cheap'\n    ELSE 'normal'\n  END AS level\nFROM stalls;")),
+        S('midori', 'neutral', 'O CASE testa os WHEN em ordem e para no primeiro verdadeiro. Sem ELSE, o resto vira NULL.', 'CASE checks the WHENs in order and stops at the first true one. Without ELSE, the rest become NULL.'),
       ],
       outro: [
-        S('hana', 'excited', 'Os dados bagunçados não têm mais onde se esconder!', 'The messy data has nowhere left to hide!'),
-        S('hana', 'neutral', 'Ah, a partir de agora quem te ensina é a Rei, nossa vice. Ela é... um pouco séria.', "Oh, from now on Rei, our vice-president, will teach you. She's... a bit serious."),
-        S('rei', 'neutral', '...Então você é o novato. Hmph. A Hana disse que você aprende rápido. Vamos ver.', '...So you are the newbie. Hmph. Hana said you learn fast. We will see.'),
+        S('midori', 'excited', 'Os dados bagunçados não têm mais onde se esconder!', 'The messy data has nowhere left to hide!'),
+        S('midori', 'neutral', 'Ah, a partir de agora quem te ensina é a Sakura, nossa vice. Ela é... um pouco séria.', "Oh, from now on Sakura, our vice-president, will teach you. She's... a bit serious."),
+        S('sakura', 'neutral', '...Então você é o novato. Hmph. A Midori disse que você aprende rápido. Vamos ver.', '...So you are the newbie. Hmph. Midori said you learn fast. We will see.'),
       ],
       challenges: [
         {
@@ -175,7 +175,7 @@
           text: T('Retorne o `name` dos alunos cujo nome **começa com S**.', 'Return the `name` of students whose name **starts with S**.'),
           hints: [T('Use LIKE com um padrão.', 'Use LIKE with a pattern.'), T("% significa 'qualquer coisa depois'.", "% means 'anything after'."), T("SELECT name FROM students WHERE name LIKE 'S%'", "SELECT name FROM students WHERE name LIKE 'S%'")],
           solution: "SELECT name FROM students WHERE name LIKE 'S%'",
-          react: T('Sora, Sakura, Sota, Shota... parabéns aos sorteados!', 'Sora, Sakura, Sota, Shota... congrats to the winners!'),
+          react: T('Sora, Saki, Sota, Shota... parabéns aos sorteados!', 'Sora, Saki, Sota, Shota... congrats to the winners!'),
         },
         {
           id: 'm2q5', diff: 'medium', kw: ['IS NULL'],
@@ -218,27 +218,27 @@
 
     // ───────────────────────────── MÓDULO 3 ─────────────────────────────
     {
-      id: 'm3', char: 'rei',
+      id: 'm3', char: 'sakura',
       title: T('Agregação: GROUP BY', 'Aggregation: GROUP BY'),
       desc: T('COUNT, SUM, AVG, MIN, MAX, GROUP BY e HAVING. Transformar linhas em respostas.', 'COUNT, SUM, AVG, MIN, MAX, GROUP BY and HAVING. Turn rows into answers.'),
       intro: [
-        S(null, null, 'Biblioteca da escola. Silêncio absoluto.', 'The school library. Total silence.'),
-        S('rei', 'neutral', 'O festival acabou. Agora o diretor quer números: quanto vendemos, quem vendeu mais.', 'The festival is over. Now the principal wants numbers: how much we sold, who sold most.'),
-        S('rei', 'thinking', 'Ler noventa linhas uma por uma é coisa de amador. Vamos resumir.', 'Reading ninety rows one by one is amateur work. We summarize.'),
+        S(null, null, 'O festival acabou. Uma tarde de outono perto da escola.', 'The festival is over. An autumn afternoon near the school.'),
+        S('sakura', 'neutral', 'O festival acabou. Agora o diretor quer números: quanto vendemos, quem vendeu mais.', 'The festival is over. Now the principal wants numbers: how much we sold, who sold most.'),
+        S('sakura', 'thinking', 'Ler noventa linhas uma por uma é coisa de amador. Vamos resumir.', 'Reading ninety rows one by one is amateur work. We summarize.'),
       ],
       lesson: [
-        S('rei', 'neutral', 'Funções de agregação pegam MUITAS linhas e devolvem UM valor.', 'Aggregate functions take MANY rows and return ONE value.', title('Agregação', 'Aggregation')),
-        S('rei', 'neutral', 'COUNT conta, SUM soma, AVG tira a média, MIN e MAX acham os extremos.', 'COUNT counts, SUM adds, AVG averages, MIN and MAX find the extremes.', code('SELECT COUNT(*), SUM(total), AVG(total)\nFROM sales;')),
-        S('rei', 'thinking', 'Detalhe importante: COUNT(*) conta linhas. COUNT(coluna) ignora os NULL dessa coluna.', 'Important detail: COUNT(*) counts rows. COUNT(column) skips NULLs in that column.', code('COUNT(*)          -- todas as linhas / every row\nCOUNT(student_id) -- só onde não é NULL / non-NULL only')),
-        S('rei', 'neutral', 'GROUP BY divide as linhas em grupos e calcula a agregação para CADA grupo.', 'GROUP BY splits rows into groups and computes the aggregate for EACH group.', code('SELECT class, COUNT(*)\nFROM students\nGROUP BY class;')),
-        S('rei', 'angry', 'Regra de ouro: toda coluna no SELECT que não está numa agregação deve estar no GROUP BY. Não me faça repetir.', 'Golden rule: every column in SELECT that is not aggregated must be in GROUP BY. Do not make me repeat it.'),
-        S('rei', 'neutral', 'WHERE filtra linhas ANTES de agrupar. HAVING filtra grupos DEPOIS de agrupar.', 'WHERE filters rows BEFORE grouping. HAVING filters groups AFTER grouping.', code('SELECT stall_id, COUNT(*)\nFROM sales\nGROUP BY stall_id\nHAVING COUNT(*) > 8;')),
-        S('rei', 'neutral', 'E ROUND(valor, 2) arredonda para 2 casas. Médias costumam ser feias.', 'And ROUND(value, 2) rounds to 2 decimals. Averages tend to be ugly.', code('SELECT ROUND(AVG(price), 2) FROM stalls;')),
-        S('rei', 'happy', '...Você está prestando atenção. Bom. Comece.', '...You are paying attention. Good. Begin.'),
+        S('sakura', 'neutral', 'Funções de agregação pegam MUITAS linhas e devolvem UM valor.', 'Aggregate functions take MANY rows and return ONE value.', title('Agregação', 'Aggregation')),
+        S('sakura', 'neutral', 'COUNT conta, SUM soma, AVG tira a média, MIN e MAX acham os extremos.', 'COUNT counts, SUM adds, AVG averages, MIN and MAX find the extremes.', code('SELECT COUNT(*), SUM(total), AVG(total)\nFROM sales;')),
+        S('sakura', 'thinking', 'Detalhe importante: COUNT(*) conta linhas. COUNT(coluna) ignora os NULL dessa coluna.', 'Important detail: COUNT(*) counts rows. COUNT(column) skips NULLs in that column.', code('COUNT(*)          -- todas as linhas / every row\nCOUNT(student_id) -- só onde não é NULL / non-NULL only')),
+        S('sakura', 'neutral', 'GROUP BY divide as linhas em grupos e calcula a agregação para CADA grupo.', 'GROUP BY splits rows into groups and computes the aggregate for EACH group.', code('SELECT class, COUNT(*)\nFROM students\nGROUP BY class;')),
+        S('sakura', 'angry', 'Regra de ouro: toda coluna no SELECT que não está numa agregação deve estar no GROUP BY. Não me faça repetir.', 'Golden rule: every column in SELECT that is not aggregated must be in GROUP BY. Do not make me repeat it.'),
+        S('sakura', 'neutral', 'WHERE filtra linhas ANTES de agrupar. HAVING filtra grupos DEPOIS de agrupar.', 'WHERE filters rows BEFORE grouping. HAVING filters groups AFTER grouping.', code('SELECT stall_id, COUNT(*)\nFROM sales\nGROUP BY stall_id\nHAVING COUNT(*) > 8;')),
+        S('sakura', 'neutral', 'E ROUND(valor, 2) arredonda para 2 casas. Médias costumam ser feias.', 'And ROUND(value, 2) rounds to 2 decimals. Averages tend to be ugly.', code('SELECT ROUND(AVG(price), 2) FROM stalls;')),
+        S('sakura', 'happy', '...Você está prestando atenção. Bom. Comece.', '...You are paying attention. Good. Begin.'),
       ],
       outro: [
-        S('rei', 'surprised', '...Você resolveu o chefe sem pedir a resposta? Hm.', '...You solved the boss without asking for the answer? Hm.'),
-        S('rei', 'happy', 'Não estou impressionada. Só... um pouco. Próximo: JOIN. Ligar tabelas é onde o SQL fica sério.', 'I am not impressed. Just... slightly. Next: JOIN. Linking tables is where SQL gets serious.'),
+        S('sakura', 'surprised', '...Você resolveu o chefe sem pedir a resposta? Hm.', '...You solved the boss without asking for the answer? Hm.'),
+        S('sakura', 'happy', 'Não estou impressionada. Só... um pouco. Próximo: JOIN. Ligar tabelas é onde o SQL fica sério.', 'I am not impressed. Just... slightly. Next: JOIN. Linking tables is where SQL gets serious.'),
       ],
       challenges: [
         {
@@ -318,26 +318,26 @@
 
     // ───────────────────────────── MÓDULO 4 ─────────────────────────────
     {
-      id: 'm4', char: 'rei',
+      id: 'm4', char: 'sakura',
       title: T('JOINs: ligando tabelas', 'JOINs: linking tables'),
       desc: T('INNER JOIN, LEFT JOIN, anti-join e JOIN com agregação.', 'INNER JOIN, LEFT JOIN, anti-join and JOIN with aggregation.'),
       intro: [
-        S('rei', 'neutral', '"stall_id 2" não diz nada ao diretor. Ele quer NOMES.', '"stall_id 2" means nothing to the principal. He wants NAMES.'),
-        S('rei', 'thinking', 'Os nomes estão em outra tabela. Então vamos juntar as tabelas.', 'The names are in another table. So we join the tables.'),
+        S('sakura', 'neutral', '"stall_id 2" não diz nada ao diretor. Ele quer NOMES.', '"stall_id 2" means nothing to the principal. He wants NAMES.'),
+        S('sakura', 'thinking', 'Os nomes estão em outra tabela. Então vamos juntar as tabelas.', 'The names are in another table. So we join the tables.'),
       ],
       lesson: [
-        S('rei', 'neutral', 'Tabelas se ligam por chaves. sales.stall_id aponta para stalls.stall_id.', 'Tables link through keys. sales.stall_id points to stalls.stall_id.', title('Chaves e JOIN', 'Keys and JOIN')),
-        S('rei', 'neutral', 'JOIN ... ON diz como combinar as linhas. Apelidos curtos (s, c) deixam tudo legível.', 'JOIN ... ON says how to match rows. Short aliases (s, c) keep it readable.', code('SELECT s.name, c.name\nFROM students s\nJOIN clubs c ON s.club_id = c.club_id;')),
-        S('rei', 'thinking', 'JOIN (ou INNER JOIN) só mantém linhas que encontram par dos dois lados. Aluno sem clube some.', 'JOIN (or INNER JOIN) keeps only rows that match on both sides. A student without a club disappears.'),
-        S('rei', 'neutral', 'LEFT JOIN mantém TODAS as linhas da tabela da esquerda. Sem par, as colunas da direita viram NULL.', 'LEFT JOIN keeps ALL rows from the left table. With no match, right-side columns become NULL.', code('SELECT st.name, c.name\nFROM stalls st\nLEFT JOIN clubs c ON st.club_id = c.club_id;')),
-        S('rei', 'happy', 'Truque clássico, o anti-join: LEFT JOIN + WHERE direita IS NULL = "quem não tem par".', 'Classic trick, the anti-join: LEFT JOIN + WHERE right IS NULL = "who has no match".', code('SELECT st.name\nFROM stalls st\nLEFT JOIN sales sa ON sa.stall_id = st.stall_id\nWHERE sa.sale_id IS NULL;')),
-        S('rei', 'neutral', 'JOIN combina com GROUP BY. E dá para encadear vários JOINs.', 'JOIN works with GROUP BY. And you can chain several JOINs.', code('FROM sales sa\nJOIN stalls st ON sa.stall_id = st.stall_id\nJOIN clubs  c  ON st.club_id  = c.club_id')),
-        S('rei', 'angry', 'Se o resultado tiver linhas demais, você esqueceu uma condição no ON. Sempre confira.', 'If the result has too many rows, you forgot a condition in ON. Always check.'),
+        S('sakura', 'neutral', 'Tabelas se ligam por chaves. sales.stall_id aponta para stalls.stall_id.', 'Tables link through keys. sales.stall_id points to stalls.stall_id.', title('Chaves e JOIN', 'Keys and JOIN')),
+        S('sakura', 'neutral', 'JOIN ... ON diz como combinar as linhas. Apelidos curtos (s, c) deixam tudo legível.', 'JOIN ... ON says how to match rows. Short aliases (s, c) keep it readable.', code('SELECT s.name, c.name\nFROM students s\nJOIN clubs c ON s.club_id = c.club_id;')),
+        S('sakura', 'thinking', 'JOIN (ou INNER JOIN) só mantém linhas que encontram par dos dois lados. Aluno sem clube some.', 'JOIN (or INNER JOIN) keeps only rows that match on both sides. A student without a club disappears.'),
+        S('sakura', 'neutral', 'LEFT JOIN mantém TODAS as linhas da tabela da esquerda. Sem par, as colunas da direita viram NULL.', 'LEFT JOIN keeps ALL rows from the left table. With no match, right-side columns become NULL.', code('SELECT st.name, c.name\nFROM stalls st\nLEFT JOIN clubs c ON st.club_id = c.club_id;')),
+        S('sakura', 'happy', 'Truque clássico, o anti-join: LEFT JOIN + WHERE direita IS NULL = "quem não tem par".', 'Classic trick, the anti-join: LEFT JOIN + WHERE right IS NULL = "who has no match".', code('SELECT st.name\nFROM stalls st\nLEFT JOIN sales sa ON sa.stall_id = st.stall_id\nWHERE sa.sale_id IS NULL;')),
+        S('sakura', 'neutral', 'JOIN combina com GROUP BY. E dá para encadear vários JOINs.', 'JOIN works with GROUP BY. And you can chain several JOINs.', code('FROM sales sa\nJOIN stalls st ON sa.stall_id = st.stall_id\nJOIN clubs  c  ON st.club_id  = c.club_id')),
+        S('sakura', 'angry', 'Se o resultado tiver linhas demais, você esqueceu uma condição no ON. Sempre confira.', 'If the result has too many rows, you forgot a condition in ON. Always check.'),
       ],
       outro: [
-        S('rei', 'happy', 'JOINs dominados. Você está ficando... aceitável.', 'JOINs mastered. You are becoming... acceptable.'),
-        S('hana', 'excited', 'Aceitável?! Na língua da Rei isso é praticamente um abraço!', 'Acceptable?! In Rei language, that is basically a hug!'),
-        S('rei', 'angry', 'Hana. Silêncio. ...Último módulo. Vamos juntas.', 'Hana. Quiet. ...Final module. We do it together.'),
+        S('sakura', 'happy', 'JOINs dominados. Você está ficando... aceitável.', 'JOINs mastered. You are becoming... acceptable.'),
+        S('midori', 'excited', 'Aceitável?! Na língua da Sakura isso é praticamente um abraço!', 'Acceptable?! In Sakura language, that is basically a hug!'),
+        S('sakura', 'angry', 'Midori. Silêncio. ...Último módulo. Vamos juntas.', 'Midori. Quiet. ...Final module. We do it together.'),
       ],
       challenges: [
         {
@@ -402,7 +402,7 @@
           text: T('Retorne o nome de cada clube e o faturamento total das barracas dele (sales → stalls → clubs), do maior para o menor.', 'Return each club name and the total revenue of its stalls (sales → stalls → clubs), highest first.'),
           hints: [T('Dois JOINs encadeados.', 'Two chained JOINs.'), T('sales sa JOIN stalls st ON ... JOIN clubs c ON st.club_id = c.club_id', 'sales sa JOIN stalls st ON ... JOIN clubs c ON st.club_id = c.club_id'), T('SELECT c.name, SUM(sa.total) FROM sales sa JOIN stalls st ON sa.stall_id = st.stall_id JOIN clubs c ON st.club_id = c.club_id GROUP BY c.name ORDER BY SUM(sa.total) DESC', 'SELECT c.name, SUM(sa.total) FROM sales sa JOIN stalls st ON sa.stall_id = st.stall_id JOIN clubs c ON st.club_id = c.club_id GROUP BY c.name ORDER BY SUM(sa.total) DESC')],
           solution: 'SELECT c.name, SUM(sa.total) FROM sales sa JOIN stalls st ON sa.stall_id = st.stall_id JOIN clubs c ON st.club_id = c.club_id GROUP BY c.name ORDER BY SUM(sa.total) DESC',
-          react: T('Clube de Culinária vence. A Hana vai chorar de alegria.', 'Cooking Club wins. Hana will cry tears of joy.'),
+          react: T('Clube de Culinária vence. A Midori vai chorar de alegria.', 'Cooking Club wins. Midori will cry tears of joy.'),
         },
         {
           id: 'm4boss', diff: 'hard', kw: ['JOIN', 'COUNT(DISTINCT)', 'GROUP BY'], ordered: true, boss: true,
@@ -418,26 +418,26 @@
 
     // ───────────────────────────── MÓDULO 5 ─────────────────────────────
     {
-      id: 'm5', char: 'hana',
+      id: 'm5', char: 'midori', time: 'night',
       title: T('Técnicas avançadas', 'Advanced techniques'),
       desc: T('Subconsultas, CTEs (WITH) e funções de janela. O nível profissional.', 'Subqueries, CTEs (WITH) and window functions. Professional level.'),
       intro: [
-        S('hana', 'excited', 'Último módulo! A Rei e eu vamos ensinar juntas!', 'Final module! Rei and I will teach together!'),
-        S('rei', 'neutral', 'Aqui ficam as ferramentas que separam quem "sabe um pouco" de quem sabe SQL.', 'These are the tools that separate people who "know a bit" from people who know SQL.'),
+        S('midori', 'excited', 'Último módulo! A Sakura e eu vamos ensinar juntas!', 'Final module! Sakura and I will teach together!'),
+        S('sakura', 'neutral', 'Aqui ficam as ferramentas que separam quem "sabe um pouco" de quem sabe SQL.', 'These are the tools that separate people who "know a bit" from people who know SQL.'),
       ],
       lesson: [
-        S('hana', 'happy', 'Subconsulta é uma consulta dentro de outra! O resultado de dentro vira um valor ou uma lista.', 'A subquery is a query inside another! The inner result becomes a value or a list.', code('SELECT name, price\nFROM stalls\nWHERE price > (SELECT AVG(price) FROM stalls);')),
-        S('rei', 'neutral', 'Com IN, a subconsulta devolve uma lista de valores.', 'With IN, the subquery returns a list of values.', code('WHERE student_id IN (\n  SELECT student_id FROM sales WHERE stall_id = 2\n)')),
-        S('rei', 'thinking', 'Subconsultas aninhadas ficam ilegíveis. Por isso existe o WITH: a CTE, uma tabela temporária com nome.', 'Nested subqueries become unreadable. That is why WITH exists: the CTE, a named temporary table.', code('WITH revenue AS (\n  SELECT stall_id, SUM(total) AS rev\n  FROM sales GROUP BY stall_id\n)\nSELECT * FROM revenue WHERE rev > 100;')),
-        S('hana', 'excited', 'E agora a coisa mais legal: funções de janela! Elas calculam algo SEM juntar as linhas.', 'And now the coolest thing: window functions! They compute something WITHOUT collapsing rows.', code('SELECT name, price,\n  RANK() OVER (ORDER BY price DESC) AS pos\nFROM stalls;')),
-        S('rei', 'neutral', 'PARTITION BY reinicia a janela para cada grupo. ROW_NUMBER numera as linhas 1, 2, 3...', 'PARTITION BY restarts the window for each group. ROW_NUMBER numbers rows 1, 2, 3...', code('ROW_NUMBER() OVER (\n  PARTITION BY category\n  ORDER BY price DESC\n)')),
-        S('hana', 'happy', 'Com isso dá para achar "o melhor de cada grupo". É exatamente o chefe final!', 'With that you can find "the best of each group". That is exactly the final boss!'),
-        S('rei', 'happy', 'Confio em você. ...Não conte para a Hana que eu disse isso.', 'I trust you. ...Do not tell Hana I said that.'),
+        S('midori', 'happy', 'Subconsulta é uma consulta dentro de outra! O resultado de dentro vira um valor ou uma lista.', 'A subquery is a query inside another! The inner result becomes a value or a list.', code('SELECT name, price\nFROM stalls\nWHERE price > (SELECT AVG(price) FROM stalls);')),
+        S('sakura', 'neutral', 'Com IN, a subconsulta devolve uma lista de valores.', 'With IN, the subquery returns a list of values.', code('WHERE student_id IN (\n  SELECT student_id FROM sales WHERE stall_id = 2\n)')),
+        S('sakura', 'thinking', 'Subconsultas aninhadas ficam ilegíveis. Por isso existe o WITH: a CTE, uma tabela temporária com nome.', 'Nested subqueries become unreadable. That is why WITH exists: the CTE, a named temporary table.', code('WITH revenue AS (\n  SELECT stall_id, SUM(total) AS rev\n  FROM sales GROUP BY stall_id\n)\nSELECT * FROM revenue WHERE rev > 100;')),
+        S('midori', 'excited', 'E agora a coisa mais legal: funções de janela! Elas calculam algo SEM juntar as linhas.', 'And now the coolest thing: window functions! They compute something WITHOUT collapsing rows.', code('SELECT name, price,\n  RANK() OVER (ORDER BY price DESC) AS pos\nFROM stalls;')),
+        S('sakura', 'neutral', 'PARTITION BY reinicia a janela para cada grupo. ROW_NUMBER numera as linhas 1, 2, 3...', 'PARTITION BY restarts the window for each group. ROW_NUMBER numbers rows 1, 2, 3...', code('ROW_NUMBER() OVER (\n  PARTITION BY category\n  ORDER BY price DESC\n)')),
+        S('midori', 'happy', 'Com isso dá para achar "o melhor de cada grupo". É exatamente o chefe final!', 'With that you can find "the best of each group". That is exactly the final boss!'),
+        S('sakura', 'happy', 'Confio em você. ...Não conte para a Midori que eu disse isso.', 'I trust you. ...Do not tell Midori I said that.'),
       ],
       outro: [
-        S('hana', 'excited', 'VOCÊ CONSEGUIU! O relatório do festival está completo!', 'YOU DID IT! The festival report is complete!'),
-        S('rei', 'happy', 'O diretor aprovou o Clube de Dados como clube oficial. Graças a você.', 'The principal approved the Data Club as an official club. Thanks to you.'),
-        S('hana', 'happy', 'Bem-vindo de verdade ao clube. Ano que vem, você ensina os calouros!', 'Truly welcome to the club. Next year, you teach the freshmen!'),
+        S('midori', 'excited', 'VOCÊ CONSEGUIU! O relatório do festival está completo!', 'YOU DID IT! The festival report is complete!'),
+        S('sakura', 'happy', 'O diretor aprovou o Clube de Dados como clube oficial. Graças a você.', 'The principal approved the Data Club as an official club. Thanks to you.'),
+        S('midori', 'happy', 'Bem-vindo de verdade ao clube. Ano que vem, você ensina os calouros!', 'Truly welcome to the club. Next year, you teach the freshmen!'),
         S(null, null, 'FIM — obrigado por jogar Sakura Query!', 'THE END — thank you for playing Sakura Query!'),
       ],
       challenges: [

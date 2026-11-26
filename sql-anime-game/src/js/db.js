@@ -24,7 +24,7 @@
     [7, 'Riku Yamamoto', '2-A', 2, 5, 'riku.y@hoshizora.edu', '2009-12-01'],
     [8, 'Hina Suzuki', '2-B', 2, 3, 'hina.s@hoshizora.edu', '2009-03-14'],
     [9, 'Kaito Kato', '2-B', 2, 7, null, '2009-08-21'],
-    [10, 'Sakura Yoshida', '2-A', 2, 6, 'sakura.y@hoshizora.edu', '2009-04-01'],
+    [10, 'Saki Yoshida', '2-A', 2, 6, 'saki.y@hoshizora.edu', '2009-04-01'],
     [11, 'Yuto Yamada', '3-A', 3, 5, 'yuto.y@hoshizora.edu', '2008-06-06'],
     [12, 'Akari Sasaki', '3-A', 3, 2, 'akari.s@hoshizora.edu', '2008-02-28'],
     [13, 'Sota Yamaguchi', '3-B', 3, 1, 'sota.y@hoshizora.edu', '2008-10-10'],

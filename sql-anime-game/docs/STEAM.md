@@ -7,12 +7,14 @@ Este é um roteiro prático. Os valores e prazos da Steam mudam, então confira 
 
 A versão atual é jogável, mas algumas partes são provisórias:
 
-- **Arte das personagens.** Hana e Rei estão desenhadas em SVG pelo código. Para vender na Steam,
-  vale encomendar sprites de verdade (corpo inteiro, 5 a 7 expressões cada) e fundos (sala, biblioteca,
-  corredor). Ilustradores no Skeb, VGen, ArtStation ou Fiverr costumam fazer esse tipo de pacote.
-  Guarde por escrito a **licença de uso comercial** de toda arte e música.
-  Para trocar: coloque as imagens em `src/assets/` e mude `Characters.draw()` em `src/js/characters.js`
-  para devolver um `<img>` com o arquivo da expressão.
+- **Arte das personagens.** A Midori e a Sakura usam as ilustrações em `src/assets/chars/`.
+  Cada personagem tem só uma pose, então as reações aparecem como "emotes" (♪, ✦, gota, veia de raiva).
+  Para ficar mais vivo, vale ter cada uma em 4 a 6 expressões (feliz, brava, surpresa, pensativa, triste).
+  Para usar: adicione os arquivos e troque `Characters.scene()` / `avatar()` em `src/js/characters.js`
+  para escolher a imagem pela expressão.
+  **Se as imagens foram geradas com IA**, a Steam exige que você declare isso no formulário de
+  conteúdo do Steamworks (seção sobre IA). Confira também os termos da ferramenta que gerou as
+  imagens para garantir que o uso comercial é permitido.
 - **Música.** A trilha atual é gerada pelo código. Uma trilha lo-fi licenciada deixa o jogo bem melhor.
 - **Fontes.** O jogo usa as fontes do sistema. Se quiser uma fonte própria, coloque o arquivo em
   `src/assets/` (não carregue da internet: o jogo precisa funcionar offline).

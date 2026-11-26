@@ -26,7 +26,7 @@
       emptyQuery: 'Escreva uma consulta primeiro.', onlySelect: 'Neste jogo, use apenas consultas de leitura (SELECT / WITH).',
       moduleComplete: 'Módulo concluído!', allComplete: 'Você completou o jogo! Obrigado por jogar.',
       achUnlocked: 'Conquista desbloqueada!', playground: 'Laboratório livre', playgroundDesc: 'Escreva qualquer SELECT no banco do festival, sem pressão.',
-      saved: 'Progresso salvo automaticamente.', demoNote: 'Versão 0.1 — 5 módulos, 37 questões.',
+      saved: 'Progresso salvo automaticamente.', demoNote: 'Versão 0.2 — 5 módulos, 37 questões.',
       shortcuts: 'Atalhos: Ctrl+Enter executa · Ctrl+Shift+Enter envia',
     },
     en: {
@@ -54,7 +54,7 @@
       emptyQuery: 'Write a query first.', onlySelect: 'In this game, use read-only queries only (SELECT / WITH).',
       moduleComplete: 'Module complete!', allComplete: 'You finished the game! Thanks for playing.',
       achUnlocked: 'Achievement unlocked!', playground: 'Free lab', playgroundDesc: 'Write any SELECT on the festival database, no pressure.',
-      saved: 'Progress is saved automatically.', demoNote: 'Version 0.1 — 5 modules, 37 questions.',
+      saved: 'Progress is saved automatically.', demoNote: 'Version 0.2 — 5 modules, 37 questions.',
       shortcuts: 'Shortcuts: Ctrl+Enter runs · Ctrl+Shift+Enter submits',
     },
   };
