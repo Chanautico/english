@@ -1,0 +1,89 @@
+{
+ "id": 52,
+ "arco": 5,
+ "titulo": {
+  "pt": "Redenção de Vex",
+  "en": "Vex's Redemption"
+ },
+ "cenario": "bg_torre_central",
+ "dificuldade": "medio",
+ "conceitos": [
+  "WHERE",
+  "AND"
+ ],
+ "missao": {
+  "pt": "Vex, abandonado por Malform, aparece ferido.",
+  "en": "Vex, abandoned by Malform, appears wounded."
+ },
+ "historia_antes": [
+  {
+   "sprite": "vex_sombrio",
+   "pt": "...Não precisam apontar esses terminais. Eu não vim lutar.",
+   "en": "...You don't need to point those terminals at me. I didn't come to fight."
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "Vex?",
+   "en": "Vex?"
+  },
+  {
+   "sprite": "vex_sombrio",
+   "pt": "Malform me descartou como um registro velho. Ele quer apagar TUDO. Até a Null-Void.",
+   "en": "Malform discarded me like an old record. He wants to erase EVERYTHING. Even the Null-Void."
+  },
+  {
+   "sprite": "vex_sombrio",
+   "pt": "Minha chave do Núcleo ainda está ativa. Procure na tabela. Salve o mundo que ele quer apagar.",
+   "en": "My Core key is still active. Look it up in the table. Save the world he wants to erase.",
+   "efeito": "luz"
+  }
+ ],
+ "aula": [],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne o `codigo` da chave do Núcleo cujo dono é `Vex` e cujo status é `ativa`.",
+    "en": "Return the `code` of the Core key owned by `Vex` whose status is `active`."
+   },
+   "gabarito": {
+    "pt": "SELECT codigo FROM chaves_nucleo WHERE dono = 'Vex' AND status = 'ativa'",
+    "en": "SELECT code FROM core_keys WHERE owner = 'Vex' AND status = 'active'"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Duas condições com AND.",
+     "en": "Two conditions with AND."
+    },
+    {
+     "pt": "WHERE dono = 'Vex' AND status = 'ativa'",
+     "en": "WHERE owner = 'Vex' AND status = 'active'"
+    },
+    {
+     "pt": "SELECT codigo FROM chaves_nucleo WHERE dono = 'Vex' AND status = 'ativa'",
+     "en": "SELECT code FROM core_keys WHERE owner = 'Vex' AND status = 'active'"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "NV-9042. Obrigado, Vex.",
+   "en": "NV-9042. Thank you, Vex."
+  },
+  {
+   "sprite": "vex_sombrio",
+   "pt": "Não me agradeça. Vença.",
+   "en": "Don't thank me. Win.",
+   "sai": [
+    "vex"
+   ]
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "A porta do Núcleo está cheia de registros lixo e corrompidos. Precisamos limpar tudo numa transação só!",
+   "en": "The Core's door is full of junk and corrupted records. We need to clean it all in a single transaction!"
+  }
+ ]
+}

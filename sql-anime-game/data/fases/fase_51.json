@@ -1,0 +1,102 @@
+{
+ "id": 51,
+ "arco": 5,
+ "titulo": {
+  "pt": "Subindo a Torre Central",
+  "en": "Climbing the Central Tower"
+ },
+ "cenario": "bg_torre_central",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "UPDATE",
+  "SUBQUERY"
+ ],
+ "missao": {
+  "pt": "Cada andar tem uma trava com código adulterado.",
+  "en": "Each floor has a lock with a tampered code."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "A Torre Central. O elevador para no primeiro andar: TRAVADO.",
+   "en": "The Central Tower. The elevator stops on the first floor: LOCKED.",
+   "efeito": [
+    "tremor",
+    "glitch"
+   ]
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Todas as travas estão com 'XXXX'! Os códigos certos estão em outra tabela, por andar.",
+   "en": "Every lock says 'XXXX'! The right codes are in another table, by floor."
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "Um UPDATE que busca o código certo de CADA andar... numa subconsulta!",
+   "en": "An UPDATE that looks up the right code for EACH floor... with a subquery!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "O SET pode receber uma subconsulta! E ela pode olhar para a linha que está sendo atualizada.",
+   "en": "SET can take a subquery! And it can look at the row being updated.",
+   "quadro": {
+    "codigo": {
+     "pt": "UPDATE portas_torre\nSET codigo = (\n  SELECT codigo_correto FROM chaves_andar\n  WHERE chaves_andar.andar = portas_torre.andar\n);",
+     "en": "UPDATE tower_doors\nSET code = (\n  SELECT correct_code FROM floor_keys\n  WHERE floor_keys.floor = tower_doors.floor\n);"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Atualize o `codigo` de cada porta da torre com o `codigo_correto` do **mesmo andar** em `chaves_andar`.",
+    "en": "Update the `code` of every tower door with the `correct_code` of the **same floor** in `floor_keys`."
+   },
+   "gabarito": {
+    "pt": "UPDATE portas_torre SET codigo = (SELECT codigo_correto FROM chaves_andar WHERE chaves_andar.andar = portas_torre.andar)",
+    "en": "UPDATE tower_doors SET code = (SELECT correct_code FROM floor_keys WHERE floor_keys.floor = tower_doors.floor)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "SET codigo = (subconsulta)",
+     "en": "SET code = (subquery)"
+    },
+    {
+     "pt": "Na subconsulta: WHERE chaves_andar.andar = portas_torre.andar",
+     "en": "In the subquery: WHERE floor_keys.floor = tower_doors.floor"
+    },
+    {
+     "pt": "UPDATE portas_torre SET codigo = (SELECT codigo_correto FROM chaves_andar WHERE chaves_andar.andar = portas_torre.andar)",
+     "en": "UPDATE tower_doors SET code = (SELECT correct_code FROM floor_keys WHERE floor_keys.floor = tower_doors.floor)"
+    }
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT andar, codigo FROM portas_torre ORDER BY andar",
+     "en": "SELECT floor, code FROM tower_doors ORDER BY floor"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": null,
+   "pt": "Clique. Clique. Clique. Clique. O elevador dispara para cima.",
+   "en": "Click. Click. Click. Click. The elevator shoots upward.",
+   "efeito": [
+    "flash",
+    "cristais"
+   ]
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Último andar... tem alguém ali.",
+   "en": "Top floor... someone's there.",
+   "efeito": "escuridao"
+  }
+ ]
+}

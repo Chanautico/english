@@ -5,11 +5,884 @@
   "en": "The War of Restoration"
  },
  "descricao": {
-  "pt": "A Capital em chamas. INSERT, UPDATE, DELETE e transações.",
-  "en": "The Capital in flames. INSERT, UPDATE, DELETE and transactions."
+  "pt": "A Capital em chamas. Pela primeira vez Ren pode ESCREVER no banco: INSERT, UPDATE, DELETE, INSERT ... SELECT e transações com BEGIN, COMMIT e ROLLBACK.",
+  "en": "The Capital in flames. For the first time Ren can WRITE to the database: INSERT, UPDATE, DELETE, INSERT ... SELECT and transactions with BEGIN, COMMIT and ROLLBACK."
  },
  "capa": "bg_capital_chamas",
  "cor": "#c4452f",
- "em_breve": true,
- "tabelas": []
+ "tabelas": [
+  {
+   "nome": {
+    "pt": "suprimentos",
+    "en": "supplies"
+   },
+   "descricao": {
+    "pt": "Suprimentos dos hospitais. A Null-Void zerou tudo!",
+    "en": "Hospital supplies. The Null-Void wiped them out!"
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "item",
+      "en": "item"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "quantidade",
+      "en": "quantity"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "hospital",
+      "en": "hospital"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Bandagem",
+      "en": "Bandage"
+     },
+     0,
+     {
+      "pt": "Hospital Leste",
+      "en": "East Hospital"
+     }
+    ],
+    [
+     2,
+     {
+      "pt": "Pocao de Cura",
+      "en": "Healing Potion"
+     },
+     0,
+     {
+      "pt": "Hospital Leste",
+      "en": "East Hospital"
+     }
+    ],
+    [
+     3,
+     {
+      "pt": "Erva Lunar",
+      "en": "Moon Herb"
+     },
+     5,
+     {
+      "pt": "Hospital Oeste",
+      "en": "West Hospital"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "muralhas",
+    "en": "walls"
+   },
+   "descricao": {
+    "pt": "Escudos mágicos das muralhas.",
+    "en": "Magic shields on the walls."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "setor",
+      "en": "sector"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "energia",
+      "en": "energy"
+     },
+     "tipo": "INTEGER",
+     "nota": {
+      "pt": "0 a 100",
+      "en": "0 to 100"
+     }
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Norte",
+      "en": "North"
+     },
+     10
+    ],
+    [
+     2,
+     {
+      "pt": "Norte",
+      "en": "North"
+     },
+     10
+    ],
+    [
+     3,
+     {
+      "pt": "Sul",
+      "en": "South"
+     },
+     40
+    ],
+    [
+     4,
+     {
+      "pt": "Leste",
+      "en": "East"
+     },
+     10
+    ],
+    [
+     5,
+     {
+      "pt": "Norte",
+      "en": "North"
+     },
+     25
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "guardas_reais",
+    "en": "royal_guards"
+   },
+   "descricao": {
+    "pt": "Guarda Real. Alguns foram infectados por parasitas digitais.",
+    "en": "The Royal Guard. Some were infected by digital parasites."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "status",
+      "en": "status"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Aldric",
+     {
+      "pt": "Saudavel",
+      "en": "Healthy"
+     }
+    ],
+    [
+     2,
+     "Brin",
+     {
+      "pt": "Infectado",
+      "en": "Infected"
+     }
+    ],
+    [
+     3,
+     "Cora",
+     {
+      "pt": "Saudavel",
+      "en": "Healthy"
+     }
+    ],
+    [
+     4,
+     "Doran",
+     {
+      "pt": "Saudavel",
+      "en": "Healthy"
+     }
+    ],
+    [
+     5,
+     "Esk",
+     {
+      "pt": "Infectado",
+      "en": "Infected"
+     }
+    ],
+    [
+     6,
+     "Faye",
+     {
+      "pt": "Saudavel",
+      "en": "Healthy"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "reforcos_vilas",
+    "en": "village_reinforcements"
+   },
+   "descricao": {
+    "pt": "Voluntários vindos das vilas.",
+    "en": "Volunteers from the villages."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "vila",
+      "en": "village"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "classe",
+      "en": "class"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Gael",
+     {
+      "pt": "Vila Oculta",
+      "en": "Hidden Village"
+     },
+     {
+      "pt": "Arqueiro",
+      "en": "Archer"
+     }
+    ],
+    [
+     2,
+     "Hela",
+     {
+      "pt": "Vila do Rio",
+      "en": "River Village"
+     },
+     {
+      "pt": "Lanceiro",
+      "en": "Spearman"
+     }
+    ],
+    [
+     3,
+     "Ivo",
+     {
+      "pt": "Vila do Rio",
+      "en": "River Village"
+     },
+     {
+      "pt": "Arqueiro",
+      "en": "Archer"
+     }
+    ],
+    [
+     4,
+     "Juno",
+     {
+      "pt": "Vila Alta",
+      "en": "High Village"
+     },
+     {
+      "pt": "Arqueiro",
+      "en": "Archer"
+     }
+    ],
+    [
+     5,
+     "Kurt",
+     {
+      "pt": "Vila Alta",
+      "en": "High Village"
+     },
+     {
+      "pt": "Mago",
+      "en": "Mage"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "tropas",
+    "en": "troops"
+   },
+   "descricao": {
+    "pt": "Tropas que defendem a Capital.",
+    "en": "Troops defending the Capital."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "origem",
+      "en": "origin"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Lyra",
+     "Neo-Schema"
+    ],
+    [
+     2,
+     "Dante",
+     {
+      "pt": "Guilda de Prata",
+      "en": "Silver Guild"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "tabelas_reino",
+    "en": "realm_tables"
+   },
+   "descricao": {
+    "pt": "Tabelas protegidas do Santuário.",
+    "en": "Protected tables of the Sanctuary."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "modo",
+      "en": "mode"
+     },
+     "tipo": "VARCHAR",
+     "nota": {
+      "pt": "'escrita' ou 'leitura'",
+      "en": "'write' or 'read'"
+     }
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "principal",
+      "en": "main"
+     },
+     {
+      "pt": "escrita",
+      "en": "write"
+     }
+    ],
+    [
+     2,
+     {
+      "pt": "arquivo",
+      "en": "archive"
+     },
+     {
+      "pt": "escrita",
+      "en": "write"
+     }
+    ],
+    [
+     3,
+     {
+      "pt": "mapa",
+      "en": "map"
+     },
+     {
+      "pt": "leitura",
+      "en": "read"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "portas_torre",
+    "en": "tower_doors"
+   },
+   "descricao": {
+    "pt": "Travas magnéticas de cada andar (códigos adulterados!).",
+    "en": "Magnetic locks on each floor (codes tampered with!)."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "andar",
+      "en": "floor"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "codigo",
+      "en": "code"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     1,
+     "XXXX"
+    ],
+    [
+     2,
+     2,
+     "XXXX"
+    ],
+    [
+     3,
+     3,
+     "XXXX"
+    ],
+    [
+     4,
+     4,
+     "XXXX"
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "chaves_andar",
+    "en": "floor_keys"
+   },
+   "descricao": {
+    "pt": "Códigos corretos de cada andar.",
+    "en": "Correct code for each floor."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "andar",
+      "en": "floor"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "codigo_correto",
+      "en": "correct_code"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "A1F3"
+    ],
+    [
+     2,
+     "B7K2"
+    ],
+    [
+     3,
+     "C9Q8"
+    ],
+    [
+     4,
+     "D0Z5"
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "chaves_nucleo",
+    "en": "core_keys"
+   },
+   "descricao": {
+    "pt": "Chaves de acesso ao Núcleo.",
+    "en": "Access keys to the Core."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "dono",
+      "en": "owner"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "codigo",
+      "en": "code"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "status",
+      "en": "status"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Malform",
+     "OMEGA-0",
+     {
+      "pt": "ativa",
+      "en": "active"
+     }
+    ],
+    [
+     2,
+     "Vex",
+     "NV-7731",
+     {
+      "pt": "revogada",
+      "en": "revoked"
+     }
+    ],
+    [
+     3,
+     "Vex",
+     "NV-9042",
+     {
+      "pt": "ativa",
+      "en": "active"
+     }
+    ],
+    [
+     4,
+     "Kael",
+     "K-0001",
+     {
+      "pt": "revogada",
+      "en": "revoked"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "registros_nucleo",
+    "en": "core_records"
+   },
+   "descricao": {
+    "pt": "Registros na porta do Núcleo: lixo, corrompidos e bons.",
+    "en": "Records at the Core's door: junk, corrupted and good."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "conteudo",
+      "en": "content"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "status",
+      "en": "status"
+     },
+     "tipo": "VARCHAR",
+     "nota": {
+      "pt": "'lixo', 'corrompido' ou 'ok'",
+      "en": "'junk', 'corrupted' or 'ok'"
+     }
+    },
+    {
+     "nome": {
+      "pt": "valor",
+      "en": "value"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "selo norte",
+      "en": "north seal"
+     },
+     "ok",
+     40
+    ],
+    [
+     2,
+     {
+      "pt": "ruido",
+      "en": "noise"
+     },
+     {
+      "pt": "lixo",
+      "en": "junk"
+     },
+     0
+    ],
+    [
+     3,
+     {
+      "pt": "selo sul",
+      "en": "south seal"
+     },
+     {
+      "pt": "corrompido",
+      "en": "corrupted"
+     },
+     -55
+    ],
+    [
+     4,
+     {
+      "pt": "eco",
+      "en": "echo"
+     },
+     {
+      "pt": "lixo",
+      "en": "junk"
+     },
+     0
+    ],
+    [
+     5,
+     {
+      "pt": "selo leste",
+      "en": "east seal"
+     },
+     {
+      "pt": "corrompido",
+      "en": "corrupted"
+     },
+     -70
+    ],
+    [
+     6,
+     {
+      "pt": "selo oeste",
+      "en": "west seal"
+     },
+     "ok",
+     65
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "equipe_herois",
+    "en": "hero_team"
+   },
+   "descricao": {
+    "pt": "A tabela de vida da equipe. O Leviatã ataca ela!",
+    "en": "The team's life table. The Leviathan attacks it!"
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "hp",
+      "en": "hp"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Ren",
+     80
+    ],
+    [
+     2,
+     "Lyra",
+     35
+    ],
+    [
+     3,
+     "Dante",
+     60
+    ],
+    [
+     4,
+     "Pip",
+     90
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "nucleo_leviata",
+    "en": "leviathan_core"
+   },
+   "descricao": {
+    "pt": "As camadas do núcleo do Leviatã.",
+    "en": "The layers of the Leviathan's core."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "camada",
+      "en": "layer"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "energia",
+      "en": "energy"
+     },
+     "tipo": "INTEGER"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Escamas",
+      "en": "Scales"
+     },
+     100
+    ],
+    [
+     2,
+     {
+      "pt": "Casca",
+      "en": "Shell"
+     },
+     0
+    ],
+    [
+     3,
+     {
+      "pt": "Coracao",
+      "en": "Heart"
+     },
+     150
+    ],
+    [
+     4,
+     {
+      "pt": "Olho",
+      "en": "Eye"
+     },
+     60
+    ]
+   ]
+  }
+ ]
 }

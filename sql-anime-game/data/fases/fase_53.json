@@ -1,0 +1,105 @@
+{
+ "id": 53,
+ "arco": 5,
+ "titulo": {
+  "pt": "Limpeza do Núcleo",
+  "en": "Cleaning the Core"
+ },
+ "cenario": "bg_santuario_dados",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "BEGIN",
+  "DELETE",
+  "UPDATE",
+  "COMMIT"
+ ],
+ "missao": {
+  "pt": "Limpar o lixo e consertar os selos corrompidos numa transação perfeita.",
+  "en": "Clear the junk and repair the corrupted seals in one perfect transaction."
+ },
+ "historia_antes": [
+  {
+   "sprite": "lyra_seria",
+   "pt": "Registros lixo bloqueiam a porta, e os selos corrompidos têm energia negativa.",
+   "en": "Junk records block the door, and the corrupted seals have negative energy."
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Tudo ou nada: abre a transação, apaga o lixo, conserta os corrompidos e só então COMMIT!",
+   "en": "All or nothing: open the transaction, delete the junk, fix the corrupted ones, and only then COMMIT!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "ABS(valor) transforma um número negativo em positivo. -55 vira 55!",
+   "en": "ABS(value) turns a negative number positive. -55 becomes 55!",
+   "quadro": {
+    "codigo": {
+     "pt": "BEGIN TRANSACTION;\nDELETE FROM registros_nucleo WHERE status = 'lixo';\nUPDATE registros_nucleo\n  SET status = 'ok', valor = ABS(valor)\n  WHERE status = 'corrompido';\nCOMMIT;",
+     "en": "BEGIN TRANSACTION;\nDELETE FROM core_records WHERE status = 'junk';\nUPDATE core_records\n  SET status = 'ok', value = ABS(value)\n  WHERE status = 'corrupted';\nCOMMIT;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Numa única transação: **apague** os registros com status `lixo`; nos registros `corrompido`, mude o status para `ok` e deixe o `valor` **positivo** (ABS); depois **COMMIT**.",
+    "en": "In a single transaction: **delete** the records with status `junk`; in the `corrupted` records, set the status to `ok` and make `value` **positive** (ABS); then **COMMIT**."
+   },
+   "gabarito": {
+    "pt": "BEGIN TRANSACTION; DELETE FROM registros_nucleo WHERE status = 'lixo'; UPDATE registros_nucleo SET status = 'ok', valor = ABS(valor) WHERE status = 'corrompido'; COMMIT;",
+    "en": "BEGIN TRANSACTION; DELETE FROM core_records WHERE status = 'junk'; UPDATE core_records SET status = 'ok', value = ABS(value) WHERE status = 'corrupted'; COMMIT;"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Quatro comandos: BEGIN, DELETE, UPDATE, COMMIT.",
+     "en": "Four commands: BEGIN, DELETE, UPDATE, COMMIT."
+    },
+    {
+     "pt": "No UPDATE: SET status = 'ok', valor = ABS(valor)",
+     "en": "In the UPDATE: SET status = 'ok', value = ABS(value)"
+    },
+    {
+     "pt": "BEGIN TRANSACTION; DELETE FROM registros_nucleo WHERE status = 'lixo'; UPDATE registros_nucleo SET status = 'ok', valor = ABS(valor) WHERE status = 'corrompido'; COMMIT;",
+     "en": "BEGIN TRANSACTION; DELETE FROM core_records WHERE status = 'junk'; UPDATE core_records SET status = 'ok', value = ABS(value) WHERE status = 'corrupted'; COMMIT;"
+    }
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT id, conteudo, status, valor FROM registros_nucleo ORDER BY id",
+     "en": "SELECT id, content, status, value FROM core_records ORDER BY id"
+    }
+   ],
+   "exige": [
+    "BEGIN",
+    "COMMIT"
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": null,
+   "pt": "Os selos brilham, todos verdes. A porta do Núcleo se abre... e algo enorme bloqueia a passagem.",
+   "en": "The seals glow, all green. The Core's door opens... and something huge blocks the way.",
+   "efeito": [
+    "cristais",
+    "tremor"
+   ]
+  },
+  {
+   "sprite": "pip_erro",
+   "pt": "É o Leviatã de DROP! Ele apaga linhas da nossa tabela de vida!",
+   "en": "It's the DROP Leviathan! It deletes rows from our life table!",
+   "efeito": [
+    "glitch",
+    "escuridao"
+   ],
+   "entra": [
+    "leviata_furioso"
+   ]
+  }
+ ]
+}

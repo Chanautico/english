@@ -1,0 +1,103 @@
+{
+ "id": 49,
+ "arco": 5,
+ "titulo": {
+  "pt": "Reconstruindo a Ponte Lógica",
+  "en": "Rebuilding the Logic Bridge"
+ },
+ "cenario": "bg_capital_chamas",
+ "dificuldade": "medio",
+ "conceitos": [
+  "INSERT SELECT"
+ ],
+ "missao": {
+  "pt": "Reforços das vilas chegaram para defender a Capital.",
+  "en": "Reinforcements from the villages arrived to defend the Capital."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "O inimigo recua. Pelo portão, chegam voluntários das vilas.",
+   "en": "The enemy pulls back. Through the gate, village volunteers arrive.",
+   "efeito": "luz"
+  },
+  {
+   "sprite": "dante_relaxado",
+   "pt": "Arqueiros! Precisamos de todos nas muralhas. Coloca eles na tabela de tropas.",
+   "en": "Archers! We need all of them on the walls. Put them in the troops table."
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "Um INSERT para cada um? Vai demorar...",
+   "en": "One INSERT for each? That'll take forever..."
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "Não! Dá pra inserir o RESULTADO de um SELECT inteiro de uma vez!",
+   "en": "No! You can insert the RESULT of an entire SELECT at once!",
+   "efeito": "cristais"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "INSERT INTO ... SELECT: as colunas do SELECT preenchem as colunas do INSERT, em ordem.",
+   "en": "INSERT INTO ... SELECT: the SELECT columns fill the INSERT columns, in order.",
+   "quadro": {
+    "codigo": {
+     "pt": "INSERT INTO tropas (nome, origem)\nSELECT nome, vila\nFROM reforcos_vilas\nWHERE classe = 'Arqueiro';",
+     "en": "INSERT INTO troops (name, origin)\nSELECT name, village\nFROM village_reinforcements\nWHERE class = 'Archer';"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Insira em `tropas` (colunas `nome` e `origem`) todos os reforços de classe `Arqueiro`, usando o `nome` e a `vila` deles.",
+    "en": "Insert into `troops` (columns `name` and `origin`) every reinforcement of class `Archer`, using their `name` and `village`."
+   },
+   "gabarito": {
+    "pt": "INSERT INTO tropas (nome, origem) SELECT nome, vila FROM reforcos_vilas WHERE classe = 'Arqueiro'",
+    "en": "INSERT INTO troops (name, origin) SELECT name, village FROM village_reinforcements WHERE class = 'Archer'"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "INSERT INTO tropas (nome, origem) SELECT ...",
+     "en": "INSERT INTO troops (name, origin) SELECT ..."
+    },
+    {
+     "pt": "SELECT nome, vila FROM reforcos_vilas WHERE classe = 'Arqueiro'",
+     "en": "SELECT name, village FROM village_reinforcements WHERE class = 'Archer'"
+    },
+    {
+     "pt": "INSERT INTO tropas (nome, origem) SELECT nome, vila FROM reforcos_vilas WHERE classe = 'Arqueiro'",
+     "en": "INSERT INTO troops (name, origin) SELECT name, village FROM village_reinforcements WHERE class = 'Archer'"
+    }
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT nome, origem FROM tropas ORDER BY nome",
+     "en": "SELECT name, origin FROM troops ORDER BY name"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Gael, Ivo e Juno nas muralhas!",
+   "en": "Gael, Ivo and Juno on the walls!"
+  },
+  {
+   "sprite": null,
+   "pt": "Um tremor sacode o Santuário. Uma risada fria ecoa.",
+   "en": "A tremor shakes the Sanctuary. A cold laugh echoes.",
+   "efeito": [
+    "tremor",
+    "escuridao"
+   ]
+  }
+ ]
+}

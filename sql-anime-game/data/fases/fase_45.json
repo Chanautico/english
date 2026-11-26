@@ -1,0 +1,111 @@
+{
+ "id": 45,
+ "arco": 5,
+ "titulo": {
+  "pt": "A Capital em Chamas",
+  "en": "The Capital in Flames"
+ },
+ "cenario": "bg_capital_chamas",
+ "dificuldade": "medio",
+ "conceitos": [
+  "INSERT INTO"
+ ],
+ "missao": {
+  "pt": "A Null-Void apagou os suprimentos dos hospitais.",
+  "en": "The Null-Void erased the hospitals' supplies."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Neo-Schema está cercada. Fumaça cobre o céu.",
+   "en": "Neo-Schema is under siege. Smoke covers the sky.",
+   "efeito": [
+    "relampago",
+    "tremor"
+   ]
+  },
+  {
+   "sprite": "kael_bravo",
+   "pt": "Ren! Finalmente. Os hospitais não têm nada. A Null-Void apagou tudo.",
+   "en": "Ren! Finally. The hospitals have nothing. The Null-Void erased it all."
+  },
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Mestre Kael?! Você veio para a Capital?",
+   "en": "Master Kael?! You came to the Capital?"
+  },
+  {
+   "sprite": "kael_orgulhoso",
+   "pt": "Eu te concedo a Autorização de Escrita. A partir de agora, você não só lê o mundo. Você o ESCREVE.",
+   "en": "I grant you Write Authorization. From now on, you don't just read the world. You WRITE it.",
+   "efeito": [
+    "flash",
+    "cristais"
+   ]
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "INSERT INTO cria uma linha nova. Liste as colunas e depois os valores, na mesma ordem!",
+   "en": "INSERT INTO creates a new row. List the columns, then the values, in the same order!",
+   "quadro": {
+    "codigo": {
+     "pt": "INSERT INTO suprimentos (item, quantidade, hospital)\nVALUES ('Antidoto Real', 50, 'Hospital Leste');",
+     "en": "INSERT INTO supplies (item, quantity, hospital)\nVALUES ('Royal Antidote', 50, 'East Hospital');"
+    }
+   }
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "O Terminal confere como a tabela ficou DEPOIS do seu comando!",
+   "en": "The Terminal checks how the table looks AFTER your command!"
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Insira em `suprimentos` o item `Antidoto Real`, com quantidade **50**, no `Hospital Leste`.",
+    "en": "Insert into `supplies` the item `Royal Antidote`, with quantity **50**, at `East Hospital`."
+   },
+   "gabarito": {
+    "pt": "INSERT INTO suprimentos (item, quantidade, hospital) VALUES ('Antidoto Real', 50, 'Hospital Leste')",
+    "en": "INSERT INTO supplies (item, quantity, hospital) VALUES ('Royal Antidote', 50, 'East Hospital')"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "INSERT INTO tabela (colunas) VALUES (valores)",
+     "en": "INSERT INTO table (columns) VALUES (values)"
+    },
+    {
+     "pt": "O id é criado sozinho, não precisa informar.",
+     "en": "The id is created automatically, no need to give it."
+    },
+    {
+     "pt": "INSERT INTO suprimentos (item, quantidade, hospital) VALUES ('Antidoto Real', 50, 'Hospital Leste')",
+     "en": "INSERT INTO supplies (item, quantity, hospital) VALUES ('Royal Antidote', 50, 'East Hospital')"
+    }
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT item, quantidade, hospital FROM suprimentos ORDER BY id",
+     "en": "SELECT item, quantity, hospital FROM supplies ORDER BY id"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Antídotos chegando no Hospital Leste!",
+   "en": "Antidotes arriving at the East Hospital!",
+   "efeito": "cristais"
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "Bom. Agora as muralhas.",
+   "en": "Good. Now the walls."
+  }
+ ]
+}

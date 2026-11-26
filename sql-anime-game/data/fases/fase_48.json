@@ -1,0 +1,103 @@
+{
+ "id": 48,
+ "arco": 5,
+ "titulo": {
+  "pt": "Expurgo de Vírus",
+  "en": "Virus Purge"
+ },
+ "cenario": "bg_capital_chamas",
+ "dificuldade": "medio",
+ "conceitos": [
+  "DELETE",
+  "COMMIT"
+ ],
+ "missao": {
+  "pt": "Parasitas digitais infectaram a Guarda Real.",
+  "en": "Digital parasites infected the Royal Guard."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Dois guardas reais param de responder. Seus olhos brilham em roxo.",
+   "en": "Two royal guards stop responding. Their eyes glow purple.",
+   "efeito": [
+    "veneno",
+    "glitch"
+   ]
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Estão infectados! Se ficarem na tabela, contaminam o resto!",
+   "en": "They're infected! If they stay in the table, they'll contaminate the rest!"
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Remoção cirúrgica: DELETE com WHERE certinho. E sela com COMMIT!",
+   "en": "Surgical removal: DELETE with a precise WHERE. Then seal it with COMMIT!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "DELETE FROM apaga linhas. Dentro de uma transação, o COMMIT confirma de vez.",
+   "en": "DELETE FROM removes rows. Inside a transaction, COMMIT confirms it for good.",
+   "quadro": {
+    "codigo": {
+     "pt": "BEGIN TRANSACTION;\nDELETE FROM guardas_reais\nWHERE status = 'Infectado';\nCOMMIT;",
+     "en": "BEGIN TRANSACTION;\nDELETE FROM royal_guards\nWHERE status = 'Infected';\nCOMMIT;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Dentro de uma transação, **apague** os guardas com status `Infectado` e **confirme** com COMMIT.",
+    "en": "Inside a transaction, **delete** the guards with status `Infected` and **confirm** with COMMIT."
+   },
+   "gabarito": {
+    "pt": "BEGIN TRANSACTION; DELETE FROM guardas_reais WHERE status = 'Infectado'; COMMIT;",
+    "en": "BEGIN TRANSACTION; DELETE FROM royal_guards WHERE status = 'Infected'; COMMIT;"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "BEGIN; DELETE ...; COMMIT;",
+     "en": "BEGIN; DELETE ...; COMMIT;"
+    },
+    {
+     "pt": "WHERE status = 'Infectado'",
+     "en": "WHERE status = 'Infected'"
+    },
+    {
+     "pt": "BEGIN TRANSACTION; DELETE FROM guardas_reais WHERE status = 'Infectado'; COMMIT;",
+     "en": "BEGIN TRANSACTION; DELETE FROM royal_guards WHERE status = 'Infected'; COMMIT;"
+    }
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT id, nome, status FROM guardas_reais ORDER BY id",
+     "en": "SELECT id, name, status FROM royal_guards ORDER BY id"
+    }
+   ],
+   "exige": [
+    "BEGIN",
+    "DELETE",
+    "COMMIT"
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Brin e Esk removidos. O resto da guarda está salvo!",
+   "en": "Brin and Esk removed. The rest of the guard is safe!",
+   "efeito": "cristais"
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "Eles serão restaurados de um backup depois. Bom trabalho.",
+   "en": "They'll be restored from a backup later. Good work."
+  }
+ ]
+}

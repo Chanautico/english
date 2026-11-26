@@ -748,3 +748,8 @@ code, pre, textarea, kbd { font-variant-ligatures: none; font-feature-settings: 
 .pg-cell.newcol { background: rgba(199, 125, 255, .3) !important; box-shadow: inset 0 0 0 1.5px rgba(199, 125, 255, .8); }
 .pg-head.swap { opacity: 0; transition: opacity .3s; }
 .pg-head { transition: opacity .3s; }
+.scenery.sc-in { animation: fade 1.2s ease-out reverse both; animation-direction: normal; }
+@keyframes scIn { from { opacity: 0; filter: brightness(3); } }
+.scenery.sc-in { animation: scIn 1.4s ease-out; }
+.work > .editor-card, .work > .arena, .work > .bossbar, .work > .q-dots, .work > .mission-strip, .work > .actions { flex-shrink: 0; }
+.dataia-quest .arena { height: 170px; }

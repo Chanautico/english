@@ -1,0 +1,98 @@
+{
+ "id": 46,
+ "arco": 5,
+ "titulo": {
+  "pt": "Cura em Massa",
+  "en": "Mass Healing"
+ },
+ "cenario": "bg_capital_chamas",
+ "dificuldade": "medio",
+ "conceitos": [
+  "UPDATE"
+ ],
+ "missao": {
+  "pt": "Os escudos do setor norte estão quase sem energia.",
+  "en": "The north sector's shields are almost out of energy."
+ },
+ "historia_antes": [
+  {
+   "sprite": "lyra_seria",
+   "pt": "As muralhas do Norte estão caindo! Energia quase zero!",
+   "en": "The North walls are falling! Energy almost zero!",
+   "efeito": "tremor"
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Não precisa criar escudo novo: é só ALTERAR os que existem. UPDATE!",
+   "en": "No need to create new shields: just CHANGE the ones that exist. UPDATE!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "UPDATE muda valores. O WHERE escolhe QUAIS linhas mudam.",
+   "en": "UPDATE changes values. WHERE chooses WHICH rows change.",
+   "quadro": {
+    "codigo": {
+     "pt": "UPDATE muralhas\nSET energia = 100\nWHERE setor = 'Norte';",
+     "en": "UPDATE walls\nSET energy = 100\nWHERE sector = 'North';"
+    }
+   }
+  },
+  {
+   "sprite": "pip_erro",
+   "pt": "SEM WHERE, todas as linhas mudam! Sempre confira o WHERE!",
+   "en": "WITHOUT WHERE, every row changes! Always check the WHERE!",
+   "efeito": "glitch"
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Restaure para **100** a `energia` de todas as muralhas do setor `Norte`. As outras não podem mudar!",
+    "en": "Restore the `energy` of every wall in the `North` sector to **100**. The others must not change!"
+   },
+   "gabarito": {
+    "pt": "UPDATE muralhas SET energia = 100 WHERE setor = 'Norte'",
+    "en": "UPDATE walls SET energy = 100 WHERE sector = 'North'"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "UPDATE ... SET ... WHERE ...",
+     "en": "UPDATE ... SET ... WHERE ..."
+    },
+    {
+     "pt": "WHERE setor = 'Norte'",
+     "en": "WHERE sector = 'North'"
+    },
+    {
+     "pt": "UPDATE muralhas SET energia = 100 WHERE setor = 'Norte'",
+     "en": "UPDATE walls SET energy = 100 WHERE sector = 'North'"
+    }
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT id, setor, energia FROM muralhas ORDER BY id",
+     "en": "SELECT id, sector, energy FROM walls ORDER BY id"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Os escudos do Norte voltaram!",
+   "en": "The North shields are back!",
+   "efeito": [
+    "flash",
+    "cristais"
+   ]
+  },
+  {
+   "sprite": "dante_relaxado",
+   "pt": "Agora sim. Mas vai com calma nesse poder, garoto.",
+   "en": "Now we're talking. But go easy with that power, kid."
+  }
+ ]
+}

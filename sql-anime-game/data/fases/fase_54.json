@@ -1,0 +1,207 @@
+{
+ "id": 54,
+ "arco": 5,
+ "titulo": {
+  "pt": "CHEFE: O Leviatã de DROP",
+  "en": "BOSS: The DROP Leviathan"
+ },
+ "cenario": "bg_santuario_dados",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "INSERT INTO",
+  "UPDATE",
+  "DELETE"
+ ],
+ "missao": {
+  "pt": "O guardião da porta de Malform apaga a equipe a cada turno.",
+  "en": "The guardian of Malform's door deletes the team every turn."
+ },
+ "historia_antes": [
+  {
+   "sprite": "lyra_surpresa",
+   "pt": "Ren... eu estou... sumindo...",
+   "en": "Ren... I'm... fading...",
+   "efeito": [
+    "glitch",
+    "veneno"
+   ],
+   "entra": [
+    "leviata_furioso"
+   ]
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Ele executou DELETE na Lyra! Rápido: INSERT para trazer ela de volta!",
+   "en": "It ran DELETE on Lyra! Quick: INSERT to bring her back!",
+   "efeito": "tremor"
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Ninguém apaga meus amigos!",
+   "en": "Nobody deletes my friends!",
+   "efeito": "flash"
+  }
+ ],
+ "aula": [],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "**Turno 1 — Restaure!** O Leviatã **apagou a Lyra** de `equipe_herois`! Insira de novo: id **2**, nome `Lyra`, hp **35**.",
+    "en": "**Turn 1 — Restore!** The Leviathan **deleted Lyra** from `hero_team`! Insert her again: id **2**, name `Lyra`, hp **35**."
+   },
+   "gabarito": {
+    "pt": "INSERT INTO equipe_herois (id, nome, hp) VALUES (2, 'Lyra', 35)",
+    "en": "INSERT INTO hero_team (id, name, hp) VALUES (2, 'Lyra', 35)"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "INSERT INTO com as três colunas.",
+     "en": "INSERT INTO with all three columns."
+    },
+    {
+     "pt": "VALUES (2, 'Lyra', 35)",
+     "en": "VALUES (2, 'Lyra', 35)"
+    },
+    {
+     "pt": "INSERT INTO equipe_herois (id, nome, hp) VALUES (2, 'Lyra', 35)",
+     "en": "INSERT INTO hero_team (id, name, hp) VALUES (2, 'Lyra', 35)"
+    }
+   ],
+   "conceitos": [
+    "INSERT INTO"
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT id, nome, hp FROM equipe_herois ORDER BY id",
+     "en": "SELECT id, name, hp FROM hero_team ORDER BY id"
+    }
+   ],
+   "preparo": {
+    "pt": "DELETE FROM equipe_herois WHERE nome = 'Lyra'",
+    "en": "DELETE FROM hero_team WHERE name = 'Lyra'"
+   }
+  },
+  {
+   "enunciado": {
+    "pt": "**Turno 2 — Cure!** O Leviatã atacou e todos perderam 15 de hp. Coloque hp **100** em quem está com hp **abaixo de 50**.",
+    "en": "**Turn 2 — Heal!** The Leviathan attacked and everyone lost 15 hp. Set hp to **100** for everyone with hp **below 50**."
+   },
+   "gabarito": {
+    "pt": "UPDATE equipe_herois SET hp = 100 WHERE hp < 50",
+    "en": "UPDATE hero_team SET hp = 100 WHERE hp < 50"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "UPDATE com WHERE no hp.",
+     "en": "UPDATE with WHERE on hp."
+    },
+    {
+     "pt": "SET hp = 100 WHERE hp < 50",
+     "en": "SET hp = 100 WHERE hp < 50"
+    },
+    {
+     "pt": "UPDATE equipe_herois SET hp = 100 WHERE hp < 50",
+     "en": "UPDATE hero_team SET hp = 100 WHERE hp < 50"
+    }
+   ],
+   "conceitos": [
+    "UPDATE"
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT id, nome, hp FROM equipe_herois ORDER BY id",
+     "en": "SELECT id, name, hp FROM hero_team ORDER BY id"
+    }
+   ],
+   "preparo": {
+    "pt": "DELETE FROM equipe_herois WHERE nome = 'Lyra';\nINSERT INTO equipe_herois (id, nome, hp) VALUES (2, 'Lyra', 35);\nUPDATE equipe_herois SET hp = hp - 15",
+    "en": "DELETE FROM hero_team WHERE name = 'Lyra';\nINSERT INTO hero_team (id, name, hp) VALUES (2, 'Lyra', 35);\nUPDATE hero_team SET hp = hp - 15"
+   }
+  },
+  {
+   "enunciado": {
+    "pt": "**Turno 3 — Destrua o núcleo!** Apague de `nucleo_leviata` todas as camadas com **energia maior que 0**. A camada já apagada (energia 0) deve ficar.",
+    "en": "**Turn 3 — Destroy the core!** Delete from `leviathan_core` every layer with **energy greater than 0**. The already-dead layer (energy 0) must stay."
+   },
+   "gabarito": {
+    "pt": "DELETE FROM nucleo_leviata WHERE energia > 0",
+    "en": "DELETE FROM leviathan_core WHERE energy > 0"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "DELETE com WHERE.",
+     "en": "DELETE with WHERE."
+    },
+    {
+     "pt": "WHERE energia > 0",
+     "en": "WHERE energy > 0"
+    },
+    {
+     "pt": "DELETE FROM nucleo_leviata WHERE energia > 0",
+     "en": "DELETE FROM leviathan_core WHERE energy > 0"
+    }
+   ],
+   "conceitos": [
+    "DELETE"
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT id, camada, energia FROM nucleo_leviata ORDER BY id",
+     "en": "SELECT id, layer, energy FROM leviathan_core ORDER BY id"
+    },
+    {
+     "pt": "SELECT id, nome, hp FROM equipe_herois ORDER BY id",
+     "en": "SELECT id, name, hp FROM hero_team ORDER BY id"
+    }
+   ],
+   "preparo": {
+    "pt": "DELETE FROM equipe_herois WHERE nome = 'Lyra';\nINSERT INTO equipe_herois (id, nome, hp) VALUES (2, 'Lyra', 35);\nUPDATE equipe_herois SET hp = hp - 15;\nUPDATE equipe_herois SET hp = 100 WHERE hp < 50",
+    "en": "DELETE FROM hero_team WHERE name = 'Lyra';\nINSERT INTO hero_team (id, name, hp) VALUES (2, 'Lyra', 35);\nUPDATE hero_team SET hp = hp - 15;\nUPDATE hero_team SET hp = 100 WHERE hp < 50"
+   }
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": null,
+   "pt": "O núcleo do Leviatã se apaga camada por camada. A criatura se desfaz em DROP... DROP... DROP...",
+   "en": "The Leviathan's core goes dark layer by layer. The creature dissolves into DROP... DROP... DROP...",
+   "efeito": [
+    "impacto",
+    "dados"
+   ],
+   "entra": [
+    "leviata_furioso"
+   ]
+  },
+  {
+   "sprite": "lyra_sorrindo",
+   "pt": "Eu voltei. E dessa vez não vou embora.",
+   "en": "I'm back. And this time I'm not leaving.",
+   "sai": [
+    "leviata"
+   ]
+  },
+  {
+   "sprite": "dante_relaxado",
+   "pt": "Último andar. Último vilão. Vamos acabar com isso.",
+   "en": "Top floor. Last villain. Let's finish this."
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "FIM DO ARCO 5! Último capítulo: O Arquiteto Supremo!",
+   "en": "END OF ARC 5! Final chapter: The Supreme Architect!",
+   "efeito": "cristais"
+  }
+ ],
+ "chefe": {
+  "nome": {
+   "pt": "Leviatã de DROP",
+   "en": "DROP Leviathan"
+  },
+  "sprite": "leviata_furioso",
+  "hp": 3
+ }
+}

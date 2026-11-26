@@ -1,0 +1,126 @@
+{
+ "id": 50,
+ "arco": 5,
+ "titulo": {
+  "pt": "O Sacrifício de Mestre Kael",
+  "en": "Master Kael's Sacrifice"
+ },
+ "cenario": "bg_santuario_dados",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "UPDATE",
+  "WHERE"
+ ],
+ "missao": {
+  "pt": "Malform invadiu o Santuário de Dados.",
+  "en": "Malform has invaded the Data Sanctuary."
+ },
+ "historia_antes": [
+  {
+   "sprite": "malform_calmo",
+   "pt": "Kael. Velho amigo. Ainda protegendo tabelas imperfeitas?",
+   "en": "Kael. Old friend. Still protecting imperfect tables?",
+   "efeito": [
+    "escuridao",
+    "glitch"
+   ]
+  },
+  {
+   "sprite": "kael_bravo",
+   "pt": "Ren! Trave a tabela principal em modo de leitura. Ele não pode escrever nela!",
+   "en": "Ren! Lock the main table in read mode. He must not write to it!"
+  },
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Mas e você, Mestre?!",
+   "en": "But what about you, Master?!"
+  },
+  {
+   "sprite": "kael_orgulhoso",
+   "pt": "Eu seguro ele. Vá. Faça o que seu pai faria.",
+   "en": "I'll hold him off. Go. Do what your father would do.",
+   "efeito": [
+    "flash",
+    "impacto"
+   ]
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Só a tabela 'principal' muda de modo. As outras ficam como estão!",
+   "en": "Only the 'main' table changes mode. The others stay as they are!",
+   "quadro": {
+    "codigo": {
+     "pt": "UPDATE tabelas_reino\nSET modo = 'leitura'\nWHERE nome = 'principal';",
+     "en": "UPDATE realm_tables\nSET mode = 'read'\nWHERE name = 'main';"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Mude o `modo` da tabela `principal` para `leitura`, sem alterar as outras.",
+    "en": "Change the `mode` of the `main` table to `read`, without changing the others."
+   },
+   "gabarito": {
+    "pt": "UPDATE tabelas_reino SET modo = 'leitura' WHERE nome = 'principal'",
+    "en": "UPDATE realm_tables SET mode = 'read' WHERE name = 'main'"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "UPDATE com WHERE no nome.",
+     "en": "UPDATE with WHERE on the name."
+    },
+    {
+     "pt": "SET modo = 'leitura' WHERE nome = 'principal'",
+     "en": "SET mode = 'read' WHERE name = 'main'"
+    },
+    {
+     "pt": "UPDATE tabelas_reino SET modo = 'leitura' WHERE nome = 'principal'",
+     "en": "UPDATE realm_tables SET mode = 'read' WHERE name = 'main'"
+    }
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT id, nome, modo FROM tabelas_reino ORDER BY id",
+     "en": "SELECT id, name, mode FROM realm_tables ORDER BY id"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": null,
+   "pt": "Uma explosão de luz azul. Kael desaba, o cristal do tapa-olho apagado.",
+   "en": "A burst of blue light. Kael collapses, the crystal of his eyepatch gone dark.",
+   "efeito": [
+    "flash",
+    "impacto",
+    "escuridao"
+   ]
+  },
+  {
+   "sprite": "ren_derrotado",
+   "pt": "MESTRE!",
+   "en": "MASTER!",
+   "efeito": "veneno"
+  },
+  {
+   "sprite": "kael_orgulhoso",
+   "pt": "A tabela... está travada... Suba a torre, Ren...",
+   "en": "The table... is locked... Climb the tower, Ren...",
+   "sai": [
+    "malform"
+   ]
+  },
+  {
+   "sprite": "lyra_seria",
+   "pt": "Os curandeiros vão cuidar dele. Ren, temos que ir. AGORA.",
+   "en": "The healers will look after him. Ren, we have to go. NOW.",
+   "efeito": "luz"
+  }
+ ]
+}

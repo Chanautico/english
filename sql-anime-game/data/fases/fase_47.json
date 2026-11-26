@@ -1,0 +1,104 @@
+{
+ "id": 47,
+ "arco": 5,
+ "titulo": {
+  "pt": "O Perigo do Poder",
+  "en": "The Danger of Power"
+ },
+ "cenario": "bg_capital_chamas",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "BEGIN",
+  "ROLLBACK"
+ ],
+ "missao": {
+  "pt": "Testar uma mudança perigosa sem estragar nada.",
+  "en": "Test a dangerous change without breaking anything."
+ },
+ "historia_antes": [
+  {
+   "sprite": "ren_focado",
+   "pt": "Vou recalibrar todas as muralhas: UPDATE muralhas SET energia = 0 e depois...",
+   "en": "I'll recalibrate every wall: UPDATE walls SET energy = 0 and then...",
+   "efeito": "glitch"
+  },
+  {
+   "sprite": "pip_erro",
+   "pt": "PARA TUDO! Você ia zerar TODAS as muralhas no meio da batalha!",
+   "en": "STOP EVERYTHING! You were about to zero EVERY wall in the middle of battle!",
+   "efeito": [
+    "tremor",
+    "flash"
+   ]
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Ativando a trava de segurança temporal: TRANSAÇÕES! Dá pra testar e voltar no tempo.",
+   "en": "Activating the temporal safety lock: TRANSACTIONS! You can test and travel back in time."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "BEGIN abre a transação. Tudo depois dela é provisório. ROLLBACK desfaz tudo!",
+   "en": "BEGIN opens the transaction. Everything after it is provisional. ROLLBACK undoes it all!",
+   "quadro": {
+    "codigo": {
+     "pt": "BEGIN TRANSACTION;\nUPDATE muralhas SET energia = 0;\nROLLBACK;",
+     "en": "BEGIN TRANSACTION;\nUPDATE walls SET energy = 0;\nROLLBACK;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Faça o teste com segurança: abra uma transação, **zere a energia de todas as muralhas** e depois **desfaça** com ROLLBACK. No final, nada pode ter mudado.",
+    "en": "Run the test safely: open a transaction, **set every wall's energy to 0**, then **undo** it with ROLLBACK. In the end, nothing may have changed."
+   },
+   "gabarito": {
+    "pt": "BEGIN TRANSACTION; UPDATE muralhas SET energia = 0; ROLLBACK;",
+    "en": "BEGIN TRANSACTION; UPDATE walls SET energy = 0; ROLLBACK;"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Três comandos separados por ponto e vírgula.",
+     "en": "Three commands separated by semicolons."
+    },
+    {
+     "pt": "BEGIN TRANSACTION; UPDATE ...; ROLLBACK;",
+     "en": "BEGIN TRANSACTION; UPDATE ...; ROLLBACK;"
+    },
+    {
+     "pt": "BEGIN TRANSACTION; UPDATE muralhas SET energia = 0; ROLLBACK;",
+     "en": "BEGIN TRANSACTION; UPDATE walls SET energy = 0; ROLLBACK;"
+    }
+   ],
+   "verificar": [
+    {
+     "pt": "SELECT id, setor, energia FROM muralhas ORDER BY id",
+     "en": "SELECT id, sector, energy FROM walls ORDER BY id"
+    }
+   ],
+   "exige": [
+    "BEGIN",
+    "UPDATE",
+    "ROLLBACK"
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_derrotado",
+   "pt": "Ufa... eu quase derrubei a Capital sozinho.",
+   "en": "Phew... I almost brought down the Capital by myself."
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "Mas não derrubou! Eu sou o ponto e vírgula mais útil de Dataia.",
+   "en": "But you didn't! I'm the most useful semicolon in Dataia.",
+   "efeito": "luz"
+  }
+ ]
+}
