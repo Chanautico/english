@@ -24,7 +24,11 @@
   {
    "sprite": "pip_erro",
    "pt": "NÃÃÃO! Vazio não é texto! É NULL! NULL quer dizer \"ninguém sabe\"!",
-   "en": "NOOOO! Empty isn't text! It's NULL! NULL means \"nobody knows\"!"
+   "en": "NOOOO! Empty isn't text! It's NULL! NULL means \"nobody knows\"!",
+   "efeito": [
+    "glitch",
+    "tremor"
+   ]
   }
  ],
  "aula": [
@@ -87,7 +91,8 @@
   {
    "sprite": "kael_neutro",
    "pt": "...Seu pai também saiu por esse portão sem registrar destino.",
-   "en": "...Your father also left through that gate without registering a destination."
+   "en": "...Your father also left through that gate without registering a destination.",
+   "efeito": "escuridao"
   }
  ]
 }

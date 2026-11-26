@@ -19,7 +19,8 @@
   {
    "sprite": null,
    "pt": "Floresta Cristal. As árvores brilham em azul. No chão, pedaços de metal queimado.",
-   "en": "The Crystal Forest. The trees glow blue. On the ground, pieces of scorched metal."
+   "en": "The Crystal Forest. The trees glow blue. On the ground, pieces of scorched metal.",
+   "efeito": "cristais"
   },
   {
    "sprite": "ren_focado",

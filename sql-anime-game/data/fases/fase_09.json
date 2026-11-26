@@ -28,7 +28,8 @@
   {
    "sprite": "kael_neutro",
    "pt": "Seu pai não sumiu por acaso. Ele foi para a Capital investigar a Null-Void. E nunca voltou.",
-   "en": "Your father didn't vanish by chance. He went to the Capital to investigate the Null-Void. And he never came back."
+   "en": "Your father didn't vanish by chance. He went to the Capital to investigate the Null-Void. And he never came back.",
+   "efeito": "escuridao"
   },
   {
    "sprite": "ren_derrotado",
@@ -38,7 +39,8 @@
   {
    "sprite": "kael_orgulhoso",
    "pt": "Porque você não estava pronto. Agora talvez esteja. Prove montando seu kit de viagem.",
-   "en": "Because you weren't ready. Now perhaps you are. Prove it by packing your travel kit."
+   "en": "Because you weren't ready. Now perhaps you are. Prove it by packing your travel kit.",
+   "efeito": "luz"
   }
  ],
  "aula": [
@@ -90,7 +92,8 @@
   {
    "sprite": "ren_confiante",
    "pt": "Eu vou achar ele, Mestre. E vou descobrir o que é essa Null-Void.",
-   "en": "I'll find him, Master. And I'll find out what this Null-Void is."
+   "en": "I'll find him, Master. And I'll find out what this Null-Void is.",
+   "efeito": "cristais"
   },
   {
    "sprite": "pip_feliz",

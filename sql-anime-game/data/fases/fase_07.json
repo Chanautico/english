@@ -93,7 +93,8 @@
   {
    "sprite": "kael_neutro",
    "pt": "O Corvo trabalhava para a Null-Void. Guarde esse nome.",
-   "en": "The Crow worked for the Null-Void. Remember that name."
+   "en": "The Crow worked for the Null-Void. Remember that name.",
+   "efeito": "escuridao"
   }
  ]
 }

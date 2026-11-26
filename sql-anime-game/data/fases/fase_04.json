@@ -21,7 +21,8 @@
   {
    "sprite": null,
    "pt": "A forja da vila solta faíscas. O ferreiro bate o martelo com pressa.",
-   "en": "The village forge throws sparks. The blacksmith hammers in a hurry."
+   "en": "The village forge throws sparks. The blacksmith hammers in a hurry.",
+   "efeito": "impacto"
   },
   {
    "sprite": "ren_neutro",

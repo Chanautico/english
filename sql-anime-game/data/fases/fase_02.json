@@ -19,7 +19,8 @@
   {
    "sprite": "ren_surpreso",
    "pt": "Ei! O Terminal está piscando! Ele está... lento?",
-   "en": "Hey! The Terminal is blinking! Is it... slow?"
+   "en": "Hey! The Terminal is blinking! Is it... slow?",
+   "efeito": "glitch"
   },
   {
    "sprite": "pip_alerta",

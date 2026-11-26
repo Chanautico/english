@@ -220,7 +220,7 @@
     const started = totalDone() > 0 || Object.keys(save.seen).length > 0;
     app.innerHTML = `
       <section class="screen title">
-        <div class="tl-art tl-left tl-dataia">${Assets.html('bg', 'bg_vila_arquivo', 'tl-bg')}${Assets.html('sprite', 'ren_confiante', 'tl-sprite')}</div>
+        <div class="tl-art tl-left tl-dataia">${FX.scenery('bg_vila_arquivo')}<div class="tl-cast">${FX.actor('ren_confiante', 'tl-ren')}${FX.actor('pip_feliz', 'tl-pip')}</div></div>
         <div class="tl-art tl-right" style="background-image:url('${Characters.scene('sakura', 'day')}')"></div>
         <div class="tl-seam"></div>
         ${leaves(16)}
@@ -244,7 +244,7 @@
         </div>
         <div class="version">v0.3</div>
       </section>`;
-    Assets.hydrate(app);
+    FX.hydrate(app);
     $$('[data-lang]').forEach((b) => b.onclick = () => { save.lang = b.dataset.lang; I18N.lang = save.lang; persist(); GameAudio.play('click'); showTitle(); });
     $$('[data-go]').forEach((b) => b.onclick = () => {
       GameAudio.play('click'); GameAudio.startMusic();

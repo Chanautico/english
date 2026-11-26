@@ -19,7 +19,8 @@
   {
    "sprite": null,
    "pt": "Um caçador cambaleia pelo portão, pálido, com a mão no braço roxo.",
-   "en": "A hunter staggers through the gate, pale, clutching a purple arm."
+   "en": "A hunter staggers through the gate, pale, clutching a purple arm.",
+   "efeito": "veneno"
   },
   {
    "sprite": "ren_surpreso",
@@ -116,7 +117,8 @@
   {
    "sprite": "kael_neutro",
    "pt": "O caçador vai viver. Lembre disso: um bom filtro salva vidas.",
-   "en": "The hunter will live. Remember this: a good filter saves lives."
+   "en": "The hunter will live. Remember this: a good filter saves lives.",
+   "efeito": "luz"
   }
  ]
 }

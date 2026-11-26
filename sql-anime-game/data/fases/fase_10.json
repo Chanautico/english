@@ -30,12 +30,17 @@
   {
    "sprite": null,
    "pt": "Estrada para a Capital. O céu escurece de repente.",
-   "en": "The road to the Capital. The sky suddenly darkens."
+   "en": "The road to the Capital. The sky suddenly darkens.",
+   "efeito": [
+    "escuridao",
+    "relampago"
+   ]
   },
   {
    "sprite": "vex_sombrio",
    "pt": "Então este é o filho do velho arquivista. Com o brinquedo do papai na mão.",
-   "en": "So this is the old archivist's son. Holding daddy's toy."
+   "en": "So this is the old archivist's son. Holding daddy's toy.",
+   "efeito": "glitch"
   },
   {
    "sprite": "ren_surpreso",
@@ -45,17 +50,23 @@
   {
    "sprite": "vex_sombrio",
    "pt": "Eu sou Vex, da Null-Void. E isto é o que acontece com registros que ninguém cuida.",
-   "en": "I am Vex, of the Null-Void. And this is what happens to records nobody looks after."
+   "en": "I am Vex, of the Null-Void. And this is what happens to records nobody looks after.",
+   "efeito": "relampago"
   },
   {
    "sprite": "golem_sucata",
    "pt": "GRRRRROOOOOOM!",
-   "en": "GRRRRROOOOOOM!"
+   "en": "GRRRRROOOOOOM!",
+   "efeito": [
+    "impacto",
+    "tremor"
+   ]
   },
   {
    "sprite": "pip_alerta",
    "pt": "É um Golem de milhares de registros corrompidos! O Terminal consegue ler as partes dele! Três golpes, Ren!",
-   "en": "It's a Golem made of thousands of corrupted records! The Terminal can read its parts! Three strikes, Ren!"
+   "en": "It's a Golem made of thousands of corrupted records! The Terminal can read its parts! Three strikes, Ren!",
+   "efeito": "flash"
   }
  ],
  "aula": [],
@@ -140,27 +151,41 @@
   {
    "sprite": null,
    "pt": "O Golem se desfaz numa chuva de registros apagados.",
-   "en": "The Golem crumbles into a rain of erased records."
+   "en": "The Golem crumbles into a rain of erased records.",
+   "entra": [
+    "golem_sucata",
+    "vex_furioso",
+    "ren_focado"
+   ],
+   "efeito": "desmoronar"
   },
   {
    "sprite": "vex_furioso",
    "pt": "Tsc. Sorte de principiante. Aproveite enquanto dura, garoto.",
-   "en": "Tch. Beginner's luck. Enjoy it while it lasts, boy."
+   "en": "Tch. Beginner's luck. Enjoy it while it lasts, boy.",
+   "efeito": "relampago"
   },
   {
    "sprite": "vex_sombrio",
    "pt": "A Capital vai cair. E quando cair, nem o seu Terminal vai lembrar que ela existiu.",
-   "en": "The Capital will fall. And when it does, not even your Terminal will remember it existed."
+   "en": "The Capital will fall. And when it does, not even your Terminal will remember it existed.",
+   "efeito": "glitch"
   },
   {
    "sprite": "ren_confiante",
    "pt": "...Pip. Vamos para a Capital. Agora mais do que nunca.",
-   "en": "...Pip. We're going to the Capital. Now more than ever."
+   "en": "...Pip. We're going to the Capital. Now more than ever.",
+   "sai": [
+    "vex",
+    "golem"
+   ],
+   "efeito": "luz"
   },
   {
    "sprite": "pip_feliz",
    "pt": "FIM DO ARCO 1! Próxima parada: Neo-Schema e o Exame da Guilda de Bronze!",
-   "en": "END OF ARC 1! Next stop: Neo-Schema and the Bronze Guild Exam!"
+   "en": "END OF ARC 1! Next stop: Neo-Schema and the Bronze Guild Exam!",
+   "efeito": "cristais"
   }
  ]
 }

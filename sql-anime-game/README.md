@@ -27,6 +27,7 @@ A Midori e a Sakura ensinam SQL organizando o Festival Escolar: **5 módulos, 37
 
 ![Tela inicial](docs/screenshot-title.png)
 ![Mapa de Dataia](docs/screenshot-dataia-map.png)
+![Cena animada](docs/screenshot-dataia-scene.png)
 ![Aula com o Pip](docs/screenshot-dataia-lesson.png)
 ![Chefe por turnos](docs/screenshot-dataia-boss.png)
 ![Questão guiada](docs/screenshot-question.png)
@@ -100,6 +101,17 @@ Uma fase (`data/fases/fase_XX.json`):
 ```
 
 `quadro` (anotação no caderno durante a aula) pode ser `titulo`, `codigo`, `nota` ou `tabela`.
+
+Cada fala também aceita animação:
+
+- `"efeito"`: um ou vários de `tremor`, `flash`, `relampago`, `escuridao`, `luz`, `cristais`, `dados`,
+  `glitch`, `impacto`, `veneno`, `corte`, `desmoronar`. Ex.: `"efeito": ["escuridao", "relampago"]`.
+- `"entra"`: coloca personagens no palco sem falar. Ex.: `"entra": ["kael_neutro"]`.
+- `"sai"`: tira personagens do palco. Ex.: `"sai": ["vex"]`.
+
+Sem imagens, os cenários do Arco 1 são desenhados e animados pelo código (`src/js/fx.js`), o Pip é
+desenhado por completo e os outros personagens aparecem como silhuetas com olhos brilhando e expressão.
+Quando a imagem real existir, ela entra por cima e as partículas e efeitos continuam.
 Num chefe, cada item de `desafios` é um turno. `guiado` e `chefe` são opcionais.
 
 ## Estrutura

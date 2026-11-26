@@ -148,7 +148,7 @@
         </nav>
         <div class="hub-main">
           <figure class="teacher polaroid arc-card" style="--c:${arc.cor}">
-            ${Assets.html('bg', arc.capa, 'arc-cover')}
+            <div class="arc-cover">${FX.scenery(arc.capa, { few: true })}</div>
             <figcaption><b>${S('arc')} ${arc.id}</b><small>${esc(L(arc.titulo))}</small></figcaption>
           </figure>
           <article class="notebook">
@@ -180,7 +180,7 @@
         </div>
       </section>`;
     core.bindHeader(app, () => core.showTitle());
-    Assets.hydrate(app);
+    Assets.hydrate(app); FX.hydrate(app);
     app.querySelectorAll('[data-arc]').forEach((b) => b.onclick = () => { GameAudio.play('click'); showMap(+b.dataset.arc); });
     app.querySelectorAll('[data-play]').forEach((b) => b.onclick = () => { GameAudio.play('click'); GameAudio.startMusic(); playFase(D().fases.find((f) => f.id === +b.dataset.play)); });
     const tb = app.querySelector('[data-title]'); if (tb) tb.onclick = () => { GameAudio.play('click'); core.showTitle(); };
@@ -195,16 +195,19 @@
           scene(f, f.historia_depois, false, back)), back), back);
   }
 
-  // ─────────────────────────── Cena (polaroid + caderno + diálogo) ───────────────────────────
+  // ─────────────────────────── Cena animada (palco + elenco + caderno + diálogo) ───────────────────────────
   function scene(f, falas, isLesson, onDone, onBack) {
     if (!falas || !falas.length) return onDone();
     const core = C(), app = document.getElementById('app');
     core.setCurrent(null);
     const arc = arcById(f.arco);
     app.innerHTML = `
-      <section class="screen vn dataia-vn ${isLesson ? 'is-lesson' : ''}" style="--arc:${arc.cor}">
-        <div class="vn-bg"></div>
-        ${core.leaves(8)}
+      <section class="screen vn cine ${isLesson ? 'is-lesson' : ''}" style="--arc:${arc.cor}">
+        <div class="cine-stage">
+          ${FX.scenery(f.cenario)}
+          <div class="cast"></div>
+          <div class="fx-layer"></div>
+        </div>
         <div class="vn-top">
           <button class="chip-btn dark" data-back>↩ ${core.t('back')}</button>
           <div class="vn-title">${isLesson ? '📖 ' + core.t('lesson') + ' · ' : ''}${S('stage')} ${f.id} — ${esc(L(f.titulo))}</div>
@@ -214,20 +217,16 @@
             <button class="chip-btn dark" data-skip>${core.t('skip')} ⏭</button>
           </div>
         </div>
-        <figure class="vn-photo polaroid">
-          <div class="stage">${Assets.html('bg', f.cenario, 'stage-bg')}<div class="stage-sprite"></div></div>
-          <figcaption></figcaption><span class="vn-emote"></span>
-        </figure>
         ${isLesson ? `<div class="vn-notes"><div class="nb-rings"></div><div class="notes-head">${S('stage')} ${f.id} — ${esc(L(f.titulo))}</div><div class="notes-body"></div></div>` : ''}
         <div class="vn-dialog"><div class="vn-who"></div><div class="vn-text"></div><div class="vn-next">${core.t('clickToContinue')} ▸</div></div>
         <div class="vn-steps">${falas.map(() => '<i></i>').join('')}</div>
       </section>`;
-    Assets.hydrate(app);
+    FX.hydrate(app);
     const q = (s) => app.querySelector(s);
-    const photo = q('.vn-photo'), spriteBox = q('.stage-sprite'), cap = q('figcaption'), emo = q('.vn-emote');
+    const stage = q('.cine-stage'), castEl = q('.cast');
     const who = q('.vn-who'), textEl = q('.vn-text'), notes = q('.notes-body'), dots = app.querySelectorAll('.vn-steps i');
-    Assets.resolve('bg', f.cenario).then((src) => { if (src) q('.vn-bg').style.backgroundImage = `url('${src}')`; });
-    let i = -1, typing = null, full = '', auto = false, autoTimer = null, lastSprite = undefined;
+    let i = -1, typing = null, full = '', auto = false, autoTimer = null;
+    const cast = new Map(); // personagem -> elemento no palco (na ordem em que entraram)
     const log = [];
     const speed = { slow: 45, normal: 24, fast: 10, instant: 0 }[core.save.settings.speed] ?? 24;
 
@@ -242,20 +241,42 @@
       notes.appendChild(div);
       while (notes.scrollHeight > notes.clientHeight && notes.children.length > 1) notes.removeChild(notes.firstChild);
     }
+    // Posiciona o elenco: Ren sempre à esquerda; o Pip flutua perto dele.
+    function layoutCast() {
+      const people = [...cast.entries()].filter(([c]) => c !== 'pip').sort(([a], [b]) => (a === 'ren' ? -1 : b === 'ren' ? 1 : 0));
+      const slots = isLesson ? { 1: [22], 2: [12, 32], 3: [8, 22, 36] } : { 1: [50], 2: [28, 72], 3: [18, 50, 82] };
+      const pos = slots[Math.min(people.length, 3)] || [];
+      people.forEach(([, el], k) => { el.style.left = pos[k] + '%'; el.classList.toggle('flip', pos[k] > 55); });
+      const pipEl = cast.get('pip');
+      if (pipEl) { const ren = cast.get('ren'); pipEl.style.left = ((ren ? parseFloat(ren.style.left) : (isLesson ? 22 : 50)) + (isLesson ? 9 : 11)) + '%'; }
+    }
+    // Coloca um personagem no palco (ou só troca a expressão se já estiver lá).
+    function ensureActor(tag) {
+      const ch = Assets.charOf(tag);
+      let el = cast.get(ch);
+      if (!el) {
+        const people = [...cast.keys()].filter((c) => c !== 'pip');
+        if (ch !== 'pip' && people.length >= 3) { // palco cheio: sai quem entrou primeiro (menos o Ren)
+          const out = people.find((c) => c !== 'ren');
+          const oel = cast.get(out); oel.classList.add('exit'); setTimeout(() => oel.remove(), 400); cast.delete(out);
+        }
+        const d = document.createElement('div'); d.innerHTML = FX.actor(tag, 'enter' + (ch === 'pip' ? ' actor-pip' : '') + (ch === 'golem' ? ' actor-boss' : ''));
+        el = d.firstElementChild; castEl.appendChild(el); cast.set(ch, el);
+        FX.hydrate(castEl);
+        if (ch === 'golem') FX.play(stage, 'tremor');
+      } else FX.setActorTag(el, tag);
+      layoutCast();
+      return el;
+    }
     function setSprite(tag) {
-      if (tag === lastSprite) return;
-      const sameChar = lastSprite && tag && Assets.charOf(tag) === Assets.charOf(lastSprite);
-      lastSprite = tag;
-      if (!tag) { spriteBox.innerHTML = ''; cap.textContent = L(f.titulo); emo.innerHTML = ''; photo.style.setProperty('--c', arc.cor); return; }
-      spriteBox.innerHTML = Assets.html('sprite', tag, 'st-sprite' + (sameChar ? '' : ' enter'));
-      Assets.hydrate(spriteBox);
-      cap.innerHTML = `${esc(nameOf(tag))} <code>${esc(tag)}</code>`;
-      photo.style.setProperty('--c', Assets.color(tag));
-      const e = emoteOf(tag);
-      emo.innerHTML = e ? Characters.emote(e) : '';
-      photo.classList.remove('shake', 'hop'); void photo.offsetWidth;
-      if (e === 'angry' || e === 'surprised') photo.classList.add('shake');
-      if (e === 'happy') photo.classList.add('hop');
+      if (!tag) { cast.forEach((el) => { el.classList.remove('speaking'); el.classList.add('dim'); }); return; }
+      const ch = Assets.charOf(tag);
+      const el = ensureActor(tag);
+      cast.forEach((x, c) => { x.classList.toggle('speaking', c === ch); x.classList.toggle('dim', c !== ch); });
+      let em = el.querySelector('.actor-emote');
+      if (!em) { em = document.createElement('span'); em.className = 'actor-emote'; el.appendChild(em); }
+      const e = emoteOf(tag); em.innerHTML = e ? Characters.emote(e) : '';
+      el.classList.remove('talk'); void el.offsetWidth; el.classList.add('talk');
     }
     function finishTyping() { if (typing) { clearInterval(typing); typing = null; textEl.textContent = full; } }
     function next() {
@@ -266,9 +287,12 @@
       const st = falas[i];
       full = st[lang()] || st.pt;
       log.push([st.sprite ? nameOf(st.sprite) : '', full]);
+      [].concat(st.entra || []).forEach((tg) => ensureActor(tg).classList.add('dim'));
+      [].concat(st.sai || []).forEach((c) => { const el = cast.get(c); if (el) { el.classList.add('exit'); setTimeout(() => el.remove(), 400); cast.delete(c); layoutCast(); } });
       setSprite(st.sprite || null);
       if (st.sprite) { who.textContent = nameOf(st.sprite); who.style.background = Assets.color(st.sprite); who.hidden = false; } else who.hidden = true;
       addNote(st.quadro);
+      [].concat(st.efeito || []).forEach((e, k) => setTimeout(() => FX.play(stage, e), k * 250));
       textEl.classList.toggle('narration', !st.sprite);
       if (!speed) { textEl.textContent = full; return scheduleAuto(); }
       let k = 0; textEl.textContent = '';
@@ -318,7 +342,7 @@
         <div class="quest-body">
           <aside class="chat pip-chat" style="--c:${D().elenco.pip.cor};--soft:#fff5d9">
             <div class="chat-head">
-              <span class="pip-av">${Assets.html('sprite', 'pip_feliz', 'av-asset')}</span>
+              <span class="pip-av">${FX.actor('pip_feliz', 'av-actor')}</span>
               <div><b>Pip</b><small><i class="online"></i> ${S('terminal')} · <code class="sprite-tag">pip_feliz</code></small></div>
             </div>
             <div class="chat-log"></div>
@@ -330,8 +354,12 @@
             </div>
           </aside>
           <main class="work">
-            ${boss ? `<div class="bossbar">
-              <div class="boss-portrait">${Assets.html('sprite', boss.sprite, 'boss-asset')}</div>
+            ${boss ? `<div class="arena">
+              ${FX.scenery(f.cenario, { few: true })}
+              <div class="arena-cast">${FX.actor('ren_focado', 'ar-hero')}${FX.actor('pip_alerta', 'ar-pip')}${FX.actor(boss.sprite, 'ar-boss')}</div>
+              <div class="fx-layer"></div>
+            </div>
+            <div class="bossbar">
               <div class="boss-info"><b>${esc(L(boss.nome))}</b><div class="hp"><i style="width:100%"></i></div><small class="turn-lbl"></small></div>
               <div class="turn-dots">${f.desafios.map((_, k) => `<i data-td="${k}"></i>`).join('')}</div>
             </div>` : `<div class="mission-strip"><b>${S('mission')}</b> ${esc(L(f.missao))}</div>`}
@@ -361,15 +389,39 @@
     const back = onBack || (() => showMap(f.arco));
     core.bindHeader(app, back);
     q('[data-act="map"]').onclick = () => { GameAudio.play('click'); back(); };
-    Assets.hydrate(app);
+    FX.hydrate(app);
     bindSamples(app, arc);
     const chatLog = q('.chat-log'), qbox = q('.query-box'), feedback = q('.feedback');
+    const arena = q('.arena');
+    // Animações da batalha: ataque do herói (acerto) ou do chefe (erro).
+    function battle(kind) {
+      if (!arena) return;
+      const hero = arena.querySelector('.ar-hero'), foe = arena.querySelector('.ar-boss');
+      const anim = (el, cls, ms) => { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); setTimeout(() => el.classList.remove(cls), ms); };
+      if (kind === 'hit') {
+        FX.setActorTag(hero, 'ren_confiante');
+        anim(hero, 'dash', 700);
+        setTimeout(() => { FX.play(arena, 'corte'); FX.play(arena, 'impacto'); anim(foe, 'hurt', 600); }, 280);
+      } else if (kind === 'miss') {
+        anim(foe, 'lunge', 700);
+        setTimeout(() => { FX.play(arena, 'tremor'); FX.setActorTag(hero, 'ren_surpreso'); anim(hero, 'hurt', 600); }, 300);
+        setTimeout(() => FX.setActorTag(hero, 'ren_focado'), 1400);
+      } else if (kind === 'win') {
+        foe.querySelectorAll('.golem-svg').forEach((s) => s.classList.add('crumble'));
+        foe.classList.add('defeated'); FX.play(arena, 'dados');
+        FX.setActorTag(hero, 'ren_confiante'); anim(hero, 'cheer', 1200);
+        FX.setActorTag(arena.querySelector('.ar-pip'), 'pip_feliz');
+      }
+    }
 
     function setPip(tag) {
-      const av = q('.pip-av');
-      av.innerHTML = Assets.html('sprite', tag, 'av-asset') + (emoteOf(tag) ? Characters.emote(emoteOf(tag)) : '');
-      Assets.hydrate(av);
+      const el = q('.pip-av .actor');
+      FX.setActorTag(el, tag);
+      let em = el.querySelector('.actor-emote');
+      if (!em) { em = document.createElement('span'); em.className = 'actor-emote'; el.appendChild(em); }
+      em.innerHTML = emoteOf(tag) ? Characters.emote(emoteOf(tag)) : '';
       q('.sprite-tag').textContent = tag;
+      if (arena) FX.setActorTag(arena.querySelector('.ar-pip'), tag);
     }
     function say(html, tag, me) {
       const div = document.createElement('div');
@@ -487,15 +539,19 @@
         feedback.className = 'feedback bad'; feedback.textContent = '✗ ' + res.msg;
         typingThen(() => say(`${esc(L(pick(PIP.wrong)))}<small class="why">${esc(res.msg)}</small>`, 'pip_alerta'));
         const w = q('.work'); w.classList.remove('shake'); void w.offsetWidth; w.classList.add('shake');
+        battle('miss');
         return;
       }
+      q('.results').classList.remove('rows-in'); void q('.results').offsetWidth; q('.results').classList.add('rows-in');
       GameAudio.play('success');
       feedback.className = 'feedback good'; feedback.textContent = '✓ ' + core.t('correct');
       if (boss) {
         hp--;
         q('.hp i').style.width = (hp / boss.hp) * 100 + '%';
-        const bp = q('.boss-portrait'); bp.classList.remove('hit'); void bp.offsetWidth; bp.classList.add('hit');
-        const dmg = document.createElement('span'); dmg.className = 'dmg'; dmg.textContent = '-1'; bp.appendChild(dmg); setTimeout(() => dmg.remove(), 900);
+        battle('hit');
+        const foe = q('.ar-boss');
+        setTimeout(() => { const dmg = document.createElement('span'); dmg.className = 'dmg'; dmg.textContent = '-1'; foe.appendChild(dmg); setTimeout(() => dmg.remove(), 900); }, 300);
+        if (hp === 0) setTimeout(() => battle('win'), 800);
       }
       if (turn < total - 1) {
         typingThen(() => say(esc(L(PIP.turnOk)), 'pip_feliz'));

@@ -20,12 +20,19 @@
   {
    "sprite": null,
    "pt": "Vila Oculta dos Registros. Uma carroça de suprimentos tomba na praça e cristais de dados rolam pelo chão.",
-   "en": "The Hidden Village of Records. A supply cart tips over in the square and data crystals roll across the ground."
+   "en": "The Hidden Village of Records. A supply cart tips over in the square and data crystals roll across the ground.",
+   "efeito": [
+    "tremor",
+    "cristais"
+   ]
   },
   {
    "sprite": "ren_surpreso",
    "pt": "Ahhh! Os registros do armazém! Se eles se perderem, a vila passa fome no inverno!",
-   "en": "Ahhh! The warehouse records! If we lose them, the village starves this winter!"
+   "en": "Ahhh! The warehouse records! If we lose them, the village starves this winter!",
+   "entra": [
+    "kael_neutro"
+   ]
   },
   {
    "sprite": "kael_neutro",
@@ -35,7 +42,8 @@
   {
    "sprite": "ren_surpreso",
    "pt": "Isso é... o Terminal do meu pai?!",
-   "en": "This is... my father's Terminal?!"
+   "en": "This is... my father's Terminal?!",
+   "efeito": "flash"
   },
   {
    "sprite": "kael_neutro",
@@ -45,7 +53,11 @@
   {
    "sprite": "pip_feliz",
    "pt": "BZZT! Acordei! Finalmente! Quanto tempo eu dormi? Cem anos? Oi! Eu sou o Pip! Sim, eu sou um ponto e vírgula. Sim, eu falo. Vamos trabalhar!",
-   "en": "BZZT! I'm awake! Finally! How long was I asleep? A hundred years? Hi! I'm Pip! Yes, I'm a semicolon. Yes, I talk. Let's get to work!"
+   "en": "BZZT! I'm awake! Finally! How long was I asleep? A hundred years? Hi! I'm Pip! Yes, I'm a semicolon. Yes, I talk. Let's get to work!",
+   "efeito": [
+    "flash",
+    "cristais"
+   ]
   }
  ],
  "aula": [
@@ -171,7 +183,8 @@
   {
    "sprite": "ren_confiante",
    "pt": "Dezessete itens! Eu li o armazém inteiro! Eu sou um gênio!",
-   "en": "Seventeen items! I read the whole warehouse! I'm a genius!"
+   "en": "Seventeen items! I read the whole warehouse! I'm a genius!",
+   "efeito": "cristais"
   },
   {
    "sprite": "kael_neutro",

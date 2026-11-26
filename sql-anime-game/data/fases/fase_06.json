@@ -20,7 +20,8 @@
   {
    "sprite": null,
    "pt": "Taverna da vila. O cofre está aberto e vazio.",
-   "en": "The village tavern. The chest is open and empty."
+   "en": "The village tavern. The chest is open and empty.",
+   "efeito": "tremor"
   },
   {
    "sprite": "ren_focado",
@@ -93,7 +94,8 @@
   {
    "sprite": "ren_surpreso",
    "pt": "Cinco suspeitos... e a Selka está presa! Então não pode ter sido ela.",
-   "en": "Five suspects... and Selka is in jail! So it couldn't have been her."
+   "en": "Five suspects... and Selka is in jail! So it couldn't have been her.",
+   "efeito": "flash"
   },
   {
    "sprite": "pip_feliz",

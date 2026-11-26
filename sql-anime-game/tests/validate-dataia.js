@@ -7,6 +7,8 @@ const initSqlJs = require(path.join(__dirname, '..', 'src', 'vendor', 'sql-asm.j
 global.window = {};
 require('../src/js/data.bundle.js');
 const { elenco, arcos, fases } = window.GAME_DATA;
+// Efeitos de cena válidos (iguais aos de src/js/fx.js).
+const EFFECTS = ['tremor', 'flash', 'relampago', 'escuridao', 'luz', 'cristais', 'dados', 'glitch', 'impacto', 'veneno', 'corte', 'desmoronar'];
 
 initSqlJs().then((SQL) => {
   let fails = 0, n = 0;
@@ -23,6 +25,8 @@ initSqlJs().then((SQL) => {
     for (const k of ['historia_antes', 'aula', 'historia_depois']) (f[k] || []).forEach((x, i) => {
       if (!x.pt || !x.en) err(`fase ${f.id} ${k}[${i}]: fala sem pt/en`);
       if (x.sprite && !elenco[x.sprite.split('_')[0]]) err(`fase ${f.id}: sprite desconhecido ${x.sprite}`);
+      [].concat(x.entra || []).forEach((s) => { if (!elenco[s.split('_')[0]]) err(`fase ${f.id}: entra desconhecido ${s}`); });
+      [].concat(x.efeito || []).forEach((e) => { if (!EFFECTS.includes(e)) err(`fase ${f.id}: efeito desconhecido ${e}`); });
     });
     f.desafios.forEach((d, di) => {
       n++;
