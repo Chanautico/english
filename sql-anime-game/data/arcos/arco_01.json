@@ -1,0 +1,999 @@
+{
+ "id": 1,
+ "titulo": {
+  "pt": "O Despertar na Vila dos Arquivos",
+  "en": "Awakening in the Archive Village"
+ },
+ "descricao": {
+  "pt": "Ren herda o Terminal Ancestral e aprende a ler, filtrar e ordenar os registros da vila. SELECT, WHERE, LIKE, AND/OR, ORDER BY, LIMIT e NULL.",
+  "en": "Ren inherits the Ancestral Terminal and learns to read, filter and sort the village records. SELECT, WHERE, LIKE, AND/OR, ORDER BY, LIMIT and NULL."
+ },
+ "capa": "bg_vila_arquivo",
+ "cor": "#3f8f6b",
+ "tabelas": [
+  {
+   "nome": {
+    "pt": "inventario_vila",
+    "en": "village_inventory"
+   },
+   "descricao": {
+    "pt": "Todos os itens guardados no armazém da vila.",
+    "en": "Every item stored in the village warehouse."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER",
+     "nota": {
+      "pt": "chave primária",
+      "en": "primary key"
+     }
+    },
+    {
+     "nome": {
+      "pt": "nome_item",
+      "en": "item_name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "categoria",
+      "en": "category"
+     },
+     "tipo": "VARCHAR",
+     "nota": {
+      "pt": "'arma', 'armadura', 'pocao', 'viagem', 'comida'",
+      "en": "'weapon', 'armor', 'potion', 'travel', 'food'"
+     }
+    },
+    {
+     "nome": {
+      "pt": "quantidade",
+      "en": "quantity"
+     },
+     "tipo": "INTEGER",
+     "nota": {
+      "pt": "unidades em estoque",
+      "en": "units in stock"
+     }
+    },
+    {
+     "nome": {
+      "pt": "preco",
+      "en": "price"
+     },
+     "tipo": "INTEGER",
+     "nota": {
+      "pt": "em moedas",
+      "en": "in coins"
+     }
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Antidoto Real",
+      "en": "Royal Antidote"
+     },
+     {
+      "pt": "pocao",
+      "en": "potion"
+     },
+     1,
+     120
+    ],
+    [
+     2,
+     {
+      "pt": "Pocao de Cura",
+      "en": "Healing Potion"
+     },
+     {
+      "pt": "pocao",
+      "en": "potion"
+     },
+     9,
+     25
+    ],
+    [
+     3,
+     {
+      "pt": "Erva Lunar",
+      "en": "Moon Herb"
+     },
+     {
+      "pt": "pocao",
+      "en": "potion"
+     },
+     14,
+     8
+    ],
+    [
+     4,
+     {
+      "pt": "Espada de Ferro",
+      "en": "Iron Sword"
+     },
+     {
+      "pt": "arma",
+      "en": "weapon"
+     },
+     2,
+     80
+    ],
+    [
+     5,
+     {
+      "pt": "Lanca de Bronze",
+      "en": "Bronze Spear"
+     },
+     {
+      "pt": "arma",
+      "en": "weapon"
+     },
+     3,
+     65
+    ],
+    [
+     6,
+     {
+      "pt": "Arco Longo",
+      "en": "Longbow"
+     },
+     {
+      "pt": "arma",
+      "en": "weapon"
+     },
+     7,
+     70
+    ],
+    [
+     7,
+     {
+      "pt": "Machado de Lenhador",
+      "en": "Woodcutter Axe"
+     },
+     {
+      "pt": "arma",
+      "en": "weapon"
+     },
+     5,
+     40
+    ],
+    [
+     8,
+     {
+      "pt": "Armadura de Couro",
+      "en": "Leather Armor"
+     },
+     {
+      "pt": "armadura",
+      "en": "armor"
+     },
+     6,
+     90
+    ],
+    [
+     9,
+     {
+      "pt": "Armadura de Escamas",
+      "en": "Scale Armor"
+     },
+     {
+      "pt": "armadura",
+      "en": "armor"
+     },
+     2,
+     150
+    ],
+    [
+     10,
+     {
+      "pt": "Armadura Runica",
+      "en": "Runic Armor"
+     },
+     {
+      "pt": "armadura",
+      "en": "armor"
+     },
+     1,
+     400
+    ],
+    [
+     11,
+     {
+      "pt": "Escudo de Carvalho",
+      "en": "Oak Shield"
+     },
+     {
+      "pt": "armadura",
+      "en": "armor"
+     },
+     4,
+     55
+    ],
+    [
+     12,
+     {
+      "pt": "Corda Elfica",
+      "en": "Elven Rope"
+     },
+     {
+      "pt": "viagem",
+      "en": "travel"
+     },
+     8,
+     15
+    ],
+    [
+     13,
+     {
+      "pt": "Tocha Eterna",
+      "en": "Everlasting Torch"
+     },
+     {
+      "pt": "viagem",
+      "en": "travel"
+     },
+     12,
+     10
+    ],
+    [
+     14,
+     {
+      "pt": "Mapa Antigo",
+      "en": "Old Map"
+     },
+     {
+      "pt": "viagem",
+      "en": "travel"
+     },
+     1,
+     60
+    ],
+    [
+     15,
+     {
+      "pt": "Pao de Viagem",
+      "en": "Travel Bread"
+     },
+     {
+      "pt": "comida",
+      "en": "food"
+     },
+     30,
+     3
+    ],
+    [
+     16,
+     {
+      "pt": "Queijo da Vila",
+      "en": "Village Cheese"
+     },
+     {
+      "pt": "comida",
+      "en": "food"
+     },
+     0,
+     6
+    ],
+    [
+     17,
+     {
+      "pt": "Cantil de Couro",
+      "en": "Leather Canteen"
+     },
+     {
+      "pt": "viagem",
+      "en": "travel"
+     },
+     3,
+     12
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "suspeitos",
+    "en": "suspects"
+   },
+   "descricao": {
+    "pt": "Pessoas que estavam na taverna na noite do roubo.",
+    "en": "People who were at the tavern on the night of the theft."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "capa",
+      "en": "cloak"
+     },
+     "tipo": "VARCHAR",
+     "nota": {
+      "pt": "cor da capa",
+      "en": "cloak colour"
+     }
+    },
+    {
+     "nome": {
+      "pt": "cidade",
+      "en": "city"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "status",
+      "en": "status"
+     },
+     "tipo": "VARCHAR",
+     "nota": {
+      "pt": "'Livre', 'Foragido', 'Preso'",
+      "en": "'Free', 'Fugitive', 'Jailed'"
+     }
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Garrick",
+     {
+      "pt": "Vermelha",
+      "en": "Red"
+     },
+     {
+      "pt": "Vila Oculta",
+      "en": "Hidden Village"
+     },
+     {
+      "pt": "Livre",
+      "en": "Free"
+     }
+    ],
+    [
+     2,
+     "Mirela",
+     {
+      "pt": "Azul",
+      "en": "Blue"
+     },
+     {
+      "pt": "Vila Oculta",
+      "en": "Hidden Village"
+     },
+     {
+      "pt": "Livre",
+      "en": "Free"
+     }
+    ],
+    [
+     3,
+     "Toss",
+     {
+      "pt": "Vermelha",
+      "en": "Red"
+     },
+     "Neo-Schema",
+     {
+      "pt": "Livre",
+      "en": "Free"
+     }
+    ],
+    [
+     4,
+     "Bram",
+     {
+      "pt": "Preta",
+      "en": "Black"
+     },
+     {
+      "pt": "Porto Nevoa",
+      "en": "Mist Harbor"
+     },
+     {
+      "pt": "Foragido",
+      "en": "Fugitive"
+     }
+    ],
+    [
+     5,
+     "Selka",
+     {
+      "pt": "Vermelha",
+      "en": "Red"
+     },
+     {
+      "pt": "Vila Oculta",
+      "en": "Hidden Village"
+     },
+     {
+      "pt": "Preso",
+      "en": "Jailed"
+     }
+    ],
+    [
+     6,
+     "Vin",
+     {
+      "pt": "Verde",
+      "en": "Green"
+     },
+     {
+      "pt": "Vila Oculta",
+      "en": "Hidden Village"
+     },
+     {
+      "pt": "Foragido",
+      "en": "Fugitive"
+     }
+    ],
+    [
+     7,
+     "Hugo",
+     {
+      "pt": "Azul",
+      "en": "Blue"
+     },
+     "Neo-Schema",
+     {
+      "pt": "Livre",
+      "en": "Free"
+     }
+    ],
+    [
+     8,
+     "Nessa",
+     {
+      "pt": "Vermelha",
+      "en": "Red"
+     },
+     {
+      "pt": "Porto Nevoa",
+      "en": "Mist Harbor"
+     },
+     {
+      "pt": "Foragido",
+      "en": "Fugitive"
+     }
+    ],
+    [
+     9,
+     "Oto",
+     {
+      "pt": "Preta",
+      "en": "Black"
+     },
+     {
+      "pt": "Vila Oculta",
+      "en": "Hidden Village"
+     },
+     {
+      "pt": "Livre",
+      "en": "Free"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "procurados",
+    "en": "wanted"
+   },
+   "descricao": {
+    "pt": "Cartazes de procurados no quadro da guarda.",
+    "en": "Wanted posters on the guard's board."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "recompensa",
+      "en": "bounty"
+     },
+     "tipo": "INTEGER",
+     "nota": {
+      "pt": "em moedas",
+      "en": "in coins"
+     }
+    },
+    {
+     "nome": {
+      "pt": "crime",
+      "en": "crime"
+     },
+     "tipo": "VARCHAR"
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Raposa Cinzenta",
+      "en": "Grey Fox"
+     },
+     500,
+     {
+      "pt": "roubo de galinhas",
+      "en": "chicken theft"
+     }
+    ],
+    [
+     2,
+     {
+      "pt": "Dentes de Ferro",
+      "en": "Iron Teeth"
+     },
+     1200,
+     {
+      "pt": "assalto a caravana",
+      "en": "caravan robbery"
+     }
+    ],
+    [
+     3,
+     {
+      "pt": "Kara Sem-Nome",
+      "en": "Nameless Kara"
+     },
+     800,
+     {
+      "pt": "falsificacao de registros",
+      "en": "record forgery"
+     }
+    ],
+    [
+     4,
+     {
+      "pt": "O Corvo",
+      "en": "The Crow"
+     },
+     2500,
+     {
+      "pt": "traicao a guilda",
+      "en": "guild treason"
+     }
+    ],
+    [
+     5,
+     {
+      "pt": "Gordo Pell",
+      "en": "Fat Pell"
+     },
+     150,
+     {
+      "pt": "briga de taverna",
+      "en": "tavern brawl"
+     }
+    ],
+    [
+     6,
+     {
+      "pt": "Lamina Torta",
+      "en": "Crooked Blade"
+     },
+     950,
+     {
+      "pt": "contrabando",
+      "en": "smuggling"
+     }
+    ],
+    [
+     7,
+     {
+      "pt": "Irmaos Mog",
+      "en": "Mog Brothers"
+     },
+     700,
+     {
+      "pt": "roubo de cavalos",
+      "en": "horse theft"
+     }
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "viajantes",
+    "en": "travelers"
+   },
+   "descricao": {
+    "pt": "Registro de quem passou pelo portão da vila.",
+    "en": "Log of everyone who passed the village gate."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "nome",
+      "en": "name"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "origem",
+      "en": "origin"
+     },
+     "tipo": "VARCHAR",
+     "nota": {
+      "pt": "pode ser NULL",
+      "en": "may be NULL"
+     }
+    },
+    {
+     "nome": {
+      "pt": "destino",
+      "en": "destination"
+     },
+     "tipo": "VARCHAR",
+     "nota": {
+      "pt": "pode ser NULL",
+      "en": "may be NULL"
+     }
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     "Alia",
+     "Neo-Schema",
+     {
+      "pt": "Porto Nevoa",
+      "en": "Mist Harbor"
+     }
+    ],
+    [
+     2,
+     "Bertram",
+     {
+      "pt": "Porto Nevoa",
+      "en": "Mist Harbor"
+     },
+     null
+    ],
+    [
+     3,
+     "Cael",
+     {
+      "pt": "Vila Oculta",
+      "en": "Hidden Village"
+     },
+     "Neo-Schema"
+    ],
+    [
+     4,
+     "Dorna",
+     "Neo-Schema",
+     null
+    ],
+    [
+     5,
+     "Ezra",
+     {
+      "pt": "Floresta Cristal",
+      "en": "Crystal Forest"
+     },
+     {
+      "pt": "Vila Oculta",
+      "en": "Hidden Village"
+     }
+    ],
+    [
+     6,
+     "Fen",
+     {
+      "pt": "Vila Oculta",
+      "en": "Hidden Village"
+     },
+     null
+    ],
+    [
+     7,
+     "Gilda",
+     {
+      "pt": "Vila Oculta",
+      "en": "Hidden Village"
+     },
+     "Neo-Schema"
+    ]
+   ]
+  },
+  {
+   "nome": {
+    "pt": "golem_partes",
+    "en": "golem_parts"
+   },
+   "descricao": {
+    "pt": "Leitura do Terminal: cada pedaço do Golem de Sucata.",
+    "en": "Terminal scan: every piece of the Scrap Golem."
+   },
+   "colunas": [
+    {
+     "nome": {
+      "pt": "id",
+      "en": "id"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "parte",
+      "en": "part"
+     },
+     "tipo": "VARCHAR"
+    },
+    {
+     "nome": {
+      "pt": "tipo",
+      "en": "type"
+     },
+     "tipo": "VARCHAR",
+     "nota": {
+      "pt": "'Escudo', 'Nucleo', 'Braco', 'Rachadura'",
+      "en": "'Shield', 'Core', 'Arm', 'Crack'"
+     }
+    },
+    {
+     "nome": {
+      "pt": "brilho",
+      "en": "glow"
+     },
+     "tipo": "INTEGER",
+     "nota": {
+      "pt": "0 a 100",
+      "en": "0 to 100"
+     }
+    },
+    {
+     "nome": {
+      "pt": "defesa",
+      "en": "defense"
+     },
+     "tipo": "INTEGER"
+    },
+    {
+     "nome": {
+      "pt": "status",
+      "en": "status"
+     },
+     "tipo": "VARCHAR",
+     "nota": {
+      "pt": "pode ser NULL",
+      "en": "may be NULL"
+     }
+    }
+   ],
+   "linhas": [
+    [
+     1,
+     {
+      "pt": "Placa Ferrugem",
+      "en": "Rust Plate"
+     },
+     {
+      "pt": "Escudo",
+      "en": "Shield"
+     },
+     20,
+     70,
+     {
+      "pt": "Ativo",
+      "en": "Active"
+     }
+    ],
+    [
+     2,
+     {
+      "pt": "Placa Musgo",
+      "en": "Moss Plate"
+     },
+     {
+      "pt": "Escudo",
+      "en": "Shield"
+     },
+     35,
+     45,
+     {
+      "pt": "Ativo",
+      "en": "Active"
+     }
+    ],
+    [
+     3,
+     {
+      "pt": "Placa Osso",
+      "en": "Bone Plate"
+     },
+     {
+      "pt": "Escudo",
+      "en": "Shield"
+     },
+     10,
+     90,
+     {
+      "pt": "Ativo",
+      "en": "Active"
+     }
+    ],
+    [
+     4,
+     {
+      "pt": "Nucleo Falso",
+      "en": "False Core"
+     },
+     {
+      "pt": "Nucleo",
+      "en": "Core"
+     },
+     60,
+     30,
+     {
+      "pt": "Ativo",
+      "en": "Active"
+     }
+    ],
+    [
+     5,
+     {
+      "pt": "Nucleo Pulsante",
+      "en": "Pulsing Core"
+     },
+     {
+      "pt": "Nucleo",
+      "en": "Core"
+     },
+     95,
+     50,
+     {
+      "pt": "Ativo",
+      "en": "Active"
+     }
+    ],
+    [
+     6,
+     {
+      "pt": "Nucleo Apagado",
+      "en": "Dim Core"
+     },
+     {
+      "pt": "Nucleo",
+      "en": "Core"
+     },
+     15,
+     10,
+     null
+    ],
+    [
+     7,
+     {
+      "pt": "Braco Esquerdo",
+      "en": "Left Arm"
+     },
+     {
+      "pt": "Braco",
+      "en": "Arm"
+     },
+     40,
+     60,
+     {
+      "pt": "Ativo",
+      "en": "Active"
+     }
+    ],
+    [
+     8,
+     {
+      "pt": "Braco Direito",
+      "en": "Right Arm"
+     },
+     {
+      "pt": "Braco",
+      "en": "Arm"
+     },
+     45,
+     65,
+     null
+    ],
+    [
+     9,
+     {
+      "pt": "Fenda Norte",
+      "en": "North Crack"
+     },
+     {
+      "pt": "Rachadura",
+      "en": "Crack"
+     },
+     70,
+     5,
+     {
+      "pt": "Instavel",
+      "en": "Unstable"
+     }
+    ],
+    [
+     10,
+     {
+      "pt": "Fenda Sul",
+      "en": "South Crack"
+     },
+     {
+      "pt": "Rachadura",
+      "en": "Crack"
+     },
+     75,
+     5,
+     null
+    ],
+    [
+     11,
+     {
+      "pt": "Fenda Leste",
+      "en": "East Crack"
+     },
+     {
+      "pt": "Rachadura",
+      "en": "Crack"
+     },
+     80,
+     5,
+     {
+      "pt": "Instavel",
+      "en": "Unstable"
+     }
+    ],
+    [
+     12,
+     {
+      "pt": "Fenda Fantasma",
+      "en": "Ghost Crack"
+     },
+     {
+      "pt": "Rachadura",
+      "en": "Crack"
+     },
+     0,
+     0,
+     null
+    ]
+   ]
+  }
+ ]
+}

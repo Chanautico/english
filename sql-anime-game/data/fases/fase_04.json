@@ -1,0 +1,100 @@
+{
+ "id": 4,
+ "arco": 1,
+ "titulo": {
+  "pt": "Inventário Crítico",
+  "en": "Critical Inventory"
+ },
+ "cenario": "bg_vila_arquivo",
+ "dificuldade": "facil",
+ "conceitos": [
+  "<=",
+  ">",
+  "<",
+  "!="
+ ],
+ "missao": {
+  "pt": "O ferreiro precisa repor o estoque antes da lua cheia.",
+  "en": "The blacksmith must restock before the full moon."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "A forja da vila solta faíscas. O ferreiro bate o martelo com pressa.",
+   "en": "The village forge throws sparks. The blacksmith hammers in a hurry."
+  },
+  {
+   "sprite": "ren_neutro",
+   "pt": "Ele pediu a lista de tudo que está acabando. O que conta como \"acabando\"?",
+   "en": "He asked for a list of everything that's running out. What counts as \"running out\"?"
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "Três unidades ou menos. Abaixo disso, a vila está em perigo.",
+   "en": "Three units or fewer. Below that, the village is in danger."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Além do =, existem os comparadores! Eles funcionam com números.",
+   "en": "Besides =, there are comparison operators! They work with numbers.",
+   "quadro": {
+    "nota": {
+     "pt": "=  igual   !=  diferente   >  maior   <  menor   >=  maior ou igual   <=  menor ou igual",
+     "en": "=  equal   !=  not equal   >  greater   <  less   >=  greater or equal   <=  less or equal"
+    }
+   }
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "\"Três ou menos\" é <= 3. Repara que o 3 entra na lista!",
+   "en": "\"Three or fewer\" is <= 3. Notice that 3 itself is included!",
+   "quadro": {
+    "codigo": {
+     "pt": "WHERE quantidade <= 3",
+     "en": "WHERE quantity <= 3"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Liste o **nome** e a **quantidade** dos itens com **3 unidades ou menos**.",
+    "en": "List the **name** and **quantity** of items with **3 units or fewer**."
+   },
+   "gabarito": {
+    "pt": "SELECT nome_item, quantidade FROM inventario_vila WHERE quantidade <= 3",
+    "en": "SELECT item_name, quantity FROM village_inventory WHERE quantity <= 3"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Números não usam aspas.",
+     "en": "Numbers don't use quotes."
+    },
+    {
+     "pt": "\"3 ou menos\" = <= 3",
+     "en": "\"3 or fewer\" = <= 3"
+    },
+    {
+     "pt": "SELECT nome_item, quantidade FROM inventario_vila WHERE quantidade <= 3",
+     "en": "SELECT item_name, quantity FROM village_inventory WHERE quantity <= 3"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Oito itens?! E o queijo está ZERADO!",
+   "en": "Eight items?! And the cheese is at ZERO!"
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "Prioridades, Ren. Primeiro as espadas. Depois o queijo.",
+   "en": "Priorities, Ren. Swords first. Then cheese."
+  }
+ ]
+}

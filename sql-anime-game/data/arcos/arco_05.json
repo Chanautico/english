@@ -1,0 +1,15 @@
+{
+ "id": 5,
+ "titulo": {
+  "pt": "A Guerra da Restauração",
+  "en": "The War of Restoration"
+ },
+ "descricao": {
+  "pt": "A Capital em chamas. INSERT, UPDATE, DELETE e transações.",
+  "en": "The Capital in flames. INSERT, UPDATE, DELETE and transactions."
+ },
+ "capa": "bg_capital_chamas",
+ "cor": "#c4452f",
+ "em_breve": true,
+ "tabelas": []
+}

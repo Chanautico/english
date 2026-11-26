@@ -1,0 +1,15 @@
+{
+ "id": 6,
+ "titulo": {
+  "pt": "O Arquiteto Supremo",
+  "en": "The Supreme Architect"
+ },
+ "descricao": {
+  "pt": "O Núcleo de Dataia. CREATE TABLE, chaves, ALTER, INDEX, VIEW e a batalha final.",
+  "en": "The Core of Dataia. CREATE TABLE, keys, ALTER, INDEX, VIEW and the final battle."
+ },
+ "capa": "bg_nucleo_dataia",
+ "cor": "#2b2b3a",
+ "em_breve": true,
+ "tabelas": []
+}

@@ -1,0 +1,15 @@
+{
+ "id": 3,
+ "titulo": {
+  "pt": "A Cidade Portuária dos Elos Partidos",
+  "en": "The Port City of Broken Links"
+ },
+ "descricao": {
+  "pt": "Porto Névoa. Chaves primárias e estrangeiras, INNER, LEFT e RIGHT JOIN, e a Hydra Cartesiana.",
+  "en": "Mist Harbor. Primary and foreign keys, INNER, LEFT and RIGHT JOIN, and the Cartesian Hydra."
+ },
+ "capa": "bg_porto_nevoa",
+ "cor": "#3a7ca5",
+ "em_breve": true,
+ "tabelas": []
+}

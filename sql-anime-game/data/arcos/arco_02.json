@@ -1,0 +1,15 @@
+{
+ "id": 2,
+ "titulo": {
+  "pt": "O Exame da Guilda de Bronze",
+  "en": "The Bronze Guild Exam"
+ },
+ "descricao": {
+  "pt": "Neo-Schema, a Capital. Lyra, o exame e as agregações: DISTINCT, COUNT, SUM, AVG, MIN, MAX, GROUP BY, HAVING.",
+  "en": "Neo-Schema, the Capital. Lyra, the exam and aggregation: DISTINCT, COUNT, SUM, AVG, MIN, MAX, GROUP BY, HAVING."
+ },
+ "capa": "bg_portao_capital",
+ "cor": "#b0802a",
+ "em_breve": true,
+ "tabelas": []
+}

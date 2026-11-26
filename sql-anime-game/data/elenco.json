@@ -1,0 +1,10 @@
+{
+  "ren":     { "nome": { "pt": "Ren", "en": "Ren" }, "cor": "#e8742c", "titulo": { "pt": "Aprendiz de arquivista", "en": "Apprentice archivist" } },
+  "pip":     { "nome": { "pt": "Pip", "en": "Pip" }, "cor": "#d9a521", "titulo": { "pt": "Espírito do Terminal", "en": "Terminal spirit" } },
+  "kael":    { "nome": { "pt": "Mestre Kael", "en": "Master Kael" }, "cor": "#3f6fc4", "titulo": { "pt": "Ex-Arquiteto Supremo", "en": "Former Supreme Architect" } },
+  "lyra":    { "nome": { "pt": "Lyra Vance", "en": "Lyra Vance" }, "cor": "#a24fd0", "titulo": { "pt": "Prodígio da Capital", "en": "Prodigy of the Capital" } },
+  "dante":   { "nome": { "pt": "Dante", "en": "Dante" }, "cor": "#7d8590", "titulo": { "pt": "Veterano da Guilda de Prata", "en": "Silver Guild veteran" } },
+  "vex":     { "nome": { "pt": "Vex", "en": "Vex" }, "cor": "#6a2c80", "titulo": { "pt": "General da Null-Void", "en": "Null-Void General" } },
+  "malform": { "nome": { "pt": "Lord Malform", "en": "Lord Malform" }, "cor": "#33304a", "titulo": { "pt": "O Arquiteto do Vazio", "en": "The Architect of the Void" } },
+  "golem":   { "nome": { "pt": "Golem de Sucata", "en": "Scrap Golem" }, "cor": "#8a6a4a", "titulo": { "pt": "Chefe do Arco 1", "en": "Arc 1 boss" } }
+}

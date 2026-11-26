@@ -1,0 +1,93 @@
+{
+ "id": 8,
+ "arco": 1,
+ "titulo": {
+  "pt": "Fantasmas no Registro",
+  "en": "Ghosts in the Log"
+ },
+ "cenario": "bg_vila_arquivo",
+ "dificuldade": "medio",
+ "conceitos": [
+  "IS NULL",
+  "IS NOT NULL"
+ ],
+ "missao": {
+  "pt": "Alguns viajantes passaram pelo portão sem dizer para onde iam.",
+  "en": "Some travelers passed the gate without saying where they were going."
+ },
+ "historia_antes": [
+  {
+   "sprite": "ren_focado",
+   "pt": "Tem viajante aqui com o destino... em branco. Vou procurar onde destino = ''.",
+   "en": "There are travelers here with a... blank destination. I'll search where destination = ''."
+  },
+  {
+   "sprite": "pip_erro",
+   "pt": "NÃÃÃO! Vazio não é texto! É NULL! NULL quer dizer \"ninguém sabe\"!",
+   "en": "NOOOO! Empty isn't text! It's NULL! NULL means \"nobody knows\"!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "NULL não é zero, nem texto vazio. É a ausência de valor. E NULL = NULL não é verdadeiro!",
+   "en": "NULL isn't zero or empty text. It's the absence of a value. And NULL = NULL is not true!",
+   "quadro": {
+    "titulo": {
+     "pt": "O fantasma NULL",
+     "en": "The NULL ghost"
+    }
+   }
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Para achar fantasmas, use IS NULL. Para achar quem tem valor, IS NOT NULL.",
+   "en": "To find ghosts, use IS NULL. To find who has a value, IS NOT NULL.",
+   "quadro": {
+    "codigo": {
+     "pt": "WHERE destino = NULL     -- nunca funciona\nWHERE destino IS NULL    -- certo!\nWHERE destino IS NOT NULL",
+     "en": "WHERE destination = NULL     -- never works\nWHERE destination IS NULL    -- correct!\nWHERE destination IS NOT NULL"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Liste `nome` e `origem` dos viajantes que **não registraram destino**.",
+    "en": "List `name` and `origin` of travelers who **didn't register a destination**."
+   },
+   "gabarito": {
+    "pt": "SELECT nome, origem FROM viajantes WHERE destino IS NULL",
+    "en": "SELECT name, origin FROM travelers WHERE destination IS NULL"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Destino vazio é NULL.",
+     "en": "An empty destination is NULL."
+    },
+    {
+     "pt": "= NULL nunca funciona. Use IS NULL.",
+     "en": "= NULL never works. Use IS NULL."
+    },
+    {
+     "pt": "SELECT nome, origem FROM viajantes WHERE destino IS NULL",
+     "en": "SELECT name, origin FROM travelers WHERE destination IS NULL"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Bertram, Dorna e Fen... três pessoas que sumiram sem deixar rastro.",
+   "en": "Bertram, Dorna and Fen... three people who vanished without a trace."
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "...Seu pai também saiu por esse portão sem registrar destino.",
+   "en": "...Your father also left through that gate without registering a destination."
+  }
+ ]
+}

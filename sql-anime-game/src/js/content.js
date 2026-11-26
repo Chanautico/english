@@ -500,6 +500,9 @@
     { id: 'm4', icon: '④', name: T('Mestre dos JOINs', 'JOIN master'), desc: T('Complete o Módulo 4.', 'Complete Module 4.') },
     { id: 'm5', icon: '⑤', name: T('Campeão do festival', 'Festival champion'), desc: T('Complete o jogo.', 'Finish the game.') },
     { id: 'sql_error', icon: '✎', name: T('Errar é humano', 'To err is human'), desc: T('Receba seu primeiro erro de SQL.', 'Get your first SQL error.') },
+    { id: 'dataia_start', icon: ';', name: T('O Terminal desperta', 'The Terminal awakens'), desc: T('Complete a primeira fase de Dataia.', 'Clear the first stage of Dataia.') },
+    { id: 'golem', icon: '⚔', name: T('Quebra-golem', 'Golem breaker'), desc: T('Derrote o Golem de Sucata.', 'Defeat the Scrap Golem.') },
+    { id: 'dataia_arc1', icon: '❖', name: T('Arquivista', 'Archivist'), desc: T('Complete o Arco 1 de Dataia.', 'Clear Arc 1 of Dataia.') },
     { id: 'playground', icon: '⚗', name: T('Cientista de dados', 'Data scientist'), desc: T('Execute uma consulta no Laboratório livre.', 'Run a query in the Free lab.') },
   ];
 

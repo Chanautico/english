@@ -1,0 +1,15 @@
+{
+ "id": 4,
+ "titulo": {
+  "pt": "As Sombras da Null-Void",
+  "en": "The Shadows of the Null-Void"
+ },
+ "descricao": {
+  "pt": "A Fortaleza de Obsidiana. Subqueries, IN, NOT IN, EXISTS, CASE WHEN e UNION.",
+  "en": "The Obsidian Fortress. Subqueries, IN, NOT IN, EXISTS, CASE WHEN and UNION."
+ },
+ "capa": "bg_fortaleza_obsidian",
+ "cor": "#6a2c80",
+ "em_breve": true,
+ "tabelas": []
+}

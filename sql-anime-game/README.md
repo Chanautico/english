@@ -1,26 +1,34 @@
 # Sakura Query 🌸
 
-Jogo para PC, com tema de anime, que ensina **SQL de verdade**. Você entra no Clube de Dados da
-Academia Hoshizora e, com a **Midori** (cabelo verde, animada) e a **Sakura** (cabelo rosa, exigente),
-organiza o banco de dados do Festival Escolar.
-Cada questão roda uma consulta real num banco SQLite.
+Jogo para PC, com tema de anime, que ensina **SQL de verdade**. Cada resposta roda num banco SQLite real.
+Interface em **Português (BR)** e **Inglês**. O SQL não é traduzido; os nomes de tabelas e colunas sim
+(`inventario_vila` em PT, `village_inventory` em EN).
 
-- Interface em **Português (BR)** e **Inglês** (troca na tela inicial ou em Configurações). O SQL não é traduzido.
-- **5 módulos, 37 questões**, com aula na lousa, cenas de história e um chefe no fim de cada módulo:
-  1. Fundamentos: `SELECT`, `FROM`, `WHERE`, `ORDER BY`, `LIMIT`, `DISTINCT`
-  2. Filtros e lógica: `AND`/`OR`, `IN`, `BETWEEN`, `LIKE`, `IS NULL`, `AS`, `CASE`
-  3. Agregação: `COUNT`, `SUM`, `AVG`, `MIN`/`MAX`, `GROUP BY`, `HAVING`, `ROUND`
-  4. JOINs: `INNER JOIN`, `LEFT JOIN`, anti-join, JOIN com agregação, vários JOINs
-  5. Avançado: subconsultas, CTE (`WITH`), funções de janela (`RANK`, `ROW_NUMBER ... PARTITION BY`)
-- Layout próprio: tela título dividida na diagonal, **mapa de estações** com os módulos, aulas com
-  **foto polaroid + caderno**, e questões em formato de **chat** com a professora (dicas, erros e
-  reações aparecem como mensagens).
-- Modo **guiado** (arrastar ou tocar nas peças) nas primeiras questões e **editor** com destaque de sintaxe.
-- Executar (`Ctrl+Enter`) e Enviar (`Ctrl+Shift+Enter`), 3 dicas por questão, ver resposta, gemas, 10 conquistas.
-- **Laboratório livre** para escrever qualquer consulta no banco do festival.
-- Progresso salvo automaticamente. Funciona 100% offline.
+Dois modos:
+
+### ⚔ Crônicas de Dataia (modo história, shonen)
+Ren herda o Terminal Ancestral do pai desaparecido e, com o Pip (um ponto e vírgula falante), enfrenta a Null-Void.
+60 fases em 6 arcos, do `SELECT` até `CREATE TABLE`, `INDEX` e transações. **Pronto: Arco 1 (fases 1 a 10)**.
+
+- Cada fase: cena de história → aula no caderno → desafio no Terminal (chat com o Pip) → cena final.
+- Chefes com **turnos e barra de vida** (ex.: Golem de Sucata, 3 turnos).
+- Botão **Reiniciar fase**; o banco é recriado do zero a cada execução, então nada que o jogador faça estraga os dados.
+- Qualquer SQL válido que produza o resultado certo é aceito (a ordem só conta quando a fase pede `ORDER BY`).
+- Imagens provisórias: enquanto um sprite ou cenário não existe, aparece uma caixa com o nome do arquivo.
+  Veja a lista completa em [docs/ASSETS.md](docs/ASSETS.md).
+
+### 🌸 Academia (modo extra)
+A Midori e a Sakura ensinam SQL organizando o Festival Escolar: **5 módulos, 37 questões**.
+
+### Para os dois
+- Modo **guiado** (arrastar peças) nas primeiras fases e **editor** com destaque de sintaxe.
+- Executar (`Ctrl+Enter`) e Enviar (`Ctrl+Shift+Enter`), 3 dicas por desafio, ver resposta, gemas, conquistas.
+- **Laboratório livre**, progresso salvo automaticamente, 100% offline.
 
 ![Tela inicial](docs/screenshot-title.png)
+![Mapa de Dataia](docs/screenshot-dataia-map.png)
+![Aula com o Pip](docs/screenshot-dataia-lesson.png)
+![Chefe por turnos](docs/screenshot-dataia-boss.png)
 ![Questão guiada](docs/screenshot-question.png)
 ![Aula no caderno](docs/screenshot-lesson.png)
 ![Mapa de módulos](docs/screenshot-map.png)
@@ -51,7 +59,48 @@ Também há `npm run dist:linux` e `npm run dist:mac`. O resultado fica em `dist
 npm test
 ```
 
-Roda todas as respostas oficiais contra o banco e avisa se alguma quebrou.
+Monta os dados e roda todas as respostas oficiais (Academia e Dataia, em PT e EN) contra o banco.
+Também confere se o gabarito em PT e em EN devolve o mesmo número de linhas e colunas.
+
+## Crônicas de Dataia: como os dados funcionam
+
+```
+data/
+  elenco.json          personagens (nome, cor, título) — a chave é o começo do nome do sprite (ren_, pip_...)
+  arcos/arco_01.json   título do arco, capa e o banco do arco (tabelas, colunas e linhas em PT e EN)
+  fases/fase_01.json   uma fase: cenas, aula, desafios, dicas e gabaritos em PT e EN
+src/assets/sprites/    ren_confiante.png, pip_erro.png ...  (.png, .webp ou .jpg)
+src/assets/bg/         bg_vila_arquivo.png ...
+```
+
+`tools/build-data.js` (roda sozinho no `npm start` e `npm test`) junta tudo em `src/js/data.bundle.js`
+e atualiza `docs/ASSETS.md`. Depois de editar um JSON, rode `npm run build:data`.
+Para imagens não é preciso rodar nada: é só colocar o arquivo com o nome certo.
+
+Uma fase (`data/fases/fase_XX.json`):
+
+```json
+{
+  "id": 3, "arco": 1, "cenario": "bg_vila_arquivo", "dificuldade": "facil",
+  "titulo": { "pt": "O Remédio Urgente", "en": "The Urgent Cure" },
+  "missao": { "pt": "...", "en": "..." },
+  "conceitos": ["WHERE", "="],
+  "historia_antes": [ { "sprite": "ren_surpreso", "pt": "fala", "en": "line" }, { "sprite": null, "pt": "narração", "en": "narration" } ],
+  "aula": [ { "sprite": "pip_explicando", "pt": "...", "en": "...", "quadro": { "codigo": { "pt": "SELECT ...", "en": "SELECT ..." } } } ],
+  "desafios": [ {
+    "enunciado": { "pt": "...", "en": "..." },
+    "gabarito": { "pt": "SELECT * FROM inventario_vila WHERE ...", "en": "SELECT * FROM village_inventory WHERE ..." },
+    "ordenado": false,
+    "dicas": [ { "pt": "...", "en": "..." }, { "pt": "...", "en": "..." }, { "pt": "...", "en": "..." } ],
+    "guiado": { "pt": { "modelo": "SELECT []\nFROM []", "pecas": ["*", "inventario_vila"] }, "en": { "modelo": "...", "pecas": [] } }
+  } ],
+  "historia_depois": [ ],
+  "chefe": { "nome": { "pt": "Golem de Sucata", "en": "Scrap Golem" }, "sprite": "golem_sucata", "hp": 3 }
+}
+```
+
+`quadro` (anotação no caderno durante a aula) pode ser `titulo`, `codigo`, `nota` ou `tabela`.
+Num chefe, cada item de `desafios` é um turno. `guiado` e `chefe` são opcionais.
 
 ## Estrutura
 
@@ -63,7 +112,9 @@ Roda todas as respostas oficiais contra o banco e avisa se alguma quebrou.
 | `src/js/i18n.js` | Textos da interface em PT e EN |
 | `src/js/characters.js` | Midori e Sakura: ilustrações, avatares e "emotes" de reação |
 | `src/assets/chars/` | Ilustrações das personagens (`.webp`) |
-| `src/js/game.js` | Telas, verificação das respostas, progresso, conquistas |
+| `src/js/game.js` | Tela título, modo Academia, verificação das respostas, progresso, conquistas |
+| `src/js/dataia.js` | Modo história: mapa, cenas, Terminal do Pip, chefes por turnos, imagens provisórias |
+| `data/`, `tools/build-data.js` | Dados do modo história e o script que monta o pacote |
 | `src/js/audio.js` | Efeitos e música gerados pelo código |
 | `src/vendor/sql-asm.js` | SQLite compilado para JavaScript ([sql.js](https://github.com/sql-js/sql.js), MIT) |
 

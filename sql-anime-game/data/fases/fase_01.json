@@ -1,0 +1,182 @@
+{
+ "id": 1,
+ "arco": 1,
+ "titulo": {
+  "pt": "O Cristal Empoeirado",
+  "en": "The Dusty Crystal"
+ },
+ "cenario": "bg_vila_arquivo",
+ "dificuldade": "facil",
+ "conceitos": [
+  "SELECT",
+  "*",
+  "FROM"
+ ],
+ "missao": {
+  "pt": "A carroça de suprimentos tombou. Os registros da vila estão espalhados.",
+  "en": "The supply cart tipped over. The village records are scattered."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Vila Oculta dos Registros. Uma carroça de suprimentos tomba na praça e cristais de dados rolam pelo chão.",
+   "en": "The Hidden Village of Records. A supply cart tips over in the square and data crystals roll across the ground."
+  },
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Ahhh! Os registros do armazém! Se eles se perderem, a vila passa fome no inverno!",
+   "en": "Ahhh! The warehouse records! If we lose them, the village starves this winter!"
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "Pare de gritar, garoto. Pegue isto.",
+   "en": "Stop shouting, boy. Take this."
+  },
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Isso é... o Terminal do meu pai?!",
+   "en": "This is... my father's Terminal?!"
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "O Terminal Ancestral. Ele estava esperando alguém teimoso o bastante para usá-lo.",
+   "en": "The Ancestral Terminal. It was waiting for someone stubborn enough to use it."
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "BZZT! Acordei! Finalmente! Quanto tempo eu dormi? Cem anos? Oi! Eu sou o Pip! Sim, eu sou um ponto e vírgula. Sim, eu falo. Vamos trabalhar!",
+   "en": "BZZT! I'm awake! Finally! How long was I asleep? A hundred years? Hi! I'm Pip! Yes, I'm a semicolon. Yes, I talk. Let's get to work!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "Em Dataia, tudo vive em TABELAS de cristal. Cada tabela tem colunas (o tipo de informação) e linhas (cada registro).",
+   "en": "In Dataia, everything lives in crystal TABLES. Each table has columns (the kind of information) and rows (each record).",
+   "quadro": {
+    "titulo": {
+     "pt": "Tabelas, colunas e linhas",
+     "en": "Tables, columns and rows"
+    }
+   }
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Esta é a tabela do armazém. Cada linha é um item.",
+   "en": "This is the warehouse table. Each row is an item.",
+   "quadro": {
+    "tabela": {
+     "pt": [
+      [
+       "id",
+       "nome_item",
+       "quantidade"
+      ],
+      [
+       "1",
+       "Antidoto Real",
+       "1"
+      ],
+      [
+       "2",
+       "Pocao de Cura",
+       "9"
+      ]
+     ],
+     "en": [
+      [
+       "id",
+       "item_name",
+       "quantity"
+      ],
+      [
+       "1",
+       "Royal Antidote",
+       "1"
+      ],
+      [
+       "2",
+       "Healing Potion",
+       "9"
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "Para LER uma tabela, você usa SELECT (o quê) e FROM (de onde). O asterisco * quer dizer \"tudo\"!",
+   "en": "To READ a table you use SELECT (what) and FROM (where from). The asterisk * means \"everything\"!",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT *\nFROM inventario_vila;",
+     "en": "SELECT *\nFROM village_inventory;"
+    }
+   }
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "Leia o armazém inteiro. Agora.",
+   "en": "Read the whole warehouse. Now."
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Leia **todas as colunas** e **todas as linhas** da tabela `inventario_vila`.",
+    "en": "Read **all columns** and **all rows** of the `village_inventory` table."
+   },
+   "gabarito": {
+    "pt": "SELECT * FROM inventario_vila",
+    "en": "SELECT * FROM village_inventory"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Você quer TUDO. Existe um símbolo para isso.",
+     "en": "You want EVERYTHING. There's a symbol for that."
+    },
+    {
+     "pt": "SELECT * FROM ...",
+     "en": "SELECT * FROM ..."
+    },
+    {
+     "pt": "SELECT * FROM inventario_vila",
+     "en": "SELECT * FROM village_inventory"
+    }
+   ],
+   "guiado": {
+    "pt": {
+     "modelo": "SELECT []\nFROM []",
+     "pecas": [
+      "inventario_vila",
+      "*",
+      "nome_item",
+      "suspeitos"
+     ]
+    },
+    "en": {
+     "modelo": "SELECT []\nFROM []",
+     "pecas": [
+      "village_inventory",
+      "*",
+      "item_name",
+      "suspects"
+     ]
+    }
+   }
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Dezessete itens! Eu li o armazém inteiro! Eu sou um gênio!",
+   "en": "Seventeen items! I read the whole warehouse! I'm a genius!"
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "Você digitou uma linha. Não se empolgue.",
+   "en": "You typed one line. Don't get excited."
+  }
+ ]
+}

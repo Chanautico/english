@@ -2,7 +2,7 @@
 (function () {
   const STR = {
     pt: {
-      tagline: 'Aprenda SQL de verdade salvando o Festival Escolar.',
+      tagline: 'Aprenda SQL de verdade em duas aventuras anime.',
       start: 'Começar', continue: 'Continuar', settings: 'Configurações', quit: 'Sair para o desktop',
       achievements: 'Conquistas', credits: 'Créditos', back: 'Voltar', close: 'Fechar',
       language: 'Idioma', sound: 'Efeitos sonoros', music: 'Música', textSpeed: 'Velocidade do texto',
@@ -30,7 +30,7 @@
       shortcuts: 'Atalhos: Ctrl+Enter executa · Ctrl+Shift+Enter envia',
     },
     en: {
-      tagline: 'Learn real SQL by saving the School Festival.',
+      tagline: 'Learn real SQL through two anime adventures.',
       start: 'Start', continue: 'Continue', settings: 'Settings', quit: 'Quit to desktop',
       achievements: 'Achievements', credits: 'Credits', back: 'Back', close: 'Close',
       language: 'Language', sound: 'Sound effects', music: 'Music', textSpeed: 'Text speed',

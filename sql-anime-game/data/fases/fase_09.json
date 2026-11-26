@@ -1,0 +1,101 @@
+{
+ "id": 9,
+ "arco": 1,
+ "titulo": {
+  "pt": "O Teste de Despedida",
+  "en": "The Farewell Test"
+ },
+ "cenario": "bg_floresta_cristal",
+ "dificuldade": "medio",
+ "conceitos": [
+  "WHERE",
+  "AND",
+  "OR",
+  "!=",
+  "ORDER BY",
+  "LIMIT"
+ ],
+ "missao": {
+  "pt": "Ren precisa montar a mochila para a viagem até a Capital.",
+  "en": "Ren must pack for the journey to the Capital."
+ },
+ "historia_antes": [
+  {
+   "sprite": "kael_neutro",
+   "pt": "Sente-se, Ren. Está na hora de você saber.",
+   "en": "Sit down, Ren. It's time you knew."
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "Seu pai não sumiu por acaso. Ele foi para a Capital investigar a Null-Void. E nunca voltou.",
+   "en": "Your father didn't vanish by chance. He went to the Capital to investigate the Null-Void. And he never came back."
+  },
+  {
+   "sprite": "ren_derrotado",
+   "pt": "...Por que você nunca me contou?",
+   "en": "...Why did you never tell me?"
+  },
+  {
+   "sprite": "kael_orgulhoso",
+   "pt": "Porque você não estava pronto. Agora talvez esteja. Prove montando seu kit de viagem.",
+   "en": "Because you weren't ready. Now perhaps you are. Prove it by packing your travel kit."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_feliz",
+   "pt": "Treino de revisão! Tudo junto: WHERE, AND, OR, parênteses, !=, ORDER BY e LIMIT!",
+   "en": "Review training! Everything together: WHERE, AND, OR, parentheses, !=, ORDER BY and LIMIT!",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT ...\nFROM ...\nWHERE (... OR ...) AND ... AND ... != ...\nORDER BY ... DESC\nLIMIT ...;",
+     "en": "SELECT ...\nFROM ...\nWHERE (... OR ...) AND ... AND ... != ...\nORDER BY ... DESC\nLIMIT ...;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Kael fica com o `Mapa Antigo`. Liste `nome_item` e `preco` dos itens de categoria `viagem` **ou** `pocao`, com quantidade **maior que 0** e que **não** sejam o Mapa Antigo. Mostre os **4 mais caros**, do mais caro para o mais barato.",
+    "en": "Kael keeps the `Old Map`. List `item_name` and `price` of items in category `travel` **or** `potion`, with quantity **greater than 0** and that are **not** the Old Map. Show the **4 most expensive**, priciest first."
+   },
+   "gabarito": {
+    "pt": "SELECT nome_item, preco FROM inventario_vila WHERE (categoria = 'viagem' OR categoria = 'pocao') AND quantidade > 0 AND nome_item != 'Mapa Antigo' ORDER BY preco DESC LIMIT 4",
+    "en": "SELECT item_name, price FROM village_inventory WHERE (category = 'travel' OR category = 'potion') AND quantity > 0 AND item_name != 'Old Map' ORDER BY price DESC LIMIT 4"
+   },
+   "ordenado": true,
+   "dicas": [
+    {
+     "pt": "Junte as duas categorias com OR entre parênteses.",
+     "en": "Join the two categories with OR inside parentheses."
+    },
+    {
+     "pt": "Depois: AND quantidade > 0 AND nome_item != 'Mapa Antigo'.",
+     "en": "Then: AND quantity > 0 AND item_name != 'Old Map'."
+    },
+    {
+     "pt": "SELECT nome_item, preco FROM inventario_vila WHERE (categoria = 'viagem' OR categoria = 'pocao') AND quantidade > 0 AND nome_item != 'Mapa Antigo' ORDER BY preco DESC LIMIT 4",
+     "en": "SELECT item_name, price FROM village_inventory WHERE (category = 'travel' OR category = 'potion') AND quantity > 0 AND item_name != 'Old Map' ORDER BY price DESC LIMIT 4"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "kael_orgulhoso",
+   "pt": "Antídoto, poção, corda e cantil. Nada inútil. Seu pai teria montado igual.",
+   "en": "Antidote, potion, rope and canteen. Nothing useless. Your father would have packed the same."
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Eu vou achar ele, Mestre. E vou descobrir o que é essa Null-Void.",
+   "en": "I'll find him, Master. And I'll find out what this Null-Void is."
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "E eu vou junto! Não que eu tenha escolha. Eu moro no Terminal.",
+   "en": "And I'm coming too! Not that I have a choice. I live in the Terminal."
+  }
+ ]
+}

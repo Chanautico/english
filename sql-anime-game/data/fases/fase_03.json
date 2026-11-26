@@ -1,0 +1,122 @@
+{
+ "id": 3,
+ "arco": 1,
+ "titulo": {
+  "pt": "O Remédio Urgente",
+  "en": "The Urgent Cure"
+ },
+ "cenario": "bg_vila_arquivo",
+ "dificuldade": "facil",
+ "conceitos": [
+  "WHERE",
+  "="
+ ],
+ "missao": {
+  "pt": "Um caçador chegou envenenado. Só o Antidoto Real pode salvá-lo.",
+  "en": "A hunter arrived poisoned. Only the Royal Antidote can save him."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Um caçador cambaleia pelo portão, pálido, com a mão no braço roxo.",
+   "en": "A hunter staggers through the gate, pale, clutching a purple arm."
+  },
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Ele foi picado por uma serpente de cristal! Precisamos do antídoto, rápido!",
+   "en": "He was bitten by a crystal serpent! We need the antidote, fast!"
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Não dá tempo de ler dezessete linhas! Ache SÓ a linha do Antidoto Real!",
+   "en": "No time to read seventeen rows! Find ONLY the Royal Antidote row!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "O WHERE faz uma pergunta para CADA linha. Só fica quem responde \"sim\".",
+   "en": "WHERE asks EACH row a question. Only the rows that answer \"yes\" stay.",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT *\nFROM inventario_vila\nWHERE nome_item = 'Antidoto Real';",
+     "en": "SELECT *\nFROM village_inventory\nWHERE item_name = 'Royal Antidote';"
+    }
+   }
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Texto vai entre aspas simples. E tem que ser escrito exatamente igual!",
+   "en": "Text goes in single quotes. And it must be spelled exactly the same!",
+   "quadro": {
+    "nota": {
+     "pt": "Texto: 'Antidoto Real'   Número: 120",
+     "en": "Text: 'Royal Antidote'   Number: 120"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne a **linha inteira** do item `Antidoto Real`.",
+    "en": "Return the **whole row** for the item `Royal Antidote`."
+   },
+   "gabarito": {
+    "pt": "SELECT * FROM inventario_vila WHERE nome_item = 'Antidoto Real'",
+    "en": "SELECT * FROM village_inventory WHERE item_name = 'Royal Antidote'"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "WHERE coluna = 'valor'",
+     "en": "WHERE column = 'value'"
+    },
+    {
+     "pt": "A coluna é nome_item. O texto vai entre aspas simples.",
+     "en": "The column is item_name. Text goes in single quotes."
+    },
+    {
+     "pt": "SELECT * FROM inventario_vila WHERE nome_item = 'Antidoto Real'",
+     "en": "SELECT * FROM village_inventory WHERE item_name = 'Royal Antidote'"
+    }
+   ],
+   "guiado": {
+    "pt": {
+     "modelo": "SELECT *\nFROM inventario_vila\nWHERE [] [] []",
+     "pecas": [
+      "'Pocao de Cura'",
+      "nome_item",
+      "=",
+      "'Antidoto Real'",
+      "quantidade",
+      ">"
+     ]
+    },
+    "en": {
+     "modelo": "SELECT *\nFROM village_inventory\nWHERE [] [] []",
+     "pecas": [
+      "'Healing Potion'",
+      "item_name",
+      "=",
+      "'Royal Antidote'",
+      "quantity",
+      ">"
+     ]
+    }
+   }
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "Achei! Só tem UM no estoque... ainda bem que existia!",
+   "en": "Found it! Only ONE in stock... good thing we had it!"
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "O caçador vai viver. Lembre disso: um bom filtro salva vidas.",
+   "en": "The hunter will live. Remember this: a good filter saves lives."
+  }
+ ]
+}

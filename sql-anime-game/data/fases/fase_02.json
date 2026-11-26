@@ -1,0 +1,104 @@
+{
+ "id": 2,
+ "arco": 1,
+ "titulo": {
+  "pt": "Olhos de Arquiteto",
+  "en": "Architect's Eyes"
+ },
+ "cenario": "bg_vila_arquivo",
+ "dificuldade": "facil",
+ "conceitos": [
+  "SELECT",
+  "colunas"
+ ],
+ "missao": {
+  "pt": "A tela travou de tanta informação inútil.",
+  "en": "The screen froze with useless information."
+ },
+ "historia_antes": [
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Ei! O Terminal está piscando! Ele está... lento?",
+   "en": "Hey! The Terminal is blinking! Is it... slow?"
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "Você pediu TUDO! Preço, categoria, id... A anciã só quer saber o nome e a quantidade de cada item!",
+   "en": "You asked for EVERYTHING! Price, category, id... The elder only wants the name and quantity of each item!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "kael_neutro",
+   "pt": "Um Arquiteto não engole o mundo inteiro. Ele escolhe o que olhar.",
+   "en": "An Architect doesn't swallow the whole world. He chooses what to look at."
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Em vez do *, escreva os nomes das colunas, separados por vírgula!",
+   "en": "Instead of *, write the column names, separated by commas!",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT nome_item, quantidade\nFROM inventario_vila;",
+     "en": "SELECT item_name, quantity\nFROM village_inventory;"
+    }
+   }
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Mostre só o **nome** e a **quantidade** de cada item do armazém.",
+    "en": "Show only the **name** and **quantity** of every item in the warehouse."
+   },
+   "gabarito": {
+    "pt": "SELECT nome_item, quantidade FROM inventario_vila",
+    "en": "SELECT item_name, quantity FROM village_inventory"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Troque o * pelas colunas que você quer.",
+     "en": "Swap the * for the columns you want."
+    },
+    {
+     "pt": "As colunas são nome_item e quantidade.",
+     "en": "The columns are item_name and quantity."
+    },
+    {
+     "pt": "SELECT nome_item, quantidade FROM inventario_vila",
+     "en": "SELECT item_name, quantity FROM village_inventory"
+    }
+   ],
+   "guiado": {
+    "pt": {
+     "modelo": "SELECT [], []\nFROM inventario_vila",
+     "pecas": [
+      "preco",
+      "nome_item",
+      "categoria",
+      "quantidade",
+      "id"
+     ]
+    },
+    "en": {
+     "modelo": "SELECT [], []\nFROM village_inventory",
+     "pecas": [
+      "price",
+      "item_name",
+      "category",
+      "quantity",
+      "id"
+     ]
+    }
+   }
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "kael_neutro",
+   "pt": "Hm. Mais limpo. Os olhos de um Arquiteto enxergam só o necessário.",
+   "en": "Hm. Cleaner. An Architect's eyes see only what is needed."
+  }
+ ]
+}

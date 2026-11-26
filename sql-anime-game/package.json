@@ -7,11 +7,12 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "start": "electron .",
-    "dist:win": "electron-builder --win",
-    "dist:linux": "electron-builder --linux",
-    "dist:mac": "electron-builder --mac",
-    "test": "node tests/validate-content.js"
+    "start": "node tools/build-data.js && electron .",
+    "dist:win": "node tools/build-data.js && electron-builder --win",
+    "dist:linux": "node tools/build-data.js && electron-builder --linux",
+    "dist:mac": "node tools/build-data.js && electron-builder --mac",
+    "test": "node tools/build-data.js && node tests/validate-content.js && node tests/validate-dataia.js",
+    "build:data": "node tools/build-data.js"
   },
   "devDependencies": {
     "electron": "^33.2.0",
@@ -21,10 +22,22 @@
   "build": {
     "appId": "com.sakuraquery.game",
     "productName": "Sakura Query",
-    "directories": { "output": "dist" },
-    "files": ["main.js", "preload.js", "src/**/*"],
-    "win": { "target": "dir" },
-    "linux": { "target": "dir" },
-    "mac": { "target": "dir" }
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*"
+    ],
+    "win": {
+      "target": "dir"
+    },
+    "linux": {
+      "target": "dir"
+    },
+    "mac": {
+      "target": "dir"
+    }
   }
 }

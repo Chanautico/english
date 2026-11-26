@@ -1,0 +1,99 @@
+{
+ "id": 7,
+ "arco": 1,
+ "titulo": {
+  "pt": "Os Mais Perigosos",
+  "en": "The Most Dangerous"
+ },
+ "cenario": "bg_vila_arquivo",
+ "dificuldade": "medio",
+ "conceitos": [
+  "ORDER BY",
+  "DESC",
+  "LIMIT"
+ ],
+ "missao": {
+  "pt": "Os guardas só têm escolta para 3 prisioneiros.",
+  "en": "The guards only have escort for 3 prisoners."
+ },
+ "historia_antes": [
+  {
+   "sprite": "ren_neutro",
+   "pt": "O capitão da guarda quer levar os procurados para a Capital, mas a carroça só tem lugar para três.",
+   "en": "The guard captain wants to take the wanted to the Capital, but the wagon only fits three."
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "Então levem os três de maior recompensa. Quanto maior a recompensa, maior o perigo.",
+   "en": "Then take the three with the highest bounty. The higher the bounty, the greater the danger."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "ORDER BY ordena o resultado. ASC = do menor para o maior (padrão). DESC = do maior para o menor.",
+   "en": "ORDER BY sorts the result. ASC = smallest to largest (default). DESC = largest to smallest.",
+   "quadro": {
+    "codigo": {
+     "pt": "SELECT nome, recompensa\nFROM procurados\nORDER BY recompensa DESC;",
+     "en": "SELECT name, bounty\nFROM wanted\nORDER BY bounty DESC;"
+    }
+   }
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "E LIMIT corta o resultado depois das primeiras N linhas!",
+   "en": "And LIMIT cuts the result after the first N rows!",
+   "quadro": {
+    "codigo": {
+     "pt": "LIMIT 3",
+     "en": "LIMIT 3"
+    }
+   }
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "LIMIT sem ORDER BY é sorteio. Sempre ordene antes de cortar!",
+   "en": "LIMIT without ORDER BY is a lottery. Always sort before you cut!"
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Retorne `nome` e `recompensa` dos **3 procurados** com a maior recompensa, da maior para a menor.",
+    "en": "Return `name` and `bounty` of the **3 wanted** with the highest bounty, from highest to lowest."
+   },
+   "gabarito": {
+    "pt": "SELECT nome, recompensa FROM procurados ORDER BY recompensa DESC LIMIT 3",
+    "en": "SELECT name, bounty FROM wanted ORDER BY bounty DESC LIMIT 3"
+   },
+   "ordenado": true,
+   "dicas": [
+    {
+     "pt": "Ordene primeiro, corte depois.",
+     "en": "Sort first, cut afterwards."
+    },
+    {
+     "pt": "ORDER BY recompensa DESC e depois LIMIT 3.",
+     "en": "ORDER BY bounty DESC then LIMIT 3."
+    },
+    {
+     "pt": "SELECT nome, recompensa FROM procurados ORDER BY recompensa DESC LIMIT 3",
+     "en": "SELECT name, bounty FROM wanted ORDER BY bounty DESC LIMIT 3"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_confiante",
+   "pt": "O Corvo, Dentes de Ferro e Lâmina Torta. Bem que a carroça podia ser maior...",
+   "en": "The Crow, Iron Teeth and Crooked Blade. I wish the wagon were bigger..."
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "O Corvo trabalhava para a Null-Void. Guarde esse nome.",
+   "en": "The Crow worked for the Null-Void. Remember that name."
+  }
+ ]
+}

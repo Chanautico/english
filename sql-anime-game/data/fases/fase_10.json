@@ -1,0 +1,166 @@
+{
+ "id": 10,
+ "arco": 1,
+ "titulo": {
+  "pt": "CHEFE: O Golem de Sucata",
+  "en": "BOSS: The Scrap Golem"
+ },
+ "cenario": "bg_estrada_capital",
+ "dificuldade": "dificil",
+ "conceitos": [
+  "WHERE",
+  "AND",
+  "ORDER BY",
+  "LIMIT",
+  "IS NOT NULL"
+ ],
+ "missao": {
+  "pt": "Vex emboscou Ren na estrada e invocou um Golem de registros corrompidos.",
+  "en": "Vex ambushed Ren on the road and summoned a Golem of corrupted records."
+ },
+ "chefe": {
+  "nome": {
+   "pt": "Golem de Sucata",
+   "en": "Scrap Golem"
+  },
+  "sprite": "golem_sucata",
+  "hp": 3
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Estrada para a Capital. O céu escurece de repente.",
+   "en": "The road to the Capital. The sky suddenly darkens."
+  },
+  {
+   "sprite": "vex_sombrio",
+   "pt": "Então este é o filho do velho arquivista. Com o brinquedo do papai na mão.",
+   "en": "So this is the old archivist's son. Holding daddy's toy."
+  },
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Quem é você?! Você conhece meu pai?!",
+   "en": "Who are you?! You know my father?!"
+  },
+  {
+   "sprite": "vex_sombrio",
+   "pt": "Eu sou Vex, da Null-Void. E isto é o que acontece com registros que ninguém cuida.",
+   "en": "I am Vex, of the Null-Void. And this is what happens to records nobody looks after."
+  },
+  {
+   "sprite": "golem_sucata",
+   "pt": "GRRRRROOOOOOM!",
+   "en": "GRRRRROOOOOOM!"
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "É um Golem de milhares de registros corrompidos! O Terminal consegue ler as partes dele! Três golpes, Ren!",
+   "en": "It's a Golem made of thousands of corrupted records! The Terminal can read its parts! Three strikes, Ren!"
+  }
+ ],
+ "aula": [],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "**Turno 1 — Ache o núcleo!** Retorne `id` e `parte` das partes do tipo `Nucleo` com `brilho` **maior que 80**.",
+    "en": "**Turn 1 — Find the core!** Return `id` and `part` of parts of type `Core` with `glow` **greater than 80**."
+   },
+   "gabarito": {
+    "pt": "SELECT id, parte FROM golem_partes WHERE tipo = 'Nucleo' AND brilho > 80",
+    "en": "SELECT id, part FROM golem_parts WHERE type = 'Core' AND glow > 80"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Duas condições ao mesmo tempo: AND.",
+     "en": "Two conditions at once: AND."
+    },
+    {
+     "pt": "tipo = 'Nucleo' AND brilho > 80",
+     "en": "type = 'Core' AND glow > 80"
+    },
+    {
+     "pt": "SELECT id, parte FROM golem_partes WHERE tipo = 'Nucleo' AND brilho > 80",
+     "en": "SELECT id, part FROM golem_parts WHERE type = 'Core' AND glow > 80"
+    }
+   ]
+  },
+  {
+   "enunciado": {
+    "pt": "**Turno 2 — Quebre o escudo mais fraco!** Retorne `parte` e `defesa` do **único** `Escudo` com a **menor** defesa.",
+    "en": "**Turn 2 — Break the weakest shield!** Return `part` and `defense` of the **single** `Shield` with the **lowest** defense."
+   },
+   "gabarito": {
+    "pt": "SELECT parte, defesa FROM golem_partes WHERE tipo = 'Escudo' ORDER BY defesa ASC LIMIT 1",
+    "en": "SELECT part, defense FROM golem_parts WHERE type = 'Shield' ORDER BY defense ASC LIMIT 1"
+   },
+   "ordenado": true,
+   "dicas": [
+    {
+     "pt": "Filtre os escudos, ordene pela defesa, pegue só 1.",
+     "en": "Filter the shields, sort by defense, take only 1."
+    },
+    {
+     "pt": "ORDER BY defesa ASC LIMIT 1",
+     "en": "ORDER BY defense ASC LIMIT 1"
+    },
+    {
+     "pt": "SELECT parte, defesa FROM golem_partes WHERE tipo = 'Escudo' ORDER BY defesa ASC LIMIT 1",
+     "en": "SELECT part, defense FROM golem_parts WHERE type = 'Shield' ORDER BY defense ASC LIMIT 1"
+    }
+   ]
+  },
+  {
+   "enunciado": {
+    "pt": "**Turno 3 — Sele a rachadura!** Algumas rachaduras são fantasmas (status NULL). Retorne `parte` e `status` das partes do tipo `Rachadura` cujo status **não é NULL**.",
+    "en": "**Turn 3 — Seal the crack!** Some cracks are ghosts (NULL status). Return `part` and `status` of parts of type `Crack` whose status is **not NULL**."
+   },
+   "gabarito": {
+    "pt": "SELECT parte, status FROM golem_partes WHERE tipo = 'Rachadura' AND status IS NOT NULL",
+    "en": "SELECT part, status FROM golem_parts WHERE type = 'Crack' AND status IS NOT NULL"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Fantasmas são NULL. Você quer quem NÃO é.",
+     "en": "Ghosts are NULL. You want the ones that are NOT."
+    },
+    {
+     "pt": "status IS NOT NULL",
+     "en": "status IS NOT NULL"
+    },
+    {
+     "pt": "SELECT parte, status FROM golem_partes WHERE tipo = 'Rachadura' AND status IS NOT NULL",
+     "en": "SELECT part, status FROM golem_parts WHERE type = 'Crack' AND status IS NOT NULL"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": null,
+   "pt": "O Golem se desfaz numa chuva de registros apagados.",
+   "en": "The Golem crumbles into a rain of erased records."
+  },
+  {
+   "sprite": "vex_furioso",
+   "pt": "Tsc. Sorte de principiante. Aproveite enquanto dura, garoto.",
+   "en": "Tch. Beginner's luck. Enjoy it while it lasts, boy."
+  },
+  {
+   "sprite": "vex_sombrio",
+   "pt": "A Capital vai cair. E quando cair, nem o seu Terminal vai lembrar que ela existiu.",
+   "en": "The Capital will fall. And when it does, not even your Terminal will remember it existed."
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "...Pip. Vamos para a Capital. Agora mais do que nunca.",
+   "en": "...Pip. We're going to the Capital. Now more than ever."
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "FIM DO ARCO 1! Próxima parada: Neo-Schema e o Exame da Guilda de Bronze!",
+   "en": "END OF ARC 1! Next stop: Neo-Schema and the Bronze Guild Exam!"
+  }
+ ]
+}

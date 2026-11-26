@@ -1,0 +1,109 @@
+{
+ "id": 6,
+ "arco": 1,
+ "titulo": {
+  "pt": "O Ladrão da Taverna",
+  "en": "The Tavern Thief"
+ },
+ "cenario": "bg_vila_arquivo",
+ "dificuldade": "medio",
+ "conceitos": [
+  "AND",
+  "OR",
+  "( )"
+ ],
+ "missao": {
+  "pt": "O ouro dos impostos sumiu da taverna.",
+  "en": "The tax gold vanished from the tavern."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Taverna da vila. O cofre está aberto e vazio.",
+   "en": "The village tavern. The chest is open and empty."
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "As testemunhas disseram duas coisas: o ladrão usava capa Vermelha e mora aqui na Vila Oculta...",
+   "en": "The witnesses said two things: the thief wore a Red cloak and lives here in the Hidden Village..."
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "...ou então foi um dos Foragidos. Eles sempre aparecem quando há ouro.",
+   "en": "...or it was one of the Fugitives. They always show up when there's gold."
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "AND: as duas condições precisam ser verdadeiras. OR: basta uma delas.",
+   "en": "AND: both conditions must be true. OR: either one is enough.",
+   "quadro": {
+    "codigo": {
+     "pt": "WHERE capa = 'Vermelha' AND cidade = 'Vila Oculta'\nWHERE status = 'Foragido' OR status = 'Preso'",
+     "en": "WHERE cloak = 'Red' AND city = 'Hidden Village'\nWHERE status = 'Fugitive' OR status = 'Jailed'"
+    }
+   }
+  },
+  {
+   "sprite": "pip_alerta",
+   "pt": "CUIDADO! O AND é resolvido ANTES do OR. Na dúvida, use parênteses para deixar a ideia clara!",
+   "en": "CAREFUL! AND is evaluated BEFORE OR. When in doubt, use parentheses to make the idea clear!",
+   "quadro": {
+    "codigo": {
+     "pt": "WHERE (capa = 'Vermelha' AND cidade = 'Vila Oculta')\n   OR status = 'Foragido'",
+     "en": "WHERE (cloak = 'Red' AND city = 'Hidden Village')\n   OR status = 'Fugitive'"
+    }
+   }
+  },
+  {
+   "sprite": "ren_confiante",
+   "pt": "Parênteses primeiro, igual na matemática. Entendi!",
+   "en": "Parentheses first, just like in math. Got it!"
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Liste `nome`, `capa` e `status` dos suspeitos que (usam capa **Vermelha** E moram na **Vila Oculta**) OU que têm status **Foragido**.",
+    "en": "List `name`, `cloak` and `status` of suspects who (wear a **Red** cloak AND live in the **Hidden Village**) OR whose status is **Fugitive**."
+   },
+   "gabarito": {
+    "pt": "SELECT nome, capa, status FROM suspeitos WHERE (capa = 'Vermelha' AND cidade = 'Vila Oculta') OR status = 'Foragido'",
+    "en": "SELECT name, cloak, status FROM suspects WHERE (cloak = 'Red' AND city = 'Hidden Village') OR status = 'Fugitive'"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Duas condições juntas com AND, e depois um OR.",
+     "en": "Two conditions joined with AND, then an OR."
+    },
+    {
+     "pt": "Use parênteses em volta do AND.",
+     "en": "Put parentheses around the AND part."
+    },
+    {
+     "pt": "SELECT nome, capa, status FROM suspeitos WHERE (capa = 'Vermelha' AND cidade = 'Vila Oculta') OR status = 'Foragido'",
+     "en": "SELECT name, cloak, status FROM suspects WHERE (cloak = 'Red' AND city = 'Hidden Village') OR status = 'Fugitive'"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_surpreso",
+   "pt": "Cinco suspeitos... e a Selka está presa! Então não pode ter sido ela.",
+   "en": "Five suspects... and Selka is in jail! So it couldn't have been her."
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "Viu? Os dados dizem QUEM pode ter sido. A investigação diz quem FOI.",
+   "en": "See? The data says WHO could have done it. The investigation says who DID."
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "Garrick devolveu o ouro chorando. Bom trabalho, garoto.",
+   "en": "Garrick returned the gold in tears. Good work, boy."
+  }
+ ]
+}

@@ -43,17 +43,32 @@
   const norm = (v) => (v === null || v === undefined ? '∅' : typeof v === 'number' ? String(Math.round(v * 10000) / 10000) : String(v));
   const rowKey = (r) => r.map(norm).join('\u0001');
 
-  // Compara o resultado do jogador com a resposta oficial.
-  function check(challenge, got) {
-    const exp = runSql(challenge.solution);
+  // Roda SQL num banco qualquer (bytes exportados de um banco já populado).
+  function runOn(bytes, query) {
+    const db = new SQL.Database(bytes);
+    try {
+      const res = db.exec(query);
+      const last = res.length ? res[res.length - 1] : { columns: [], values: [] };
+      return { ok: true, columns: last.columns, values: last.values };
+    } catch (e) {
+      return { ok: false, error: String(e.message || e) };
+    } finally { db.close(); }
+  }
+  function makeDb(setupSql) { const db = new SQL.Database(); db.exec(setupSql); const b = db.export(); db.close(); return b; }
+
+  // Compara dois resultados (jogador x gabarito). ordered = a ordem das linhas importa.
+  function compare(got, exp, ordered) {
     if (got.columns.length !== exp.columns.length) return { ok: false, msg: t('wrongCols', { e: exp.columns.length, g: got.columns.length }), exp };
     if (got.values.length !== exp.values.length) return { ok: false, msg: t('wrongCount', { e: exp.values.length, g: got.values.length }), exp };
     const g = got.values.map(rowKey), e = exp.values.map(rowKey);
     const gs = [...g].sort(), es = [...e].sort();
     if (!gs.every((x, i) => x === es[i])) return { ok: false, msg: t('wrongValues'), exp };
-    if (challenge.ordered && !g.every((x, i) => x === e[i])) return { ok: false, msg: t('wrongOrder'), exp };
+    if (ordered && !g.every((x, i) => x === e[i])) return { ok: false, msg: t('wrongOrder'), exp };
     return { ok: true, exp };
   }
+
+  // Compara o resultado do jogador com a resposta oficial (modo Academia).
+  function check(challenge, got) { return compare(got, runSql(challenge.solution), challenge.ordered); }
 
   // ─────────────────────────── Utilidades ───────────────────────────
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -111,8 +126,9 @@
     if (window.desktop && window.desktop.unlockAchievement) window.desktop.unlockAchievement(id);
   }
 
-  function header(crumb) {
-    const done = totalDone(), total = allChallenges().length;
+  // progress: { done, total } opcional (modo história passa o próprio progresso).
+  function header(crumb, progress) {
+    const done = progress ? progress.done : totalDone(), total = progress ? progress.total : allChallenges().length;
     return `<header class="hdr">
       <button class="brand" data-act="menu"><span class="brand-mark">桜</span><span>Sakura <b>Query</b></span></button>
       <div class="crumb">${crumb || ''}</div>
@@ -124,8 +140,8 @@
       </div>
     </header>`;
   }
-  function bindHeader(root) {
-    $$('[data-act="menu"]', root).forEach((b) => b.onclick = () => { GameAudio.play('click'); showHub(); });
+  function bindHeader(root, onHome) {
+    $$('[data-act="menu"]', root).forEach((b) => b.onclick = () => { GameAudio.play('click'); (onHome || showHub)(); });
     $$('[data-act="settings"]', root).forEach((b) => b.onclick = () => { GameAudio.play('click'); showSettings(); });
     $$('[data-act="ach"]', root).forEach((b) => b.onclick = () => { GameAudio.play('click'); showAchievements(); });
   }
@@ -204,17 +220,20 @@
     const started = totalDone() > 0 || Object.keys(save.seen).length > 0;
     app.innerHTML = `
       <section class="screen title">
-        <div class="tl-art tl-left" style="background-image:url('${Characters.scene('midori', 'night')}')"></div>
+        <div class="tl-art tl-left tl-dataia">${Assets.html('bg', 'bg_vila_arquivo', 'tl-bg')}${Assets.html('sprite', 'ren_confiante', 'tl-sprite')}</div>
         <div class="tl-art tl-right" style="background-image:url('${Characters.scene('sakura', 'day')}')"></div>
         <div class="tl-seam"></div>
         ${leaves(16)}
-        <div class="tl-names"><span class="nm-l" style="--c:${CH.midori.color}">Midori</span><span class="nm-r" style="--c:${CH.sakura.color}">Sakura</span></div>
+        <div class="tl-names"><span class="nm-l" style="--c:#e8742c">⚔ ${pt() ? 'Crônicas de Dataia' : 'Chronicles of Dataia'}</span><span class="nm-r" style="--c:${CH.sakura.color}">🌸 ${pt() ? 'Academia' : 'Academy'}</span></div>
         <div class="tl-lang"><button class="${save.lang === 'pt' ? 'on' : ''}" data-lang="pt">PT-BR</button><button class="${save.lang === 'en' ? 'on' : ''}" data-lang="en">EN</button></div>
         <div class="tl-card">
           <div class="tape"></div>
           <div class="tl-logo"><span class="tl-kanji">桜</span><h1>Sakura <b>Query</b></h1></div>
           <p class="tl-tag">${t('tagline')}</p>
-          <button class="btn primary xl" data-go="start">${started ? t('continue') : t('start')} →</button>
+          <div class="tl-modes">
+            <button class="mode-btn story" data-go="story"><b>⚔ ${pt() ? 'Crônicas de Dataia' : 'Chronicles of Dataia'}</b><small>${pt() ? 'Modo história · 60 fases' : 'Story mode · 60 stages'}</small></button>
+            <button class="mode-btn academy" data-go="start"><b>🌸 ${pt() ? 'Academia' : 'Academy'}</b><small>${pt() ? 'Festival escolar · 37 questões' : 'School festival · 37 questions'}</small></button>
+          </div>
           <div class="tl-sub">
             <button class="chip-btn" data-go="lab">⚗ ${t('playground')}</button>
             <button class="chip-btn" data-go="ach">★ ${t('achievements')}</button>
@@ -223,8 +242,9 @@
             ${window.desktop ? `<button class="chip-btn" data-go="quit">⏻ ${t('quit')}</button>` : ''}
           </div>
         </div>
-        <div class="version">v0.2</div>
+        <div class="version">v0.3</div>
       </section>`;
+    Assets.hydrate(app);
     $$('[data-lang]').forEach((b) => b.onclick = () => { save.lang = b.dataset.lang; I18N.lang = save.lang; persist(); GameAudio.play('click'); showTitle(); });
     $$('[data-go]').forEach((b) => b.onclick = () => {
       GameAudio.play('click'); GameAudio.startMusic();
@@ -233,6 +253,7 @@
         if (!save.seen.m1_intro) return playScene(MODULES[0], 'intro', () => { save.seen.m1_intro = true; persist(); playScene(MODULES[0], 'lesson', () => { save.seen.m1_lesson = true; persist(); showHub(0); }); });
         return showHub();
       }
+      if (go === 'story') return Dataia.showMap();
       if (go === 'lab') return showPlayground();
       if (go === 'ach') return showAchievements();
       if (go === 'settings') return showSettings();
@@ -794,4 +815,11 @@
   });
 
   window.__game = { runSql, check, get save() { return save; } };
+
+  // Peças compartilhadas com o modo história (dataia.js).
+  window.Core = {
+    t, L, esc, md, $, $$, highlight, leaves, toast, unlock, header, bindHeader, modal, showTitle, showAchievements,
+    showSettings, editorHtml, bindEditor, resultTable, confetti, runOn, makeDb, compare,
+    get save() { return save; }, persist, setCurrent(fn) { current = fn; },
+  };
 })();

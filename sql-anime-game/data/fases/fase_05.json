@@ -1,0 +1,92 @@
+{
+ "id": 5,
+ "arco": 1,
+ "titulo": {
+  "pt": "Rastros na Floresta",
+  "en": "Tracks in the Forest"
+ },
+ "cenario": "bg_floresta_cristal",
+ "dificuldade": "medio",
+ "conceitos": [
+  "LIKE",
+  "%"
+ ],
+ "missao": {
+  "pt": "Os guardas acharam fragmentos de uma armadura desconhecida.",
+  "en": "The guards found fragments of an unknown armor."
+ },
+ "historia_antes": [
+  {
+   "sprite": null,
+   "pt": "Floresta Cristal. As árvores brilham em azul. No chão, pedaços de metal queimado.",
+   "en": "The Crystal Forest. The trees glow blue. On the ground, pieces of scorched metal."
+  },
+  {
+   "sprite": "ren_focado",
+   "pt": "É um pedaço de armadura... mas qual modelo? Não dá pra ler o nome inteiro.",
+   "en": "It's a piece of armor... but which model? I can't read the full name."
+  },
+  {
+   "sprite": "pip_explicando",
+   "pt": "Então não procure o nome exato! Procure um PADRÃO!",
+   "en": "Then don't search for the exact name! Search for a PATTERN!"
+  }
+ ],
+ "aula": [
+  {
+   "sprite": "pip_explicando",
+   "pt": "LIKE compara texto com um padrão. O % significa \"qualquer coisa aqui\".",
+   "en": "LIKE matches text against a pattern. The % means \"anything goes here\".",
+   "quadro": {
+    "codigo": {
+     "pt": "WHERE nome_item LIKE 'Armadura%'  -- começa com\nWHERE nome_item LIKE '%Runica'    -- termina com\nWHERE nome_item LIKE '%de%'       -- contém",
+     "en": "WHERE item_name LIKE 'Iron%'   -- starts with\nWHERE item_name LIKE '%Armor'  -- ends with\nWHERE item_name LIKE '%of%'    -- contains"
+    }
+   }
+  },
+  {
+   "sprite": "pip_feliz",
+   "pt": "Todas as armaduras do armazém têm a palavra no nome. Use isso!",
+   "en": "Every armor in the warehouse has the word in its name. Use that!"
+  }
+ ],
+ "desafios": [
+  {
+   "enunciado": {
+    "pt": "Liste o **nome** e o **preço** de todos os itens cujo nome **começa com** `Armadura`.",
+    "en": "List the **name** and **price** of every item whose name **ends with** `Armor`."
+   },
+   "gabarito": {
+    "pt": "SELECT nome_item, preco FROM inventario_vila WHERE nome_item LIKE 'Armadura%'",
+    "en": "SELECT item_name, price FROM village_inventory WHERE item_name LIKE '%Armor'"
+   },
+   "ordenado": false,
+   "dicas": [
+    {
+     "pt": "Use LIKE com %.",
+     "en": "Use LIKE with %."
+    },
+    {
+     "pt": "'Armadura%' = começa com Armadura.",
+     "en": "'%Armor' = ends with Armor."
+    },
+    {
+     "pt": "SELECT nome_item, preco FROM inventario_vila WHERE nome_item LIKE 'Armadura%'",
+     "en": "SELECT item_name, price FROM village_inventory WHERE item_name LIKE '%Armor'"
+    }
+   ]
+  }
+ ],
+ "historia_depois": [
+  {
+   "sprite": "ren_focado",
+   "pt": "Couro, Escamas, Rúnica... O fragmento tem runas. É a Armadura Rúnica!",
+   "en": "Leather, Scale, Runic... The fragment has runes. It's the Runic Armor!"
+  },
+  {
+   "sprite": "kael_neutro",
+   "pt": "Só existe uma no armazém. E alguém de fora tem outra. Isso não me agrada.",
+   "en": "There's only one in the warehouse. And someone outside has another. I don't like this."
+  }
+ ]
+}
