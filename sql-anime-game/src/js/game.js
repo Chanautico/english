@@ -669,7 +669,7 @@
       unlock('first_query');
       feedback.textContent = ''; feedback.className = 'feedback';
       if (!r.ok) { unlock('sql_error'); GameAudio.play('error'); typingThen(() => say(esc(L(ERR[ch])), 'sad')); }
-      else GameAudio.play('click');
+      else { GameAudio.play('click'); PipGuide.afterRun(q, r, { count: runSql }); }
     }
 
     function doSubmit() {
@@ -679,6 +679,7 @@
       unlock('first_query');
       say(`<pre class="mini-sql">${highlight(q.trim()).replace(/\n$/, '')}</pre>`, null, 'me');
       if (!r.ok) { unlock('sql_error'); GameAudio.play('error'); feedback.className = 'feedback bad'; feedback.textContent = t('sqlError'); typingThen(() => say(esc(L(ERR[ch])), 'sad')); return; }
+      PipGuide.afterRun(q, r, { count: runSql });
       const res = check(c, r);
       if (!res.ok) {
         GameAudio.play('error');
@@ -753,6 +754,7 @@
     };
 
     renderQueryBox();
+    setTimeout(() => PipGuide.introFor(c.kw, () => { const ta = $('.ed-ta'); if (ta) ta.focus(); }), 450);
   }
 
   // ─────────────────────────── Laboratório livre ───────────────────────────

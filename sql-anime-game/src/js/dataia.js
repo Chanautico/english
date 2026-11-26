@@ -350,6 +350,7 @@
               <button class="chip-btn" data-hint>💡 ${core.t('hint')} <small>3</small></button>
               <button class="chip-btn" data-lesson ${f.aula && f.aula.length ? '' : 'disabled'}>📖 ${core.t('lesson')}</button>
               <button class="chip-btn" data-tables>▦ ${S('tables')}</button>
+              <button class="chip-btn" data-grim>📘 ${lg === 'pt' ? 'Grimório' : 'Grimoire'}</button>
               <button class="chip-btn" data-restart>↺ ${S('restart')}</button>
             </div>
           </aside>
@@ -416,6 +417,7 @@
 
     function setPip(tag) {
       const el = q('.pip-av .actor');
+      if (!el || !document.body.contains(chatLog)) return; // a tela já mudou
       FX.setActorTag(el, tag);
       let em = el.querySelector('.actor-emote');
       if (!em) { em = document.createElement('span'); em.className = 'actor-emote'; el.appendChild(em); }
@@ -524,7 +526,11 @@
       showResult(r); core.unlock('first_query');
       feedback.textContent = ''; feedback.className = 'feedback';
       if (!r.ok) { core.unlock('sql_error'); GameAudio.play('error'); setPip('pip_erro'); typingThen(() => say(esc(L(PIP.error)), 'pip_erro')); }
-      else GameAudio.play('click');
+      else { GameAudio.play('click'); explainRun(v, r); }
+    }
+    // Primeira vez usando um comando: o Pip comenta o que aconteceu.
+    function explainRun(v, r) {
+      PipGuide.afterRun(v, r, { count: (s) => core.runOn(dbFor(arc), s), say: (h) => say(h, 'pip_explicando') });
     }
     function doSubmit() {
       const v = getQuery(); if (!v) return;
@@ -532,6 +538,7 @@
       showResult(r); core.unlock('first_query');
       say(`<pre class="mini-sql">${core.highlight(v.trim()).replace(/\n$/, '')}</pre>`, null, true);
       if (!r.ok) { core.unlock('sql_error'); GameAudio.play('error'); feedback.className = 'feedback bad'; feedback.textContent = core.t('sqlError'); typingThen(() => say(esc(L(PIP.error)), 'pip_erro')); return; }
+      explainRun(v, r);
       const exp = core.runOn(dbFor(arc), cur().gabarito[lg]);
       const res = core.compare(r, exp, cur().ordenado);
       if (!res.ok) {
@@ -589,6 +596,7 @@
     q('[data-run]').onclick = doRun;
     q('[data-submit]').onclick = doSubmit;
     q('[data-tables]').onclick = () => { GameAudio.play('click'); openTab('schema'); };
+    q('[data-grim]').onclick = () => { GameAudio.play('click'); PipGuide.grimoire(); };
     q('[data-restart]').onclick = () => {
       GameAudio.play('click');
       challenge(f, onWin, onBack);
@@ -620,6 +628,9 @@
 
     say(`<b class="brief-title">${S('stage')} ${f.id} · ${esc(L(f.titulo))}</b><span class="brief-note">${esc(L(f.missao))}</span>`, 'pip_feliz');
     loadTurn();
+    // Comandos que o jogador ainda não viu: o Pip entra na tela e explica.
+    const tags = f.desafios.reduce((acc, d) => acc.concat(d.conceitos || []), [...f.conceitos]);
+    setTimeout(() => PipGuide.introFor(tags, () => { const ta = q('.ed-ta'); if (ta) ta.focus(); }), 450);
   }
 
   window.Dataia = { showMap, playFase, Assets };

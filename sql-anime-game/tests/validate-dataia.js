@@ -51,6 +51,18 @@ initSqlJs().then((SQL) => {
       if (shape.pt && shape.en && String(shape.pt) !== String(shape.en)) err(tag, 'PT e EN diferentes', shape.pt, shape.en);
     });
   }
-  console.log(`Dataia: ${fases.length} fases, ${n} desafios, ${fails} problema(s)`);
+  // Dicionário de comandos do Pip: cada etiqueta das fases tem explicação, e as demonstrações são válidas.
+  const { comandos, tabela_demo } = window.GAME_DATA.comandos;
+  const tagOk = (tg) => comandos.some((c) => c.tags.includes(tg));
+  for (const f of fases) for (const tg of f.conceitos) if (!tagOk(tg)) err(`fase ${f.id}: comando sem explicação do Pip: ${tg}`);
+  const nRows = tabela_demo.linhas.length, nCols = tabela_demo.colunas.length;
+  for (const c of comandos) {
+    for (const k of ['titulo', 'resumo', 'sintaxe', 'dica', 'apos']) if (!c[k] || !c[k].pt || !c[k].en) err(`comando ${c.id}: ${k} sem pt/en`);
+    const d = c.demo;
+    if (d.op === 'keep' && d.rows.some((r) => r >= nRows)) err(`comando ${c.id}: demo com linha inexistente`);
+    if (d.op === 'order' && [...d.order].sort().join() !== [...Array(nRows).keys()].join()) err(`comando ${c.id}: ordem precisa ter todas as linhas`);
+    if (d.op === 'hidecols' && d.cols.some((x) => x >= nCols)) err(`comando ${c.id}: coluna inexistente`);
+  }
+  console.log(`Dataia: ${fases.length} fases, ${n} desafios, ${comandos.length} comandos do Pip, ${fails} problema(s)`);
   process.exit(fails ? 1 : 0);
 });

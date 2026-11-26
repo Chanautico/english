@@ -1,0 +1,557 @@
+{
+ "tabela_demo": {
+  "colunas": [
+   {
+    "pt": "nome",
+    "en": "name"
+   },
+   {
+    "pt": "tipo",
+    "en": "type"
+   },
+   {
+    "pt": "qtd",
+    "en": "qty"
+   }
+  ],
+  "linhas": [
+   [
+    {
+     "pt": "Espada",
+     "en": "Sword"
+    },
+    {
+     "pt": "arma",
+     "en": "weapon"
+    },
+    2
+   ],
+   [
+    {
+     "pt": "Pocao",
+     "en": "Potion"
+    },
+    {
+     "pt": "pocao",
+     "en": "potion"
+    },
+    9
+   ],
+   [
+    {
+     "pt": "Escudo",
+     "en": "Shield"
+    },
+    {
+     "pt": "arma",
+     "en": "weapon"
+    },
+    5
+   ],
+   [
+    {
+     "pt": "Mapa",
+     "en": "Map"
+    },
+    null,
+    1
+   ],
+   [
+    {
+     "pt": "Arco",
+     "en": "Bow"
+    },
+    {
+     "pt": "arma",
+     "en": "weapon"
+    },
+    7
+   ]
+  ],
+  "nome": {
+   "pt": "itens",
+   "en": "items"
+  }
+ },
+ "comandos": [
+  {
+   "id": "select",
+   "tags": [
+    "SELECT"
+   ],
+   "titulo": {
+    "pt": "SELECT",
+    "en": "SELECT"
+   },
+   "resumo": {
+    "pt": "Escolhe O QUE você quer ver. Toda consulta de leitura começa com ele.",
+    "en": "Chooses WHAT you want to see. Every reading query starts with it."
+   },
+   "sintaxe": {
+    "pt": "SELECT colunas\nFROM tabela;",
+    "en": "SELECT columns\nFROM table;"
+   },
+   "dica": {
+    "pt": "Pense no SELECT como apontar o dedo: \"quero ver isso aqui!\"",
+    "en": "Think of SELECT as pointing: \"I want to see that!\""
+   },
+   "demo": {
+    "op": "show",
+    "codigo": {
+     "pt": "SELECT * FROM itens;",
+     "en": "SELECT * FROM items;"
+    }
+   },
+   "apos": {
+    "pt": "Você rodou seu primeiro SELECT! O Terminal devolveu {linhas} linha(s) com {colunas} coluna(s).",
+    "en": "You ran your first SELECT! The Terminal returned {linhas} row(s) with {colunas} column(s)."
+   }
+  },
+  {
+   "id": "from",
+   "tags": [
+    "FROM"
+   ],
+   "titulo": {
+    "pt": "FROM",
+    "en": "FROM"
+   },
+   "resumo": {
+    "pt": "Diz DE ONDE vêm os dados: o nome da tabela.",
+    "en": "Says WHERE the data comes FROM: the table name."
+   },
+   "sintaxe": {
+    "pt": "FROM inventario_vila",
+    "en": "FROM village_inventory"
+   },
+   "dica": {
+    "pt": "Errou o nome da tabela? O Terminal reclama \"no such table\". Confira na aba Tabelas!",
+    "en": "Misspelled the table? The Terminal says \"no such table\". Check the Tables tab!"
+   },
+   "demo": {
+    "op": "show",
+    "codigo": {
+     "pt": "... FROM itens",
+     "en": "... FROM items"
+    }
+   },
+   "apos": {
+    "pt": "O FROM foi buscar os dados na tabela {tabela}.",
+    "en": "FROM fetched the data from the {tabela} table."
+   }
+  },
+  {
+   "id": "star",
+   "tags": [
+    "*"
+   ],
+   "titulo": {
+    "pt": "*",
+    "en": "*"
+   },
+   "resumo": {
+    "pt": "O asterisco é um atalho para TODAS as colunas da tabela.",
+    "en": "The asterisk is a shortcut for ALL columns of the table."
+   },
+   "sintaxe": {
+    "pt": "SELECT *\nFROM tabela;",
+    "en": "SELECT *\nFROM table;"
+   },
+   "dica": {
+    "pt": "Ótimo para espiar uma tabela. Em relatórios de verdade, prefira escolher as colunas.",
+    "en": "Great for peeking at a table. In real reports, prefer picking columns."
+   },
+   "demo": {
+    "op": "show",
+    "codigo": {
+     "pt": "SELECT * FROM itens;",
+     "en": "SELECT * FROM items;"
+    }
+   },
+   "apos": {
+    "pt": "O * trouxe todas as {colunas} colunas de {tabela} de uma vez!",
+    "en": "The * brought all {colunas} columns of {tabela} at once!"
+   }
+  },
+  {
+   "id": "colunas",
+   "tags": [
+    "colunas"
+   ],
+   "titulo": {
+    "pt": "Escolher colunas",
+    "en": "Picking columns"
+   },
+   "resumo": {
+    "pt": "Em vez do *, liste só as colunas que importam, separadas por vírgula.",
+    "en": "Instead of *, list only the columns that matter, separated by commas."
+   },
+   "sintaxe": {
+    "pt": "SELECT nome, qtd\nFROM itens;",
+    "en": "SELECT name, qty\nFROM items;"
+   },
+   "dica": {
+    "pt": "A ordem que você escreve é a ordem que as colunas aparecem.",
+    "en": "The order you write them is the order they appear."
+   },
+   "demo": {
+    "op": "hidecols",
+    "cols": [
+     1
+    ],
+    "codigo": {
+     "pt": "SELECT nome, qtd FROM itens;",
+     "en": "SELECT name, qty FROM items;"
+    }
+   },
+   "apos": {
+    "pt": "Você pediu só {colunas} coluna(s). O resto ficou de fora da tela!",
+    "en": "You asked for only {colunas} column(s). The rest stayed off screen!"
+   }
+  },
+  {
+   "id": "where",
+   "tags": [
+    "WHERE",
+    "="
+   ],
+   "titulo": {
+    "pt": "WHERE",
+    "en": "WHERE"
+   },
+   "resumo": {
+    "pt": "Faz uma pergunta para CADA linha. Só ficam as que respondem \"sim\".",
+    "en": "Asks EACH row a question. Only rows that answer \"yes\" stay."
+   },
+   "sintaxe": {
+    "pt": "SELECT *\nFROM tabela\nWHERE coluna = 'valor';",
+    "en": "SELECT *\nFROM table\nWHERE column = 'value';"
+   },
+   "dica": {
+    "pt": "Texto vai entre aspas simples: 'arma'. Números vão sem aspas: 5.",
+    "en": "Text goes in single quotes: 'weapon'. Numbers go without: 5."
+   },
+   "demo": {
+    "op": "keep",
+    "rows": [
+     0,
+     2,
+     4
+    ],
+    "codigo": {
+     "pt": "WHERE tipo = 'arma'",
+     "en": "WHERE type = 'weapon'"
+    }
+   },
+   "apos": {
+    "pt": "Seu WHERE testou as {total} linhas de {tabela} e deixou passar {linhas}.",
+    "en": "Your WHERE tested all {total} rows of {tabela} and let {linhas} through."
+   }
+  },
+  {
+   "id": "comparadores",
+   "tags": [
+    ">",
+    "<",
+    ">=",
+    "<=",
+    "!=",
+    "<>"
+   ],
+   "titulo": {
+    "pt": "> < >= <= !=",
+    "en": "> < >= <= !="
+   },
+   "resumo": {
+    "pt": "Comparam valores: maior, menor, maior ou igual, menor ou igual, diferente.",
+    "en": "Compare values: greater, less, greater or equal, less or equal, not equal."
+   },
+   "sintaxe": {
+    "pt": "WHERE quantidade <= 3\nWHERE categoria != 'arma'",
+    "en": "WHERE quantity <= 3\nWHERE category != 'weapon'"
+   },
+   "dica": {
+    "pt": "<= inclui o próprio número. \"3 ou menos\" pega o 3 também!",
+    "en": "<= includes the number itself. \"3 or fewer\" includes 3!"
+   },
+   "demo": {
+    "op": "keep",
+    "rows": [
+     0,
+     3
+    ],
+    "codigo": {
+     "pt": "WHERE qtd <= 2",
+     "en": "WHERE qty <= 2"
+    }
+   },
+   "apos": {
+    "pt": "O comparador filtrou {total} linhas e sobraram {linhas}.",
+    "en": "The comparison filtered {total} rows and {linhas} remained."
+   }
+  },
+  {
+   "id": "like",
+   "tags": [
+    "LIKE",
+    "%"
+   ],
+   "titulo": {
+    "pt": "LIKE + %",
+    "en": "LIKE + %"
+   },
+   "resumo": {
+    "pt": "Procura um PADRÃO no texto. O % significa \"qualquer coisa aqui\".",
+    "en": "Searches for a PATTERN in text. The % means \"anything goes here\"."
+   },
+   "sintaxe": {
+    "pt": "WHERE nome LIKE 'Arm%'   -- começa com\nWHERE nome LIKE '%ura'   -- termina com",
+    "en": "WHERE name LIKE 'Iron%'   -- starts with\nWHERE name LIKE '%Armor'  -- ends with"
+   },
+   "dica": {
+    "pt": "Sem o %, o LIKE vira um = disfarçado.",
+    "en": "Without %, LIKE is just a disguised =."
+   },
+   "demo": {
+    "op": "keep",
+    "rows": [
+     0,
+     2
+    ],
+    "codigo": {
+     "pt": "WHERE nome LIKE 'E%'",
+     "en": "WHERE name LIKE 'S%'"
+    }
+   },
+   "apos": {
+    "pt": "O LIKE procurou o padrão e achou {linhas} linha(s) que combinam.",
+    "en": "LIKE searched for the pattern and found {linhas} matching row(s)."
+   }
+  },
+  {
+   "id": "and",
+   "tags": [
+    "AND"
+   ],
+   "titulo": {
+    "pt": "AND",
+    "en": "AND"
+   },
+   "resumo": {
+    "pt": "Junta duas condições: as DUAS precisam ser verdadeiras.",
+    "en": "Joins two conditions: BOTH must be true."
+   },
+   "sintaxe": {
+    "pt": "WHERE tipo = 'arma' AND qtd > 4",
+    "en": "WHERE type = 'weapon' AND qty > 4"
+   },
+   "dica": {
+    "pt": "Cada AND deixa o filtro mais exigente: sobram menos linhas.",
+    "en": "Each AND makes the filter stricter: fewer rows remain."
+   },
+   "demo": {
+    "op": "keep",
+    "rows": [
+     2,
+     4
+    ],
+    "codigo": {
+     "pt": "WHERE tipo = 'arma' AND qtd > 4",
+     "en": "WHERE type = 'weapon' AND qty > 4"
+    }
+   },
+   "apos": {
+    "pt": "Com AND, só {linhas} linha(s) passaram nas duas condições ao mesmo tempo.",
+    "en": "With AND, only {linhas} row(s) passed both conditions at once."
+   }
+  },
+  {
+   "id": "or",
+   "tags": [
+    "OR"
+   ],
+   "titulo": {
+    "pt": "OR",
+    "en": "OR"
+   },
+   "resumo": {
+    "pt": "Junta duas condições: BASTA UMA ser verdadeira.",
+    "en": "Joins two conditions: just ONE needs to be true."
+   },
+   "sintaxe": {
+    "pt": "WHERE qtd > 8 OR qtd < 2",
+    "en": "WHERE qty > 8 OR qty < 2"
+   },
+   "dica": {
+    "pt": "Cuidado: o AND é resolvido antes do OR. Use parênteses!",
+    "en": "Careful: AND is evaluated before OR. Use parentheses!"
+   },
+   "demo": {
+    "op": "keep",
+    "rows": [
+     1,
+     3
+    ],
+    "codigo": {
+     "pt": "WHERE qtd > 8 OR qtd < 2",
+     "en": "WHERE qty > 8 OR qty < 2"
+    }
+   },
+   "apos": {
+    "pt": "Com OR, {linhas} linha(s) passaram em pelo menos uma condição.",
+    "en": "With OR, {linhas} row(s) passed at least one condition."
+   }
+  },
+  {
+   "id": "parenteses",
+   "tags": [
+    "( )"
+   ],
+   "titulo": {
+    "pt": "( )",
+    "en": "( )"
+   },
+   "resumo": {
+    "pt": "Agrupam condições. O que está dentro dos parênteses é resolvido primeiro.",
+    "en": "Group conditions. What's inside the parentheses is resolved first."
+   },
+   "sintaxe": {
+    "pt": "WHERE (tipo = 'arma' AND qtd > 4)\n   OR nome = 'Mapa'",
+    "en": "WHERE (type = 'weapon' AND qty > 4)\n   OR name = 'Map'"
+   },
+   "dica": {
+    "pt": "Igual na matemática: (2 + 3) × 4 é diferente de 2 + 3 × 4.",
+    "en": "Just like math: (2 + 3) × 4 is not 2 + 3 × 4."
+   },
+   "demo": {
+    "op": "keep",
+    "rows": [
+     2,
+     3,
+     4
+    ],
+    "codigo": {
+     "pt": "WHERE (tipo = 'arma' AND qtd > 4) OR nome = 'Mapa'",
+     "en": "WHERE (type = 'weapon' AND qty > 4) OR name = 'Map'"
+    }
+   },
+   "apos": {
+    "pt": "Os parênteses deixaram sua lógica clara: {linhas} linha(s) no resultado.",
+    "en": "The parentheses made your logic clear: {linhas} row(s) in the result."
+   }
+  },
+  {
+   "id": "orderby",
+   "tags": [
+    "ORDER BY",
+    "ASC",
+    "DESC"
+   ],
+   "titulo": {
+    "pt": "ORDER BY",
+    "en": "ORDER BY"
+   },
+   "resumo": {
+    "pt": "Ordena o resultado. ASC = do menor para o maior (padrão). DESC = do maior para o menor.",
+    "en": "Sorts the result. ASC = smallest to largest (default). DESC = largest to smallest."
+   },
+   "sintaxe": {
+    "pt": "SELECT *\nFROM tabela\nORDER BY coluna DESC;",
+    "en": "SELECT *\nFROM table\nORDER BY column DESC;"
+   },
+   "dica": {
+    "pt": "Texto também ordena: em ordem alfabética!",
+    "en": "Text sorts too: alphabetically!"
+   },
+   "demo": {
+    "op": "order",
+    "order": [
+     1,
+     4,
+     2,
+     0,
+     3
+    ],
+    "codigo": {
+     "pt": "ORDER BY qtd DESC",
+     "en": "ORDER BY qty DESC"
+    }
+   },
+   "apos": {
+    "pt": "O ORDER BY arrumou as {linhas} linhas pela coluna {coluna}. Olha a ordem!",
+    "en": "ORDER BY arranged the {linhas} rows by the {coluna} column. Look at the order!"
+   }
+  },
+  {
+   "id": "limit",
+   "tags": [
+    "LIMIT"
+   ],
+   "titulo": {
+    "pt": "LIMIT",
+    "en": "LIMIT"
+   },
+   "resumo": {
+    "pt": "Corta o resultado depois das primeiras N linhas.",
+    "en": "Cuts the result after the first N rows."
+   },
+   "sintaxe": {
+    "pt": "ORDER BY recompensa DESC\nLIMIT 3;",
+    "en": "ORDER BY bounty DESC\nLIMIT 3;"
+   },
+   "dica": {
+    "pt": "LIMIT sem ORDER BY é sorteio. Ordene antes de cortar!",
+    "en": "LIMIT without ORDER BY is a lottery. Sort before you cut!"
+   },
+   "demo": {
+    "op": "cut",
+    "n": 2,
+    "codigo": {
+     "pt": "LIMIT 2",
+     "en": "LIMIT 2"
+    }
+   },
+   "apos": {
+    "pt": "Tesoura do LIMIT: o resultado parou em {n} linha(s)!",
+    "en": "LIMIT scissors: the result stopped at {n} row(s)!"
+   }
+  },
+  {
+   "id": "isnull",
+   "tags": [
+    "IS NULL",
+    "IS NOT NULL"
+   ],
+   "titulo": {
+    "pt": "IS NULL",
+    "en": "IS NULL"
+   },
+   "resumo": {
+    "pt": "NULL é um valor fantasma: \"ninguém sabe\". Para achar fantasmas use IS NULL; para fugir deles, IS NOT NULL.",
+    "en": "NULL is a ghost value: \"nobody knows\". To find ghosts use IS NULL; to avoid them, IS NOT NULL."
+   },
+   "sintaxe": {
+    "pt": "WHERE destino IS NULL\nWHERE destino IS NOT NULL",
+    "en": "WHERE destination IS NULL\nWHERE destination IS NOT NULL"
+   },
+   "dica": {
+    "pt": "= NULL nunca funciona! Nem NULL = NULL é verdadeiro.",
+    "en": "= NULL never works! Not even NULL = NULL is true."
+   },
+   "demo": {
+    "op": "keep",
+    "rows": [
+     3
+    ],
+    "codigo": {
+     "pt": "WHERE tipo IS NULL",
+     "en": "WHERE type IS NULL"
+    }
+   },
+   "apos": {
+    "pt": "O IS NULL caçou os fantasmas: {linhas} linha(s) encontradas.",
+    "en": "IS NULL hunted the ghosts: {linhas} row(s) found."
+   }
+  }
+ ]
+}

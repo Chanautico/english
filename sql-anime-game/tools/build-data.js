@@ -9,6 +9,7 @@ const read = (p) => JSON.parse(fs.readFileSync(path.join(root, p), 'utf8'));
 const LANGS = ['pt', 'en'];
 
 const elenco = read('data/elenco.json');
+const comandos = read('data/comandos.json');
 const arcos = fs.readdirSync(path.join(root, 'data/arcos')).filter((f) => f.endsWith('.json')).sort().map((f) => read('data/arcos/' + f));
 const fases = fs.readdirSync(path.join(root, 'data/fases')).filter((f) => f.endsWith('.json')).sort().map((f) => read('data/fases/' + f));
 
@@ -30,6 +31,7 @@ function setupSql(arco, lang) {
 
 const bundle = {
   elenco,
+  comandos,
   arcos: arcos.map((a) => ({ ...a, setup: Object.fromEntries(LANGS.map((l) => [l, setupSql(a, l)])) })),
   fases,
 };
