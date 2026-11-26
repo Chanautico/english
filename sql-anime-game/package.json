@@ -1,0 +1,30 @@
+{
+  "name": "sakura-query",
+  "productName": "Sakura Query",
+  "version": "0.1.0",
+  "description": "Jogo anime para aprender SQL de verdade / Anime game to learn real SQL",
+  "main": "main.js",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win",
+    "dist:linux": "electron-builder --linux",
+    "dist:mac": "electron-builder --mac",
+    "test": "node tests/validate-content.js"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "sql.js": "1.10.3"
+  },
+  "build": {
+    "appId": "com.sakuraquery.game",
+    "productName": "Sakura Query",
+    "directories": { "output": "dist" },
+    "files": ["main.js", "preload.js", "src/**/*"],
+    "win": { "target": "dir" },
+    "linux": { "target": "dir" },
+    "mac": { "target": "dir" }
+  }
+}
